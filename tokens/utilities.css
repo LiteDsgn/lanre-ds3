@@ -1,0 +1,21 @@
+/* Tiny helper classes for hand-written HTML. Components inline the same rules. */
+.mp-display { font-family: var(--font-display); font-weight: 400; line-height: var(--leading-tight); letter-spacing: var(--tracking-display); }
+.mp-ui { font-family: var(--font-ui); font-weight: var(--weight-ui); line-height: var(--leading-normal); }
+.mp-label { font-family: var(--font-ui); font-weight: var(--weight-ui-bold); font-size: var(--text-label); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+/* Outlined display text: white fill, dark stroke painted behind the fill */
+.mp-outline { color: var(--white); -webkit-text-stroke: var(--stroke-display) var(--text-outline); paint-order: stroke fill; text-shadow: 0 0.12em 0 oklch(0 0 0 / 0.22); }
+.mp-outline-stone { -webkit-text-stroke-color: var(--text-outline-stone); }
+.mp-outline-blue { -webkit-text-stroke-color: var(--text-outline-blue); }
+@keyframes mp-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes mp-pulse-ring { 0% { box-shadow: 0 0 0 0 oklch(0.68 0.17 240 / 0.7); } 100% { box-shadow: 0 0 0 16px oklch(0.68 0.17 240 / 0); } }
+@keyframes mp-pop { 0% { transform: scale(0.6); opacity: 0; } 70% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes mp-sparkle { 0%, 100% { opacity: 0.4; transform: scale(0.8) rotate(0deg); } 50% { opacity: 1; transform: scale(1.15) rotate(20deg); } }
+@keyframes mp-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes mp-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+/* Accessibility: keyboard focus ring (outline, so bevels keep their box-shadows), screen-reader-only text, reduced motion */
+:focus-visible { outline: 4px solid var(--gold-300); outline-offset: 3px; }
+.mp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mp-world { background: var(--world-bg); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

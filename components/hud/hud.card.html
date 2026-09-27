@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components" viewport="700x330" name="HUD" subtitle="CurrencyPill, ProgressBar, TimerChip: the top-bar kit" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="hud/CurrencyPill,hud/ProgressBar,hud/TimerChip,icons/GameIcon"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+.mp-boot-label{font-family:var(--font-display);font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;-webkit-text-stroke:.18em var(--ink-900);paint-order:stroke fill;text-shadow:0 2px 0 oklch(0 0 0 / .22)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true" style="position:fixed"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center' }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap' }}>{children}</div>;
+const Col = ({ children, gap = 16 }) => <div style={{ display: 'grid', gap }}>{children}</div>;
+const Note = ({ children }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / 0.4)', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ CurrencyPill, ProgressBar, TimerChip, GameIcon }) => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <Col gap={20}>
+      <Row gap={26}>
+        <CurrencyPill kind="coin" value="50,253k" onAdd={() => {}} />
+        <CurrencyPill kind="gem" value={36} onAdd={() => {}} />
+        <CurrencyPill kind="heart" value="5/5" />
+        <CurrencyPill kind="energy" value={32} size="sm" />
+        <CurrencyPill kind="star" value={23} size="sm" />
+        <CurrencyPill kind="coin" value="1,240" tone="light" />
+        <CurrencyPill icon={<GameIcon kind="chest" size={40} />} value="3/3" />
+      </Row>
+      <Row gap={26} align="center">
+        <ProgressBar value={0.42} label="42%" width={220} />
+        <ProgressBar value={6} max={20} tone="green" size="lg" label="6/20" width={240} cap={<GameIcon kind="star" size={40} />} />
+        <ProgressBar value={0.7} tone="blue" size="sm" striped={false} width={150} />
+      </Row>
+      <Row gap={26} align="center">
+        <ProgressBar value={0.65} tone="teal" track="light" width={200} label="Loading…" />
+        <ProgressBar value={0.3} tone="coral" size="md" width={140} label="3/10" cap={<GameIcon kind="heart" size={34} />} />
+        <ProgressBar value={0.85} tone="berry" size="md" width={140} label="x2 Boost" />
+      </Row>
+      <Row gap={16}>
+        <TimerChip time="00:02" /><TimerChip time="4h 12m" tone="light" /><TimerChip time="00:09" urgent /><TimerChip time="12:00" size="sm" icon="hourglass" />
+      </Row>
+    </Col>
+  );
+});
+</script></body></html>

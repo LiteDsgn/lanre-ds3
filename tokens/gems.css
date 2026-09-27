@@ -1,0 +1,8 @@
+/* Quiz gemstones. Score 0–2 → Amber I/II/III · 3–5 → Emerald · 6–8 → Amethyst · quiz skipped → Pearl keepsake (unranked).
+   Tier I plain · II adds a sparkle · III adds a halo (proposed: III keeps the sparkle too). Shape + name always accompany colour. */
+:root {
+  --gem-amber: oklch(0.80 0.16 70);    --gem-amber-light: oklch(0.92 0.12 85);    --gem-amber-deep: oklch(0.56 0.15 55);
+  --gem-emerald: oklch(0.70 0.18 155); --gem-emerald-light: oklch(0.86 0.14 150); --gem-emerald-deep: oklch(0.46 0.14 158);
+  --gem-amethyst: oklch(0.62 0.20 305);--gem-amethyst-light: oklch(0.80 0.13 310);--gem-amethyst-deep: oklch(0.40 0.16 300);
+  --gem-pearl: oklch(0.95 0.02 90);    --gem-pearl-light: #ffffff;                --gem-pearl-deep: oklch(0.76 0.04 260);
+}

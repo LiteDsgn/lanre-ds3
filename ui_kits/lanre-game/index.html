@@ -1,0 +1,32 @@
+<!-- @dsCard group="Lanre app" viewport="390x844" name="Lanre: mobile game" subtitle="World map, expedition board, camp inventory + level, shop, daily reward and settings panels (interactive)" -->
+<!-- @startingPoint section="Screens" subtitle="Full interactive mobile game shell (map · board · camp · dialogs)" viewport="390x844" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=390, initial-scale=1">
+<title>Lanre: UI kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="buttons/Button,buttons/IconButton,hud/CurrencyPill,hud/ProgressBar,hud/TimerChip,panels/Panel,map/LevelNode,map/StarRating,map/Tile,rewards/RewardCard,rewards/ItemCell,rewards/ShopRow,forms/Switch,forms/Slider,feedback/Badge,feedback/Tag,feedback/Toast,text/OutlineText,icons/GameIcon"></script>
+<style>
+html,body{margin:0;height:100%}
+body{background:var(--bg-dusk);font-family:var(--font-ui);color:var(--text-primary);display:grid;place-items:center;min-height:100vh;-webkit-font-smoothing:antialiased}
+#root{width:390px;height:844px;position:relative;overflow:hidden;background:var(--bg-meadow);border-radius:0}
+@media (min-width:430px) and (min-height:900px){#root{border-radius:40px;box-shadow:0 30px 80px oklch(0 0 0 / .45)}}
+*{-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:0;height:0}
+.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+.mp-boot-label{font-family:var(--font-display);font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;-webkit-text-stroke:.18em var(--ink-900);paint-order:stroke fill;text-shadow:0 2px 0 oklch(0 0 0 / .22)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style></head>
+<body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div><div class="mp-boot-label">Loading…</div></div></div>
+<script type="text/babel" src="./Hud.jsx"></script>
+<script type="text/babel" src="./MapScreen.jsx"></script>
+<script type="text/babel" src="./BoardScreen.jsx"></script>
+<script type="text/babel" src="./CampScreen.jsx"></script>
+<script type="text/babel" src="./Dialogs.jsx"></script>
+<script type="text/babel" src="./App.jsx"></script>
+</body></html>

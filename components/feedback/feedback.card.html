@@ -1,0 +1,40 @@
+<!-- @dsCard group="Components" viewport="700x250" name="Feedback" subtitle="Badge, Tag, Toast, SoundToggle" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="feedback/Badge,feedback/Tag,feedback/Toast,feedback/SoundToggle,icons/GameIcon"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+.mp-boot-label{font-family:var(--font-display);font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;-webkit-text-stroke:.18em var(--ink-900);paint-order:stroke fill;text-shadow:0 2px 0 oklch(0 0 0 / .22)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true" style="position:fixed"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center' }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap' }}>{children}</div>;
+const Col = ({ children, gap = 16 }) => <div style={{ display: 'grid', gap }}>{children}</div>;
+const Note = ({ children }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / 0.4)', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ Badge, Tag, Toast, SoundToggle, GameIcon }) => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <Col gap={20}>
+      <Row gap={14}>
+        <Badge /><Badge count={3} /><Badge count={12} tone="blue" /><Badge count="NEW" tone="gold" /><Badge count="!" tone="teal" size="sm" /><Badge count={99} tone="green" pulse />
+        <span style={{ width: 20 }} />
+        <Tag>Most popular</Tag><Tag tone="teal">3x the value</Tag><Tag tone="gold">New</Tag><Tag tone="blue">Limited</Tag><Tag tone="berry">Premium</Tag><Tag tone="green">Free</Tag><Tag tone="stone" icon={<i className="ph-fill ph-lock" />}>Locked</Tag><Tag tone="wood" size="sm">Event</Tag>
+      </Row>
+      <Row gap={16}>
+        <Toast icon={<GameIcon kind="coin" size={32} />} message="+50" detail="Coins collected" />
+        <Toast icon={<GameIcon kind="heart" size={32} />} message="Life restored" tone="coral" />
+        <Toast icon={<GameIcon kind="check" size={28} tone="teal" />} message="Saved" tone="teal" />
+        <SoundToggle on /><SoundToggle on={false} tone="light" size="sm" />
+      </Row>
+      <Note>Badges pin to a corner (position from the parent). Tags: coral scarcity, teal/green value, gold new, berry premium, stone locked. Toasts pop in with the bounce ease.</Note>
+    </Col>
+  );
+});
+</script></body></html>

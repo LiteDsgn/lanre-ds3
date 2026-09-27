@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"><style>body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}a{color:#2a78d6}a:hover{color:#1b5aa6}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-intro{font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.6);max-width:900px;margin:0 0 22px}.dv-opts{display:flex;flex-wrap:wrap;gap:36px 32px;align-items:flex-start}.dv-opt{flex:none;display:grid;grid-template-columns:312px 232px;gap:9px 16px;width:560px;scroll-margin-top:16px}.dv-olabel{grid-column:1/-1;display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden;width:312px}.dv-notes{margin:0;padding:2px 0 0 18px;font:12px/1.45 system-ui,sans-serif;color:rgba(0,0,0,.7)}.dv-notes li{margin-bottom:5px}.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.f{position:relative;background:#f7f2e8;overflow:hidden;font-family:'Patrick Hand',cursive;color:#2b2620;zoom:.8;width:390px;height:844px;box-sizing:border-box}
+.b{position:absolute;border:2px solid #2b2620;border-radius:12px;background:#fff;box-sizing:border-box;font-size:17px;line-height:1.25}.d{border-style:dashed}.h{background:repeating-linear-gradient(-45deg,rgba(43,38,32,.1) 0 9px,transparent 9px 18px),#fff}.pill{border-radius:999px}.ctr{display:grid;place-items:center;text-align:center}.cta{background:#7fd3c7}.dark{background:#3a332b;color:#fff;border-color:#3a332b}.ghost{background:transparent}.gold{background:#f6d774}.tone{background:#f3ece0}.off{background:#e6e0d5;color:#8a8074;border-color:#8a8074}.bad{border-color:#d9583b;background:#fdece6}
+.t{position:absolute;font-size:17px;line-height:1.25}.small{font-size:13px;opacity:.75}.big{font-size:26px}
+.c{position:absolute;width:26px;height:26px;border-radius:50%;background:#2a78d6;color:#fff;font:700 13px/26px system-ui,sans-serif;text-align:center;z-index:5;box-shadow:0 0 0 3px #fff}
+.av{position:absolute;border-radius:50%;border:2px solid #2b2620;background:#fff;display:grid;place-items:center;box-sizing:border-box;font-size:17px}
+.gem{position:absolute;display:grid;place-items:center;font-size:12px;background:#7fd3a0;clip-path:polygon(26% 4%,74% 4%,96% 26%,96% 74%,74% 96%,26% 96%,4% 74%,4% 26%)}.gem.am{background:#f6d774;clip-path:polygon(50% 0%,96% 24%,96% 76%,50% 100%,4% 76%,4% 24%)}.gem.at{background:#b98be6;clip-path:polygon(50% 0%,96% 38%,50% 100%,4% 38%)}.gem.pe{background:#ddd6cb;clip-path:circle(48%);box-shadow:inset 0 0 0 2px #2b2620}
+.ln{position:absolute;height:8px;border-radius:4px;background:rgba(43,38,32,.22)}
+.home{position:absolute;left:128px;top:826px;width:134px;height:5px;border-radius:3px;background:#2b2620;opacity:.6}
+.step{position:absolute;top:60px;left:95px;width:200px;height:28px}.step i{position:absolute;top:12px;left:14px;right:14px;height:4px;background:rgba(43,38,32,.2)}.step b{position:absolute;top:0;width:28px;height:28px;border-radius:50%;border:2px solid #2b2620;background:#fff;box-sizing:border-box;font:400 13px/24px 'Patrick Hand',cursive;text-align:center}.step b.on{background:#3a332b;color:#fff}.step b.ok{background:#cfeacb}
+.row{position:absolute;left:20px;width:350px;border:2px solid #2b2620;border-radius:14px;background:#fff;box-sizing:border-box;padding:10px 12px;font-size:15px;line-height:1.25}</style></helmet>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Contributor flow on a phone, layout only</span></div>
+<p class="dv-intro">Phone frame 390 × 844 (shown at 80%), the same treatment as the iPad canvas: wireframes with numbered callouts, boxes are components from the system (StepBar, TextField, UploadTile, WorldChip, RadioCard, Gemstone, LeaderboardRow). Built from BUILD-BRIEF, CLAUDE-HANDOFF and DATA-CONTRACT v0.1: each frame's notes name the contract fields it writes. Names, titles and clues are fixtures; quiz text is a labelled draft; media limits are proposed defaults. Gold is the contributor CTA (dark text); teal stays Babe's.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Invite: what this is, what stays secret</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:390px;height:330px;border:0;border-radius:0"></div>
+<div class="t small" style="left:16px;top:14px">Mango Grove art slot · safe areas 54 top / 34 bottom</div>
+<div class="b" style="left:20px;top:300px;width:350px;height:430px;border-radius:24px"></div>
+<div class="b ctr" style="left:75px;top:272px;width:240px;height:56px;border-radius:18px;background:#cfe4f7;font-size:24px">A surprise for Lanre</div>
+<div class="t" style="left:44px;top:350px;width:302px;line-height:1.4">Henry is building a birthday adventure for Lanre, 18 September. Friends add memories; she discovers who sent each one.</div>
+<div class="av" style="left:44px;top:452px;width:36px;height:36px;font-size:20px;background:#ddd6cb">?</div>
+<div class="t" style="left:92px;top:452px;width:254px;font-size:15px;line-height:1.3">Hidden until she finds you: your name, photo, relationship.</div>
+<div class="av" style="left:44px;top:508px;width:36px;height:36px;background:#cfeacb">✓</div>
+<div class="t" style="left:92px;top:508px;width:254px;font-size:15px;line-height:1.3">Shown to her: your memory, in the order you set.</div>
+<div class="av" style="left:44px;top:564px;width:36px;height:36px;background:#f6d774">16</div>
+<div class="t" style="left:92px;top:564px;width:254px;font-size:15px;line-height:1.3">Add by 16 September. Late is still welcome.</div>
+<div class="b gold ctr" style="left:44px;top:622px;width:302px;height:60px;font-size:22px">Start</div>
+<div class="t small" style="left:44px;top:694px;width:302px;text-align:center">No account. Your draft saves as you go.</div>
+<div class="b ghost ctr" style="left:20px;top:748px;width:350px;height:52px;font-size:16px">Already added something? Open your private link</div>
+<div class="home"></div>
+<div class="c" style="left:340px;top:30px">1</div><div class="c" style="left:14px;top:456px">2</div><div class="c" style="left:14px;top:568px">3</div><div class="c" style="left:350px;top:760px">4</div>
+</div></div><ol class="dv-notes"><li>Same world art as Babe's opening so both surfaces feel like one thing; no device chrome drawn.</li><li>Anonymity summary before anything is asked, what stays hidden vs what she sees (brief: “show what will be anonymous versus revealed”).</li><li>Dates from the handoff: add by 16 Sept, birthday 18 Sept; late submissions are accepted and become discoveries.</li><li>Returning contributors are steered to their private link so one person never becomes two records.</li></ol></div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>You: name, relationship, optional portrait</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="step"><i></i><b class="on" style="left:0">1</b><b style="left:57px">2</b><b style="left:115px">3</b><b style="left:172px">4</b></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Step 1 of 4 · You</div>
+<div class="t big" style="left:20px;top:132px">Who is this from?</div>
+<div class="av d" style="left:147px;top:180px;width:96px;height:96px;background:#f7f2e8;font-size:15px;text-align:center;line-height:1.1">add photo<br>optional</div>
+<div class="t small" style="left:20px;top:284px;width:350px;text-align:center">no photo → a generated avatar, the same every time</div>
+<div class="t" style="left:20px;top:324px;font-size:15px">The name Lanre knows you by</div>
+<div class="b" style="left:20px;top:348px;width:350px;height:52px;padding:12px 16px">Ada Okafor</div>
+<div class="t small" style="left:20px;top:406px;width:350px">Shown to her only after she finds you.</div>
+<div class="t" style="left:20px;top:440px;font-size:15px">How you know her</div>
+<div class="b" style="left:20px;top:464px;width:350px;height:52px;padding:12px 16px">Sister</div>
+<div class="t small" style="left:20px;top:522px;width:350px">Her words for you: sister, coursemate, work wife.</div>
+<div class="b tone" style="left:20px;top:562px;width:350px;height:74px;border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.3">Added something before? Open your private link instead of starting again, that keeps you as one person on her road.</div>
+<div class="b pill ctr" style="left:20px;top:656px;width:150px;height:32px;font-size:14px">Saved · just now</div>
+<div class="t small" style="left:182px;top:662px">draft · revision 3</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Continue</div>
+<div class="home"></div>
+<div class="c" style="left:300px;top:60px">1</div><div class="c" style="left:250px;top:190px">2</div><div class="c" style="left:350px;top:340px">3</div><div class="c" style="left:350px;top:570px">4</div><div class="c" style="left:262px;top:646px">5</div>
+</div></div><ol class="dv-notes"><li>StepBar (compact) over the linear spine You · Memories · Preview · Submit; composer sub-steps live inside “Memories”.</li><li>Portrait optional (<code>portraitAssetId</code> null → avatar seeded by contributor id). Never a prerequisite for her to guess.</li><li><code>displayName</code> + <code>relationship</code>; helper text says exactly when she sees them.</li><li>Return hint for people who already have a record. No name matching: dedupe is by private link only.</li><li>Save state always visible: drafts autosave with <code>revision</code> checks so two devices never overwrite each other silently.</li></ol></div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Theme: where the memory belongs</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="b pill ctr" style="left:75px;top:58px;width:240px;height:32px;font-size:14px"><span><b>Theme</b> › Compose › Details</span></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Memory 1</div>
+<div class="t big" style="left:20px;top:128px;width:350px">Where does it belong?</div>
+<div class="t small" style="left:20px;top:168px;width:350px;line-height:1.3">Mix prompts freely: this only decides where she finds it on the road.</div>
+<div class="row" style="top:220px;height:92px"></div><div class="av" style="left:34px;top:238px;width:56px;height:56px;background:#fbe9b8"></div><div class="t" style="left:104px;top:236px;font-size:18px">Mango Grove</div><div class="t small" style="left:104px;top:262px;width:250px;line-height:1.25">First impressions, meeting, early memories</div>
+<div class="row" style="top:324px;height:92px;border:3px solid #2a78d6;background:#eef6fd"></div><div class="av" style="left:34px;top:342px;width:56px;height:56px;background:#f6cdb6"></div><div class="t" style="left:104px;top:340px;font-size:18px">Small Chops, Big Gist</div><div class="t small" style="left:104px;top:366px;width:210px;line-height:1.25">Funny stories, inside jokes, outings</div><div class="av" style="left:322px;top:356px;width:28px;height:28px;background:#2a78d6;color:#fff;font-size:15px">✓</div>
+<div class="row" style="top:428px;height:92px"></div><div class="av" style="left:34px;top:446px;width:56px;height:56px;background:#cfeacb"></div><div class="t" style="left:104px;top:444px;font-size:18px">The Good Energy Hills</div><div class="t small" style="left:104px;top:470px;width:250px;line-height:1.25">Appreciation, support, showing up</div>
+<div class="row" style="top:532px;height:92px"></div><div class="av" style="left:34px;top:550px;width:56px;height:56px;background:#e2d3ee"></div><div class="t" style="left:104px;top:548px;font-size:18px">Someday in Japan</div><div class="t small" style="left:104px;top:574px;width:250px;line-height:1.25">Wishes, future adventures, hopes</div>
+<div class="t small" style="left:20px;top:648px;width:350px;text-align:center">The Summit isn't a choice, that's Henry's letter.</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Continue</div>
+<div class="home"></div>
+<div class="c" style="left:318px;top:48px">1</div><div class="c" style="left:8px;top:350px">2</div><div class="c" style="left:350px;top:454px">3</div>
+</div></div><ol class="dv-notes"><li>Three-part sub-progress for one memory (Theme › Compose › Details); the outer StepBar stays on “Memories”.</li><li>One <code>worldId</code> per package: the four fixed worlds, as WorldChips with blurbs from <code>worlds.js</code>. Selected = blue ring + tick.</li><li>The blurb is the prompt; combining prompts is allowed, so the choice is framed as placement, not category.</li></ol></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Compose: ordered blocks, upload states</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="b pill ctr" style="left:75px;top:58px;width:240px;height:32px;font-size:14px"><span>Theme › <b>Compose</b> › Details</span></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Memory 1</div>
+<div class="b pill ctr" style="left:20px;top:124px;width:236px;height:32px;font-size:14px;background:#f6cdb6">Small Chops, Big Gist · change</div>
+<div class="t small" style="left:20px;top:168px;width:350px">Title: she sees this before she knows it's you</div>
+<div class="b" style="left:20px;top:190px;width:350px;height:48px;padding:10px 16px">Sunday rice, 2019</div>
+<div class="t" style="left:20px;top:252px;font-size:15px">Her order = your order</div><div class="t small" style="left:258px;top:254px">drag to reorder</div>
+<div class="row" style="top:276px;height:84px"></div><div class="t" style="left:32px;top:300px;font-size:22px">≡</div><div class="t" style="left:60px;top:284px;font-size:15px">Text · 412 / 2000</div><div class="ln" style="left:60px;top:312px;width:220px"></div><div class="ln" style="left:60px;top:328px;width:150px"></div><div class="b ghost pill ctr" style="left:268px;top:318px;width:60px;height:28px;font-size:14px">Edit</div><div class="av" style="left:342px;top:284px;width:24px;height:24px;font-size:14px">×</div>
+<div class="row" style="top:370px;height:80px"></div><div class="t" style="left:32px;top:392px;font-size:22px">≡</div><div class="b h" style="left:60px;top:382px;width:52px;height:52px;border-radius:10px"></div><div class="t" style="left:122px;top:380px;font-size:15px">Photo · ready ✓</div><div class="t small" style="left:122px;top:402px;width:210px">IMG_2044.HEIC · only you see filenames</div><div class="t small" style="left:122px;top:422px">Caption · optional</div><div class="av" style="left:342px;top:378px;width:24px;height:24px;font-size:14px">×</div>
+<div class="row" style="top:460px;height:80px"></div><div class="t" style="left:32px;top:482px;font-size:22px">≡</div><div class="b h" style="left:60px;top:472px;width:52px;height:52px;border-radius:10px"></div><div class="t" style="left:122px;top:470px;font-size:15px">Video · uploading 42%</div><div class="ln" style="left:122px;top:496px;width:190px;background:rgba(43,38,32,.12)"></div><div class="ln" style="left:122px;top:496px;width:80px;background:#2a78d6"></div><div class="t small" style="left:122px;top:512px">2:10 · 148 MB · Cancel</div><div class="av" style="left:342px;top:468px;width:24px;height:24px;font-size:14px">×</div>
+<div class="row bad" style="top:550px;height:80px"></div><div class="t" style="left:32px;top:572px;font-size:22px">≡</div><div class="av" style="left:60px;top:562px;width:52px;height:52px;font-size:12px;background:#fdece6">audio</div><div class="t" style="left:122px;top:560px;font-size:15px;color:#b8432a">Voice note · upload failed</div><div class="b pill ctr" style="left:122px;top:590px;width:76px;height:30px;font-size:14px;background:#f4a58f">Retry</div><div class="b ghost pill ctr" style="left:208px;top:590px;width:90px;height:30px;font-size:14px">Remove</div>
+<div class="b d ctr" style="left:20px;top:638px;width:82px;height:60px;font-size:15px">+ Text</div><div class="b d ctr" style="left:109px;top:638px;width:82px;height:60px;font-size:15px">+ Photo</div><div class="b d ctr" style="left:198px;top:638px;width:82px;height:60px;font-size:15px">+ Audio</div><div class="b d ctr" style="left:287px;top:638px;width:83px;height:60px;font-size:15px">+ Video</div>
+<div class="t small" style="left:20px;top:704px;width:350px;line-height:1.25">Photos ≤ 15 MB · video ≤ 3 min · audio ≤ 10 min (proposed). Too big is refused with a reason, never trimmed.</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Continue</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:176px">1</div><div class="c" style="left:350px;top:248px">2</div><div class="c" style="left:8px;top:488px">3</div><div class="c" style="left:8px;top:578px">4</div><div class="c" style="left:350px;top:650px">5</div><div class="c" style="left:350px;top:702px">6</div>
+</div></div><ol class="dv-notes"><li><code>MemoryPackage.title</code> is projected to Babe anonymously (“safe title”), so the label warns against signing it.</li><li>Blocks are the contract's ordered <code>MemoryBlock[]</code>, array order is her presentation order. Handle drags to reorder; caption/altText optional per media block.</li><li><code>Asset.status</code> drives the tile: pending shows % + Cancel, ready shows the tick. Filenames stay contributor-side only.</li><li>A failed asset blocks submission (see <a class="dv-oid" href="#1h">1h</a>) until Retry or Remove, nothing is dropped silently.</li><li>Add row = UploadTile idle for the four block types; Audio offers record-in-app or a file.</li><li>Limits are proposed defaults to document; oversize media is refused with a reason (handoff: never silently truncate).</li></ol></div>
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Details: does it give you away, clue, guess or tell</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="b pill ctr" style="left:75px;top:58px;width:240px;height:32px;font-size:14px"><span>Theme › Compose › <b>Details</b></span></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Memory 1</div>
+<div class="t big" style="left:20px;top:128px;width:350px">Does it show who you are?</div>
+<div class="t small" style="left:20px;top:166px;width:350px;line-height:1.3">A face, voice or signature in a photo, clip or recording gives you away. Say so: we can't hide it for you.</div>
+<div class="row" style="top:220px;height:84px;border:3px solid #2a78d6;background:#eef6fd"></div><div class="av" style="left:34px;top:240px;width:44px;height:44px;font-size:22px;background:#ddd6cb">?</div><div class="t" style="left:92px;top:232px">Keeps me a mystery</div><div class="t small" style="left:92px;top:256px;width:210px;line-height:1.25">No face, name or voice in here. She guesses.</div><div class="av" style="left:322px;top:248px;width:28px;height:28px;background:#2a78d6;color:#fff;font-size:15px">✓</div>
+<div class="row" style="top:316px;height:84px"></div><div class="av" style="left:34px;top:336px;width:44px;height:44px;font-size:20px;background:#f6d774">✦</div><div class="t" style="left:92px;top:328px">Shows who I am</div><div class="t small" style="left:92px;top:352px;width:210px;line-height:1.25">Skip the guessing: a quick match game or a direct reveal.</div><div class="av" style="left:322px;top:344px;width:28px;height:28px"></div>
+<div class="t" style="left:20px;top:424px;font-size:15px">A clue for her · optional</div>
+<div class="b" style="left:20px;top:448px;width:350px;height:52px;padding:12px 16px">We shared a room for eleven years</div>
+<div class="t small" style="left:20px;top:506px;width:350px">Sits beside the mystery. Not too easy.</div>
+<div class="t" style="left:20px;top:548px;font-size:15px">When she opens it</div>
+<div class="b pill ctr dark" style="left:20px;top:574px;width:170px;height:48px;font-size:16px">Let her guess</div><div class="b pill ctr" style="left:200px;top:574px;width:170px;height:48px;font-size:16px">Just tell her</div>
+<div class="t small" style="left:20px;top:634px;width:350px">Only for mysteries: a self-revealing memory always tells her.</div>
+<div class="b ghost ctr" style="left:20px;top:676px;width:350px;height:48px;font-size:16px">See it as she will ›</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Save memory</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:132px">1</div><div class="c" style="left:8px;top:250px">2</div><div class="c" style="left:350px;top:456px">3</div><div class="c" style="left:8px;top:586px">4</div><div class="c" style="left:350px;top:686px">5</div>
+</div></div><ol class="dv-notes"><li>Honest framing from the brief: the contributor sets <code>contentIdentifiesSender</code>; no promise of anonymisation.</li><li>RadioCards. “Shows who I am” routes her level to the skippable match game or a direct reveal (iPad canvas 1e), never a false mystery.</li><li><code>clue</code> optional, shown beside the mystery in her level; never a name.</li><li><code>revealPreference</code> guess | direct: meaningful for mysteries only, hidden when “Shows who I am” is picked.</li><li>Per-memory preview opens the same anonymous sheet as <a class="dv-oid" href="#1g">1g</a>.</li></ol></div>
+
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Your memories: pick the main one, extras, hidden</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="step"><i></i><b class="ok" style="left:0">✓</b><b class="on" style="left:57px">2</b><b style="left:115px">3</b><b style="left:172px">4</b></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Step 2 of 4 · Memories</div>
+<div class="t big" style="left:20px;top:128px">Your memories</div>
+<div class="t small" style="left:20px;top:166px;width:350px;line-height:1.3">One goes on her road as your level. The rest wait beside it as discoveries.</div>
+<div class="row" style="top:216px;height:136px;border:3px solid #d9a400;background:#fffbe9"></div><div class="b pill ctr" style="left:34px;top:228px;width:170px;height:26px;font-size:13px;background:#f6cdb6">Small Chops, Big Gist</div><div class="b ghost pill ctr" style="left:300px;top:228px;width:56px;height:26px;font-size:13px">Edit</div><div class="t" style="left:34px;top:262px;font-size:18px">Sunday rice, 2019</div><div class="t small" style="left:34px;top:288px">1 text · 1 photo · 1 video · 1 voice note</div><div class="b pill ctr bad" style="left:34px;top:314px;width:130px;height:26px;font-size:13px;color:#b8432a">Fix 1 upload</div><div class="b pill ctr dark" style="left:232px;top:314px;width:124px;height:26px;font-size:13px">★ Main memory</div>
+<div class="row" style="top:364px;height:172px"></div><div class="b pill ctr" style="left:34px;top:376px;width:120px;height:26px;font-size:13px;background:#fbe9b8">Mango Grove</div><div class="b ghost pill ctr" style="left:300px;top:376px;width:56px;height:26px;font-size:13px">Edit</div><div class="t" style="left:34px;top:410px;font-size:18px">First day</div><div class="t small" style="left:34px;top:436px">2 photos · 1 text</div><div class="b pill ctr" style="left:34px;top:462px;width:90px;height:26px;font-size:13px;background:#cfeacb">Ready ✓</div><div class="b ghost pill ctr" style="left:232px;top:462px;width:124px;height:26px;font-size:13px">Make main</div>
+<div class="b pill" style="left:34px;top:498px;width:48px;height:26px;background:#e6e0d5"></div><div class="av" style="left:38px;top:501px;width:20px;height:20px"></div><div class="t" style="left:92px;top:500px;font-size:14px;width:260px">Hidden surprise: she finds it by exploring</div>
+<div class="b d ctr" style="left:20px;top:552px;width:350px;height:56px;font-size:16px">+ Add another memory</div>
+<div class="t small" style="left:20px;top:624px;width:350px;line-height:1.3">Your main memory can't be hidden. Anything added after she starts arrives as a new surprise beside the road, never a new level.</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Continue to preview</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:300px">1</div><div class="c" style="left:8px;top:316px">2</div><div class="c" style="left:8px;top:504px">3</div><div class="c" style="left:350px;top:566px">4</div><div class="c" style="left:350px;top:636px">5</div>
+</div></div><ol class="dv-notes"><li>Exactly one main memory per person (<code>Contributor.primaryPackageId</code>); the gold ring marks it, “Make main” swaps.</li><li>Package status rolls up asset states; “Fix 1 upload” jumps to the block in <a class="dv-oid" href="#1d">1d</a>. A package with a failed asset can't publish.</li><li><code>discoveryPreference: hidden</code> is offered on extras only (a glinting bush on her map); a primary is never hidden.</li><li>Several packages, one contributor record, no new invite, no duplicate person.</li><li>Late rule from the contract stated where it bites: after her first start, new primaries and extras alike become late discoveries.</li></ol></div>
+
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>Preview: exactly what she gets before the reveal</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="step"><i></i><b class="ok" style="left:0">✓</b><b class="ok" style="left:57px">✓</b><b class="on" style="left:115px">3</b><b style="left:172px">4</b></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Step 3 of 4 · Preview</div>
+<div class="b ctr dark" style="left:20px;top:124px;width:175px;height:44px;border-radius:12px 0 0 12px;font-size:15px">Before the reveal</div><div class="b ctr" style="left:195px;top:124px;width:175px;height:44px;border-radius:0 12px 12px 0;font-size:15px">After the reveal</div>
+<div class="b" style="left:20px;top:196px;width:350px;height:480px;border-radius:24px"></div>
+<div class="b cta ctr" style="left:125px;top:172px;width:140px;height:44px;border-radius:16px;font-size:22px">Level ?</div>
+<div class="b pill ctr" style="left:100px;top:226px;width:190px;height:26px;font-size:13px;background:#f6cdb6">Small Chops, Big Gist</div>
+<div class="av" style="left:167px;top:266px;width:56px;height:56px;font-size:26px;background:#ddd6cb">?</div>
+<div class="av" style="left:131px;top:336px;width:24px;height:24px;font-size:12px;background:#cfe4f7">T</div><div class="av" style="left:165px;top:336px;width:24px;height:24px;font-size:12px">P</div><div class="av" style="left:199px;top:336px;width:24px;height:24px;font-size:12px">V</div><div class="av" style="left:233px;top:336px;width:24px;height:24px;font-size:12px">A</div>
+<div class="t" style="left:20px;top:372px;width:350px;text-align:center;font-size:20px">Sunday rice, 2019</div>
+<div class="ln" style="left:52px;top:408px;width:286px"></div><div class="ln" style="left:52px;top:424px;width:260px"></div><div class="ln" style="left:52px;top:440px;width:200px"></div>
+<div class="b h d ctr" style="left:52px;top:462px;width:136px;height:84px;font-size:14px">Photo 1</div><div class="b h d ctr" style="left:202px;top:462px;width:136px;height:84px;font-size:14px">Video · 2:10</div>
+<div class="b pill ctr" style="left:52px;top:560px;width:286px;height:40px;font-size:15px">▶ &nbsp;Voice note · 0:42</div>
+<div class="b tone" style="left:52px;top:612px;width:286px;height:44px;border-radius:12px;padding:10px 12px;font-size:14px">Clue: We shared a room for eleven years</div>
+<div class="t small" style="left:20px;top:690px;width:350px;line-height:1.3">Not in here: your name, photo, relationship, gem, file names. Her guess shows your name among two others.</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Looks right</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:134px">1</div><div class="c" style="left:262px;top:176px">2</div><div class="c" style="left:8px;top:474px">3</div><div class="c" style="left:350px;top:620px">4</div><div class="c" style="left:350px;top:700px">5</div>
+</div></div><ol class="dv-notes"><li>Two projections from the contract, toggled: anonymous (shown) and reveal (name, portrait or avatar, relationship, gem picture, no score).</li><li>Level number is unknown until the route is assembled, so “?”; world tag and safe title are what she gets. Teal banner because this is her sheet.</li><li>Media carry neutral labels (“Photo 1”, “Video”, “Voice note”) in the composed order, never filenames or captions that name you.</li><li>Clue appears exactly where she'll see it.</li><li>The omit list mirrors the anonymous projection: no contributorId, portrait, author labels, score or edit credentials.</li></ol></div>
+
+<div class="dv-opt" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>Submit: checklist, consent, blocked state</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="step"><i></i><b class="ok" style="left:0">✓</b><b class="ok" style="left:57px">✓</b><b class="ok" style="left:115px">✓</b><b class="on" style="left:172px">4</b></div>
+<div class="t small" style="left:20px;top:96px;width:350px;text-align:center">Step 4 of 4 · Submit</div>
+<div class="t big" style="left:20px;top:128px">Ready to send?</div>
+<div class="b" style="left:20px;top:176px;width:350px;height:260px;border-radius:18px"></div>
+<div class="av" style="left:34px;top:192px;width:28px;height:28px;font-size:14px;background:#cfeacb">✓</div><div class="t" style="left:74px;top:196px;font-size:15px">You · Ada Okafor · Sister · photo added</div>
+<div class="av" style="left:34px;top:244px;width:28px;height:28px;font-size:14px;background:#cfeacb">✓</div><div class="t" style="left:74px;top:248px;font-size:15px;width:280px">Main · Sunday rice, 2019 · Small Chops</div>
+<div class="av" style="left:34px;top:296px;width:28px;height:28px;font-size:14px;background:#cfeacb">✓</div><div class="t" style="left:74px;top:300px;font-size:15px">Extra · First day · Mango Grove · hidden</div>
+<div class="av" style="left:34px;top:348px;width:28px;height:28px;font-size:16px;background:#fdece6;color:#b8432a;border-color:#d9583b">!</div><div class="t" style="left:74px;top:352px;font-size:15px;color:#b8432a">Uploads · 1 failed: fix or remove</div><div class="b ghost pill ctr" style="left:304px;top:346px;width:52px;height:28px;font-size:14px">Fix</div>
+<div class="av" style="left:34px;top:400px;width:28px;height:28px;font-size:14px;background:#f7f2e8">?</div><div class="t" style="left:74px;top:404px;font-size:15px">Quiz · optional, after this</div>
+<div class="b tone" style="left:20px;top:452px;width:350px;height:118px;border-radius:14px;padding:12px;font-size:14px;line-height:1.35">This is a surprise. Everything here is shown to Lanre on 18 September. Your name, photo and relationship appear only after she finds you, unless your memory gives you away and you've said so.</div>
+<div class="b d" style="left:20px;top:586px;width:350px;height:72px;background:#fffbe9;padding:10px 12px;font-size:14px;line-height:1.3">Only if Lanre has already started: this arrives as a new surprise beside the road, not a new level.</div>
+<div class="t small" style="left:20px;top:672px;width:350px">Edits stay open until she starts. Your private link comes next.</div>
+<div class="b off ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:18px">Send to Lanre · fix uploads first</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:190px">1</div><div class="c" style="left:8px;top:354px">2</div><div class="c" style="left:350px;top:460px">3</div><div class="c" style="left:350px;top:574px">4</div><div class="c" style="left:350px;top:754px">5</div>
+</div></div><ol class="dv-notes"><li>Checklist mirrors the contract's submit rule: profile + exactly one nonempty primary with ready assets; extras listed with their hidden flag.</li><li>A failed asset blocks submit; the row jumps back to the block. No empty or failed-upload package can become a level.</li><li>Consent in plain words: a surprise shown to Lanre, and exactly when identity appears.</li><li>Conditional banner when <code>Journey.startedAt</code> exists: late submission becomes a discovery, main path untouched.</li><li>Disabled CTA carries its reason (stone tone); once fixed it reads “Send to Lanre” in gold.</li></ol></div>
+
+<div class="dv-opt" id="1i"><div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a>Sent: private return link, quiz invitation</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:390px;height:200px;border:0;border-radius:0"></div>
+<div class="t small" style="left:16px;top:14px">celebration art slot · stars, confetti</div>
+<div class="b" style="left:20px;top:204px;width:350px;height:306px;border-radius:24px"></div>
+<div class="b ctr" style="left:95px;top:176px;width:200px;height:56px;border-radius:18px;background:#cfe4f7;font-size:24px">Saved for Lanre</div>
+<div class="t" style="left:44px;top:248px;width:302px;line-height:1.4">Thank you. Keep the link below: it's the only way back in to edit or add more before 16 September.</div>
+<div class="b tone ctr" style="left:44px;top:338px;width:302px;height:52px;font-size:14px">…/return/•••••••••••••• &nbsp;· private</div>
+<div class="b ctr" style="left:44px;top:402px;width:146px;height:48px;font-size:16px">Copy link</div><div class="b ctr" style="left:200px;top:402px;width:146px;height:48px;font-size:16px">Send to myself</div>
+<div class="t small" style="left:44px;top:462px;width:302px;line-height:1.3">Anyone with the link can edit your memories. Lanre never sees it.</div>
+<div class="b" style="left:20px;top:530px;width:350px;height:196px;border-radius:18px"></div>
+<div class="t" style="left:40px;top:546px;font-size:20px">The birthday quiz · optional</div>
+<div class="t small" style="left:40px;top:578px;width:310px;line-height:1.3">Eight questions about Lanre, no timer. Your first finished attempt counts and earns a gemstone she'll see on your card, never your score.</div>
+<div class="b ghost ctr" style="left:40px;top:660px;width:310px;height:48px;font-size:16px">Skip: keep a pearl instead</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Take the quiz</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:344px">1</div><div class="c" style="left:8px;top:412px">2</div><div class="c" style="left:350px;top:470px">3</div><div class="c" style="left:350px;top:548px">4</div><div class="c" style="left:8px;top:670px">5</div>
+</div></div><ol class="dv-notes"><li>The return link is a bearer secret (only its hash is stored); shown masked, copied whole. Never in Babe's payload.</li><li>Copy + share-to-self (Messages / WhatsApp sheet): the two ways people actually keep a link on a phone.</li><li>Plain warning: the link is the identity, don't forward it. Recovery goes through Henry (see <a class="dv-oid" href="#1m">1m</a>).</li><li>Quiz comes after submission and never blocks contributing; first completed attempt is immutable and server-scored.</li><li>Skipping is a real choice: pearl keepsake, unranked, distinct from a zero.</li></ol></div>
+
+<div class="dv-opt" id="1j"><div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a>Quiz: draft-labelled, one answer per question</div><div class="dv-card"><div class="f">
+<div class="b pill ctr" style="left:20px;top:58px;width:80px;height:32px;font-size:14px">3 of 8</div>
+<div class="b pill ctr dark" style="left:110px;top:58px;width:200px;height:32px;font-size:13px">DRAFT · Henry verifies first</div>
+<div class="av" style="left:330px;top:52px;width:44px;height:44px;font-size:22px">×</div>
+<div class="av" style="left:20px;top:110px;width:16px;height:16px;background:#cfeacb"></div><div class="av" style="left:66px;top:110px;width:16px;height:16px;background:#cfeacb"></div><div class="av" style="left:112px;top:110px;width:16px;height:16px;background:#3a332b"></div><div class="av" style="left:158px;top:110px;width:16px;height:16px"></div><div class="av" style="left:204px;top:110px;width:16px;height:16px"></div><div class="av" style="left:250px;top:110px;width:16px;height:16px"></div><div class="av" style="left:296px;top:110px;width:16px;height:16px"></div><div class="av" style="left:342px;top:110px;width:16px;height:16px"></div>
+<div class="b" style="left:20px;top:150px;width:350px;height:140px;border-radius:18px"></div>
+<div class="t" style="left:36px;top:168px;width:318px;font-size:18px;line-height:1.35">Draft question 3 goes here, Henry writes and verifies all eight before anything is published.</div>
+<div class="b" style="left:20px;top:312px;width:350px;height:56px;padding:14px 16px;font-size:16px">A &nbsp;· &nbsp;Answer option</div>
+<div class="b" style="left:20px;top:380px;width:350px;height:56px;padding:12px 16px;font-size:16px;border:3px solid #2a78d6;background:#eef6fd">B &nbsp;· &nbsp;Answer option</div>
+<div class="b" style="left:20px;top:448px;width:350px;height:56px;padding:14px 16px;font-size:16px">C &nbsp;· &nbsp;Answer option</div>
+<div class="b" style="left:20px;top:516px;width:350px;height:56px;padding:14px 16px;font-size:16px">D &nbsp;· &nbsp;Answer option</div>
+<div class="t small" style="left:20px;top:592px;width:350px;line-height:1.3">No timer. Nothing is checked until you finish, the server scores it and the right answers never reach your phone. Leave any time; you'll pick up here.</div>
+<div class="b ghost ctr" style="left:20px;top:744px;width:110px;height:60px;font-size:18px">Back</div><div class="b gold ctr" style="left:142px;top:744px;width:228px;height:60px;font-size:22px">Next</div>
+<div class="home"></div>
+<div class="c" style="left:296px;top:48px">1</div><div class="c" style="left:8px;top:104px">2</div><div class="c" style="left:350px;top:394px">3</div><div class="c" style="left:350px;top:600px">4</div><div class="c" style="left:362px;top:40px">5</div>
+</div></div><ol class="dv-notes"><li>Draft label stays on every question until Henry verifies the content; publishing bumps <code>quizVersion</code>.</li><li>Eight dots, one point each, no timer anywhere.</li><li>ChoiceButtons at 56px, one selected at a time; options are text with opaque <code>optionId</code>s.</li><li>Answers are sent once at the end; the quiz payload carries no correct answers, scoring is server-side.</li><li>Close leaves the attempt incomplete; nothing counts until completion, so leaving is safe.</li></ol></div>
+
+<div class="dv-opt" id="1k"><div class="dv-olabel"><a class="dv-oid" href="#1k">1k</a>Result: gem, tier and score (friends only)</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:390px;height:180px;border:0;border-radius:0"></div>
+<div class="t small" style="left:16px;top:14px">sparkle burst slot</div>
+<div class="gem" style="left:135px;top:120px;width:120px;height:120px;font-size:30px">II</div><div class="t" style="left:236px;top:112px;font-size:28px">✦</div>
+<div class="b ctr" style="left:95px;top:262px;width:200px;height:56px;border-radius:18px;background:#f6d774;font-size:26px;z-index:2">Emerald II</div>
+<div class="b" style="left:20px;top:290px;width:350px;height:270px;border-radius:24px"></div>
+<div class="t" style="left:20px;top:334px;width:350px;text-align:center;font-size:34px">4 / 8</div>
+<div class="t" style="left:44px;top:386px;width:302px;font-size:16px;line-height:1.4">Amber for 0–2, emerald for 3–5, amethyst for 6–8. Tier II adds a sparkle, III a halo. Lanre sees your stone on your reveal card, never your score.</div>
+<div class="t small" style="left:44px;top:498px;width:302px;text-align:center">First finished attempt · 14 Sept, 18:32 (Lagos)</div>
+<div class="gem am" style="left:44px;top:584px;width:40px;height:40px"></div><div class="t small" style="left:24px;top:632px;width:80px;text-align:center">Amber 0–2</div>
+<div class="gem" style="left:130px;top:584px;width:40px;height:40px"></div><div class="t small" style="left:110px;top:632px;width:80px;text-align:center">Emerald 3–5</div>
+<div class="gem at" style="left:216px;top:584px;width:40px;height:40px"></div><div class="t small" style="left:196px;top:632px;width:80px;text-align:center">Amethyst 6–8</div>
+<div class="gem pe" style="left:302px;top:584px;width:40px;height:40px"></div><div class="t small" style="left:278px;top:632px;width:92px;text-align:center">Pearl · skipped</div>
+<div class="b ghost ctr" style="left:20px;top:680px;width:350px;height:48px;font-size:16px">Back to your memories</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">See the friends' board</div>
+<div class="home"></div>
+<div class="c" style="left:262px;top:146px">1</div><div class="c" style="left:350px;top:340px">2</div><div class="c" style="left:350px;top:500px">3</div><div class="c" style="left:8px;top:596px">4</div>
+</div></div><ol class="dv-notes"><li>Gemstone component: cut + colour per gem (octagon = emerald) so colour is never the only signal; tier II shows the sparkle.</li><li>Friend-facing only: gem, tier and score appear here and on the board, never on Babe's surfaces.</li><li>UTC <code>completedAt</code> displayed in Africa/Lagos; first completion, immutable.</li><li>Legend states the mapping once, including the pearl for a skipped quiz.</li></ol></div>
+
+<div class="dv-opt" id="1l"><div class="dv-olabel"><a class="dv-oid" href="#1l">1l</a>Friends' board: shared ranks, unranked pearls</div><div class="dv-card"><div class="f">
+<div class="av" style="left:16px;top:52px;width:44px;height:44px;font-size:22px">‹</div>
+<div class="t big" style="left:20px;top:108px">Friends' board</div>
+<div class="t small" style="left:20px;top:146px;width:350px;line-height:1.3">Friends only: Lanre never sees this. Everyone who played holds a stone.</div>
+<div class="row" style="top:200px;height:56px"></div><div class="t" style="left:34px;top:216px;font-size:18px;width:36px">1</div><div class="av" style="left:76px;top:210px;width:36px;height:36px;font-size:13px;background:#f6cdb6">TB</div><div class="t" style="left:124px;top:216px">Tunde Bello</div><div class="gem at" style="left:296px;top:214px;width:28px;height:28px"></div><div class="t" style="left:340px;top:216px;font-size:18px">7</div>
+<div class="row" style="top:264px;height:56px"></div><div class="t" style="left:34px;top:280px;font-size:18px;width:36px">2</div><div class="av" style="left:76px;top:274px;width:36px;height:36px;font-size:13px;background:#e2d3ee">D</div><div class="t" style="left:124px;top:280px">Dayo</div><div class="gem at" style="left:296px;top:278px;width:28px;height:28px"></div><div class="t" style="left:340px;top:280px;font-size:18px">6</div>
+<div class="row" style="top:328px;height:56px"></div><div class="t" style="left:34px;top:344px;font-size:18px;width:36px">=3</div><div class="av" style="left:76px;top:338px;width:36px;height:36px;font-size:13px;background:#cfe4f7">FB</div><div class="t" style="left:124px;top:344px">Femi &amp; Bisi</div><div class="gem" style="left:296px;top:342px;width:28px;height:28px"></div><div class="t" style="left:340px;top:344px;font-size:18px">4</div>
+<div class="row" style="top:392px;height:56px;border:3px solid #d9a400;background:#fffbe9"></div><div class="t" style="left:34px;top:408px;font-size:18px;width:36px">=3</div><div class="av" style="left:76px;top:402px;width:36px;height:36px;font-size:13px;background:#f6d774">AO</div><div class="t" style="left:124px;top:408px">Ada Okafor · you</div><div class="gem" style="left:296px;top:406px;width:28px;height:28px"></div><div class="t" style="left:340px;top:408px;font-size:18px">4</div>
+<div class="row" style="top:456px;height:56px"></div><div class="t" style="left:34px;top:472px;font-size:18px;width:36px">5</div><div class="av" style="left:76px;top:466px;width:36px;height:36px;font-size:13px;background:#cfeacb">C</div><div class="t" style="left:124px;top:472px">Chidi</div><div class="gem am" style="left:296px;top:470px;width:28px;height:28px"></div><div class="t" style="left:340px;top:472px;font-size:18px">2</div>
+<div class="t small" style="left:20px;top:528px">Keepsakes · quiz skipped · unranked</div>
+<div class="row" style="top:552px;height:56px;background:#f7f2e8"></div><div class="t" style="left:34px;top:568px;font-size:18px;width:36px">-</div><div class="av" style="left:76px;top:562px;width:36px;height:36px;font-size:13px">KA</div><div class="t" style="left:124px;top:568px">Kemi A.</div><div class="gem pe" style="left:296px;top:566px;width:28px;height:28px"></div>
+<div class="row" style="top:616px;height:56px;background:#f7f2e8"></div><div class="t" style="left:34px;top:632px;font-size:18px;width:36px">-</div><div class="av" style="left:76px;top:626px;width:36px;height:36px;font-size:13px">MA</div><div class="t" style="left:124px;top:632px">Mrs Adeyemi</div><div class="gem pe" style="left:296px;top:630px;width:28px;height:28px"></div>
+<div class="t small" style="left:20px;top:688px;width:350px;line-height:1.3">Rank = 1 + people strictly ahead of you, so ties share a place. Late players slot in when they finish.</div>
+<div class="b ghost ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:18px">Back to your memories</div>
+<div class="home"></div>
+<div class="c" style="left:8px;top:342px">1</div><div class="c" style="left:350px;top:406px">2</div><div class="c" style="left:8px;top:566px">3</div><div class="c" style="left:350px;top:104px">4</div>
+</div></div><ol class="dv-notes"><li>LeaderboardRow; “=3” for ties: the contract's rule (1 + count strictly higher) makes shared places automatic.</li><li>Your row highlighted; copy celebrates participation, never “who loves her most”.</li><li>Pearls sit in their own unranked group, a skipped quiz is not a zero.</li><li>Contributor-authorised endpoint only; never public, never part of Babe's payload.</li></ol></div>
+
+<div class="dv-opt" id="1m"><div class="dv-olabel"><a class="dv-oid" href="#1m">1m</a>Return via private link: edit, add, late state</div><div class="dv-card"><div class="f">
+<div class="b pill ctr dark" style="left:20px;top:56px;width:350px;height:40px;font-size:14px">Opened from your private link</div>
+<div class="t big" style="left:20px;top:112px">Welcome back, Ada</div>
+<div class="t small" style="left:20px;top:152px;width:350px">Submitted 13 Sept · you can edit until Lanre starts</div>
+<div class="b d" style="left:20px;top:184px;width:350px;height:84px;background:#fffbe9;padding:10px 12px;font-size:14px;line-height:1.3">Variant after she starts: Lanre has begun her adventure. Anything you change or add now arrives as a new surprise beside the road, what she's already opened stays as it was.</div>
+<div class="t" style="left:20px;top:288px;font-size:15px">Your memories</div>
+<div class="row" style="top:312px;height:96px;border:3px solid #d9a400;background:#fffbe9"></div><div class="b pill ctr" style="left:34px;top:324px;width:170px;height:26px;font-size:13px;background:#f6cdb6">Small Chops, Big Gist</div><div class="b ghost pill ctr" style="left:300px;top:324px;width:56px;height:26px;font-size:13px">Edit</div><div class="t" style="left:34px;top:356px;font-size:18px">Sunday rice, 2019</div><div class="t small" style="left:34px;top:382px">★ Main · 4 items · on her road</div>
+<div class="row" style="top:420px;height:96px"></div><div class="b pill ctr" style="left:34px;top:432px;width:120px;height:26px;font-size:13px;background:#fbe9b8">Mango Grove</div><div class="b ghost pill ctr" style="left:300px;top:432px;width:56px;height:26px;font-size:13px">Edit</div><div class="t" style="left:34px;top:464px;font-size:18px">First day</div><div class="t small" style="left:34px;top:490px">Extra · hidden · a discovery beside the road</div>
+<div class="b d ctr" style="left:20px;top:528px;width:350px;height:52px;font-size:16px">+ Add another memory</div>
+<div class="row" style="top:596px;height:68px;background:#f3ece0"></div><div class="gem" style="left:34px;top:612px;width:36px;height:36px"></div><div class="t" style="left:84px;top:604px;font-size:16px">Quiz · Emerald II · 4 / 8</div><div class="t small" style="left:84px;top:628px">Taken 14 Sept · locked, first attempt counts</div>
+<div class="t small" style="left:20px;top:680px;width:350px;line-height:1.3">One person, one spot on her road, coming back never duplicates you. Lost the link? Ask Henry; he can send it again.</div>
+<div class="b gold ctr" style="left:20px;top:744px;width:350px;height:60px;font-size:22px">Save changes</div>
+<div class="home"></div>
+<div class="c" style="left:350px;top:60px">1</div><div class="c" style="left:350px;top:192px">2</div><div class="c" style="left:8px;top:360px">3</div><div class="c" style="left:8px;top:612px">4</div><div class="c" style="left:350px;top:690px">5</div>
+</div></div><ol class="dv-notes"><li>The bearer link opens straight into the existing record, no login, no name entry, so no second person is ever created.</li><li>After <code>Journey.startedAt</code>: edits create a replacement <code>revision</code>, additions become discoveries, revealed content is never removed. Proposed answer to the contract's open “review vs revision” question, no review step.</li><li>Each package says where it lives for her: on the road vs discovery.</li><li>Quiz result is read-only: first completion is immutable.</li><li>Link recovery via Henry is a proposed default (no account or email is captured); flagged as an open input.</li></ol></div>
+
+</div>
+<p class="dv-next">Try next: “build <a class="dv-oid" href="#1d">1d</a> with the real components” · “show the recording sheet for a voice note” · “add the landscape/iPad reading of the friends' board”</p>
+</section>
+</x-dc>
+</body>
+</html>

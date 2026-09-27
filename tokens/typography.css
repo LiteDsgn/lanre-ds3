@@ -1,0 +1,34 @@
+/* Lanre type tokens. Display = chunky bubble face for titles, numerals, CTAs. UI = rounded sans for labels/body. */
+:root {
+  --font-display: "Titan One", "Arial Rounded MT Bold", "Helvetica Neue", sans-serif;
+  --font-ui: "Quicksand", "Nunito", "Helvetica Neue", sans-serif;
+
+  --text-display-xl: 44px;   /* screen titles, big numerals */
+  --text-display-lg: 32px;   /* panel titles, level numbers */
+  --text-display-md: 24px;   /* button labels (lg), reward amounts */
+  --text-display-sm: 18px;   /* button labels (md), pill values */
+  --text-display-xs: 14px;   /* button labels (sm), badge counts */
+
+  --text-title: 20px;        /* UI, 700 */
+  --text-body-lg: 16px;      /* UI, 600/700 */
+  --text-body: 14px;         /* UI, 600 */
+  --text-label: 12px;        /* UI, 700, uppercase, tracked */
+  --text-caption: 11px;      /* UI, 600 */
+  --text-memory: 20px;       /* UI 600, lh 1.6: contributor text on iPad; 17px on phones */
+  --text-letter: 22px;       /* UI 600, lh 1.65: Henry's summit letter */
+
+  --weight-ui: 600;
+  --weight-ui-bold: 700;
+  --weight-ui-regular: 500;
+
+  --leading-tight: 1.0;
+  --leading-snug: 1.15;
+  --leading-normal: 1.35;
+
+  --tracking-display: 0.02em;
+  --tracking-caps: 0.08em;
+
+  /* Outlined display text: stroke width relative to font size */
+  --stroke-display: 0.16em;
+  --stroke-display-thin: 0.10em;
+}

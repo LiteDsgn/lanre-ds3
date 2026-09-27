@@ -1,0 +1,44 @@
+<!-- @dsCard group="Adventure" viewport="700x420" name="Level pieces" subtitle="PackageStepper + ChoiceButton: the guess step of a mystery level" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="levels/ChoiceButton,levels/PackageStepper,buttons/Button"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
+.mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
+const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ ChoiceButton, PackageStepper, Button }) => {
+  function Demo() {
+    const [pick, setPick] = React.useState(null);
+    const [cur, setCur] = React.useState(2);
+    const names = ['Ada Okafor', 'Tunde Bello', 'Kemi A.'], correct = 0;
+    const st = i => pick == null ? 'idle' : i === pick ? (i === correct ? 'correct' : 'wrong') : pick === correct ? (i === correct ? 'correct' : 'dim') : 'idle';
+    return (
+      <Col gap={20}>
+        <PackageStepper items={[{ type: 'text' }, { type: 'photo' }, { type: 'audio' }, { type: 'video' }]} current={cur} seen={[0, 1]} onSelect={setCur} onDark />
+        <div style={{ width: 400, display: 'grid', gap: 10 }}>
+          {names.map((n, i) => <ChoiceButton key={n} index={i} state={st(i)} onClick={() => setPick(i)}>{n}</ChoiceButton>)}
+          <Row gap={10} style={{ justifyContent: 'space-between' }}>
+            <Button variant="ghost" typeface="ui" size="sm" onClick={() => setPick(null)}>{pick != null && pick !== correct ? 'Try again' : 'Reset demo'}</Button>
+            <Button variant="ghost" typeface="ui" size="sm">Just tell me</Button>
+          </Row>
+        </div>
+        <Note>Wrong = coral + × and a retry; correct = green + ✓; the rest dim. "Just tell me" is always available.</Note>
+      </Col>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+});
+</script></body></html>

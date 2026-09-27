@@ -1,0 +1,38 @@
+/* Lanre spacing & sizing. 4px base. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --size-touch: 48px;        /* minimum tap target */
+  --size-touch-lg: 60px;     /* primary CTA height */
+  --size-icon-sm: 20px;
+  --size-icon: 28px;
+  --size-icon-lg: 40px;
+  --size-icon-xl: 64px;
+  --size-puck: 84px;         /* level node width */
+  --size-cell: 72px;         /* inventory / board cell */
+  --size-pill-h: 36px;       /* HUD currency pill */
+
+  --layout-screen-w: 390px;
+  --layout-hud-top: 56px;
+  --layout-gutter: 16px;
+  --layout-panel-max: 340px;
+  --layout-bottom-bar: 88px;
+
+  /* Lanre's Birthday Adventure: Babe's experience is iPad-first, phones supported; contributor flow is phone-first.
+     Proposed defaults (exact iPad model/orientation is an open input): */
+  --layout-ipad-portrait-w: 820px;
+  --layout-ipad-landscape-w: 1180px;
+  --layout-phone-w: 390px;
+  --layout-reading-max: 640px;     /* memory text / letter column */
+  --layout-panel-max-ipad: 560px;  /* dialogs on iPad */
+  --layout-choice-h: 56px;         /* guess / quiz option height (64 on iPad) */
+}

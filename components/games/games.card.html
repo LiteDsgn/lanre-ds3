@@ -1,0 +1,53 @@
+<!-- @dsCard group="Adventure" viewport="700x300" name="Matching game" subtitle="MatchCard: brief, skippable pairs for self-revealing media" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="games/MatchCard,buttons/Button"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
+.mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
+const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ MatchCard, Button }) => {
+  function Demo() {
+    const init = () => ['mango', 'rice', 'dumbbell', 'mango', 'rice', 'dumbbell'].map((s, i) => ({ id: i, symbol: s, face: 'down' }));
+    const [cards, setCards] = React.useState(init);
+    const flip = id => setCards(cs => {
+      const up = cs.filter(c => c.face === 'up');
+      if (up.length === 2) return cs;
+      let next = cs.map(c => c.id === id ? { ...c, face: 'up' } : c);
+      const now = next.filter(c => c.face === 'up');
+      if (now.length === 2) {
+        if (now[0].symbol === now[1].symbol) next = next.map(c => c.face === 'up' ? { ...c, face: 'matched' } : c);
+        else setTimeout(() => setCards(x => x.map(c => c.face === 'up' ? { ...c, face: 'down' } : c)), 700);
+      }
+      return next;
+    });
+    const done = cards.every(c => c.face === 'matched');
+    return (
+      <Row gap={28} align="flex-start">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 84px)', gap: 12 }}>{cards.map(c => <MatchCard key={c.id} symbol={c.symbol} face={c.face} onClick={() => flip(c.id)} />)}</div>
+        <Col gap={10}>
+          <MatchCard symbol="lantern" face="up" size={64} /><MatchCard symbol="flower" face="matched" size={64} />
+        </Col>
+        <Col gap={10}>
+          <Button variant={done ? 'confirm' : 'ghost'} typeface="ui" onClick={() => setCards(init)}>{done ? 'Matched! Reset' : 'Skip'}</Button>
+          <Note>Tap to flip; pairs lock green. Skip is always offered: the reveal never depends on finishing.</Note>
+        </Col>
+      </Row>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+});
+</script></body></html>

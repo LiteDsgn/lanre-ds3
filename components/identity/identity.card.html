@@ -1,0 +1,54 @@
+<!-- @dsCard group="Adventure" viewport="700x560" name="Identity & gems" subtitle="Gemstone, Avatar, RevealCard, PersonTile: who sent it, and how it's shown" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="identity/Gemstone,identity/Avatar,identity/RevealCard,identity/PersonTile,buttons/Button"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
+.mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
+const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ Gemstone, Avatar, RevealCard, PersonTile, Button }) => {
+  function Demo() {
+    const [rev, setRev] = React.useState(false);
+    return (
+      <Col gap={22}>
+        <Row gap={18} align="flex-end">
+          {['amber', 'emerald', 'amethyst'].map(g => [1, 2, 3].map(t => <Gemstone key={g + t} gem={g} tier={t} size={52} showTier />))}
+          <Gemstone gem="pearl" size={52} showTier />
+        </Row>
+        <Row gap={14}>
+          {[['Ada Okafor', 'c_01'], ['Tunde Bello', 'c_22'], ['Kemi A.', 'c_07'], ['Femi & Bisi', 'c_15'], ['Mrs Adeyemi', 'c_09']].map(([n, s]) => <Avatar key={s} name={n} seed={s} size={56} />)}
+          <Avatar mystery size={56} />
+          <Note>Generated from seed · mystery leaks nothing · portraits optional</Note>
+        </Row>
+        <Row gap={24} align="flex-start">
+          <RevealCard revealed={rev} name="Ada Okafor" relationship="Sister" seed="c_01" gem="emerald" tier={2} clue="We met over jollof." width={220} onGemTap={() => {}} />
+          <Col gap={10} style={{ alignContent: 'start' }}>
+            <Button variant="confirm" typeface="ui" onClick={() => setRev(r => !r)}>{rev ? 'Back to mystery' : 'Reveal sender'}</Button>
+            <Row gap={10} align="stretch">
+              <PersonTile state="revealed" name="Ada Okafor" relationship="Sister" seed="c_01" gem="amethyst" tier={3} onClick={() => {}} />
+              <PersonTile state="revealed" name="Tunde Bello" relationship="Colleague" seed="c_22" gem="amber" tier={1} onClick={() => {}} />
+              <PersonTile state="mystery" />
+              <PersonTile state="new" name="Kemi A." seed="c_07" gem="emerald" tier={2} onClick={() => {}} />
+            </Row>
+            <Note>Fictional fixture names. Babe's surfaces show the stone only, no score, rank or tier text.</Note>
+          </Col>
+        </Row>
+      </Col>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+});
+</script></body></html>

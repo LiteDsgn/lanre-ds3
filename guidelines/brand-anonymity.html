@@ -1,0 +1,18 @@
+<!-- @dsCard group="Brand" viewport="700x220" name="Anonymity rules" subtitle="What a mystery surface may and may not show before the reveal" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+html,body{margin:0}body{padding:14px;background:var(--cream-50);font-family:var(--font-ui);color:var(--ink-900);box-sizing:border-box;min-height:100vh}
+.row{display:flex;gap:8px;align-items:stretch}
+.sw{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.chip{height:64px;border-radius:12px;box-shadow:inset 0 0 0 1px oklch(0 0 0 / 0.08)}
+.tok{font:600 10.5px/1.25 ui-monospace,Menlo,monospace;color:var(--ink-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.val{font:500 9.5px/1.2 ui-monospace,Menlo,monospace;color:var(--ink-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap{font:700 11px/1.3 var(--font-ui);color:var(--ink-500);margin-top:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.b{padding:12px 14px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 3px var(--cream-300)}.b h4{margin:0 0 6px;font:400 14px var(--font-display);letter-spacing:.05em;text-transform:uppercase}.b li{font:600 12px/1.45 var(--font-ui);color:var(--ink-700)}.ok h4{color:var(--green-900)}.no h4{color:var(--coral-900)}ul{margin:0;padding-left:16px}
+</style></head><body><div class="two">
+<div class="b ok"><h4>Allowed before reveal</h4><ul><li>Avatar mystery (the neutral “?”), “Mystery memory”, level number</li><li>The contributor's own optional clue, verbatim</li><li>Media titled neutrally: “Voice note”, “Photo 2”, “Video”</li><li>Up to three real names as choices, the correct one among them</li><li>The world the memory belongs to</li></ul></div>
+<div class="b no"><h4>Never before reveal</h4><ul><li>Name, relationship, portrait or generated avatar of the sender</li><li>Gemstone, score, rank or tier of anyone</li><li>Filenames, upload dates, device metadata, EXIF, alt text from filenames</li><li>Sender data in the DOM “hidden” with CSS, it must not be in the payload</li><li>Anything that spoils late arrivals or unrevealed people in Your People</li></ul></div>
+</div>
+<div class="cap">The suitability flag is honest, not automatic: media that shows a face or says a name goes to a matching game or direct reveal instead of a false mystery.</div></body></html>

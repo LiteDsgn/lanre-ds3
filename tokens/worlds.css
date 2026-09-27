@@ -1,0 +1,50 @@
+/* World themes for Lanre's Birthday Adventure. Put data-world="<id>" on a screen, section or component root;
+   everything inside reads --world-*. Defaults (:root) are the generic meadow. Summit is Henry's letter, not a contributor world. */
+:root {
+  --world-name: "Meadow";
+  --world-sky: oklch(0.85 0.17 132); --world-ground: oklch(0.74 0.19 136); --world-ground-deep: oklch(0.58 0.16 140);
+  --world-accent: var(--blue-500); --world-accent-shade: var(--blue-700);
+  --world-path: var(--cream-200); --world-path-edge: var(--wood-300); --world-stroke: var(--ink-900);
+  --world-bg: linear-gradient(180deg, var(--world-sky) 0%, var(--world-ground) 55%, var(--world-ground-deep) 100%);
+}
+/* 1 · Mango Grove: first impressions, meeting, early memories. Sunny mango orchard. */
+[data-world="mango_grove"] {
+  --world-name: "Mango Grove";
+  --world-sky: oklch(0.93 0.09 95); --world-ground: oklch(0.80 0.16 118); --world-ground-deep: oklch(0.62 0.15 130);
+  --world-accent: oklch(0.78 0.17 62); --world-accent-shade: oklch(0.60 0.16 50);
+  --world-path: oklch(0.90 0.06 80); --world-path-edge: oklch(0.72 0.10 65); --world-stroke: oklch(0.42 0.10 70);
+  --world-bg: linear-gradient(180deg, oklch(0.93 0.09 95) 0%, oklch(0.80 0.16 118) 55%, oklch(0.62 0.15 130) 100%);
+}
+/* 2 · Small Chops, Big Gist, funny stories, inside jokes, outings. Restaurants, rice, lively stalls. */
+[data-world="small_chops"] {
+  --world-name: "Small Chops, Big Gist";
+  --world-sky: oklch(0.88 0.08 60); --world-ground: oklch(0.74 0.12 45); --world-ground-deep: oklch(0.56 0.12 35);
+  --world-accent: oklch(0.66 0.21 28); --world-accent-shade: oklch(0.50 0.18 25);
+  --world-path: oklch(0.84 0.05 60); --world-path-edge: oklch(0.60 0.07 50); --world-stroke: oklch(0.36 0.09 35);
+  --world-bg: linear-gradient(180deg, oklch(0.88 0.08 60) 0%, oklch(0.74 0.12 45) 55%, oklch(0.56 0.12 35) 100%);
+}
+/* 3 · The Good Energy Hills, appreciation, support, showing up. Green hills with gentle workout details. */
+[data-world="good_energy"] {
+  --world-name: "The Good Energy Hills";
+  --world-sky: oklch(0.90 0.07 205); --world-ground: oklch(0.78 0.17 145); --world-ground-deep: oklch(0.58 0.15 148);
+  --world-accent: oklch(0.74 0.14 185); --world-accent-shade: oklch(0.56 0.12 185);
+  --world-path: oklch(0.92 0.04 90); --world-path-edge: oklch(0.70 0.08 80); --world-stroke: oklch(0.38 0.09 150);
+  --world-bg: linear-gradient(180deg, oklch(0.90 0.07 205) 0%, oklch(0.78 0.17 145) 55%, oklch(0.58 0.15 148) 100%);
+}
+/* 4 · Someday in Japan, wishes, future adventures, hopes. Lanterns, gardens, distant mountain. */
+[data-world="japan"] {
+  --world-name: "Someday in Japan";
+  --world-sky: oklch(0.84 0.08 340); --world-ground: oklch(0.68 0.10 300); --world-ground-deep: oklch(0.50 0.12 295);
+  --world-accent: oklch(0.64 0.21 25); --world-accent-shade: oklch(0.48 0.18 22);
+  --world-path: oklch(0.86 0.02 280); --world-path-edge: oklch(0.62 0.04 285); --world-stroke: oklch(0.36 0.10 300);
+  --world-blossom: oklch(0.88 0.09 350);
+  --world-bg: linear-gradient(180deg, oklch(0.84 0.08 340) 0%, oklch(0.68 0.10 300) 55%, oklch(0.50 0.12 295) 100%);
+}
+/* 5 · Summit: Henry's letter. Golden hour above the clouds. */
+[data-world="summit"] {
+  --world-name: "The Summit";
+  --world-sky: oklch(0.34 0.10 285); --world-ground: oklch(0.62 0.15 55); --world-ground-deep: oklch(0.44 0.12 45);
+  --world-accent: var(--gold-500); --world-accent-shade: var(--gold-700);
+  --world-path: var(--gold-300); --world-path-edge: var(--gold-700); --world-stroke: oklch(0.30 0.07 50);
+  --world-bg: linear-gradient(180deg, oklch(0.34 0.10 285) 0%, oklch(0.62 0.15 55) 60%, oklch(0.44 0.12 45) 100%);
+}

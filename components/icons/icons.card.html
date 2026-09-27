@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components" viewport="700x250" name="Icons" subtitle="GameIcon: semantic presets, tones, sizes, plain glyphs" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="icons/GameIcon"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+.mp-boot-label{font-family:var(--font-display);font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;-webkit-text-stroke:.18em var(--ink-900);paint-order:stroke fill;text-shadow:0 2px 0 oklch(0 0 0 / .22)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true" style="position:fixed"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center' }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap' }}>{children}</div>;
+const Col = ({ children, gap = 16 }) => <div style={{ display: 'grid', gap }}>{children}</div>;
+const Note = ({ children }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / 0.4)', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ GameIcon }) => {
+  const kinds = ['coin', 'coins', 'gem', 'ruby', 'heart', 'star', 'energy', 'key', 'gift', 'chest', 'trophy', 'crown', 'lock', 'ticket', 'egg', 'map', 'compass', 'flag', 'leaf', 'tent', 'boat', 'mountains', 'footprints', 'shop', 'quest', 'bell', 'fire', 'sparkle'];
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <Col gap={18}>
+      <Row gap={10}>{kinds.map(k => <span key={k} title={k} style={{ display: 'grid', placeItems: 'center', gap: 2 }}><GameIcon kind={k} size={34} /></span>)}</Row>
+      <Row gap={16} align="flex-end">
+        <GameIcon kind="coin" size={20} /><GameIcon kind="coin" size={28} /><GameIcon kind="coin" size={40} /><GameIcon kind="coin" size={56} />
+        <span style={{ width: 24 }} />
+        {['gold', 'coral', 'blue', 'teal', 'green', 'berry', 'wood', 'stone', 'white', 'ink'].map(t => <GameIcon key={t} name="star" tone={t} size={32} />)}
+        <span style={{ width: 24 }} />
+        <GameIcon kind="gear" outline={false} shadow={false} size={28} /><GameIcon kind="play" outline={false} shadow={false} size={28} /><GameIcon kind="x" outline={false} shadow={false} size={28} />
+      </Row>
+      <Note>Phosphor FILL glyphs (CDN) + outline treatment. Size ramp 20 / 28 / 40 / 56. Plain white glyphs only inside bevelled buttons.</Note>
+    </Col>
+  );
+});
+</script></body></html>

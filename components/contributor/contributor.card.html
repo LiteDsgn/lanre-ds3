@@ -1,0 +1,53 @@
+<!-- @dsCard group="Adventure" viewport="700x720" name="Contributor kit" subtitle="StepBar, TextField, WorldChip, RadioCard, UploadTile, the phone-first composer" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="contributor/StepBar,contributor/TextField,contributor/WorldChip,contributor/RadioCard,contributor/UploadTile,identity/Avatar,icons/GameIcon"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-sky);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
+.mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
+const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ StepBar, TextField, WorldChip, RadioCard, UploadTile, Avatar, GameIcon }) => {
+  function Demo() {
+    const [name, setName] = React.useState('Ada Okafor');
+    const [text, setText] = React.useState('');
+    const [theme, setTheme] = React.useState('small_chops');
+    const [reveals, setReveals] = React.useState(false);
+    return (
+      <Row gap={24} align="flex-start">
+        <div style={{ width: 358, padding: 18, borderRadius: 'var(--radius-xl)', background: 'var(--cream-100)', border: '4px solid var(--cream-300)', boxShadow: 'var(--shadow-drop)', display: 'grid', gap: 16 }}>
+          <StepBar steps={['You', 'Memory', 'Theme', 'Preview', 'Submit']} current={1} onSelect={() => {}} compact />
+          <TextField label="The name Lanre knows you by" value={name} onChange={setName} helper="Shown to her only after the reveal." />
+          <TextField label="Your memory" multiline rows={3} value={text} onChange={setText} maxLength={2000} placeholder="Tell it the way you'd tell her." />
+          <Row gap={10}>{['mango_grove', 'small_chops', 'good_energy', 'japan'].map(w => <WorldChip key={w} world={w} size="sm" selected={theme === w} onClick={() => setTheme(w)} />)}</Row>
+        </div>
+        <div style={{ width: 290, display: 'grid', gap: 14 }}>
+          <div role="radiogroup" aria-label="Does this package show who you are?" style={{ display: 'grid', gap: 10 }}>
+            <RadioCard checked={!reveals} onChange={() => setReveals(false)} icon={<Avatar mystery size={40} />} title="Keeps me a mystery" description="No face, name or voice in here." />
+            <RadioCard checked={reveals} onChange={() => setReveals(true)} tone="gold" icon={<GameIcon kind="sparkle" size={36} />} title="Shows who I am" description="Skip the guessing for this one." />
+          </div>
+          <Row gap={14} align="flex-start" style={{ paddingBottom: 22 }}>
+            <UploadTile type="photo" state="done" name="beach.jpg" size={84} onRemove={() => {}} />
+            <UploadTile type="video" state="uploading" progress={0.42} size={84} onRemove={() => {}} />
+            <UploadTile type="audio" state="error" size={84} onRetry={() => {}} onRemove={() => {}} />
+            <UploadTile type="photo" state="idle" size={84} onAdd={() => {}} />
+          </Row>
+        </div>
+      </Row>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+});
+</script></body></html>

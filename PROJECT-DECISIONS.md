@@ -1,0 +1,9 @@
+# Adopted project decisions: September 13, 2026
+
+Henry selected DS3 as the canonical design system. Earlier DS and our initial foundations remain references. These decisions supersede conflicting generic-game guidance in this package.
+
+- Art direction: proposed original generated 2.5D painted scenery, layered with responsive React/SVG controls. 2.5D describes the illustrated perspective/depth, not a required 3D engine. The first Mango Grove scenery candidate is now generated at `public/art/mango-grove-v1.png`; it is used in the recipient integration and awaits Henry’s visual review. First establish Mango Grove’s style; then create consistent scenery/props for other worlds. Keep lettering, path nodes, portraits and buttons out of generated backgrounds so they remain crisp and responsive.
+- Sender data must only be fetched after the reveal operation. RevealCard now mounts the identity face only when revealed; CSS hiding is insufficient. Component gating does not secure data already sent to the browser: the eventual API must enforce this boundary.
+- Babe’s gemstones are visual ornaments: no visible labels, tooltip labels, accessible tier/score names or explanatory gem button. Gemstone defaults to decorative unless showTier is requested. Explicit decorative=true is used in recipient cards. Contributor results can still show their gem name/tier/score.
+- Completed level nodes will become portrait medallions, retaining their level number underneath and supporting replay. Use the revealed friend’s portrait, or their fallback avatar when absent. Locked/available nodes must not expose identity. Implemented in the first recipient map integration, including replay and accessible names.
+- Preserve readable names and action labels for the portrait medallion controls, e.g. “Replay level 4, Ada”. Decorative gemstone removal must not remove those useful labels.

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"><style>body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}a{color:#2a78d6}a:hover{color:#1b5aa6}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-intro{font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.6);max-width:900px;margin:0 0 22px}.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px;width:564px}.dv-opt.land{width:752px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}.dv-notes{margin:0;padding:0 0 0 18px;font:12px/1.45 system-ui,sans-serif;color:rgba(0,0,0,.7)}.dv-notes li{margin-bottom:3px}
+.f{position:relative;background:#f7f2e8;overflow:hidden;font-family:'Patrick Hand',cursive;color:#2b2620;zoom:.55;width:1024px;height:1366px;box-sizing:border-box}.f.land{width:1366px;height:1024px}
+.b{position:absolute;border:2px solid #2b2620;border-radius:12px;background:#fff;box-sizing:border-box;font-size:18px;line-height:1.2}.d{border-style:dashed}.h{background:repeating-linear-gradient(-45deg,rgba(43,38,32,.1) 0 9px,transparent 9px 18px),#fff}.pill{border-radius:999px}.ctr{display:grid;place-items:center;text-align:center}.cta{background:#7fd3c7}.dark{background:#3a332b;color:#fff;border-color:#3a332b}.ghost{background:transparent}.gold{background:#f6d774}.tone{background:#f3ece0}
+.t{position:absolute;font-size:18px;line-height:1.2}.small{font-size:14px;opacity:.75}.big{font-size:28px}
+.c{position:absolute;width:30px;height:30px;border-radius:50%;background:#2a78d6;color:#fff;font:700 15px/30px system-ui,sans-serif;text-align:center;z-index:5;box-shadow:0 0 0 3px #fff}
+.puck{position:absolute;width:96px;height:62px;border-radius:50%;border:2px solid #2b2620;background:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 8px 0 #2b2620}.puck.lock{background:#ddd6cb;color:#8a8074;box-shadow:0 8px 0 #8a8074}.puck.cur{background:#7fd3c7;outline:4px dashed #2a78d6;outline-offset:8px}
+.ln{position:absolute;height:10px;border-radius:5px;background:rgba(43,38,32,.22)}
+.av{border-radius:50%;border:2px solid #2b2620;background:#fff;display:grid;place-items:center;box-sizing:border-box}
+.gem{position:absolute;clip-path:polygon(50% 0%,96% 24%,96% 76%,50% 100%,4% 76%,4% 24%);background:#b98be6;display:grid;place-items:center;font-size:12px}
+.tile{position:absolute;width:168px;height:200px;border:2px solid #2b2620;border-radius:16px;background:#fff;box-sizing:border-box}.tile.q{background:rgba(43,38,32,.12);border-style:dashed}
+.card{position:absolute;width:150px;height:172px;border:2px solid #2b2620;border-radius:14px;box-sizing:border-box;display:grid;place-items:center;font-size:20px;background:#fff}.card.down{background:#cfe4f7}</style></helmet>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Babe’s experience on iPad Pro, layout only</span></div>
+<p class="dv-intro">iPad Pro 12.9″ / 13″ portrait (1024 × 1366 pt, shown at 55%) as the primary frame; <a class="dv-oid" href="#1h">1h</a> shows the same level in landscape (1366 × 1024). Wireframes, not visuals: boxes are components from the system (banner panels, pucks, choice buttons, reveal card, tiles). Numbered callouts are explained under each frame. Copy is example voice from the brief, not final.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Opening: deliberate start, sound, resume</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:1024px;height:1366px;border:0;border-radius:0"></div>
+<div class="t small" style="left:40px;top:40px">full-bleed world illustration (Mango Grove at first light), art slot</div>
+<div class="b pill ctr" style="left:392px;top:352px;width:240px;height:40px;font-size:16px">Made for your iPad · soft note</div>
+<div class="b" style="left:232px;top:430px;width:560px;height:560px;border-radius:28px"></div>
+<div class="b ctr" style="left:392px;top:398px;width:240px;height:64px;border-radius:20px;background:#cfe4f7;font-size:26px">For Babe</div>
+<div class="t" style="left:280px;top:500px;width:464px;font-size:24px;line-height:1.45;text-align:center">“Babe, a few people have been keeping something from you. For once, I think you’ll approve. Ready to find out?”</div>
+<div class="t small" style="left:280px;top:660px;width:464px;text-align:center">example voice from the brief, final copy is Henry’s</div>
+<div class="b pill ctr" style="left:432px;top:708px;width:160px;height:44px;font-size:16px">Sound on / off</div>
+<div class="b cta ctr" style="left:352px;top:780px;width:320px;height:64px;font-size:26px">Ready</div>
+<div class="b ghost ctr d" style="left:352px;top:860px;width:320px;height:56px;font-size:20px">Resume · only when progress exists</div>
+<div class="t small" style="left:280px;top:936px;width:464px;text-align:center">nothing plays before Ready is tapped</div>
+<div class="t" style="left:640px;top:1250px;font-size:22px">- Henry</div>
+<div class="c" style="left:600px;top:340px">1</div><div class="c" style="left:200px;top:420px">2</div><div class="c" style="left:600px;top:700px">3</div><div class="c" style="left:660px;top:790px">4</div><div class="c" style="left:660px;top:870px">5</div>
+</div></div><ol class="dv-notes"><li>Soft “Made for your iPad” note above the panel; never a device block. Phones get the same screen, panel at full width.</li><li>One centred panel, 560 wide (<code>--layout-panel-max-ipad</code>), banner header. World art fills the background.</li><li>Sound control is visible before anything can play; the Ready tap is the deliberate start for audio.</li><li>Ready is the only solid button.</li><li>Resume appears only when saved progress exists and returns to the last screen (map or mid-level).</li></ol></div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>World map: road, gates, discoveries, HUD</div><div class="dv-card"><div class="f">
+<div style="position:absolute;left:0;top:96px;width:1024px;height:240px;background:#cfeacb;opacity:.6"></div>
+<div style="position:absolute;left:0;top:336px;width:1024px;height:530px;background:#f6cdb6;opacity:.55"></div>
+<div style="position:absolute;left:0;top:866px;width:1024px;height:500px;background:#fbe9b8;opacity:.6"></div>
+<svg style="position:absolute;left:0;top:0" width="1024" height="1366" viewBox="0 0 1024 1366"><polyline points="300,1366 300,1300 690,1220 360,1130 720,1040 440,960 340,800 700,720 340,630 700,540 370,450 680,380 460,300 520,190 512,96" fill="none" stroke="#e8dcc4" stroke-width="56" stroke-linejoin="round" stroke-linecap="round"/><polyline points="300,1366 300,1300 690,1220 360,1130 720,1040 440,960 340,800 700,720 340,630 700,540 370,450 680,380 460,300 520,190 512,96" fill="none" stroke="#2b2620" stroke-width="2" stroke-dasharray="10 14" stroke-linejoin="round"/></svg>
+<div class="puck" style="left:252px;top:1270px">1</div><div class="puck" style="left:642px;top:1190px">2</div><div class="puck" style="left:312px;top:1100px">3</div><div class="puck" style="left:672px;top:1010px">4</div><div class="puck" style="left:392px;top:930px">5</div>
+<div class="puck cur" style="left:292px;top:770px">6</div><div class="puck lock" style="left:652px;top:690px">7</div><div class="puck lock" style="left:292px;top:600px">8</div><div class="puck lock" style="left:652px;top:510px">9</div><div class="puck lock" style="left:322px;top:420px">10</div><div class="puck lock" style="left:632px;top:350px">11</div>
+<div class="puck lock" style="left:472px;top:160px;opacity:.5">12</div>
+<div class="b ctr" style="left:332px;top:836px;width:360px;height:64px;border-radius:14px;background:#e3c08f;font-size:22px">Small Chops, Big Gist · 6–11</div>
+<div class="b" style="left:720px;top:806px;width:250px;height:112px;background:#fffbe9;padding:10px;font-size:16px">A note from Henry<br><span class="small">authored between worlds: no card when there is none</span></div>
+<div class="b ctr" style="left:332px;top:250px;width:360px;height:64px;border-radius:14px;background:#ddd6cb;font-size:22px">The Good Energy Hills · 12–16</div>
+<div class="b h d ctr" style="left:790px;top:1230px;width:200px;height:120px;font-size:16px">cottage / orchard art</div>
+<div class="b h d ctr" style="left:40px;top:990px;width:170px;height:110px;font-size:16px">mango trees art</div>
+<div class="b pill ctr gold" style="left:120px;top:1160px;width:110px;height:72px;font-size:16px">mango<br>available</div>
+<div class="b pill ctr" style="left:840px;top:610px;width:110px;height:72px;font-size:16px;background:#f6d774">rice bowl<br>NEW</div>
+<div class="b pill ctr" style="left:846px;top:1080px;width:110px;height:64px;font-size:16px;background:#cfeacb">bush ✦<br>hidden</div>
+<div class="b pill ctr" style="left:130px;top:520px;width:110px;height:64px;font-size:16px;background:#eee">gift<br>opened</div>
+<div class="b pill ctr" style="left:24px;top:28px;width:150px;height:44px;font-size:16px">Sound on</div>
+<div class="b pill ctr" style="left:312px;top:28px;width:400px;height:44px;font-size:16px">Level 6 of 21 · Small Chops, Big Gist</div>
+<div class="b pill ctr" style="left:830px;top:28px;width:170px;height:44px;font-size:16px">Your People (5)</div>
+<div class="b pill ctr dark" style="left:262px;top:112px;width:500px;height:52px;font-size:16px">A new surprise arrived: look beside the road in Small Chops</div>
+<div style="position:absolute;left:984px;top:360px;width:4px;height:760px;background:#2b2620;border-radius:2px"></div>
+<div class="av" style="position:absolute;left:974px;top:350px;width:24px;height:24px;font-size:12px;background:#f6d774">★</div><div class="av" style="position:absolute;left:974px;top:540px;width:24px;height:24px;font-size:11px">J</div><div class="av" style="position:absolute;left:974px;top:730px;width:24px;height:24px;font-size:11px">G</div><div class="av" style="position:absolute;left:974px;top:920px;width:24px;height:24px;font-size:11px;background:#7fd3c7">S</div><div class="av" style="position:absolute;left:974px;top:1100px;width:24px;height:24px;font-size:11px">M</div>
+<div class="b cta ctr" style="left:352px;top:1272px;width:320px;height:64px;font-size:24px">Play level 6</div>
+<div class="c" style="left:180px;top:20px">1</div><div class="c" style="left:770px;top:104px">2</div><div class="c" style="left:250px;top:760px">3</div><div class="c" style="left:700px;top:826px">4</div><div class="c" style="left:236px;top:1150px">5</div><div class="c" style="left:940px;top:330px">6</div><div class="c" style="left:680px;top:1262px">7</div><div class="c" style="left:270px;top:240px">8</div>
+</div></div><ol class="dv-notes"><li>Fixed 64 pt HUD: sound (always reachable), continuous level count + current world, Your People. No currencies, no stars.</li><li>Late arrivals announce themselves with a toast and a “NEW” marker beside the road, the numbered path is frozen at first start.</li><li>Current puck is teal with a pulse ring; completed pucks stay tappable (replay); locked pucks are stone.</li><li>A wooden gate opens each world; Henry’s note sits beside it only when he wrote one. Worlds are stacked bottom → top, colours from <code>tokens/worlds.css</code>.</li><li>Discoveries sit ≥ 24 pt off the road on pedestals: available (glow), new, hidden (glinting bush), opened (tick).</li><li>Right-edge world rail: M · S · G · J · ★ jumps the scroll between worlds; the summit dot stays grey until the main path completes.</li><li>Thumb-reach CTA repeats the current puck for one-handed play; sits above the home indicator.</li><li>Locked world gates read grey and show “opens when the road is complete”.</li></ol></div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Mystery level: package + guess</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:1024px;height:1366px;border:0;border-radius:0;opacity:.35"></div>
+<div style="position:absolute;inset:0;background:rgba(43,38,32,.25)"></div>
+<div class="b" style="left:72px;top:96px;width:880px;height:1200px;border-radius:28px"></div>
+<div class="b ctr" style="left:352px;top:62px;width:320px;height:64px;border-radius:20px;background:#7fd3c7;font-size:28px">Level 6</div>
+<div class="b pill ctr" style="left:412px;top:140px;width:200px;height:32px;font-size:14px;background:#f6cdb6">Small Chops, Big Gist</div>
+<div class="av" style="position:absolute;left:908px;top:80px;width:48px;height:48px;font-size:22px;background:#f4a58f">×</div>
+<div class="av" style="position:absolute;left:112px;top:190px;width:48px;height:48px;background:#cfeacb">T</div><div class="av" style="position:absolute;left:184px;top:190px;width:48px;height:48px;background:#7fd3c7;outline:3px dashed #2a78d6;outline-offset:4px">P</div><div class="av" style="position:absolute;left:256px;top:190px;width:48px;height:48px">A</div><div class="av" style="position:absolute;left:328px;top:190px;width:48px;height:48px">V</div>
+<div class="t" style="left:396px;top:203px">2 / 4 · text · <b>photo</b> · audio · video: in the contributor’s order</div>
+<div class="b h d ctr" style="left:192px;top:262px;width:640px;height:420px;font-size:22px">photo 2 of 3 · contain, never cropped</div>
+<div class="av" style="position:absolute;left:208px;top:448px;width:48px;height:48px;font-size:22px">‹</div><div class="av" style="position:absolute;left:768px;top:448px;width:48px;height:48px;font-size:22px">›</div>
+<div class="t" style="left:452px;top:696px">● ○ ○ &nbsp; 2 / 3</div>
+<div class="ln" style="left:312px;top:736px;width:400px"></div>
+<div class="t small" style="left:192px;top:760px;width:640px;text-align:center">caption from the contributor (neutral: never a name); text items use the same 640 column at 20 pt</div>
+<div class="t big" style="left:112px;top:820px">Who sent this?</div>
+<div class="b ctr" style="left:112px;top:872px;width:262px;height:64px;font-size:20px">A &nbsp; Ada Okafor</div><div class="b ctr" style="left:398px;top:872px;width:262px;height:64px;font-size:20px">B &nbsp; Tunde Bello</div><div class="b ctr" style="left:684px;top:872px;width:236px;height:64px;font-size:20px">C &nbsp; Kemi A.</div>
+<div class="b ghost ctr" style="left:112px;top:960px;width:200px;height:48px;font-size:18px">Just tell me</div>
+<div class="t small" style="left:340px;top:972px;width:580px">up to three real names · wrong → that option turns coral with ×, the others stay live · correct → green ✓ then the reveal (<a class="dv-oid" href="#1d">1d</a>)</div>
+<div class="b ghost ctr" style="left:112px;top:1210px;width:200px;height:56px;font-size:18px">Back to map</div>
+<div class="b d ctr" style="left:612px;top:1206px;width:300px;height:64px;font-size:22px;color:#8a8074">Continue · after reveal</div>
+<div class="c" style="left:660px;top:52px">1</div><div class="c" style="left:80px;top:180px">2</div><div class="c" style="left:820px;top:250px">3</div><div class="c" style="left:60px;top:862px">4</div><div class="c" style="left:300px;top:950px">5</div><div class="c" style="left:900px;top:1196px">6</div>
+</div></div><ol class="dv-notes"><li>Level opens as a centred 880 × 1200 sheet over the dimmed map; teal banner (Babe’s flow uses teal for continue/confirm), world tag beneath, × keeps progress and returns to the map.</li><li>Package stepper: one item at a time, contributor’s order, seen items ticked. Moving on is always a tap.</li><li>Media stage: 640 reading column. Photos contain (never crop) with 48 pt paging buttons; text card 20 pt / 1.6; audio and video players fill the same stage. Nothing autoplays or auto-advances.</li><li>Guess row: three 64 pt choice buttons side by side on iPad (stacked on phones); portraits are not required to guess.</li><li>“Just tell me” is always offered; wrong answers keep retry open, affection is never gated.</li><li>Continue only appears after the reveal; the rest of the package stays explorable.</li></ol></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Reveal: sender card + the rest of the package</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:1024px;height:1366px;border:0;border-radius:0;opacity:.35"></div>
+<div style="position:absolute;inset:0;background:rgba(43,38,32,.25)"></div>
+<div class="b" style="left:72px;top:96px;width:880px;height:1200px;border-radius:28px"></div>
+<div class="b ctr" style="left:352px;top:62px;width:320px;height:64px;border-radius:20px;background:#7fd3c7;font-size:28px">Level 6</div>
+<div class="av" style="position:absolute;left:908px;top:80px;width:48px;height:48px;font-size:22px;background:#f4a58f">×</div>
+<div class="av" style="position:absolute;left:112px;top:160px;width:48px;height:48px;background:#cfeacb">T</div><div class="av" style="position:absolute;left:184px;top:160px;width:48px;height:48px;background:#cfeacb">P</div><div class="av" style="position:absolute;left:256px;top:160px;width:48px;height:48px">A</div><div class="av" style="position:absolute;left:328px;top:160px;width:48px;height:48px">V</div>
+<div class="t small" style="left:396px;top:174px">seen: text, photo · still to open: audio, video</div>
+<div class="b" style="left:112px;top:250px;width:320px;height:400px;border-radius:28px;background:#fffbe9"></div>
+<div class="av" style="position:absolute;left:212px;top:280px;width:120px;height:120px;font-size:36px;background:#f6d774">AO</div>
+<div class="t small" style="left:112px;top:414px;width:320px;text-align:center">FROM</div>
+<div class="t" style="left:112px;top:440px;width:320px;text-align:center;font-size:30px">Ada Okafor</div>
+<div class="t" style="left:112px;top:482px;width:320px;text-align:center">Sister</div>
+<div class="gem" style="left:236px;top:530px;width:72px;height:72px"></div>
+<div class="t small" style="left:112px;top:612px;width:320px;text-align:center">gem only: no score, rank or tier text</div>
+<div class="c" style="left:400px;top:654px">3</div>
+<div class="b" style="left:112px;top:664px;width:320px;height:120px;background:#fffbe9;padding:10px 12px;font-size:16px;line-height:1.3">What’s this gem?<br><span class="small">“Ada took the birthday quiz. Amber, emerald or amethyst: every one counts.” Tap-to-explain popover under the card.</span></div>
+<div class="t big" style="left:472px;top:250px">The rest of Ada’s memory</div>
+<div class="b ctr" style="left:472px;top:300px;width:448px;height:88px;border-radius:20px;font-size:18px">▶ &nbsp; Voice note &nbsp; ───────── &nbsp; 0:00 / 0:42</div>
+<div class="b h d ctr" style="left:472px;top:404px;width:448px;height:252px;font-size:20px">video · 16:9 · big play, seek, mute, full screen</div>
+<div class="b h d ctr" style="left:472px;top:672px;width:140px;height:96px;font-size:14px">photo 1</div><div class="b h d ctr" style="left:626px;top:672px;width:140px;height:96px;font-size:14px">photo 2</div><div class="b h d ctr" style="left:780px;top:672px;width:140px;height:96px;font-size:14px">photo 3</div>
+<div class="b" style="left:112px;top:800px;width:808px;height:300px;border-radius:24px;background:#fffbe9"></div>
+<div class="ln" style="left:144px;top:840px;width:700px"></div><div class="ln" style="left:144px;top:868px;width:740px"></div><div class="ln" style="left:144px;top:896px;width:620px"></div><div class="ln" style="left:144px;top:924px;width:700px"></div><div class="ln" style="left:144px;top:952px;width:380px"></div>
+<div class="t small" style="left:144px;top:1000px;width:740px">written memory re-shown in full under the media (20 pt, verbatim) so the whole package reads as one piece after the reveal</div>
+<div class="b ghost ctr" style="left:112px;top:1210px;width:200px;height:56px;font-size:18px">Replay</div>
+<div class="b cta ctr" style="left:612px;top:1206px;width:300px;height:64px;font-size:24px">Continue</div>
+<div class="c" style="left:80px;top:240px">1</div><div class="c" style="left:292px;top:520px">2</div><div class="c" style="left:900px;top:290px">4</div><div class="c" style="left:900px;top:1196px">5</div>
+</div></div><ol class="dv-notes"><li>The reveal card flips in place on the left (mystery “?” → portrait or generated avatar, name Lanre knows, relationship). Reduced motion swaps instantly.</li><li>Gemstone shown as a picture only.</li><li>Optional “what’s this gem?” popover explains gems without scores; tone celebrates participation.</li><li>Remaining media stack on the right in the contributor’s order, players with pause/seek, video with full screen; photos as a strip that opens the viewer.</li><li>Continue is the explicit completion; watching everything is not required. Replay stays available afterwards.</li></ol></div>
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Self-revealing media: brief matching game, skippable</div><div class="dv-card"><div class="f">
+<div class="b h" style="left:0;top:0;width:1024px;height:1366px;border:0;border-radius:0;opacity:.35"></div>
+<div style="position:absolute;inset:0;background:rgba(43,38,32,.25)"></div>
+<div class="b" style="left:72px;top:96px;width:880px;height:1200px;border-radius:28px"></div>
+<div class="b ctr" style="left:352px;top:62px;width:320px;height:64px;border-radius:20px;background:#7fd3c7;font-size:28px">Level 9</div>
+<div class="av" style="position:absolute;left:908px;top:80px;width:48px;height:48px;font-size:22px;background:#f4a58f">×</div>
+<div class="t" style="left:112px;top:170px;width:800px;font-size:22px;text-align:center">This one shows who sent it, a quick match first, or skip straight to it.</div>
+<div class="b ghost ctr" style="left:772px;top:236px;width:148px;height:48px;font-size:18px">Skip</div>
+<div class="t" style="left:112px;top:248px">1 of 4 pairs</div>
+<div class="card" style="left:176px;top:320px">mango</div><div class="card down" style="left:350px;top:320px">?</div><div class="card down" style="left:524px;top:320px">?</div><div class="card" style="left:698px;top:320px;background:#cfeacb">rice ✓</div>
+<div class="card down" style="left:176px;top:516px">?</div><div class="card" style="left:350px;top:516px;background:#cfeacb">rice ✓</div><div class="card down" style="left:524px;top:516px">?</div><div class="card down" style="left:698px;top:516px">?</div>
+<div class="t small" style="left:176px;top:710px;width:672px">symbols from Lanre’s world: mango · rice bowl · flower · dumbbell · lantern. 4 pairs on iPad, 3 on phones. Chosen once per level and persisted.</div>
+<div class="t" style="left:112px;top:790px;width:800px;text-align:center;font-size:20px">↓ when matched or skipped → direct reveal (<a class="dv-oid" href="#1d">1d</a>), then the full package</div>
+<div class="b d" style="left:112px;top:860px;width:808px;height:300px;border-radius:24px;color:#8a8074"></div>
+<div class="t small" style="left:144px;top:880px;width:740px;text-align:center;color:#8a8074">reveal card + media land here, no guessing step for this level</div>
+<div class="b ghost ctr" style="left:112px;top:1210px;width:200px;height:56px;font-size:18px">Back to map</div>
+<div class="b d ctr" style="left:612px;top:1206px;width:300px;height:64px;font-size:22px;color:#8a8074">Continue · after reveal</div>
+<div class="c" style="left:80px;top:160px">1</div><div class="c" style="left:900px;top:226px">2</div><div class="c" style="left:150px;top:310px">3</div><div class="c" style="left:80px;top:850px">4</div>
+</div></div><ol class="dv-notes"><li>Honest framing: the contributor flagged that the media identifies them, so there is no false mystery.</li><li>Skip is visible from the start; finishing is a flourish, not a requirement.</li><li>Cards 150 × 172 in a 4 × 2 grid, ≥ 24 pt gaps; flip, pair locks green.</li><li>After match/skip the sheet continues exactly like <a class="dv-oid" href="#1d">1d</a>.</li></ol></div>
+
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Your People: collection</div><div class="dv-card"><div class="f">
+<div style="position:absolute;inset:0;background:#cfeacb;opacity:.45"></div>
+<div class="b pill ctr" style="left:24px;top:28px;width:150px;height:44px;font-size:16px">Sound on</div>
+<div class="b pill ctr" style="left:312px;top:28px;width:400px;height:44px;font-size:16px">Level 6 of 21 · Small Chops, Big Gist</div>
+<div class="b pill ctr" style="left:830px;top:28px;width:170px;height:44px;font-size:16px">Back to map</div>
+<div class="b ctr" style="left:332px;top:104px;width:360px;height:64px;border-radius:20px;background:#cfe4f7;font-size:28px">Your People</div>
+<div class="t" style="left:44px;top:190px;width:936px;text-align:center;font-size:20px">5 of 21 found · shown by their gem, never by score · the rest stay a mystery until you find them</div>
+<div class="tile" style="left:44px;top:250px"></div><div class="av" style="position:absolute;left:96px;top:270px;width:64px;height:64px;font-size:20px;background:#f6d774">AO</div><div class="gem" style="left:150px;top:310px;width:36px;height:36px"></div><div class="t" style="left:44px;top:350px;width:168px;text-align:center">Ada Okafor<br><span class="small">Sister</span></div>
+<div class="tile" style="left:236px;top:250px"></div><div class="av" style="position:absolute;left:288px;top:270px;width:64px;height:64px;font-size:20px;background:#cfe4f7">FB</div><div class="gem" style="left:342px;top:310px;width:36px;height:36px;background:#7fd3a0"></div><div class="t" style="left:236px;top:350px;width:168px;text-align:center">Femi &amp; Bisi<br><span class="small">Friends</span></div>
+<div class="tile" style="left:428px;top:250px"></div><div class="av" style="position:absolute;left:480px;top:270px;width:64px;height:64px;font-size:20px;background:#f6cdb6">TB</div><div class="gem" style="left:534px;top:310px;width:36px;height:36px;background:#7fd3a0"></div><div class="t" style="left:428px;top:350px;width:168px;text-align:center">Tunde Bello<br><span class="small">Colleague</span></div>
+<div class="tile" style="left:620px;top:250px"></div><div class="av" style="position:absolute;left:672px;top:270px;width:64px;height:64px;font-size:20px;background:#e2d3ee">D</div><div class="gem" style="left:726px;top:310px;width:36px;height:36px;background:#f6d774"></div><div class="t" style="left:620px;top:350px;width:168px;text-align:center">Dayo<br><span class="small">Cousin</span></div>
+<div class="tile" style="left:812px;top:250px"></div><div class="av" style="position:absolute;left:864px;top:270px;width:64px;height:64px;font-size:20px;background:#fff">KA</div><div class="gem" style="left:918px;top:310px;width:36px;height:36px;background:#eee;clip-path:circle(48%)"></div><div class="t" style="left:812px;top:350px;width:168px;text-align:center">Kemi A.<br><span class="small">Friend · pearl</span></div>
+<div class="tile q" style="left:44px;top:474px"></div><div class="tile q" style="left:236px;top:474px"></div><div class="tile q" style="left:428px;top:474px"></div><div class="tile q" style="left:620px;top:474px"></div><div class="tile q" style="left:812px;top:474px"></div>
+<div class="tile q" style="left:44px;top:698px"></div><div class="tile q" style="left:236px;top:698px"></div><div class="tile q" style="left:428px;top:698px"></div><div class="tile q" style="left:620px;top:698px"></div><div class="tile" style="left:812px;top:698px;background:#fffbe9"></div>
+<div class="b pill ctr gold" style="left:856px;top:686px;width:80px;height:26px;font-size:14px">NEW</div><div class="av" style="position:absolute;left:864px;top:722px;width:64px;height:64px;font-size:28px;background:#ddd6cb">?</div><div class="t" style="left:812px;top:800px;width:168px;text-align:center">A new surprise<br><span class="small">find it on the map</span></div>
+<div class="t" style="left:44px;top:560px;width:936px;text-align:center;font-size:20px;color:#8a8074">? &nbsp; not yet found: no portrait, gem or name leaks</div>
+<div class="tile q" style="left:44px;top:922px"></div><div class="tile q" style="left:236px;top:922px"></div><div class="tile q" style="left:428px;top:922px"></div><div class="tile q" style="left:620px;top:922px"></div><div class="tile q" style="left:812px;top:922px"></div>
+<div class="t small" style="left:44px;top:1150px;width:936px;text-align:center">tap a revealed tile → the reveal card from <a class="dv-oid" href="#1d">1d</a> as a modal (replay that memory) · tap a mystery tile → “Keep exploring the road”</div>
+<div class="c" style="left:660px;top:94px">1</div><div class="c" style="left:20px;top:240px">2</div><div class="c" style="left:20px;top:464px">3</div><div class="c" style="left:960px;top:686px">4</div>
+</div></div><ol class="dv-notes"><li>Full-screen page (not a modal) reached from the HUD; grid of 5 tiles per row, 168 × 200, 24 pt gaps.</li><li>Ranked people are ordered by quiz result but the only visible signal is the gem (pearl for a skipped quiz). No numbers anywhere.</li><li>Unrevealed people are identical grey “?” tiles: nothing in the payload identifies them.</li><li>Late arrivals show as “NEW” mystery tiles until their discovery reveal on the map.</li></ol></div>
+
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>Summit: Henry’s letter</div><div class="dv-card"><div class="f">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,#cfc3e6 0%,#f5dca0 60%,#e8b56e 100%)"></div>
+<div class="t small" style="left:40px;top:40px">summit art slot: above the clouds, golden hour</div>
+<div class="b pill ctr" style="left:24px;top:28px;width:150px;height:44px;font-size:16px;left:830px">Sound on</div>
+<div class="b ctr" style="left:332px;top:110px;width:360px;height:64px;border-radius:14px;background:#e3c08f;font-size:28px">The Summit</div>
+<div class="t" style="left:192px;top:196px;width:640px;text-align:center">unlocked when every numbered level is complete, extras are never required</div>
+<div class="b" style="left:192px;top:250px;width:640px;height:940px;border-radius:28px;background:#fffbe9"></div>
+<div class="t" style="left:240px;top:290px;font-size:26px">Babe,</div>
+<div class="ln" style="left:240px;top:350px;width:540px"></div><div class="ln" style="left:240px;top:384px;width:560px"></div><div class="ln" style="left:240px;top:418px;width:500px"></div><div class="ln" style="left:240px;top:452px;width:560px"></div><div class="ln" style="left:240px;top:486px;width:300px"></div>
+<div class="ln" style="left:240px;top:550px;width:560px"></div><div class="ln" style="left:240px;top:584px;width:520px"></div><div class="ln" style="left:240px;top:618px;width:560px"></div><div class="ln" style="left:240px;top:652px;width:420px"></div>
+<div class="ln" style="left:240px;top:716px;width:540px"></div><div class="ln" style="left:240px;top:750px;width:560px"></div><div class="ln" style="left:240px;top:784px;width:360px"></div>
+<div class="t small" style="left:240px;top:840px;width:540px">Henry’s letter verbatim: 22 pt / 1.65, 560 pt measure, scrolls inside the card; optional photo slots inline where he places them</div>
+<div class="b h d ctr" style="left:240px;top:900px;width:540px;height:180px;font-size:18px">personal photo (optional, Henry-supplied)</div>
+<div class="t" style="left:600px;top:1120px;font-size:26px">- Henry</div>
+<div class="b cta ctr" style="left:352px;top:1230px;width:320px;height:64px;font-size:24px">Keep exploring</div>
+<div class="b ghost ctr" style="left:700px;top:1234px;width:200px;height:56px;font-size:18px">Read again</div>
+<div class="c" style="left:660px;top:100px">1</div><div class="c" style="left:160px;top:240px">2</div><div class="c" style="left:680px;top:1220px">3</div>
+</div></div><ol class="dv-notes"><li>Summit uses its own world tokens (dusk → gold); wooden sign header; the map remains reachable afterwards.</li><li>Letter card is a 640 column with the letter text as written (no invented copy); photos only where Henry supplies them.</li><li>“Keep exploring” returns to the map where discoveries remain; “Read again” scrolls to the top.</li></ol></div>
+
+<div class="dv-opt land" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>Same level in landscape (1366 × 1024): media left, choices right</div><div class="dv-card"><div class="f land">
+<div class="b h" style="left:0;top:0;width:1366px;height:1024px;border:0;border-radius:0;opacity:.35"></div>
+<div style="position:absolute;inset:0;background:rgba(43,38,32,.25)"></div>
+<div class="b" style="left:60px;top:70px;width:1246px;height:900px;border-radius:28px"></div>
+<div class="b ctr" style="left:523px;top:36px;width:320px;height:64px;border-radius:20px;background:#7fd3c7;font-size:28px">Level 6</div>
+<div class="av" style="position:absolute;left:1262px;top:54px;width:48px;height:48px;font-size:22px;background:#f4a58f">×</div>
+<div class="b h d ctr" style="left:100px;top:150px;width:780px;height:520px;font-size:22px">photo 2 of 3 · contain</div>
+<div class="av" style="position:absolute;left:116px;top:386px;width:48px;height:48px;font-size:22px">‹</div><div class="av" style="position:absolute;left:816px;top:386px;width:48px;height:48px;font-size:22px">›</div>
+<div class="t" style="left:430px;top:690px">● ○ ○ &nbsp; 2 / 3</div>
+<div class="ln" style="left:240px;top:730px;width:500px"></div>
+<div class="t small" style="left:100px;top:756px;width:780px;text-align:center">caption · text items become a 640 column centred in this stage</div>
+<div class="av" style="position:absolute;left:920px;top:150px;width:48px;height:48px;background:#cfeacb">T</div><div class="av" style="position:absolute;left:992px;top:150px;width:48px;height:48px;background:#7fd3c7;outline:3px dashed #2a78d6;outline-offset:4px">P</div><div class="av" style="position:absolute;left:1064px;top:150px;width:48px;height:48px">A</div><div class="av" style="position:absolute;left:1136px;top:150px;width:48px;height:48px">V</div><div class="t" style="left:1210px;top:163px">2 / 4</div>
+<div class="t big" style="left:920px;top:240px">Who sent this?</div>
+<div class="b ctr" style="left:920px;top:296px;width:346px;height:64px;font-size:20px">A &nbsp; Ada Okafor</div><div class="b ctr" style="left:920px;top:376px;width:346px;height:64px;font-size:20px">B &nbsp; Tunde Bello</div><div class="b ctr" style="left:920px;top:456px;width:346px;height:64px;font-size:20px">C &nbsp; Kemi A.</div>
+<div class="b ghost ctr" style="left:920px;top:544px;width:200px;height:48px;font-size:18px">Just tell me</div>
+<div class="b d" style="left:920px;top:620px;width:346px;height:200px;border-radius:24px;color:#8a8074"></div><div class="t small" style="left:936px;top:690px;width:314px;text-align:center;color:#8a8074">reveal card flips in here (<a class="dv-oid" href="#1d">1d</a>); media stays on the left</div>
+<div class="b ghost ctr" style="left:100px;top:890px;width:200px;height:56px;font-size:18px">Back to map</div>
+<div class="b d ctr" style="left:966px;top:884px;width:300px;height:64px;font-size:22px;color:#8a8074">Continue · after reveal</div>
+<div class="c" style="left:70px;top:140px">1</div><div class="c" style="left:1290px;top:236px">2</div><div class="c" style="left:890px;top:610px">3</div>
+</div></div><ol class="dv-notes"><li>Landscape splits the sheet: media stage takes ~62% on the left so photos and video get the room.</li><li>Stepper, question and stacked choice buttons live in a 346 pt right column; the same components, no new ones.</li><li>The reveal card flips into the right column, so the media never moves during the reveal.</li></ol></div>
+
+</div>
+<p class="dv-next">Try next: “show the contributor’s phone flow the same way” · “make <a class="dv-oid" href="#1c">1c</a> stack the choices instead of a row” · “add the world-gate transition screen between <a class="dv-oid" href="#1b">1b</a> and <a class="dv-oid" href="#1c">1c</a>”</p>
+</section>
+</x-dc>
+</body>
+</html>

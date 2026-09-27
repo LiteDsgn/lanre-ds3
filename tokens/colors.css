@@ -1,0 +1,126 @@
+/* Lanre color tokens. Base ramps in oklch (100 = lightest, 900 = darkest), then semantic aliases. */
+:root {
+  /* Meadow: environment green (grass, bushes, board tiles) */
+  --green-100: oklch(0.94 0.08 128);
+  --green-300: oklch(0.85 0.17 132);
+  --green-500: oklch(0.74 0.19 136);
+  --green-700: oklch(0.58 0.16 140);
+  --green-900: oklch(0.40 0.10 142);
+
+  /* Sky: action blue (play, current level, water) */
+  --blue-100: oklch(0.94 0.05 228);
+  --blue-300: oklch(0.83 0.11 232);
+  --blue-500: oklch(0.68 0.17 240);
+  --blue-700: oklch(0.52 0.17 250);
+  --blue-900: oklch(0.36 0.12 255);
+
+  /* Gold: reward, currency, stars, primary CTA */
+  --gold-100: oklch(0.97 0.06 92);
+  --gold-300: oklch(0.92 0.14 90);
+  --gold-500: oklch(0.86 0.17 85);
+  --gold-700: oklch(0.71 0.16 68);
+  --gold-900: oklch(0.44 0.10 58);
+
+  /* Coral: danger, urgency, hearts, notification */
+  --coral-100: oklch(0.94 0.04 30);
+  --coral-300: oklch(0.83 0.11 30);
+  --coral-500: oklch(0.68 0.20 30);
+  --coral-700: oklch(0.55 0.19 28);
+  --coral-900: oklch(0.38 0.13 26);
+
+  /* Teal: confirm / OK / positive secondary */
+  --teal-100: oklch(0.95 0.04 185);
+  --teal-300: oklch(0.88 0.09 184);
+  --teal-500: oklch(0.76 0.13 180);
+  --teal-700: oklch(0.58 0.11 182);
+  --teal-900: oklch(0.40 0.08 184);
+
+  /* Berry: premium, boosts, special offers */
+  --berry-100: oklch(0.95 0.04 340);
+  --berry-300: oklch(0.85 0.11 340);
+  --berry-500: oklch(0.66 0.22 340);
+  --berry-700: oklch(0.50 0.20 340);
+  --berry-900: oklch(0.34 0.13 340);
+
+  /* Wood: frames, fences, signposts */
+  --wood-100: oklch(0.93 0.06 80);
+  --wood-300: oklch(0.80 0.10 70);
+  --wood-500: oklch(0.62 0.12 60);
+  --wood-700: oklch(0.46 0.10 54);
+  --wood-900: oklch(0.30 0.07 50);
+
+  /* Stone: locked, disabled, inactive */
+  --stone-100: oklch(0.96 0.01 250);
+  --stone-300: oklch(0.86 0.02 250);
+  --stone-500: oklch(0.71 0.03 250);
+  --stone-700: oklch(0.55 0.04 255);
+  --stone-900: oklch(0.36 0.04 260);
+
+  /* Parchment: panel surfaces */
+  --cream-50:  oklch(0.99 0.01 85);
+  --cream-100: oklch(0.97 0.03 85);
+  --cream-200: oklch(0.93 0.05 80);
+  --cream-300: oklch(0.88 0.07 70);
+
+  /* Ink: warm brown text */
+  --ink-900: oklch(0.27 0.05 55);
+  --ink-700: oklch(0.41 0.06 55);
+  --ink-500: oklch(0.57 0.05 55);
+  --white: #ffffff;
+
+  /* ---- Semantic aliases ---- */
+  --bg-meadow: linear-gradient(180deg, var(--green-300) 0%, var(--green-500) 100%);
+  --bg-sky: linear-gradient(180deg, oklch(0.78 0.11 232) 0%, oklch(0.92 0.05 220) 100%);
+  --bg-dusk: linear-gradient(180deg, oklch(0.52 0.14 290) 0%, oklch(0.72 0.13 40) 100%);
+  --bg-scrim: oklch(0.22 0.05 260 / 0.55);
+
+  --surface-panel: var(--cream-100);
+  --surface-panel-border: var(--cream-300);
+  --surface-panel-tab: var(--white);
+  --surface-inset: var(--cream-200);
+  --surface-hud: oklch(0.30 0.06 55 / 0.82);
+  --surface-cell: oklch(0.34 0.09 145 / 0.30);
+  --surface-cell-active: oklch(0.34 0.09 200 / 0.45);
+  --surface-wood: var(--wood-500);
+  --surface-wood-plank: var(--wood-100);
+
+  --text-primary: var(--ink-900);
+  --text-secondary: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-on-dark: var(--white);
+  --text-on-gold: var(--gold-900);
+  --text-outline: var(--ink-900);
+  --text-outline-stone: var(--stone-700);
+  --text-outline-blue: var(--blue-700);
+
+  --action-primary: var(--gold-500);
+  --action-primary-shade: var(--gold-700);
+  --action-play: var(--blue-500);
+  --action-play-shade: var(--blue-700);
+  --action-confirm: var(--teal-500);
+  --action-confirm-shade: var(--teal-700);
+  --action-danger: var(--coral-500);
+  --action-danger-shade: var(--coral-700);
+  --action-premium: var(--berry-500);
+  --action-premium-shade: var(--berry-700);
+
+  --state-locked: var(--stone-500);
+  --state-locked-shade: var(--stone-700);
+  --state-current: var(--blue-500);
+  --state-complete: var(--green-500);
+  --state-perfect: var(--gold-500);
+
+  --star-fill: var(--gold-500);
+  --star-fill-light: var(--gold-300);
+  --star-outline: var(--gold-700);
+  --star-empty: var(--stone-500);
+  --star-empty-outline: var(--stone-700);
+
+  --currency-coin: var(--gold-500);
+  --currency-gem: var(--coral-500);
+  --currency-gem-alt: var(--blue-500);
+  --currency-heart: var(--coral-500);
+  --currency-energy: var(--teal-500);
+
+  --focus-ring: 0 0 0 4px oklch(0.86 0.17 85 / 0.85);
+}

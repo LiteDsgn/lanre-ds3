@@ -1,0 +1,45 @@
+<!-- @dsCard group="Adventure" viewport="700x400" name="Quiz & leaderboard" subtitle="LeaderboardRow + gem result: friend-facing only" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="quiz/LeaderboardRow,identity/Gemstone,levels/ChoiceButton"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--cream-50);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
+.mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
+const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ LeaderboardRow, Gemstone, ChoiceButton }) => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <Row gap={24} align="flex-start">
+      <div style={{ width: 380, display: 'grid', gap: 10 }}>
+        <LeaderboardRow rank={1} name="Ada Okafor" seed="c_01" gem="amethyst" tier={3} score={8} />
+        <LeaderboardRow rank={2} name="Femi & Bisi" seed="c_15" gem="amethyst" tier={1} score={6} />
+        <LeaderboardRow rank={3} tied name="Tunde Bello" seed="c_22" gem="emerald" tier={2} score={4} me />
+        <LeaderboardRow rank={3} tied name="Mrs Adeyemi" seed="c_09" gem="emerald" tier={2} score={4} />
+        <LeaderboardRow rank={5} name="Dayo" seed="c_31" gem="amber" tier={1} score={0} />
+        <LeaderboardRow name="Kemi A." seed="c_07" skipped />
+      </div>
+      <div style={{ width: 260, display: 'grid', gap: 14 }}>
+        <div style={{ padding: '22px 18px', borderRadius: 'var(--radius-xl)', background: 'linear-gradient(180deg,#fff,var(--cream-100))', border: '4px solid var(--cream-300)', boxShadow: 'var(--shadow-drop)', display: 'grid', justifyItems: 'center', gap: 8, textAlign: 'center' }}>
+          <Gemstone gem="emerald" tier={2} size={84} showTier />
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--ink-900)' }}>4 / 8</span>
+          <span style={{ fontWeight: 600, fontSize: 13, color: 'var(--ink-700)' }}>Your first try is the one that counts. Thanks for being part of this.</span>
+        </div>
+        <ChoiceButton index={0} state="correct">Adekunle Gold</ChoiceButton>
+        <Note dark={false}>Ties share rank (=3). Skipped = pearl, unranked. Babe never sees this list.</Note>
+      </div>
+    </Row>
+  );
+});
+</script></body></html>

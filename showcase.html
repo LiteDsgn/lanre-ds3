@@ -1,0 +1,665 @@
+<!-- @dsCard group="Showcase" viewport="1200x760" name="Lanre showcase" subtitle="Browsable design-system documentation: principles, foundations, live components, screens" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lanre: design system showcase</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="tools/ds-loader.js" data-root="." data-components="buttons/Button,buttons/IconButton,hud/CurrencyPill,hud/ProgressBar,hud/TimerChip,panels/Panel,map/LevelNode,map/StarRating,map/Tile,rewards/RewardCard,rewards/ItemCell,rewards/ShopRow,forms/Switch,forms/Slider,feedback/Badge,feedback/Tag,feedback/Toast,feedback/SoundToggle,text/OutlineText,icons/GameIcon,identity/Gemstone,identity/Avatar,identity/RevealCard,identity/PersonTile,quiz/LeaderboardRow,levels/ChoiceButton,levels/PackageStepper,media/MemoryText,media/AudioPlayer,media/VideoFrame,media/PhotoStack,map/DiscoveryMarker,map/WorldGate,games/MatchCard,contributor/UploadTile,contributor/TextField,contributor/StepBar,contributor/WorldChip,contributor/RadioCard"></script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream-50);color:var(--ink-900);font-family:var(--font-ui);font-weight:500;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-700);text-decoration:none;font-weight:700}a:hover{color:var(--blue-500)}
+.shell{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}
+nav.side{position:sticky;top:0;height:100vh;overflow-y:auto;padding:22px 14px;background:linear-gradient(180deg,var(--wood-500),var(--wood-700));border-right:4px solid var(--wood-300);box-shadow:inset -6px 0 0 var(--wood-900)}
+nav.side .brand{display:block;margin:0 0 18px 4px}
+nav.side a{display:block;padding:7px 10px;border-radius:var(--radius-sm);color:var(--wood-100);font-size:13px;font-weight:700}
+nav.side a:hover{background:oklch(1 0 0 / .12);color:#fff}
+nav.side .grp{margin:14px 0 4px 10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-300)}
+main{min-width:0}
+.hero{position:relative;padding:72px 48px 56px;background:var(--bg-meadow);overflow:hidden;color:#fff}
+.hero .blob{position:absolute;border-radius:50% 50% 45% 45%;background:radial-gradient(ellipse at 40% 25%,var(--green-300),var(--green-500) 55%,var(--green-700));box-shadow:0 10px 0 oklch(.4 .1 142 / .35)}
+.hero p{max-width:620px;font-size:17px;font-weight:600;text-shadow:0 1px 0 oklch(0 0 0 / .35);margin:14px 0 26px}
+.facts{display:flex;gap:10px;flex-wrap:wrap}
+.fact{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:var(--surface-hud);border:2px solid oklch(.2 .05 55 / .9);font-family:var(--font-display);font-size:14px;letter-spacing:.03em;text-shadow:0 2px 0 oklch(0 0 0 / .35)}
+section{padding:40px 48px;border-top:2px dashed var(--cream-300)}
+.sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+.sec-head h2{margin:0;font-family:var(--font-display);font-weight:400;font-size:30px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-900)}
+.sec-head .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-500)}
+.lede{max-width:760px;font-size:15px;color:var(--ink-700);margin:0 0 22px;text-wrap:pretty}
+h3{font-family:var(--font-display);font-weight:400;font-size:18px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-700);margin:28px 0 10px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border:3px solid var(--cream-300);border-radius:var(--radius-lg);padding:16px;box-shadow:0 3px 0 var(--cream-300)}
+.card h4{margin:0 0 6px;font-family:var(--font-display);font-weight:400;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-900)}
+.card p{margin:0;font-size:13.5px;color:var(--ink-700)}
+.spec{width:100%;border:0;display:block;border-radius:var(--radius-lg);background:var(--cream-100);box-shadow:inset 0 0 0 3px var(--cream-300)}
+.speclabel{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-500);margin:6px 0 14px}
+.demo{position:relative;background:var(--bg-meadow);border-radius:var(--radius-lg);padding:22px;min-height:80px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;box-shadow:inset 0 0 0 3px oklch(.58 .16 140 / .6)}
+.demo.cream{background:var(--cream-100);box-shadow:inset 0 0 0 3px var(--cream-300)}
+.demo.dusk{background:var(--bg-dusk)}
+.demo.sky{background:var(--bg-sky)}
+.demo.col{flex-direction:column;align-items:stretch}
+pre.code{margin:10px 0 0;padding:14px 16px;border-radius:var(--radius-md);background:var(--cream-200);box-shadow:inset 0 2px 4px oklch(0 0 0 / .08);font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;color:var(--ink-900);overflow-x:auto;white-space:pre}
+.props{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:4px;font-size:13px;color:var(--ink-700)}
+.props code{font:600 12px ui-monospace,Menlo,monospace;color:var(--blue-700);background:var(--blue-100);padding:1px 6px;border-radius:6px}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ramp{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.ramp div{height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px oklch(0 0 0 / .08);display:flex;align-items:flex-end;padding:6px;font:600 10px ui-monospace,monospace;color:#fff;text-shadow:0 1px 0 oklch(0 0 0 / .5)}
+.tok{font:600 11px ui-monospace,Menlo,monospace;color:var(--ink-700)}
+.typo{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--cream-300)}
+.typo:last-child{border:0}
+.ss{display:flex;gap:14px;align-items:center;font-size:13px;color:var(--ink-700)}
+.ss i{display:block;height:12px;background:var(--blue-500);border-radius:3px}
+.phone{width:390px;height:844px;border:0;border-radius:36px;box-shadow:0 30px 60px oklch(0 0 0 / .35),0 0 0 8px var(--ink-900);background:var(--bg-meadow);flex:none}
+.flows{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.flows li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-700)}
+.flows b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--blue-500);color:#fff;font-family:var(--font-display);font-size:13px;box-shadow:0 2px 0 var(--blue-700);flex:none}
+.voice{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.voice .ex{font-size:18px;font-weight:700;color:var(--ink-900);margin-bottom:4px}
+.files{columns:2;column-gap:32px;font-size:13.5px;color:var(--ink-700)}
+.files li{break-inside:avoid;margin-bottom:6px}
+footer{padding:28px 48px 48px;font-size:12.5px;color:var(--ink-500);border-top:2px dashed var(--cream-300)}
+.mp-boot{display:flex;align-items:center;gap:10px;color:var(--ink-500);font-size:13px;font-weight:700}
+.mp-boot .bar{width:120px;height:14px;border-radius:999px;background:var(--cream-200);overflow:hidden;box-shadow:inset 0 2px 3px oklch(0 0 0 / .1)}
+.mp-boot .bar i{display:block;height:100%;width:50%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));animation:boot 1.4s var(--ease-out) infinite alternate}
+@keyframes boot{from{width:20%}to{width:90%}}
+.wcard{border-radius:var(--radius-lg);overflow:hidden;background:#fff;border:3px solid var(--cream-300);box-shadow:0 3px 0 var(--cream-300)}
+.wcard .wb{height:120px;background:var(--world-bg);position:relative}
+.wcard .wb i{position:absolute;left:14px;right:14px;bottom:12px;height:16px;border-radius:999px;background:var(--world-path);box-shadow:0 3px 0 var(--world-path-edge)}
+.wcard .wb b{position:absolute;top:12px;left:12px;height:30px;padding:0 12px;border-radius:9px;background:linear-gradient(180deg,var(--world-accent),var(--world-accent-shade));color:#fff;font:400 14px var(--font-display);display:grid;place-items:center;-webkit-text-stroke:.14em var(--world-stroke);paint-order:stroke fill;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 3px 0 var(--world-stroke)}
+.wcard .wm{padding:10px 12px;display:grid;gap:3px;font-size:13px;color:var(--ink-700)}
+.wcard .wm .tok{font-size:11px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.rules .card ul{margin:6px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink-700)}
+.rules .card li{margin-bottom:4px}
+.ok h4{color:var(--green-900)}.no h4{color:var(--coral-900)}
+.phone-col{width:100%;max-width:390px;padding:18px;border-radius:var(--radius-xl);background:var(--cream-100);border:4px solid var(--cream-300);box-shadow:var(--shadow-drop);display:grid;gap:16px;box-sizing:border-box}
+@media (max-width:980px){.shell{grid-template-columns:1fr}nav.side{position:static;height:auto;display:flex;flex-wrap:wrap;gap:2px;border-right:0;border-bottom:4px solid var(--wood-300);box-shadow:none}nav.side .grp{display:none}nav.side .brand{width:100%}.hero,section,footer{padding-left:22px;padding-right:22px}.typo{grid-template-columns:1fr}.files{columns:1}}
+</style></head>
+<body>
+<div class="shell">
+<nav class="side" aria-label="Sections">
+  <a class="brand" href="#top"><span class="mp-display mp-outline" style="font-size:26px;text-transform:uppercase;-webkit-text-stroke-color:var(--wood-900)">Lanre</span></a>
+  <div class="grp">Start</div>
+  <a href="#principles">Principles</a><a href="#screens">Live screens</a>
+  <div class="grp">Foundations</div>
+  <a href="#color">Color</a><a href="#type">Typography</a><a href="#space">Spacing & layout</a><a href="#effects">Depth & effects</a><a href="#motion">Motion</a><a href="#icons">Iconography</a>
+  <div class="grp">Adventure</div>
+  <a href="#worlds">Worlds</a><a href="#gems">Identity & gems</a><a href="#level">Mystery level</a><a href="#mapx">Map extras</a><a href="#match">Matching game</a><a href="#people">Your People</a><a href="#contrib">Contributor flow</a><a href="#quiz">Quiz & leaderboard</a><a href="#a11y">Access & privacy</a>
+  <div class="grp">Components</div>
+  <a href="#c-buttons">Buttons</a><a href="#c-hud">HUD</a><a href="#c-text">Outline text</a><a href="#c-panels">Panels</a><a href="#c-map">Map & board</a><a href="#c-rewards">Rewards & shop</a><a href="#c-forms">Forms</a><a href="#c-feedback">Feedback</a>
+  <div class="grp">Guidance</div>
+  <a href="#voice">Voice & content</a><a href="#files">Files & usage</a>
+</nav>
+<main id="top">
+  <header class="hero">
+    <span class="blob" style="left:-60px;top:-40px;width:260px;height:200px"></span>
+    <span class="blob" style="right:-40px;bottom:-70px;width:300px;height:230px;opacity:.9"></span>
+    <span class="blob" style="right:220px;top:20px;width:110px;height:90px;opacity:.8"></span>
+    <div style="position:relative">
+      <div class="mp-display mp-outline" style="font-size:clamp(44px,7vw,84px);text-transform:uppercase;line-height:.95">Lanre</div>
+      <div class="mp-display mp-outline" style="font-size:clamp(16px,2vw,22px);text-transform:uppercase;margin-top:6px;-webkit-text-stroke-color:var(--green-900)">Design system for Lanre’s Birthday Adventure</div>
+      <p>A tactile, painted UI language for a winding-road memory game: four themed worlds and a summit, mystery levels with mixed media, identity reveals, gemstones, side-of-road discoveries, plus the phone-first flow friends use to contribute. Everything pressable has a solid bottom edge; everything on the world wears an outline.</p>
+      <div class="facts"><span class="fact">38 components</span><span class="fact">5 worlds</span><span class="fact">3 gems × 3 tiers + pearl</span><span class="fact">iPad-first · phone-first contributors</span><span class="fact">160+ tokens</span></div>
+      <div class="row" style="margin-top:26px" id="hero-cta"></div>
+    </div>
+  </header>
+
+  <section id="principles">
+    <div class="sec-head"><span class="kicker">01</span><h2>Principles</h2></div>
+    <p class="lede">Four rules produce the look. Follow them and a screen reads as Lanre even before any art lands.</p>
+    <div class="grid g3">
+      <div class="card"><h4>Tactile</h4><p>Every pressable is a bevel: 300 highlight on top, 500 face, a hard 700 bottom edge, brown drop below. Pressing travels 4px down and collapses the edge. Tracks and cells are the inverse, inset wells.</p></div>
+      <div class="card"><h4>Outlined</h4><p>Text and glyphs that sit directly on the world carry a dark stroke painted behind the fill. Plain text lives only inside panels. The stroke tone matches the surface.</p></div>
+      <div class="card"><h4>Painted</h4><p>Saturated oklch ramps, warm brown ink, brown-tinted shadows, white rings on badges and tokens. No greys, no hairlines, no blur, no photos.</p></div>
+      <div class="card"><h4>Warm & brief</h4><p>The game talks to one player in short imperatives, CLAIM, PLAY, GO, and lets numbers do the talking: +500, 3/6, 00:02. No emoji, ever.</p></div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <div class="sec-head"><span class="kicker">02</span><h2>Live screens</h2></div>
+    <p class="lede">The UI kit is a working shell composed only from the components below. Play it: it is the fastest way to learn how the pieces sit together.</p>
+    <div class="row" style="align-items:flex-start;gap:36px">
+      <iframe class="phone" src="ui_kits/lanre-game/index.html" title="Lanre UI kit" loading="lazy"></iframe>
+      <div style="flex:1;min-width:260px;max-width:520px">
+        <h3 style="margin-top:0">Try these flows</h3>
+        <ul class="flows">
+          <li><b>1</b><span><strong>Map → level.</strong> Tap the pulsing blue puck (or the Level CTA) → Play → the ribbon Level Complete panel with popping stars; progress advances.</span></li>
+          <li><b>2</b><span><strong>Daily reward.</strong> Gift button top-right → wooden-sign panel → Claim advances the streak and fires a toast.</span></li>
+          <li><b>3</b><span><strong>Trail.</strong> GO rolls, the token bounces to the tile, energy/points update; reward and hazard tiles toast.</span></li>
+          <li><b>4</b><span><strong>Camp.</strong> Tap two matching items to merge; tap an item then an empty cell to move it.</span></li>
+          <li><b>5</b><span><strong>Shop &amp; settings.</strong> Coin/gem “+” opens the shop; the gear opens switches, sliders, language.</span></li>
+        </ul>
+        <h3>Layout rules</h3>
+        <p class="card" style="font-size:13.5px;color:var(--ink-700)">56px fixed HUD (level star + XP left, currency pills right, gear). World scrolls beneath. Side rails hold captioned square icon buttons. 88px wood bottom bar with 4 tabs. Panels centred, ≤340px, over a 55% scrim. One lg CTA per screen.</p>
+        <p style="margin-top:14px"><a href="ui_kits/lanre-game/index.html">Open full-screen ↗</a> · <a href="ui_kits/lanre-game/README.md">Kit notes</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="color">
+    <div class="sec-head"><span class="kicker">03</span><h2>Color</h2></div>
+    <p class="lede">Eight tones, each a five-step oklch ramp with one recipe everywhere: <strong>500 is the face, 300 the top highlight, 700 the bevel or side, 900 the outline</strong>. Locked or disabled things swap their whole tone for Stone.</p>
+    <div class="grid g2" id="ramps"></div>
+    <h3>Semantic aliases</h3>
+    <p class="lede">Components read aliases, not ramps, retint the game by remapping these in <code class="tok">tokens/colors.css</code>.</p>
+    <div class="grid g3" id="aliases"></div>
+    <h3>Environments & surfaces</h3>
+    <div class="grid g2">
+      <div><iframe class="spec" src="guidelines/colors-environments.html" style="height:170px" loading="lazy" title="Environments"></iframe><div class="speclabel">World backgrounds & scrim: CSS gradients until painted art lands</div></div>
+      <div><iframe class="spec" src="guidelines/colors-hud-surfaces.html" style="height:170px" loading="lazy" title="HUD surfaces"></iframe><div class="speclabel">Translucent HUD surfaces over the world</div></div>
+    </div>
+  </section>
+
+  <section id="type">
+    <div class="sec-head"><span class="kicker">04</span><h2>Typography</h2></div>
+    <p class="lede">Two faces. <strong>Titan One</strong> (display, one weight) for titles, numerals and button labels, always uppercase with +0.02em tracking. <strong>Quicksand</strong> 500–700 (UI) for rows, body and captions. Text on the world is outlined.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h4>Display scale</h4>
+        <div class="typo"><span class="tok">--text-display-xl · 44</span><span class="mp-display" style="font-size:44px;text-transform:uppercase">Daily Reward</span></div>
+        <div class="typo"><span class="tok">--text-display-lg · 32</span><span class="mp-display" style="font-size:32px;text-transform:uppercase">Level 23</span></div>
+        <div class="typo"><span class="tok">--text-display-md · 24</span><span class="mp-display" style="font-size:24px;text-transform:uppercase">Complete</span></div>
+        <div class="typo"><span class="tok">--text-display-sm · 18</span><span class="mp-display" style="font-size:18px;text-transform:uppercase">Claim</span></div>
+        <div class="typo"><span class="tok">--text-display-xs · 14</span><span class="mp-display" style="font-size:14px;text-transform:uppercase">Most popular</span></div>
+      </div>
+      <div class="card">
+        <h4>UI scale</h4>
+        <div class="typo"><span class="tok">--text-title · 20 / 700</span><span style="font-size:20px;font-weight:700">Warmful Valley</span></div>
+        <div class="typo"><span class="tok">--text-body-lg · 16 / 700</span><span style="font-size:16px;font-weight:700">Sound · Vibration · Language</span></div>
+        <div class="typo"><span class="tok">--text-body · 14 / 600</span><span style="font-size:14px;font-weight:600">You can still watch rewarded videos for bonus coins.</span></div>
+        <div class="typo"><span class="tok">--text-label · 12 / 700 caps</span><span class="mp-label">Score · Reward · One-time offer</span></div>
+        <div class="typo"><span class="tok">--text-caption · 11 / 600</span><span style="font-size:11px;font-weight:600;color:var(--ink-700)">Activity dates: Jun 22 – 30</span></div>
+      </div>
+    </div>
+    <h3>Outlined display</h3>
+    <div class="demo" style="gap:28px">
+      <span class="mp-display mp-outline" style="font-size:44px;text-transform:uppercase">Level 7</span>
+      <span class="mp-display mp-outline mp-outline-blue" style="font-size:44px">4</span>
+      <span class="mp-display mp-outline mp-outline-stone" style="font-size:44px">9</span>
+      <span class="mp-display mp-outline" style="font-size:24px;text-transform:uppercase">Quests</span>
+      <span class="mp-display mp-outline" style="font-size:14px;text-transform:uppercase;-webkit-text-stroke-width:.2em">Spin</span>
+    </div>
+    <pre class="code">.mp-outline { color: #fff; -webkit-text-stroke: var(--stroke-display) var(--text-outline); paint-order: stroke fill; text-shadow: 0 .12em 0 oklch(0 0 0 / .22); }
+/* stroke 0.16em, 0.20em under 20px · stroke tone follows the surface: ink on grass, blue/stone on pucks, wood on planks */</pre>
+    <h3>Numbers</h3>
+    <div class="card"><div class="typo"><span class="tok">currency</span><span class="mp-display" style="font-size:22px">50,253k &nbsp; 1.2M &nbsp; +500 &nbsp; 36 <span style="font:600 13px var(--font-ui);color:var(--ink-500)">- k / M suffix, comma groups</span></span></div>
+    <div class="typo"><span class="tok">score</span><span class="mp-display" style="font-size:22px">14 000 <span style="font:600 13px var(--font-ui);color:var(--ink-500)">- thin-space groups</span></span></div>
+    <div class="typo"><span class="tok">timer · progress</span><span class="mp-display" style="font-size:22px;font-variant-numeric:tabular-nums">00:02 &nbsp; 4h 12m &nbsp; 6/20 &nbsp; 75% <span style="font:600 13px var(--font-ui);color:var(--ink-500)">- tabular, mm:ss, n/max</span></span></div>
+    <div class="typo"><span class="tok">price</span><span class="mp-display" style="font-size:22px">USD 3.99 <span style="font:600 13px var(--font-ui);color:var(--ink-500)">- currency code, no symbol</span></span></div></div>
+  </section>
+
+  <section id="space">
+    <div class="sec-head"><span class="kicker">05</span><h2>Spacing & layout</h2></div>
+    <p class="lede">4px base. Touch targets never under 48px; the primary CTA is 60px. Inventory grids are 4 × 72px with 8px gaps; reward calendars are 3 columns.</p>
+    <div class="grid g2">
+      <div class="card"><h4>Space scale</h4><div id="spaces" style="display:grid;gap:6px;margin-top:8px"></div></div>
+      <div><iframe class="spec" src="guidelines/spacing-layout.html" style="height:300px" loading="lazy" title="Screen layout"></iframe><div class="speclabel">Screen anatomy: HUD, world, bottom bar, panel width</div></div>
+    </div>
+    <iframe class="spec" src="guidelines/spacing-sizes.html" style="height:200px;margin-top:14px" loading="lazy" title="Sizes"></iframe><div class="speclabel">Sizes: glyphs 20/28/40/64, pill 36, touch 48/60, puck 84, cell 72</div>
+  </section>
+
+  <section id="effects">
+    <div class="sec-head"><span class="kicker">06</span><h2>Depth & effects</h2></div>
+    <p class="lede">Depth is drawn, not blurred. Bevels for pressables, inset wells for tracks and cells, brown-tinted drops, glow rings for the tappable or rewarded thing. Corners are always rounded; pucks and blobs are ellipses.</p>
+    <div class="grid g2">
+      <div><iframe class="spec" src="guidelines/effects-bevel.html" style="height:190px" loading="lazy" title="Bevel"></iframe><div class="speclabel">Bevel & press: 3 / 5 / 7px edges, 4px travel</div></div>
+      <div><iframe class="spec" src="guidelines/effects-shadows.html" style="height:190px" loading="lazy" title="Shadows"></iframe><div class="speclabel">Shadows & glows: warm drops, tone rings</div></div>
+    </div>
+    <iframe class="spec" src="guidelines/effects-radii.html" style="height:170px;margin-top:14px" loading="lazy" title="Radii"></iframe><div class="speclabel">Radii: 6 tags · 10 badges/knobs · 16 buttons/cells · 22 rows/tabs · 28 panels · pill tracks</div>
+    <pre class="code">/* the bevel recipe */
+background: linear-gradient(180deg, var(--gold-300) 0%, var(--gold-500) 42%);
+box-shadow: 0 var(--bevel-md) 0 var(--gold-700),            /* hard bottom edge */
+            0 11px 14px oklch(0.2 0.04 60 / .25),          /* warm drop */
+            inset 0 2px 0 oklch(1 0 0 / .45);              /* top gloss */
+/* pressed: transform: translateY(4px); edge collapses to 1px; 120ms var(--ease-out). hover: filter: brightness(1.06) only */</pre>
+  </section>
+
+  <section id="motion">
+    <div class="sec-head"><span class="kicker">07</span><h2>Motion</h2></div>
+    <p class="lede">Arrivals bounce, presses ease out, claimable things float, the current thing pulses. Keyframes ship in <code class="tok">tokens/utilities.css</code>.</p>
+    <iframe class="spec" src="guidelines/effects-motion.html" style="height:190px" loading="lazy" title="Motion"></iframe>
+    <ul class="props">
+      <li><code>--ease-bounce</code> cubic-bezier(.34,1.56,.64,1) · <code>--dur-slow</code> 420ms: <code>mp-pop</code> for stars, toasts, panels</li>
+      <li><code>--ease-out</code> · <code>--dur-fast</code> 120ms: press travel, tab switches, <code>--dur-base</code> 220ms for toggles</li>
+      <li><code>mp-float</code> 2400ms: idle bob for available rewards · <code>mp-pulse-ring</code> 1600ms: current level, reachable tile · <code>mp-sparkle</code>, <code>mp-shimmer</code>, accents</li>
+      <li>Progress fills animate width over 420ms. No fade-only transitions, no parallax.</li>
+    </ul>
+  </section>
+
+  <section id="icons">
+    <div class="sec-head"><span class="kicker">08</span><h2>Iconography</h2></div>
+    <p class="lede"><strong>Phosphor Icons</strong> from CDN: FILL weight for pictorial glyphs, BOLD for utility strokes, wrapped by <code class="tok">GameIcon</code>, which adds tone, a dark outline behind the fill and a hard drop so every glyph reads like a sticker. Semantic <em>kinds</em> lock glyph and tone together so currencies look identical on every screen.</p>
+    <div class="demo" id="d-icons"></div>
+    <pre class="code">&lt;GameIcon kind="coin" size={32} /&gt;                       // gold coin
+&lt;GameIcon kind="gem" /&gt; &lt;GameIcon kind="heart" size={20} /&gt;  // blue gem · coral heart
+&lt;GameIcon name="anchor" tone="blue" size={40} /&gt;          // any Phosphor glyph
+&lt;GameIcon kind="gear" outline={false} shadow={false} /&gt;   // plain glyph inside a bevelled button</pre>
+    <ul class="props"><li>Sizes <code>20 / 28 / 40 / 56</code>. Inside buttons: white, no outline, no shadow.</li><li>Currency tones are fixed: coin gold · gem blue · ruby/heart coral · energy teal · gift berry · lock stone.</li><li>No emoji, no unicode glyphs, no stroke-only icons on the world. Painted PNG/SVG art can replace glyphs later without changing call sites.</li></ul>
+  </section>
+
+
+  <section id="worlds">
+    <div class="sec-head"><span class="kicker">09</span><h2>Worlds</h2></div>
+    <p class="lede">The road runs through four contributor worlds to the summit. Each world is a <code class="tok">data-world</code> scope in <code class="tok">tokens/worlds.css</code>: sky → ground gradient, an accent for signs and chips, a path colour, and the stroke tone for outlined text. Level numbering is continuous across worlds; uneven populations are fine and never padded.</p>
+    <div class="grid g3" id="worldcards"></div>
+    <h3>World chips (contributor theme picker)</h3>
+    <div class="demo cream" id="d-worldchips"></div>
+    <pre class="code">&lt;section data-world="japan" class="mp-world"&gt;…&lt;/section&gt;      /* everything inside reads --world-* */
+&lt;WorldChip world="small_chops" showBlurb selected={theme === 'small_chops'} onClick={…} /&gt;</pre>
+    <ul class="props"><li>Contributor prompts are inspiration, not categories; each package still gets exactly one world for placement. The summit is never a choice.</li><li>Scenery per world (painted art, in slots): mango orchard · rice, restaurants, stalls · green hills with workout details · lanterns, gardens, distant mountain · golden hour above the clouds.</li></ul>
+  </section>
+
+  <section id="gems">
+    <div class="sec-head"><span class="kicker">10</span><h2>Identity & gems</h2></div>
+    <p class="lede"><code class="tok">Gemstone</code>, <code class="tok">Avatar</code>, <code class="tok">RevealCard</code>. Quiz scores map to a stone: 0–2 Amber, 3–5 Emerald, 6–8 Amethyst (tier I / II / III within each), quiz skipped → Pearl keepsake, unranked. Cut and name accompany colour, so the stone never relies on colour alone.</p>
+    <div class="demo cream" id="d-gems"></div>
+    <h3>Avatars</h3>
+    <div class="demo" id="d-avatars"></div>
+    <pre class="code">const { gem, tier } = gemForScore(score);     // null → { gem: 'pearl', tier: 0 }
+&lt;Gemstone gem={gem} tier={tier} size={64} /&gt;                     // Babe: stone only
+&lt;Gemstone gem={gem} tier={tier} size={84} showTier /&gt;            // friends: "Emerald II"
+&lt;Avatar name="Ada Okafor" seed={contributor.id} src={portrait} /&gt;  &lt;Avatar mystery /&gt;</pre>
+    <div class="rules">
+      <div class="card ok"><h4>Babe's reveal card shows</h4><ul><li>Portrait or generated avatar, name Lanre knows, relationship</li><li>The gemstone as a picture (tap to learn what gems are)</li><li>The rest of the package after the reveal</li></ul></div>
+      <div class="card no"><h4>Never on Babe's surfaces</h4><ul><li>Score, rank or tier text, anywhere, including Your People</li><li>Leaderboard, "who loves her most" framing, crowns</li><li>Any identifying data for people not yet revealed</li></ul></div>
+    </div>
+  </section>
+
+  <section id="level">
+    <div class="sec-head"><span class="kicker">11</span><h2>Mystery level</h2></div>
+    <p class="lede">The core loop, composed from the kit: <code class="tok">PackageStepper</code> walks the package in the contributor's order; <code class="tok">MemoryText</code>, <code class="tok">PhotoStack</code>, <code class="tok">AudioPlayer</code>, <code class="tok">VideoFrame</code> show it; <code class="tok">ChoiceButton</code>s ask who sent it (up to three real names); <code class="tok">RevealCard</code> flips; an explicit Continue completes the level. Nothing auto-advances and affection is never gated behind a right answer.</p>
+    <div class="demo cream col" id="d-level" style="padding:24px"></div>
+    <pre class="code">// one level, one persisted interaction: 'guess' | 'match' | 'direct'
+&lt;PackageStepper items={pkg.items} current={i} seen={seen} onSelect={setI} /&gt;
+{item.type === 'text'  &amp;&amp; &lt;MemoryText&gt;&lt;p&gt;{item.text}&lt;/p&gt;&lt;/MemoryText&gt;}
+{item.type === 'photo' &amp;&amp; &lt;PhotoStack photos={item.photos} /&gt;}
+{item.type === 'audio' &amp;&amp; &lt;AudioPlayer src={item.url} title="Voice note" /&gt;}
+{options.map((o, k) =&gt; &lt;ChoiceButton index={k} state={stateFor(o)} onClick={() =&gt; guess(o)}&gt;{o.name}&lt;/ChoiceButton&gt;)}
+&lt;Button variant="ghost" typeface="ui"&gt;Just tell me&lt;/Button&gt;
+&lt;RevealCard revealed={revealed} {...sender} /&gt;   &lt;Button variant="confirm" size="lg"&gt;Continue&lt;/Button&gt;</pre>
+    <h3>Media pieces</h3>
+    <div class="demo cream" id="d-media" style="align-items:flex-start"></div>
+    <ul class="props"><li>Media titles are neutral ("Voice note", "Photo 2"); filenames never reach Babe's payload. Text is verbatim, 20px on iPad, ≤ 640px column.</li><li>Wrong guess → that option turns coral with ×, the rest stay live, retry and "Just tell me" remain. Correct → green with ✓, others dim, reveal flips.</li><li>Self-revealing media (face, spoken name) skips the guess: matching game or direct reveal, chosen once and persisted.</li><li>Completed levels stay replayable; refresh mid-level restores position.</li></ul>
+  </section>
+
+  <section id="mapx">
+    <div class="sec-head"><span class="kicker">12</span><h2>Map extras</h2></div>
+    <p class="lede"><code class="tok">WorldGate</code> signposts each world boundary (with Henry's authored note when there is one) and locks the summit until the main path is done. <code class="tok">DiscoveryMarker</code>s sit beside the road as thematic objects, optional, never required, and "New surprise" when a late submission arrives after the route was frozen.</p>
+    <div class="demo dusk" id="d-gates" style="align-items:flex-start;gap:28px"></div>
+    <div class="demo" id="d-discover" style="margin-top:14px;align-items:flex-end;gap:22px"></div>
+    <pre class="code">&lt;WorldGate world="good_energy" levels="Levels 12–16" note={henry.notes.good_energy} /&gt;
+&lt;WorldGate world="summit" locked={!mainPathComplete} /&gt;
+&lt;DiscoveryMarker kind="dumbbell" state={found ? 'opened' : late ? 'new' : hidden ? 'hidden' : 'available'} onClick={open} /&gt;</pre>
+    <ul class="props"><li>The route is frozen at first start: later packages and people appear as discoveries, never as new numbered levels.</li><li>Use the base <code class="tok">LevelNode</code> for numbered levels (blue current with pulse; complete keeps stars off: this game has no star scores, so pass <code>stars={0}</code> or hide the row).</li></ul>
+  </section>
+
+  <section id="match">
+    <div class="sec-head"><span class="kicker">13</span><h2>Matching game</h2></div>
+    <p class="lede"><code class="tok">MatchCard</code>, a brief, skippable pairs game for levels whose media already gives the sender away. Symbols come from Lanre's world: mango, rice bowl, flower, dumbbell, lantern.</p>
+    <div class="demo" id="d-match" style="align-items:flex-start;gap:28px"></div>
+    <ul class="props"><li>3 pairs on phones, 4 on iPad. Skip is always visible; finishing is a flourish, not a requirement.</li><li>Pick the interaction per level once and persist it, never re-roll on render.</li></ul>
+  </section>
+
+  <section id="people">
+    <div class="sec-head"><span class="kicker">14</span><h2>Your People</h2></div>
+    <p class="lede"><code class="tok">PersonTile</code> builds the collection: ranked people ordered by quiz result but shown as gems, not numbers; unrevealed people are neutral mystery entries; late arrivals wait as "New" until their discovery reveal.</p>
+    <div class="demo" id="d-people" style="align-items:stretch"></div>
+    <ul class="props"><li>At main-path completion all main-path people are revealed; discovery people still need their own reveal.</li><li>Grid: 3 per row on phones, 5–6 on iPad; the world background shows through mystery tiles.</li></ul>
+  </section>
+
+  <section id="contrib">
+    <div class="sec-head"><span class="kicker">15</span><h2>Contributor flow</h2></div>
+    <p class="lede">Phone-first, no account. <code class="tok">StepBar</code> → <code class="tok">TextField</code>s → composer with <code class="tok">UploadTile</code>s in the order Babe will see → <code class="tok">WorldChip</code> theme → <code class="tok">RadioCard</code> identity suitability → preview → submit → optional quiz. Save/resume via a private edit link; no duplicates on return.</p>
+    <div class="demo sky" id="d-contrib" style="align-items:flex-start;gap:24px"></div>
+    <pre class="code">&lt;StepBar steps={['You', 'Memory', 'Theme', 'Preview', 'Submit']} current={step} onSelect={goTo} compact /&gt;
+&lt;UploadTile type="video" state="uploading" progress={p} onRemove={cancel} /&gt;   &lt;UploadTile type="photo" state="error" onRetry={retry} /&gt;
+&lt;RadioCard checked={!reveals} title="Keeps me a mystery" description="No face, name or voice in here." … /&gt;</pre>
+    <ul class="props"><li>Say plainly that this is a surprise and that the content will be shown to Lanre; show what stays anonymous vs. what is revealed (name, relationship, portrait only after the reveal).</li><li>Never promise automatic anonymisation. A failed upload blocks submission until fixed or removed. One package per contributor is marked as the main-path memory; others become discoveries.</li></ul>
+  </section>
+
+  <section id="quiz">
+    <div class="sec-head"><span class="kicker">16</span><h2>Quiz & leaderboard</h2></div>
+    <p class="lede">Friends only. Eight multiple-choice questions (<code class="tok">ChoiceButton</code>), one point each, no timer; the first completed attempt is the ranked result. <code class="tok">LeaderboardRow</code> shows rank (ties share), gem + tier and score; skipped players hold a pearl and sit unranked, never as 0/8.</p>
+    <div class="demo cream" id="d-quiz" style="align-items:flex-start;gap:24px"></div>
+    <ul class="props"><li>Henry verifies every question and answer before publishing; the system holds no invented facts (fixtures here are labelled).</li><li>Copy celebrates participation: "Thanks for being part of this", never "You know her best".</li></ul>
+  </section>
+
+  <section id="a11y">
+    <div class="sec-head"><span class="kicker">17</span><h2>Access & privacy</h2></div>
+    <p class="lede">Requirements the brief makes explicit, baked into tokens and components: large targets, readable text, colour-independent states, reduced motion, sound control, keyboard basics, and a strict line on what a mystery may show.</p>
+    <div class="grid g2">
+      <div><iframe class="spec" src="guidelines/a11y.html" style="height:240px" loading="lazy" title="Accessibility"></iframe><div class="speclabel">Accessibility checklist</div></div>
+      <div><iframe class="spec" src="guidelines/brand-anonymity.html" style="height:240px" loading="lazy" title="Anonymity rules"></iframe><div class="speclabel">Anonymity rules for mystery surfaces</div></div>
+    </div>
+    <iframe class="spec" src="guidelines/spacing-ipad.html" style="height:300px;margin-top:14px" loading="lazy" title="iPad layout"></iframe><div class="speclabel">iPad-first layout: proposed defaults, orientation still open</div>
+    <h3>Deliberate start &amp; sound</h3>
+    <div class="demo dusk" id="d-a11y" style="align-items:flex-start;gap:28px"></div>
+    <pre class="code">/* tokens/utilities.css */
+:focus-visible { outline: 4px solid var(--gold-300); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+&lt;SoundToggle on={sound} onChange={setSound} /&gt;   /* nothing plays before the Ready tap */</pre>
+  </section>
+
+  <section id="c-buttons">
+    <div class="sec-head"><span class="kicker">18</span><h2>Buttons</h2></div>
+    <p class="lede"><code class="tok">Button</code> and <code class="tok">IconButton</code>. Gold primary with dark text is the default CTA; blue plays, teal confirms, coral cancels/closes, berry sells premium. One lg button per screen.</p>
+    <div class="demo col" id="d-buttons"></div>
+    <pre class="code">&lt;Button variant="primary" size="lg" block&gt;Claim&lt;/Button&gt;
+&lt;Button variant="play" icon={&lt;GameIcon kind="play" outline={false} shadow={false} size={20} /&gt;}&gt;Level 22&lt;/Button&gt;
+&lt;Button variant="confirm"&gt;OK&lt;/Button&gt;   &lt;Button variant="premium" pill typeface="ui" trailing={&lt;span&gt;USD 3.99&lt;/span&gt;}&gt;3,000 coins&lt;/Button&gt;
+&lt;IconButton variant="danger" size="sm"&gt;&lt;i className="ph-bold ph-x" /&gt;&lt;/IconButton&gt;
+&lt;IconButton variant="play" shape="square" label="Quests" badge={3}&gt;&lt;GameIcon kind="quest" tone="white" outline={false} shadow={false} /&gt;&lt;/IconButton&gt;</pre>
+    <ul class="props"><li><code>variant</code> primary · play · confirm · danger · premium · wood · ghost · locked &nbsp; <code>size</code> sm 36 · md 48 · lg 60 &nbsp; <code>typeface</code> display (caps) · ui (sentence case) &nbsp; <code>pill</code> <code>block</code> <code>icon</code> <code>trailing</code> <code>disabled</code></li><li>IconButton adds <code>shape</code> circle · square, <code>badge</code> (true → “!”, number → count) and <code>label</code> (outlined caption below, also the aria-label).</li></ul>
+  </section>
+
+  <section id="c-hud">
+    <div class="sec-head"><span class="kicker">19</span><h2>HUD</h2></div>
+    <p class="lede"><code class="tok">CurrencyPill</code>, <code class="tok">ProgressBar</code>, <code class="tok">TimerChip</code>, the dark inset kit that sits over the world. Two or three pills max in the top strip, right-aligned; glyphs overlap the left edge.</p>
+    <div class="demo col" id="d-hud"></div>
+    <pre class="code">&lt;CurrencyPill kind="coin" value="50,253k" onAdd={openShop} /&gt;   &lt;CurrencyPill kind="heart" value="5/5" size="sm" /&gt;
+&lt;ProgressBar value={6} max={20} tone="green" size="lg" label="6/20" cap={&lt;GameIcon kind="star" size={36} /&gt;} /&gt;
+&lt;ProgressBar value={0.65} tone="teal" track="light" label="Loading…" /&gt;     &lt;TimerChip time="00:09" urgent /&gt;</pre>
+    <ul class="props"><li>CurrencyPill <code>kind</code> coin · gem · ruby · heart · energy · star · key, <code>tone</code> dark (over world) · light (in panels), <code>onAdd</code> renders the teal “+”.</li><li>ProgressBar <code>tone</code> gold · blue · teal · green · coral · berry, <code>size</code> sm 14 · md 22 · lg 30, <code>striped</code>, <code>cap</code>, <code>label</code>, <code>track</code> dark · light. Width animates on change.</li><li>TimerChip <code>time</code> pre-formatted, <code>urgent</code> turns coral and floats.</li></ul>
+  </section>
+
+  <section id="c-text">
+    <div class="sec-head"><span class="kicker">20</span><h2>Outline text</h2></div>
+    <p class="lede"><code class="tok">OutlineText</code>, the display face with the stroke-behind-fill treatment, for anything written directly on grass, wood or a puck. One to three words.</p>
+    <div class="demo" id="d-text" style="gap:26px"></div>
+    <pre class="code">&lt;OutlineText size="xl"&gt;Daily Reward&lt;/OutlineText&gt;   &lt;OutlineText size={40} stroke="blue"&gt;7&lt;/OutlineText&gt;
+&lt;OutlineText size="xs" stroke="stone"&gt;Locked&lt;/OutlineText&gt;   &lt;OutlineText size="lg" color="gold" stroke="gold"&gt;x2 Boost&lt;/OutlineText&gt;</pre>
+    <ul class="props"><li><code>size</code> xl 44 · lg 32 · md 24 · sm 18 · xs 14 or a px number &nbsp; <code>color</code> white · gold · cream · blue · green &nbsp; <code>stroke</code> ink · stone · blue · gold · green · coral · berry · wood &nbsp; <code>uppercase</code> <code>shadow</code> <code>as</code></li></ul>
+  </section>
+
+  <section id="c-panels">
+    <div class="sec-head"><span class="kicker">21</span><h2>Panels</h2></div>
+    <p class="lede"><code class="tok">Panel</code> is every modal. Every header is a chunky plate that straddles the panel's top edge, with outlined display type. Pick it by mood: <strong>banner</strong> for utility and level dialogs (blue; <code class="tok">accent="teal"</code> in Babe's flow), <strong>ribbon</strong>, gold with folded tails and stars, for celebration, <strong>sign</strong>, a wooden plank with leaves, for world events and the daily reward. Tones: cream, wood, sky. Primary action goes in <code class="tok">footer</code>.</p>
+    <div class="demo dusk" id="d-panels" style="gap:36px;align-items:flex-start;padding:48px 28px 34px"></div>
+    <pre class="code">&lt;Panel title="Settings" onClose={close}&gt;…rows…&lt;/Panel&gt;
+&lt;Panel title="Complete" eyebrow="Level 23" header="ribbon" footer={&lt;Button variant="confirm" size="lg"&gt;OK&lt;/Button&gt;}&gt;…&lt;/Panel&gt;
+&lt;Panel title="Daily Reward" header="sign" tone="wood" footer={&lt;Button size="lg"&gt;Claim&lt;/Button&gt;}&gt;…&lt;/Panel&gt;
+&lt;Panel title="Who sent this?" accent="teal" footer={&lt;Button variant="confirm" size="lg"&gt;Continue&lt;/Button&gt;}&gt;…&lt;/Panel&gt;</pre>
+    <ul class="props"><li><code>header</code> banner · ribbon · sign · none &nbsp; <code>accent</code> blue · gold · teal · green · berry · coral &nbsp; <code>tone</code> cream · wood · sky &nbsp; <code>title</code> <code>eyebrow</code> <code>onClose</code> (coral × on the corner) <code>width</code> 340 <code>padding</code> 20 <code>footer</code></li><li>Always centre a Panel inside a fixed scrim (<code>--bg-scrim</code>); one panel per screen.</li></ul>
+  </section>
+
+  <section id="c-map">
+    <div class="sec-head"><span class="kicker">22</span><h2>Map & board</h2></div>
+    <p class="lede"><code class="tok">LevelNode</code> pucks for the trail, <code class="tok">StarRating</code> for results, <code class="tok">Tile</code> for board and grid events. One current puck per map; locked pucks ignore taps; keep 24px of grass between pucks.</p>
+    <div class="demo col" id="d-map"></div>
+    <pre class="code">&lt;LevelNode number={1} state="complete" stars={3} onClick={open} /&gt;  &lt;LevelNode number={4} state="current" /&gt;  &lt;LevelNode number={5} state="locked" /&gt;
+&lt;StarRating value={3} size={44} arc animate /&gt;
+&lt;Tile variant="reward" content={&lt;GameIcon kind="coin" size={30} /&gt;} active onClick={pick} label="Coin tile" /&gt;</pre>
+    <ul class="props"><li>LevelNode <code>state</code> locked · current · complete, <code>stars</code> 0–3, <code>size</code> 84. &nbsp; StarRating <code>value</code>/<code>max</code> 3, <code>arc</code>, <code>animate</code>.</li><li>Tile <code>variant</code> grass · sand · stone · water · reward · hazard · start, <code>content</code>, <code>active</code> (gold glow), <code>onClick</code>. Lay tiles in a grid with 6–8px gaps so the sides read.</li></ul>
+  </section>
+
+  <section id="c-rewards">
+    <div class="sec-head"><span class="kicker">23</span><h2>Rewards & shop</h2></div>
+    <p class="lede"><code class="tok">RewardCard</code> for streak calendars and prize tracks, <code class="tok">ItemCell</code> for inventory and merge grids, <code class="tok">ShopRow</code> for purchasables (first row featured).</p>
+    <div class="demo col" id="d-rewards"></div>
+    <pre class="code">&lt;RewardCard title="Day 3" icon={&lt;GameIcon kind="gift" size={40} /&gt;} state="available" onClick={claim} /&gt;
+&lt;RewardCard title="Day 7" featured icon={&lt;GameIcon kind="heart" size={44} /&gt;} amount="+50" state="locked" /&gt;
+&lt;ItemCell state="filled" content={&lt;GameIcon kind="egg" size={44} /&gt;} count={1} selected onClick={select} /&gt;
+&lt;ShopRow tone="featured" icon={&lt;GameIcon kind="coins" size={48} /&gt;} title="3,000 coins" subtitle="One-time offer" price="USD 3.99" tag={&lt;Tag tone="gold"&gt;3x the value&lt;/Tag&gt;} /&gt;</pre>
+    <ul class="props"><li>RewardCard <code>state</code> claimed · available · locked, <code>featured</code> (wide blue banner). &nbsp; ItemCell <code>state</code> empty · filled · locked · add, <code>count</code>, <code>selected</code>, <code>dim</code>.</li><li>ShopRow <code>tone</code> default · featured, <code>price</code> renders the buy button, <code>tag</code> sits on the top-right edge, <code>action</code> replaces the button.</li></ul>
+  </section>
+
+  <section id="c-forms">
+    <div class="sec-head"><span class="kicker">24</span><h2>Forms</h2></div>
+    <p class="lede"><code class="tok">Switch</code> and <code class="tok">Slider</code>, the only inputs a casual game needs. Pair each with a GameIcon and a 16px bold label on the left; group rows in a white inset card inside the Settings panel.</p>
+    <div class="demo sky" id="d-forms" style="gap:24px;align-items:flex-start"></div>
+    <pre class="code">&lt;Switch checked={sound} onChange={setSound} label="Sound" /&gt;   &lt;Switch checked tone="blue" size="sm" /&gt;
+&lt;Slider value={music} onChange={setMusic} icon={&lt;GameIcon kind="music" /&gt;} label="Music" width="100%" /&gt;</pre>
+    <ul class="props"><li>Switch <code>tone</code> teal · blue · gold · green · berry, <code>size</code> sm · md, <code>disabled</code>. &nbsp; Slider <code>min/max/step</code>, <code>tone</code>, <code>icon</code>, <code>width</code>; wraps a native range input.</li></ul>
+  </section>
+
+  <section id="c-feedback">
+    <div class="sec-head"><span class="kicker">25</span><h2>Feedback</h2></div>
+    <p class="lede"><code class="tok">Badge</code> pins a “!” or count to a corner, <code class="tok">Tag</code> labels merchandise and state, <code class="tok">Toast</code> confirms a pickup without a dialog (auto-dismiss ≈1.7s, anchored away from the thing just tapped).</p>
+    <div class="demo col" id="d-feedback"></div>
+    <pre class="code">&lt;Badge count={3} style={{ position: 'absolute', top: -6, right: -6 }} /&gt;   &lt;Badge /&gt;   &lt;Badge count="NEW" tone="gold" size="sm" /&gt;
+&lt;Tag&gt;Most popular&lt;/Tag&gt;  &lt;Tag tone="teal"&gt;3x the value&lt;/Tag&gt;  &lt;Tag tone="stone" icon={&lt;i className="ph-fill ph-lock" /&gt;}&gt;Locked&lt;/Tag&gt;
+&lt;Toast icon={&lt;GameIcon kind="coin" size={32} /&gt;} message="+50" detail="Coins collected" /&gt;</pre>
+    <ul class="props"><li>Tag tones by meaning: coral scarcity · teal/green value · gold new · berry premium · stone locked · blue limited · wood event.</li><li>Toast <code>tone</code> colours the headline; <code>visible</code> false renders nothing.</li></ul>
+  </section>
+
+  <section id="voice">
+    <div class="sec-head"><span class="kicker">26</span><h2>Voice & content</h2></div>
+    <p class="lede">Short, warm, imperative, second person. Display caps for actions and titles; sentence case for everything else; numbers instead of descriptions.</p>
+    <div class="voice">
+      <div class="card"><div class="ex mp-display" style="font-weight:400;font-size:20px">CLAIM · OK · PLAY · SPIN · GO</div><p>Actions: one word, display caps. Never “Click here”, “Submit”, “Continue”.</p></div>
+      <div class="card"><div class="ex mp-display" style="font-weight:400;font-size:20px">LEVEL 23 · DAILY REWARD · x2 BOOST</div><p>Titles: noun phrases, ≤ 3 words. Numbers stay numerals.</p></div>
+      <div class="card"><div class="ex">Pick your daily gift!</div><p>Prompts: second person, sentence case, one exclamation mark per screen at most.</p></div>
+      <div class="card"><div class="ex">+500 &nbsp;·&nbsp; 3/6 &nbsp;·&nbsp; 00:02</div><p>Show the delta, the fraction, the countdown, don’t describe them.</p></div>
+      <div class="card"><div class="ex" style="font-size:14px;font-weight:600;color:var(--ink-700)">You will still be able to watch rewarded videos.</div><p>Fine print: plain sentences, 12–14px, muted ink.</p></div>
+      <div class="card"><div class="ex">Warmful Valley · Day 3 · Level 22</div><p>Places and progress are proper nouns. No emoji anywhere; glyphs are GameIcons.</p></div>
+    </div>
+  </section>
+
+  <section id="files">
+    <div class="sec-head"><span class="kicker">27</span><h2>Files & usage</h2></div>
+    <p class="lede">Link <code class="tok">styles.css</code> for tokens, fonts and icons; mount components from the compiled bundle or, before it exists, through <code class="tok">tools/ds-loader.js</code>. Full written guide in <a href="readme.md">readme.md</a>.</p>
+    <pre class="code">&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;script src="tools/ds-loader.js" data-root="." data-components="buttons/Button,hud/CurrencyPill,icons/GameIcon"&gt;&lt;/script&gt;
+&lt;script type="text/babel"&gt;
+  MPReady.then(({ Button, CurrencyPill, GameIcon }) =&gt; ReactDOM.createRoot(root).render(&lt;Button size="lg"&gt;Claim&lt;/Button&gt;));
+&lt;/script&gt;</pre>
+    <ul class="files" style="margin-top:16px">
+      <li><a href="readme.md">readme.md</a>, design guide: context, content fundamentals, visual foundations, iconography, index, caveats</li>
+      <li><a href="SKILL.md">SKILL.md</a>, agent skill wrapper with the non-negotiables</li>
+      <li><a href="styles.css">styles.css</a> → <a href="tokens/colors.css">tokens/colors.css</a>, <a href="tokens/typography.css">typography.css</a>, <a href="tokens/spacing.css">spacing.css</a>, <a href="tokens/effects.css">effects.css</a>, <a href="tokens/fonts.css">fonts.css</a>, <a href="tokens/icons.css">icons.css</a>, <a href="tokens/utilities.css">utilities.css</a></li>
+      <li><strong>components/</strong>, 38 primitives, each <code class="tok">Name.jsx</code> + <code class="tok">Name.d.ts</code> (props contract) + <code class="tok">Name.prompt.md</code> (usage); one <code class="tok">*.card.html</code> preview per group. Adventure groups: <code class="tok">identity/</code> <code class="tok">levels/</code> <code class="tok">media/</code> <code class="tok">games/</code> <code class="tok">contributor/</code> <code class="tok">quiz/</code> + <code class="tok">map/WorldGate</code>, <code class="tok">map/DiscoveryMarker</code>, <code class="tok">map/worlds.js</code></li>
+      <li><a href="tokens/worlds.css">tokens/worlds.css</a> · <a href="tokens/gems.css">tokens/gems.css</a>, world scopes and gem tones; iPad/phone layout tokens in spacing.css</li>
+      <li><a href="uploads/BUILD-BRIEF.md">uploads/BUILD-BRIEF.md</a>, the shared build brief this layer answers (ownership, worlds, interaction spec, acceptance)</li>
+      <li><strong>guidelines/</strong>, 24 specimen cards (Colors, Type, Spacing, Effects, Brand) rendered in the Design System tab</li>
+      <li><a href="ui_kits/lanre-game/index.html">ui_kits/lanre-game/</a>, interactive game shell (App, Hud, MapScreen, BoardScreen, CampScreen, Dialogs) + README</li>
+      <li><a href="assets/README.md">assets/</a>, empty by design: no logo or art was provided; slots are reserved</li>
+      <li><strong>Caveats</strong>, fonts (Titan One, Quicksand) and icons (Phosphor) load from CDN as stand-ins for bespoke faces and painted art; isometric boards are not modelled</li>
+    </ul>
+  </section>
+  <footer>Lanre · synthesised from nine reference screenshots (mood only) and the Lanre’s Birthday Adventure build brief. All names in demos are fictional fixtures; no quiz facts, letter text or narrator copy are supplied here. Set the file type to <strong>Design System</strong> in the Share menu so your org can browse it.</footer>
+</main>
+</div>
+
+<script>
+// Static foundations built from the live tokens
+(function () {
+  const tones = [['green', 'Meadow: environment'], ['blue', 'Sky: action & current'], ['gold', 'Gold: reward & primary CTA'], ['coral', 'Coral: danger, hearts, close'], ['teal', 'Teal: confirm & value'], ['berry', 'Berry: premium & hazards'], ['wood', 'Wood: frames & bars'], ['stone', 'Stone: locked & disabled']];
+  document.getElementById('ramps').innerHTML = tones.map(([t, label]) => `<div class="card"><h4>${label}</h4><div class="ramp">${[100, 300, 500, 700, 900].map(s => `<div style="background:var(--${t}-${s})">${s}</div>`).join('')}</div><div class="tok" style="margin-top:6px">--${t}-100 … --${t}-900</div></div>`).join('') +
+    `<div class="card"><h4>Parchment & ink</h4><div class="ramp" style="grid-template-columns:repeat(7,1fr)">${['cream-50', 'cream-100', 'cream-200', 'cream-300'].map(s => `<div style="background:var(--${s});color:var(--ink-700);text-shadow:none">${s.split('-')[1]}</div>`).join('')}${['ink-500', 'ink-700', 'ink-900'].map(s => `<div style="background:var(--${s})">${s.split('-')[1]}</div>`).join('')}</div><div class="tok" style="margin-top:6px">panel surfaces · warm brown text (never black)</div></div>`;
+  const aliases = [['--action-primary', 'gold CTA'], ['--action-play', 'play / current'], ['--action-confirm', 'OK'], ['--action-danger', 'cancel / close'], ['--action-premium', 'premium'], ['--state-locked', 'locked'], ['--state-current', 'current'], ['--state-complete', 'complete'], ['--currency-coin', 'coin'], ['--currency-gem', 'gem'], ['--currency-heart', 'heart'], ['--currency-energy', 'energy'], ['--star-fill', 'star'], ['--star-empty', 'empty star'], ['--surface-panel', 'panel'], ['--surface-inset', 'inset well'], ['--text-primary', 'text'], ['--text-muted', 'muted text']];
+  document.getElementById('aliases').innerHTML = aliases.map(([t, u]) => `<div style="display:flex;gap:10px;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:var(${t});box-shadow:inset 0 0 0 1px oklch(0 0 0 / .1);flex:none"></span><span><div class="tok">${t}</div><div style="font-size:12px;color:var(--ink-500)">${u}</div></span></div>`).join('');
+  document.getElementById('spaces').innerHTML = [1, 2, 3, 4, 5, 6, 8, 10, 12, 16].map(n => `<div class="ss"><span class="tok" style="width:86px">--space-${n}</span><i style="width:${n * 4}px"></i><span>${n * 4}px</span></div>`).join('');
+  const worlds = [['mango_grove', 'Mango Grove', 'First impressions, meeting, early memories', 'Sunny mango orchard'], ['small_chops', 'Small Chops, Big Gist', 'Funny stories, inside jokes, outings', 'Restaurants, rice, lively stalls'], ['good_energy', 'The Good Energy Hills', 'Appreciation, support, showing up', 'Green hills, gentle workout details'], ['japan', 'Someday in Japan', 'Wishes, future adventures, hopes', 'Lanterns, gardens, distant mountain'], ['summit', 'The Summit', 'Henry’s letter, not a contributor category', 'Golden hour above the clouds']];
+  document.getElementById('worldcards').innerHTML = worlds.map(([id, name, blurb, scen]) => '<div class="wcard" data-world="' + id + '"><div class="wb"><b>' + name + '</b><i></i></div><div class="wm"><div class="tok">[data-world="' + id + '"]</div><span>' + blurb + '</span><span style="color:var(--ink-500);font-size:12px">' + scen + '</span></div></div>').join('');
+  document.querySelectorAll('.demo').forEach(d => { if (!d.children.length) d.innerHTML = '<div class="mp-boot"><span class="bar"><i></i></span>Loading components…</div>'; });
+})();
+</script>
+<script type="text/babel">
+MPReady.then((C) => {
+  const { Button, IconButton, CurrencyPill, ProgressBar, TimerChip, Panel, LevelNode, StarRating, Tile, RewardCard, ItemCell, ShopRow, Switch, Slider, Badge, Tag, Toast, OutlineText, GameIcon,
+    Gemstone, gemForScore, Avatar, RevealCard, PersonTile, LeaderboardRow, ChoiceButton, PackageStepper, MemoryText, AudioPlayer, VideoFrame, PhotoStack, DiscoveryMarker, WorldGate, MatchCard, UploadTile, TextField, StepBar, WorldChip, RadioCard, SoundToggle } = C;
+  const mount = (id, el) => { const n = document.getElementById(id); n.innerHTML = ''; ReactDOM.createRoot(n).render(el); };
+  const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+  const noop = () => {};
+
+  mount('hero-cta', <>
+    <Button variant="play" size="lg" icon={<GameIcon kind="play" size={22} outline={false} shadow={false} />} onClick={() => { location.hash = 'screens'; }}>Play the kit</Button>
+    <Button variant="ghost" size="md" typeface="ui" onClick={() => { location.hash = 'c-buttons'; }}>Browse components</Button>
+  </>);
+
+  mount('d-icons', <Row gap={12}>{['coin', 'coins', 'gem', 'ruby', 'heart', 'star', 'energy', 'key', 'gift', 'chest', 'trophy', 'crown', 'lock', 'ticket', 'egg', 'map', 'compass', 'flag', 'leaf', 'tent', 'boat', 'mountains', 'footprints', 'shop', 'quest', 'bell', 'fire', 'sparkle'].map(k => <span key={k} title={k} style={{ display: 'grid', justifyItems: 'center', gap: 4 }}><GameIcon kind={k} size={36} /><span style={{ font: '600 10px ui-monospace, monospace', color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / .5)' }}>{k}</span></span>)}</Row>);
+
+  mount('d-buttons', <>
+    <Row>{['primary', 'play', 'confirm', 'danger', 'premium', 'wood', 'ghost'].map(v => <Button key={v} variant={v}>{v}</Button>)}<Button disabled>Locked</Button></Row>
+    <Row><Button size="sm" variant="confirm">OK</Button><Button variant="play" icon={<GameIcon kind="play" size={20} outline={false} shadow={false} />} typeface="ui">Level 22</Button><Button size="lg">Claim</Button><Button variant="premium" pill typeface="ui" trailing={<span style={{ opacity: .85 }}>USD 3.99</span>}>3,000 coins</Button></Row>
+    <Row align="flex-start"><IconButton variant="danger" size="sm"><i className="ph-bold ph-x" /></IconButton><IconButton variant="ghost"><i className="ph-fill ph-gear" /></IconButton><IconButton variant="confirm"><i className="ph-bold ph-plus" /></IconButton><IconButton variant="play" size="lg" badge><GameIcon kind="gift" size={30} tone="white" outline={false} shadow={false} /></IconButton>
+      <IconButton variant="primary" shape="square" label="Shop"><GameIcon kind="shop" size={26} tone="ink" outline={false} shadow={false} /></IconButton><IconButton variant="play" shape="square" label="Quests" badge={3}><GameIcon kind="quest" size={26} tone="white" outline={false} shadow={false} /></IconButton><IconButton variant="wood" shape="square" label="Map"><GameIcon kind="map" size={26} tone="white" outline={false} shadow={false} /></IconButton><IconButton disabled shape="square" label="Locked"><i className="ph-fill ph-lock" /></IconButton></Row>
+  </>);
+
+  mount('d-hud', <>
+    <Row gap={26}><CurrencyPill kind="coin" value="50,253k" onAdd={noop} /><CurrencyPill kind="gem" value={36} onAdd={noop} /><CurrencyPill kind="heart" value="5/5" /><CurrencyPill kind="energy" value={32} size="sm" /><CurrencyPill kind="coin" value="1,240" tone="light" /><CurrencyPill icon={<GameIcon kind="chest" size={40} />} value="3/3" /></Row>
+    <Row gap={26}><ProgressBar value={0.42} label="42%" width={220} /><ProgressBar value={6} max={20} tone="green" size="lg" label="6/20" width={240} cap={<GameIcon kind="star" size={40} />} /><ProgressBar value={0.7} tone="blue" size="sm" striped={false} width={150} /><ProgressBar value={0.65} tone="teal" track="light" width={200} label="Loading…" /><ProgressBar value={0.3} tone="coral" width={140} label="3/10" cap={<GameIcon kind="heart" size={34} />} /></Row>
+    <Row><TimerChip time="00:02" /><TimerChip time="4h 12m" tone="light" /><TimerChip time="00:09" urgent /><TimerChip time="12:00" size="sm" icon="hourglass" /></Row>
+  </>);
+
+  mount('d-text', <><OutlineText size="xl">Daily Reward</OutlineText><OutlineText size="lg">Level 12</OutlineText><OutlineText size={40} stroke="blue">7</OutlineText><OutlineText size={40} stroke="stone">8</OutlineText><OutlineText size="lg" color="gold" stroke="gold">x2 Boost</OutlineText><OutlineText size="lg" color="cream" stroke="wood">Sign</OutlineText><OutlineText size="sm">Quests</OutlineText><OutlineText size="xs" stroke="stone">Locked</OutlineText></>);
+
+  const Label = ({ children }) => <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-500)', textAlign: 'center' }}>{children}</div>;
+  const Inset = ({ children }) => <div style={{ margin: '6px 0 12px', padding: '10px 16px', borderRadius: 'var(--radius-pill)', background: 'var(--cream-200)', boxShadow: 'inset 0 2px 4px oklch(0 0 0 / .1)', textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 26, color: 'var(--ink-900)' }}>{children}</div>;
+  mount('d-panels', <>
+    <Panel title="Settings" width={230} onClose={noop}><div style={{ display: 'grid', gap: 10, fontWeight: 700, fontSize: 15, color: 'var(--ink-900)' }}>{[['sound', 'Sound', true], ['vibrate', 'Vibration', false]].map(([i, l, on]) => <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 10 }}><GameIcon kind={i} size={24} /><span style={{ flex: 1 }}>{l}</span><Switch checked={on} size="sm" /></div>)}</div></Panel>
+    <Panel title="Complete" eyebrow="Level 23" header="ribbon" width={240} footer={<Button variant="confirm">OK</Button>}><div style={{ display: 'grid', placeItems: 'center', marginTop: -6 }}><StarRating value={3} size={28} arc /></div><Label>Score</Label><Inset>14 000</Inset></Panel>
+    <Panel title="Daily Reward" header="sign" tone="wood" width={230} footer={<Button>Claim</Button>}><div style={{ display: 'grid', placeItems: 'center', gap: 6, fontWeight: 700, color: 'var(--wood-900)' }}><GameIcon kind="gift" size={48} />Day 3</div></Panel>
+    <Panel title="Who sent this?" accent="teal" width={230} footer={<Button variant="confirm">Continue</Button>}><div style={{ textAlign: 'center', fontWeight: 600, fontSize: 13, color: 'var(--ink-700)' }}>accent="teal", Babe's level dialogs</div></Panel>
+    <Panel header="none" tone="sky" width={180}><div style={{ textAlign: 'center', fontWeight: 700, color: 'var(--blue-700)' }}>header="none" tone="sky"</div></Panel>
+  </>);
+
+  mount('d-map', <>
+    <Row gap={18} align="flex-end"><LevelNode number={1} state="complete" stars={3} onClick={noop} /><LevelNode number={2} state="complete" stars={2} onClick={noop} /><LevelNode number={3} state="complete" stars={1} onClick={noop} /><LevelNode number={4} state="current" onClick={noop} /><LevelNode number={5} state="locked" /><LevelNode number={12} state="locked" size={64} /><span style={{ display: 'grid', gap: 8, justifyItems: 'center', marginLeft: 10 }}><StarRating value={3} size={40} arc animate /><StarRating value={2} size={22} /><StarRating value={0} size={18} /></span></Row>
+    <Row gap={12} align="flex-start"><Tile variant="grass" /><Tile variant="sand" content="?" /><Tile variant="stone" content={<GameIcon kind="lock" size={26} />} /><Tile variant="water" /><Tile variant="reward" content={<GameIcon kind="coin" size={30} />} active onClick={noop} label="Coin" /><Tile variant="hazard" content={<GameIcon name="skull" tone="white" size={28} />} /><Tile variant="start" content="GO" /><Tile variant="sand" size={48} content="5" /></Row>
+  </>);
+
+  mount('d-rewards', <>
+    <Row gap={10} align="stretch"><RewardCard title="Day 1" icon={<GameIcon kind="coin" size={40} />} amount="+1M" state="claimed" /><RewardCard title="Day 2" icon={<GameIcon kind="coin" size={40} />} amount="+5M" state="claimed" /><RewardCard title="Day 3" icon={<GameIcon kind="gift" size={40} />} state="available" onClick={noop} /><RewardCard title="Day 4" icon={<GameIcon kind="ticket" size={40} />} amount="+100" state="locked" /><RewardCard title="Day 7" featured width={230} icon={<GameIcon kind="heart" size={40} />} amount="+50" state="locked" /></Row>
+    <Row gap={8}><ItemCell state="filled" content={<GameIcon kind="egg" size={44} />} count={1} selected onClick={noop} /><ItemCell state="filled" content={<GameIcon kind="leaf" size={44} />} count={4} /><ItemCell state="filled" content={<GameIcon kind="fire" size={44} />} count={6} dim /><ItemCell state="empty" /><ItemCell state="locked" /><ItemCell state="add" onClick={noop} label="Buy slot" /></Row>
+    <div style={{ display: 'grid', gap: 14, maxWidth: 520 }}><ShopRow tone="featured" icon={<GameIcon kind="coins" size={46} />} title="3,000 coins" subtitle="One-time offer" price="USD 3.99" tag={<Tag tone="gold">3x the value</Tag>} /><ShopRow icon={<GameIcon kind="coin" size={42} />} title="2,720 coins" price="USD 0.99" tag={<Tag>Most popular</Tag>} /></div>
+  </>);
+
+
+  // ---------- Adventure layer ----------
+  function Chips() { const [t, setT] = React.useState('small_chops'); return <Row gap={10}>{['mango_grove', 'small_chops', 'good_energy', 'japan'].map(w => <WorldChip key={w} world={w} showBlurb selected={t === w} onClick={() => setT(w)} />)}</Row>; }
+  mount('d-worldchips', <Chips />);
+
+  mount('d-gems', <Row gap={22} align="flex-end">{['amber', 'emerald', 'amethyst'].map(g => [1, 2, 3].map(t => <Gemstone key={g + t} gem={g} tier={t} size={60} showTier />))}<Gemstone gem="pearl" size={60} showTier /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--ink-500)', maxWidth: 200 }}>Row = score 0–2 · 3–5 · 6–8. Tier I plain, II sparkle, III halo. Pearl = skipped, unranked.</span></Row>);
+  mount('d-avatars', <>{[['Ada Okafor', 'c_01'], ['Tunde Bello', 'c_22'], ['Kemi A.', 'c_07'], ['Femi & Bisi', 'c_15'], ['Mrs Adeyemi', 'c_09'], ['Dayo', 'c_31']].map(([n, s]) => <Avatar key={s} name={n} seed={s} size={64} />)}<Avatar mystery size={64} /><span style={{ fontSize: 12, fontWeight: 700, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / .4)' }}>Generated from the contributor id when no portrait exists · mystery ignores every prop</span></>);
+
+  function LevelDemo() {
+    const items = [{ type: 'text' }, { type: 'photo' }, { type: 'audio' }];
+    const names = [{ id: 'c_01', name: 'Ada Okafor' }, { id: 'c_22', name: 'Tunde Bello' }, { id: 'c_07', name: 'Kemi A.' }], correct = 'c_01';
+    const [i, setI] = React.useState(0), [seen, setSeen] = React.useState([0]), [wrong, setWrong] = React.useState([]), [revealed, setRevealed] = React.useState(false), [done, setDone] = React.useState(false);
+    const go = k => { setI(k); setSeen(s => s.includes(k) ? s : [...s, k]); };
+    const guess = o => { if (revealed) return; if (o.id === correct) setRevealed(true); else setWrong(w => [...w, o.id]); };
+    const st = o => revealed ? (o.id === correct ? 'correct' : 'dim') : wrong.includes(o.id) ? 'wrong' : 'idle';
+    const reset = () => { setI(0); setSeen([0]); setWrong([]); setRevealed(false); setDone(false); };
+    return (
+      <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'flex-start', width: '100%' }}>
+        <div style={{ flex: '1 1 340px', minWidth: 0, display: 'grid', gap: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}><OutlineText size="md">Level 7</OutlineText><PackageStepper items={items} current={i} seen={seen} onSelect={go} /></div>
+          {i === 0 && <MemoryText size="md"><p>Fixture text: a contributor's memory shows here exactly as written, in their chosen order with their photos, voice notes and videos.</p></MemoryText>}
+          {i === 1 && <PhotoStack photos={[{ caption: 'Fixture caption' }, {}, {}]} height={220} />}
+          {i === 2 && <AudioPlayer title="Voice note" duration={42} />}
+        </div>
+        <div style={{ flex: '1 1 300px', minWidth: 0, display: 'grid', gap: 12 }}>
+          {!done ? <>
+            <span style={{ fontFamily: 'var(--font-display)', fontSize: 20, color: 'var(--ink-900)' }}>Who sent this?</span>
+            {names.map((o, k) => <ChoiceButton key={o.id} index={k} state={st(o)} onClick={() => guess(o)}>{o.name}</ChoiceButton>)}
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+              {!revealed && <Button variant="ghost" typeface="ui" size="sm" onClick={() => setRevealed(true)}>Just tell me</Button>}
+              {wrong.length > 0 && !revealed && <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ink-700)' }}>Not that one: try again.</span>}
+            </div>
+            <div style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
+              <RevealCard revealed={revealed} name="Ada Okafor" relationship="Sister" seed="c_01" gem="emerald" tier={2} clue="We met over jollof." width={200} onGemTap={() => {}} />
+              {revealed && <Button variant="confirm" size="lg" onClick={() => setDone(true)}>Continue</Button>}
+            </div>
+          </> : <div style={{ display: 'grid', gap: 12, justifyItems: 'start' }}><span style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--ink-900)' }}>Level 7 complete</span><span style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink-700)' }}>Back on the map, level 8 unlocks; level 7 stays replayable.</span><Button variant="ghost" typeface="ui" onClick={reset}>Replay demo</Button></div>}
+        </div>
+      </div>
+    );
+  }
+  mount('d-level', <LevelDemo />);
+  mount('d-media', <><VideoFrame caption="Neutral caption" style={{ width: 300 }} /><PhotoStack photos={[{ caption: 'Fixture caption' }, {}, {}, {}]} height={170} style={{ width: 280 }} /><AudioPlayer title="Song for you" duration={128} tone="berry" style={{ width: 300 }} /></>);
+
+  mount('d-gates', <><WorldGate world="mango_grove" levels="Levels 1–5" width={260} note="Fixture note: Henry's real words go here, or no card at all." /><WorldGate world="good_energy" levels="Levels 12–16" width={240} /><WorldGate world="japan" levels="Levels 17–21" width={220} /><WorldGate world="summit" locked width={220} /></>);
+  mount('d-discover', <><DiscoveryMarker kind="mango" state="available" label="Mango" onClick={noop} /><DiscoveryMarker kind="rice" state="hidden" onClick={noop} /><DiscoveryMarker kind="dumbbell" state="new" onClick={noop} /><DiscoveryMarker kind="lantern" state="opened" /><DiscoveryMarker kind="flower" state="available" size={52} onClick={noop} /><DiscoveryMarker kind="gift" state="available" size={52} onClick={noop} /><LevelNode number={7} state="current" onClick={noop} /><LevelNode number={8} state="locked" /><span style={{ fontSize: 12, fontWeight: 700, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / .4)', maxWidth: 180 }}>hidden = glinting bush · available = glow + float · new = late arrival · opened = tick. Pucks stay the primary tap.</span></>);
+
+  function Match() {
+    const init = () => ['mango', 'rice', 'dumbbell', 'mango', 'rice', 'dumbbell'].map((s, k) => ({ id: k, symbol: s, face: 'down' }));
+    const [cards, setCards] = React.useState(init);
+    const flip = id => setCards(cs => { if (cs.filter(c => c.face === 'up').length === 2) return cs; let next = cs.map(c => c.id === id ? { ...c, face: 'up' } : c); const up = next.filter(c => c.face === 'up');
+      if (up.length === 2) { if (up[0].symbol === up[1].symbol) next = next.map(c => c.face === 'up' ? { ...c, face: 'matched' } : c); else setTimeout(() => setCards(x => x.map(c => c.face === 'up' ? { ...c, face: 'down' } : c)), 700); } return next; });
+    const done = cards.every(c => c.face === 'matched');
+    return <><div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 84px)', gap: 12 }}>{cards.map(c => <MatchCard key={c.id} symbol={c.symbol} face={c.face} onClick={() => flip(c.id)} />)}</div>
+      <div style={{ display: 'grid', gap: 10 }}><div style={{ display: 'flex', gap: 10 }}><MatchCard symbol="lantern" face="up" size={64} /><MatchCard symbol="flower" face="matched" size={64} /></div><Button variant={done ? 'confirm' : 'ghost'} typeface="ui" onClick={() => setCards(init)}>{done ? 'Matched: reset' : 'Skip'}</Button></div></>;
+  }
+  mount('d-match', <Match />);
+
+  mount('d-people', <>{[['revealed', 'Ada Okafor', 'Sister', 'c_01', 'amethyst', 3], ['revealed', 'Femi & Bisi', 'Friends', 'c_15', 'amethyst', 1], ['revealed', 'Tunde Bello', 'Colleague', 'c_22', 'emerald', 2], ['revealed', 'Dayo', 'Cousin', 'c_31', 'amber', 1], ['revealed', 'Kemi A.', 'Friend', 'c_07', 'pearl', 0], ['mystery'], ['mystery'], ['new', 'Mrs Adeyemi', 'Aunty', 'c_09', 'emerald', 3]].map((p, k) => <PersonTile key={k} state={p[0]} name={p[1]} relationship={p[2]} seed={p[3]} gem={p[4]} tier={p[5]} onClick={noop} />)}</>);
+
+  function Contrib() {
+    const [name, setName] = React.useState('Ada Okafor'), [text, setText] = React.useState(''), [theme, setTheme] = React.useState('small_chops'), [reveals, setReveals] = React.useState(false);
+    return <>
+      <div className="phone-col">
+        <StepBar steps={['You', 'Memory', 'Theme', 'Preview', 'Submit']} current={1} onSelect={noop} compact />
+        <TextField label="The name Lanre knows you by" value={name} onChange={setName} helper="Shown to her only after the reveal." />
+        <TextField label="Your memory" multiline rows={3} value={text} onChange={setText} maxLength={2000} placeholder="Tell it the way you'd tell her." />
+        <div style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 26, paddingTop: 8 }}><UploadTile type="photo" state="done" name="beach.jpg" size={88} onRemove={noop} /><UploadTile type="video" state="uploading" progress={0.42} size={88} onRemove={noop} /><UploadTile type="audio" state="error" size={88} onRetry={noop} onRemove={noop} /><UploadTile type="photo" state="idle" size={88} onAdd={noop} /></div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>{['mango_grove', 'small_chops', 'good_energy', 'japan'].map(w => <WorldChip key={w} world={w} size="sm" selected={theme === w} onClick={() => setTheme(w)} />)}</div>
+        <div role="radiogroup" aria-label="Does this package show who you are?" style={{ display: 'grid', gap: 10 }}>
+          <RadioCard checked={!reveals} onChange={() => setReveals(false)} icon={<Avatar mystery size={40} />} title="Keeps me a mystery" description="No face, name or voice in here." />
+          <RadioCard checked={reveals} onChange={() => setReveals(true)} tone="gold" icon={<GameIcon kind="sparkle" size={36} />} title="Shows who I am" description="Skip the guessing for this one." />
+        </div>
+        <Button variant="confirm" size="lg" block>Preview</Button>
+      </div>
+      <div style={{ flex: '1 1 260px', maxWidth: 360, display: 'grid', gap: 10 }}>
+        <div className="card"><h4>What contributors see</h4><p>“This is a surprise for Lanre, everything you add here will be shown to her on her birthday.” Then, per package: what stays anonymous (the memory) and what is revealed (your name, relationship, portrait) after she guesses.</p></div>
+        <div className="card"><h4>Return &amp; edit</h4><p>Private edit link, no account. Edits after the journey starts never silently remove memories she has already unlocked.</p></div>
+        <div className="card"><h4>Main-path pick</h4><p>With several packages, one is marked “Her main level”; the rest become discoveries in their world (optionally tucked away).</p></div>
+      </div>
+    </>;
+  }
+  mount('d-contrib', <Contrib />);
+
+  mount('d-quiz', <>
+    <div style={{ flex: '1 1 320px', maxWidth: 420, display: 'grid', gap: 10 }}>
+      <LeaderboardRow rank={1} name="Ada Okafor" seed="c_01" gem="amethyst" tier={3} score={8} /><LeaderboardRow rank={2} name="Femi & Bisi" seed="c_15" gem="amethyst" tier={1} score={6} /><LeaderboardRow rank={3} tied name="Tunde Bello" seed="c_22" gem="emerald" tier={2} score={4} me /><LeaderboardRow rank={3} tied name="Mrs Adeyemi" seed="c_09" gem="emerald" tier={2} score={4} /><LeaderboardRow rank={5} name="Dayo" seed="c_31" gem="amber" tier={1} score={0} /><LeaderboardRow name="Kemi A." seed="c_07" skipped />
+    </div>
+    <div style={{ flex: '1 1 260px', maxWidth: 300, display: 'grid', gap: 12 }}>
+      <div style={{ padding: '22px 18px', borderRadius: 'var(--radius-xl)', background: 'linear-gradient(180deg, #fff, var(--cream-100))', border: '4px solid var(--cream-300)', boxShadow: 'var(--shadow-drop)', display: 'grid', justifyItems: 'center', gap: 8, textAlign: 'center' }}>
+        <Gemstone gem="emerald" tier={2} size={84} showTier /><span style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--ink-900)' }}>4 / 8</span><span style={{ fontWeight: 600, fontSize: 13, color: 'var(--ink-700)' }}>Your first try is the one that counts. Thanks for being part of this.</span>
+      </div>
+      <ChoiceButton index={0} state="correct">Fixture answer (verified by Henry)</ChoiceButton>
+      <ChoiceButton index={1} state="dim">Fixture answer</ChoiceButton>
+    </div>
+  </>);
+
+  function Opening() { const [s, setS] = React.useState(true); return <>
+    <Panel header="none" tone="sky" width={340}>
+      <div style={{ display: 'grid', gap: 14, justifyItems: 'center', textAlign: 'center' }}>
+        <span style={{ fontWeight: 700, fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-500)' }}>Example voice: not final copy</span>
+        <span style={{ fontWeight: 600, fontSize: 18, lineHeight: 1.5, color: 'var(--ink-900)', textWrap: 'pretty' }}>Babe, a few people have been keeping something from you. For once, I think you’ll approve. Ready to find out?</span>
+        <SoundToggle on={s} onChange={setS} tone="light" />
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}><Button variant="play" size="lg">Ready</Button><Button variant="ghost" typeface="ui" size="lg">Resume</Button></div>
+        <span style={{ fontWeight: 600, fontSize: 12, color: 'var(--ink-500)' }}>Resume appears only when progress exists · “Made for your iPad” is a soft note, never a block</span>
+      </div>
+    </Panel>
+    <div style={{ display: 'grid', gap: 12, maxWidth: 320 }}>
+      <SoundToggle on={s} onChange={setS} />
+      <div className="card"><h4>Persist</h4><p>Progress, unlocked people, chosen interactions and sound preference survive reloads and returns across the day and after.</p></div>
+      <div className="card"><h4>Continue is explicit</h4><p>Every level ends with a Continue tap; media never auto-advances; watching every second is not required.</p></div>
+    </div>
+  </>; }
+  mount('d-a11y', <Opening />);
+
+  function Forms() {
+    const [s, setS] = React.useState({ sound: true, vib: false, music: 70, sfx: 45 });
+    const R = ({ icon, label, children }) => <div style={{ display: 'flex', alignItems: 'center', gap: 12, height: 44 }}><GameIcon kind={icon} size={26} /><span style={{ flex: 1, fontWeight: 700, fontSize: 16, color: 'var(--ink-900)' }}>{label}</span>{children}</div>;
+    const box = { padding: '10px 16px', background: 'var(--cream-100)', border: '4px solid var(--cream-300)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-drop)' };
+    return <>
+      <div style={{ ...box, width: 270 }}><R icon="sound" label="Sound"><Switch checked={s.sound} onChange={v => setS({ ...s, sound: v })} label="Sound" /></R><R icon="vibrate" label="Vibration"><Switch checked={s.vib} onChange={v => setS({ ...s, vib: v })} tone="blue" label="Vibration" /></R><R icon="bell" label="Notifications"><Switch checked size="sm" tone="gold" /></R><R icon="lock" label="Disabled"><Switch disabled /></R></div>
+      <div style={{ ...box, width: 320, display: 'grid', gap: 12 }}><Slider value={s.music} onChange={v => setS({ ...s, music: v })} icon={<GameIcon kind="music" size={28} />} label="Music" width="100%" /><Slider value={s.sfx} onChange={v => setS({ ...s, sfx: v })} tone="teal" icon={<GameIcon kind="sound" tone="teal" size={28} />} label="Effects" width="100%" /><Slider value={30} tone="gold" icon={<GameIcon kind="sparkle" size={28} />} width="100%" disabled /></div>
+    </>;
+  }
+  mount('d-forms', <Forms />);
+
+  mount('d-feedback', <>
+    <Row><Badge /><Badge count={3} /><Badge count={12} tone="blue" /><Badge count="NEW" tone="gold" /><Badge count={99} tone="green" pulse /><span style={{ width: 16 }} /><Tag>Most popular</Tag><Tag tone="teal">3x the value</Tag><Tag tone="gold">New</Tag><Tag tone="blue">Limited</Tag><Tag tone="berry">Premium</Tag><Tag tone="green">Free</Tag><Tag tone="stone" icon={<i className="ph-fill ph-lock" />}>Locked</Tag><Tag tone="wood" size="sm">Event</Tag></Row>
+    <Row><Toast icon={<GameIcon kind="coin" size={32} />} message="+50" detail="Coins collected" /><Toast icon={<GameIcon kind="heart" size={32} />} message="Life restored" tone="coral" /><Toast icon={<GameIcon kind="check" size={28} tone="teal" />} message="Saved" tone="teal" /></Row>
+  </>);
+});
+</script>
+</body></html>

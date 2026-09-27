@@ -1,0 +1,46 @@
+<!-- @dsCard group="Components" viewport="700x330" name="Buttons" subtitle="Button + IconButton: tones, sizes, badges, captions, pressed/disabled" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="buttons/Button,buttons/IconButton"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+.mp-boot-label{font-family:var(--font-display);font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;-webkit-text-stroke:.18em var(--ink-900);paint-order:stroke fill;text-shadow:0 2px 0 oklch(0 0 0 / .22)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true" style="position:fixed"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+MPReady.then(({ Button, IconButton }) => {
+  const Row = ({ children }) => <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', flexWrap: 'wrap' }}>{children}</div>;
+  const I = ({ n }) => <i className={'ph-fill ph-' + n} />;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <div style={{ display: 'grid', gap: 18 }}>
+      <Row>
+        {['primary', 'play', 'confirm', 'danger', 'premium', 'wood', 'ghost'].map(v => <Button key={v} variant={v}>{v}</Button>)}
+        <Button disabled>Locked</Button>
+      </Row>
+      <Row>
+        <Button size="sm" variant="confirm">OK</Button>
+        <Button size="md" variant="play" icon={<I n="play" />} typeface="ui">Level 22</Button>
+        <Button size="lg">Claim</Button>
+        <Button variant="premium" pill typeface="ui" trailing={<span style={{ opacity: .85 }}>USD 3.99</span>}>3,000 coins</Button>
+      </Row>
+      <Row>
+        <IconButton variant="danger" size="sm"><i className="ph-bold ph-x" /></IconButton>
+        <IconButton variant="ghost"><I n="gear" /></IconButton>
+        <IconButton variant="confirm"><i className="ph-bold ph-plus" /></IconButton>
+        <IconButton variant="play" size="lg" badge><I n="gift" /></IconButton>
+        <IconButton variant="primary" shape="square" label="Shop"><I n="storefront" /></IconButton>
+        <IconButton variant="play" shape="square" label="Quests" badge={3}><I n="clipboard-text" /></IconButton>
+        <IconButton variant="wood" shape="square" label="Map"><I n="map-trifold" /></IconButton>
+        <IconButton disabled shape="square" label="Locked"><I n="lock" /></IconButton>
+      </Row>
+    </div>
+  );
+});
+</script></body></html>

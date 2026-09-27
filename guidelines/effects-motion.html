@@ -1,0 +1,24 @@
+<!-- @dsCard group="Effects" viewport="700x190" name="Motion" subtitle="Bounce for arrivals, ease-out for presses, float for idle" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+html,body{margin:0}body{padding:14px;background:var(--cream-50);font-family:var(--font-ui);color:var(--ink-900);box-sizing:border-box;min-height:100vh}
+.row{display:flex;gap:8px;align-items:stretch}
+.sw{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.chip{height:64px;border-radius:12px;box-shadow:inset 0 0 0 1px oklch(0 0 0 / 0.08)}
+.tok{font:600 10.5px/1.25 ui-monospace,Menlo,monospace;color:var(--ink-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.val{font:500 9.5px/1.2 ui-monospace,Menlo,monospace;color:var(--ink-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap{font:700 11px/1.3 var(--font-ui);color:var(--ink-500);margin-top:10px}
+
+.lane{display:flex;align-items:center;gap:14px;height:44px}
+.ball{width:32px;height:32px;border-radius:50%;background:var(--gold-500);box-shadow:0 3px 0 var(--gold-700)}
+.b1{animation:mp-pop var(--dur-slow) var(--ease-bounce) infinite alternate}
+.b2{animation:mp-float var(--dur-idle) ease-in-out infinite}
+.b3{animation:slide 1.2s var(--ease-out) infinite alternate}
+.b4{animation:mp-pulse-ring 1.6s ease-out infinite;background:var(--blue-500);box-shadow:none}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(120px)}}
+</style></head><body><div class="lane"><div class="tok" style="width:210px">--ease-bounce · --dur-slow 420ms</div><div class="ball b1"></div><div class="val">pop-in of stars, toasts, panels</div></div>
+<div class="lane"><div class="tok" style="width:210px">--ease-out · --dur-fast 120ms</div><div style="width:160px"><div class="ball b3"></div></div><div class="val">press travel, tab switches</div></div>
+<div class="lane"><div class="tok" style="width:210px">mp-float · --dur-idle 2400ms</div><div class="ball b2"></div><div class="val">idle bob for claimable rewards</div></div>
+<div class="lane"><div class="tok" style="width:210px">mp-pulse-ring · 1600ms</div><div class="ball b4"></div><div class="val">current level, tappable tile</div></div></body></html>

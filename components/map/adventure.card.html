@@ -1,0 +1,42 @@
+<!-- @dsCard group="Adventure" viewport="700x520" name="Map extras" subtitle="WorldGate + DiscoveryMarker: world boundaries, narrator notes, side-of-road surprises" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="map/WorldGate,map/DiscoveryMarker"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
+.mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
+const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
+const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ WorldGate, DiscoveryMarker }) => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <Col gap={22}>
+      <Row gap={22} align="flex-start">
+        <WorldGate world="small_chops" levels="Levels 6–11" width={300} note="Fixture note: Henry's real words go here, or no card at all." />
+        <WorldGate world="japan" levels="Levels 17–21" width={220} />
+        <WorldGate world="summit" locked width={220} />
+      </Row>
+      <Row gap={18} align="flex-end">
+        <DiscoveryMarker kind="mango" state="available" label="Mango" onClick={() => {}} />
+        <DiscoveryMarker kind="rice" state="hidden" onClick={() => {}} />
+        <DiscoveryMarker kind="dumbbell" state="new" onClick={() => {}} />
+        <DiscoveryMarker kind="lantern" state="opened" />
+        <DiscoveryMarker kind="flower" state="available" size={52} onClick={() => {}} />
+        <DiscoveryMarker kind="gift" state="available" size={52} onClick={() => {}} />
+        <Note>hidden = a glinting bush · available = glow + float · new = late arrival · opened = tick</Note>
+      </Row>
+    </Col>
+  );
+});
+</script></body></html>

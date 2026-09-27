@@ -1,0 +1,5 @@
+/* Glyph set: Phosphor Icons, FILL weight, via CDN. Usage: <i class="ph-fill ph-star"></i>
+   Chunky filled glyphs match the painted game-icon look; GameIcon adds the dark outline + drop shadow. */
+@import url("https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css");
+/* BOLD weight for utility strokes (plus, x, check, carets): <i class="ph-bold ph-plus"></i> */
+@import url("https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css");

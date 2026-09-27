@@ -1,0 +1,17 @@
+<!-- @dsCard group="Type" viewport="700x190" name="Numerals & formatting" subtitle="How amounts, scores and timers are written" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+html,body{margin:0}body{padding:14px;background:var(--cream-50);font-family:var(--font-ui);color:var(--ink-900);box-sizing:border-box;min-height:100vh}
+.row{display:flex;gap:8px;align-items:stretch}
+.sw{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.chip{height:64px;border-radius:12px;box-shadow:inset 0 0 0 1px oklch(0 0 0 / 0.08)}
+.tok{font:600 10.5px/1.25 ui-monospace,Menlo,monospace;color:var(--ink-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.val{font:500 9.5px/1.2 ui-monospace,Menlo,monospace;color:var(--ink-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap{font:700 11px/1.3 var(--font-ui);color:var(--ink-500);margin-top:10px}
+.spec{display:flex;align-items:baseline;gap:16px;padding:6px 0;border-bottom:1px dashed var(--cream-300)} .spec:last-child{border:0} .meta{width:176px;flex:none}
+</style></head><body><div class="spec"><div class="meta"><div class="tok">currency</div><div class="val">display · k / M suffix · comma groups</div></div><div class="mp-display" style="font-size:24px">50,253k &nbsp; 1.2M &nbsp; +500 &nbsp; 36</div></div>
+<div class="spec"><div class="meta"><div class="tok">score</div><div class="val">display · thin-space groups</div></div><div class="mp-display" style="font-size:24px">14 000 &nbsp; 212 – 290</div></div>
+<div class="spec"><div class="meta"><div class="tok">timer / progress</div><div class="val">display · tabular · mm:ss · n/max</div></div><div class="mp-display" style="font-size:24px;font-variant-numeric:tabular-nums">00:02 &nbsp; 4h 12m &nbsp; 6/20 &nbsp; 75%</div></div>
+<div class="spec"><div class="meta"><div class="tok">price</div><div class="val">display · currency code, no symbol</div></div><div class="mp-display" style="font-size:24px">USD 3.99 &nbsp; USD 0.99</div></div></body></html>
