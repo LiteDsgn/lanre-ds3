@@ -67,7 +67,7 @@ One product: a portrait mobile game (390 × 844 design frame). Surfaces covered 
 
 ## PROJECT LAYER: Lanre's Birthday Adventure
 
-Source: `uploads/BUILD-BRIEF.md` (shared build brief, 12 Sep 2026). The generic Lanre kit above is the base; this layer adds the components and rules that brief needs. Names in every demo are fictional fixtures; no quiz facts, narrator copy or letter text are supplied here.
+Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the base; this layer adds the components and rules that brief needs. Names in every demo are fictional fixtures; no quiz facts, narrator copy or letter text are supplied here.
 
 **Two audiences, two surfaces.** Babe's experience: iPad-first, phones supported, no hard device block. Flow: opening → map → level → reveal → progress → summit. Contributor flow (Claude): phone-first, no account: onboarding → composer → theme → suitability → preview → submit → optional quiz → gem + leaderboard → private edit link.
 

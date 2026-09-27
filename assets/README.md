@@ -1,6 +1,6 @@
 # Assets
 
-No logo, wordmark, illustration or icon files were provided for this system, only reference screenshots of other games (kept in `uploads/`, used as mood/structure references, **not** redistributable brand assets).
+No logo, wordmark, illustration or icon files were provided for this system, only reference screenshots of other games (used as mood/structure references only; they are **not** redistributable brand assets and are not included in this repo).
 
 What belongs here when it exists:
 - `logo/`: wordmark and app icon (until then, render "Lanre" with `.mp-display` + `.mp-outline`).
