@@ -19,4 +19,4 @@ export interface StarRatingProps extends Omit<React.HTMLAttributes<HTMLSpanEleme
   style?: React.CSSProperties;
 }
 
-export function StarRating(props: StarRatingProps): JSX.Element;
+export function StarRating(props: StarRatingProps): React.JSX.Element;

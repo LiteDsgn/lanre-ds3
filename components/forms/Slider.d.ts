@@ -21,4 +21,4 @@ export interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   style?: React.CSSProperties;
 }
 
-export function Slider(props: SliderProps): JSX.Element;
+export function Slider(props: SliderProps): React.JSX.Element;

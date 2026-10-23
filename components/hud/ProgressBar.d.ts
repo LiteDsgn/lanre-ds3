@@ -24,4 +24,4 @@ export interface ProgressBarProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   style?: React.CSSProperties;
 }
 
-export function ProgressBar(props: ProgressBarProps): JSX.Element;
+export function ProgressBar(props: ProgressBarProps): React.JSX.Element;

@@ -17,4 +17,4 @@ export interface PhotoStackProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   style?: React.CSSProperties;
 }
 
-export function PhotoStack(props: PhotoStackProps): JSX.Element;
+export function PhotoStack(props: PhotoStackProps): React.JSX.Element;

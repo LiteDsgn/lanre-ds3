@@ -22,4 +22,4 @@ export interface GameIconProps extends Omit<React.HTMLAttributes<HTMLSpanElement
   style?: React.CSSProperties;
 }
 
-export function GameIcon(props: GameIconProps): JSX.Element;
+export function GameIcon(props: GameIconProps): React.JSX.Element;

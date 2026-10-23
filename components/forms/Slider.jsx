@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function Slider({ value = 50, min = 0, max = 100, step = 1, onChange, tone = 'blue', icon, width = 220, disabled = false, label, style, ...rest }) {

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 export function LevelNode({ number, state = 'locked', stars = 0, size = 84, onClick, style, ...rest }) {

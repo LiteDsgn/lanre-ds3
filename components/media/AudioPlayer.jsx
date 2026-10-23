@@ -1,6 +1,9 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 
-const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const fmt = s => { s = Number.isFinite(s) ? Math.max(0, Math.floor(s)) : 0; return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+// Browser recordings (webm) often report an Infinity duration until played through; treat that as unknown.
+const finite = d => (Number.isFinite(d) && d > 0 ? d : 0);
 
 export function AudioPlayer({ src, title = 'Voice note', duration = 42, tone = 'teal', style, ...rest }) {
   const audio = useRef(null);
@@ -17,7 +20,7 @@ export function AudioPlayer({ src, title = 'Voice note', duration = 42, tone = '
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px 12px 12px', borderRadius: 'var(--radius-xl)', background: 'linear-gradient(180deg, #fff, var(--cream-100))', border: '3px solid var(--cream-300)',
       boxShadow: '0 4px 0 var(--cream-300), 0 8px 16px oklch(0.22 0.05 60 / 0.15)', fontFamily: 'var(--font-ui)', minWidth: 280, boxSizing: 'border-box', ...style }} {...rest}>
-      {src && <audio ref={audio} src={src} preload="metadata" onLoadedMetadata={e => setDur(e.target.duration || duration)} onTimeUpdate={e => setT(e.target.currentTime)} onEnded={() => setPlaying(false)} />}
+      {src && <audio ref={audio} src={src} preload="metadata" onLoadedMetadata={e => setDur(finite(e.target.duration) || duration)} onDurationChange={e => setDur(finite(e.target.duration) || duration)} onTimeUpdate={e => setT(e.target.currentTime)} onEnded={() => setPlaying(false)} />}
       <button type="button" aria-label={playing ? 'Pause' : 'Play'} onClick={() => { if (!playing && t >= dur) setT(0); setPlaying(p => !p); }}
         onPointerDown={() => setDown(true)} onPointerUp={() => setDown(false)} onPointerLeave={() => setDown(false)}
         style={{ width: 56, height: 56, borderRadius: '50%', border: 0, padding: 0, flex: 'none', cursor: 'pointer', background: 'linear-gradient(180deg, ' + c[0] + ', ' + c[1] + ' 45%)',
@@ -28,7 +31,7 @@ export function AudioPlayer({ src, title = 'Voice note', duration = 42, tone = '
       <div style={{ flex: 1, minWidth: 0, display: 'grid', gap: 8 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
           <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--ink-900)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</span>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, color: 'var(--ink-700)', fontVariantNumeric: 'tabular-nums', letterSpacing: '0.04em', flex: 'none' }}>{fmt(t) + ' / ' + fmt(dur)}</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, color: 'var(--ink-700)', fontVariantNumeric: 'tabular-nums', letterSpacing: '0.04em', flex: 'none' }}>{dur ? fmt(t) + ' / ' + fmt(dur) : fmt(t)}</span>
         </div>
         <div style={{ position: 'relative', height: 22 }}>
           <div style={{ position: 'absolute', inset: '4px 0', borderRadius: 999, background: 'var(--cream-200)', boxShadow: 'inset 0 2px 4px oklch(0 0 0 / 0.12)', overflow: 'hidden' }}>

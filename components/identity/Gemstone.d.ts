@@ -22,7 +22,7 @@ export interface GemstoneProps extends Omit<React.HTMLAttributes<HTMLSpanElement
   style?: React.CSSProperties;
 }
 
-export function Gemstone(props: GemstoneProps): JSX.Element;
+export function Gemstone(props: GemstoneProps): React.JSX.Element;
 /** Maps a 0–8 quiz score (or null for skipped) to { gem, tier }. */
 export function gemForScore(score: number | null | undefined): { gem: 'amber' | 'emerald' | 'amethyst' | 'pearl'; tier: 0 | 1 | 2 | 3 };
 export const GEM_NAMES: Record<'amber' | 'emerald' | 'amethyst' | 'pearl', string>;

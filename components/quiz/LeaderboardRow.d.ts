@@ -23,4 +23,4 @@ export interface LeaderboardRowProps extends Omit<React.HTMLAttributes<HTMLDivEl
   style?: React.CSSProperties;
 }
 
-export function LeaderboardRow(props: LeaderboardRowProps): JSX.Element;
+export function LeaderboardRow(props: LeaderboardRowProps): React.JSX.Element;

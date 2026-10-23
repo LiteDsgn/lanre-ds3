@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const SIZES = { xl: 44, lg: 32, md: 24, sm: 18, xs: 14 };

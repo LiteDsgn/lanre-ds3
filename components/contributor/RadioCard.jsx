@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function RadioCard({ checked = false, onChange, title, description, icon, tone = 'teal', style, ...rest }) {

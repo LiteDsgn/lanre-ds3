@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 export function RewardCard({ title, icon, amount, state = 'available', featured = false, onClick, width, style, ...rest }) {

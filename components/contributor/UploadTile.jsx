@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const TYPE = { photo: ['image', 'Add photo'], video: ['video-camera', 'Add video'], audio: ['microphone', 'Add audio'], text: ['article', 'Add text'] };

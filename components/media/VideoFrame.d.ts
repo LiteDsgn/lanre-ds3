@@ -16,4 +16,4 @@ export interface VideoFrameProps extends Omit<React.HTMLAttributes<HTMLElement>,
   style?: React.CSSProperties;
 }
 
-export function VideoFrame(props: VideoFrameProps): JSX.Element;
+export function VideoFrame(props: VideoFrameProps): React.JSX.Element;

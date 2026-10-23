@@ -19,4 +19,4 @@ export interface PersonTileProps extends Omit<React.HTMLAttributes<HTMLElement>,
   style?: React.CSSProperties;
 }
 
-export function PersonTile(props: PersonTileProps): JSX.Element;
+export function PersonTile(props: PersonTileProps): React.JSX.Element;

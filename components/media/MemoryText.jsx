@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function MemoryText({ children, size = 'lg', ornament = true, width = '100%', maxWidth = 'var(--layout-reading-max)', style, ...rest }) {

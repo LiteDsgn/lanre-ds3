@@ -25,4 +25,4 @@ export interface RevealCardProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   style?: React.CSSProperties;
 }
 
-export function RevealCard(props: RevealCardProps): JSX.Element;
+export function RevealCard(props: RevealCardProps): React.JSX.Element;

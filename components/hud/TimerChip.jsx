@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function TimerChip({ time, icon = 'clock', tone = 'dark', size = 'md', urgent = false, style, ...rest }) {

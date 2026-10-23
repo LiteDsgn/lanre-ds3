@@ -17,4 +17,4 @@ export interface MemoryTextProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   style?: React.CSSProperties;
 }
 
-export function MemoryText(props: MemoryTextProps): JSX.Element;
+export function MemoryText(props: MemoryTextProps): React.JSX.Element;

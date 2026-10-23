@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 // Phosphor FILL glyph with the painted game-icon treatment: solid fill, dark outline painted behind, 2px drop.

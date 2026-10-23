@@ -21,4 +21,4 @@ export interface WorldGateProps extends Omit<React.HTMLAttributes<HTMLDivElement
   style?: React.CSSProperties;
 }
 
-export function WorldGate(props: WorldGateProps): JSX.Element;
+export function WorldGate(props: WorldGateProps): React.JSX.Element;

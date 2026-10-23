@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function Switch({ checked = false, onChange, disabled = false, tone = 'teal', size = 'md', label, style, ...rest }) {

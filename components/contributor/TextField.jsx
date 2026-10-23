@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useId, useState } from 'react';
 
-let uid = 0;
 export function TextField({ label, value = '', onChange, placeholder, helper, error, multiline = false, rows = 4, maxLength, optional = false, id, style, inputStyle, ...rest }) {
-  const [auto] = useState(() => 'mp-field-' + (++uid));
+  const auto = 'mp-field-' + useId().replace(/:/g, '');
   const fid = id || auto;
   const [focus, setFocus] = useState(false);
   const border = error ? 'var(--coral-500)' : focus ? 'var(--blue-300)' : 'var(--cream-300)';

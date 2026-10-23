@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const SYMBOLS = { mango: ['orange', 'var(--gold-500)', 'var(--gold-900)'], rice: ['bowl-food', '#fff', 'var(--ink-900)'], flower: ['flower', 'var(--coral-500)', 'var(--coral-900)'], dumbbell: ['barbell', 'var(--blue-500)', 'var(--blue-900)'], lantern: ['lamp-pendant', 'var(--coral-500)', 'var(--coral-900)'], star: ['star', 'var(--gold-500)', 'var(--gold-900)'], heart: ['heart', 'var(--coral-500)', 'var(--coral-900)'], leaf: ['leaf', 'var(--green-500)', 'var(--green-900)'] };

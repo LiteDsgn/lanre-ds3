@@ -20,4 +20,4 @@ export interface ShopRowProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   style?: React.CSSProperties;
 }
 
-export function ShopRow(props: ShopRowProps): JSX.Element;
+export function ShopRow(props: ShopRowProps): React.JSX.Element;

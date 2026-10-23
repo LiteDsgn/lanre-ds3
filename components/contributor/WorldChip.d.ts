@@ -14,4 +14,4 @@ export interface WorldChipProps extends Omit<React.ButtonHTMLAttributes<HTMLButt
   style?: React.CSSProperties;
 }
 
-export function WorldChip(props: WorldChipProps): JSX.Element;
+export function WorldChip(props: WorldChipProps): React.JSX.Element;

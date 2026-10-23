@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 export function ShopRow({ icon, title, subtitle, price, tag, tone = 'default', onBuy, action, style, ...rest }) {

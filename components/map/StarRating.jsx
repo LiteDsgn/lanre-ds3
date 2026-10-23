@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function StarRating({ value = 0, max = 3, size = 28, arc = false, animate = false, gap, style, ...rest }) {

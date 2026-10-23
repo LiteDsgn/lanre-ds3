@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 const KINDS = { mango: ['orange', 'gold'], rice: ['bowl-food', 'white'], flower: ['flower', 'coral'], dumbbell: ['barbell', 'blue'], lantern: ['lamp-pendant', 'coral'], gift: ['gift', 'berry'], letter: ['envelope', 'gold'], star: ['star', 'gold'] };

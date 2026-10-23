@@ -14,4 +14,4 @@ export interface BadgeProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 
   style?: React.CSSProperties;
 }
 
-export function Badge(props: BadgeProps): JSX.Element;
+export function Badge(props: BadgeProps): React.JSX.Element;

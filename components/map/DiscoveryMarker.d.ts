@@ -16,4 +16,4 @@ export interface DiscoveryMarkerProps extends Omit<React.ButtonHTMLAttributes<HT
   style?: React.CSSProperties;
 }
 
-export function DiscoveryMarker(props: DiscoveryMarkerProps): JSX.Element;
+export function DiscoveryMarker(props: DiscoveryMarkerProps): React.JSX.Element;

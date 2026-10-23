@@ -21,4 +21,4 @@ export interface RewardCardProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   style?: React.CSSProperties;
 }
 
-export function RewardCard(props: RewardCardProps): JSX.Element;
+export function RewardCard(props: RewardCardProps): React.JSX.Element;
