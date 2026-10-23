@@ -1,0 +1,43 @@
+---
+title: Identity and anonymity
+description: What a mystery level may show before the reveal, what it never shows, and where that's enforced.
+---
+
+import RevealCardExample from '@/examples/identity/RevealCard';
+
+<Preview>
+  <RevealCardExample />
+</Preview>
+
+## Before the reveal, a level may show
+
+- The neutral mystery avatar.
+- The level number.
+- The contributor's own clue.
+- Neutrally titled media, like "Voice note" or "Photo 2".
+- Up to three real names to guess from.
+
+## It never shows
+
+- The sender's name, relationship, portrait or generated avatar.
+- Anyone's gem or score.
+- Filenames, EXIF or other metadata.
+- Sender data hidden in the page. It must not be in what the browser receives at all.
+
+## Where this is enforced
+
+Sender data is only fetched after the reveal. `RevealCard` only mounts the identity face once it's revealed, because hiding it with CSS isn't enough.
+
+But a component can't protect data the browser already has. The API has to enforce this boundary.
+
+## Portraits and avatars
+
+Portraits are optional. Without one, the generated avatar is seeded by the contributor's id, so it stays the same everywhere.
+
+Completed levels become portrait medallions on the map. They keep the level number underneath and can be replayed. Locked and available levels never show who's behind them. The medallions keep useful names for screen readers, for example "Replay level 4, Ada".
+
+## Media that gives the sender away
+
+Some media reveals the sender by itself, like a face or a spoken name. The contributor flags it honestly, and the level uses a matching game or a direct reveal instead. It's never a fake mystery, and there's never a promise of automatic anonymization.
+
+Read more in `guidelines/brand-anonymity.html`.

@@ -1,0 +1,38 @@
+---
+title: Spacing and layout
+description: A 4px base, big touch targets and a fixed frame around a scrolling world.
+---
+
+## Spacing
+
+Everything sits on a 4px grid.
+
+<TokenTable file="spacing" prefix="--space-" />
+
+## Sizes
+
+Touch targets are at least 48px. The primary call to action is 60px tall.
+
+<TokenTable file="spacing" prefix="--size-" />
+
+## The game frame
+
+The design frame is a 390 × 844 portrait phone.
+
+- A fixed **56px HUD strip** runs across the top. The level star and XP sit on the left, the currency pills and gear on the right.
+- The **world scrolls** underneath it.
+- An **88px wood bottom bar** holds four captioned square icon buttons.
+- **Side rails** hold captioned icon buttons, stacked 14 to 16px apart.
+- **Panels** are centred and at most 340px wide. They're never edge to edge, and they sit over the `--bg-scrim` veil.
+- The **inventory** is 4 columns of 72px cells with 8px gaps. The **reward calendar** is 3 columns.
+
+## Birthday Adventure layouts
+
+Babe's experience is iPad-first, with phones supported. The contributor flow is phone-first. These sizes are proposed, not approved.
+
+- iPad portrait is 820 wide, landscape 1180. Phones are 390.
+- The reading column is at most 640.
+- Panels on iPad are at most 560.
+- Design portrait-first. Landscape can place media beside the text.
+
+<TokenTable file="spacing" prefix="--layout-" />

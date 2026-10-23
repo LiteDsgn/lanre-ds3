@@ -1,0 +1,40 @@
+---
+title: Contributor flow
+description: How friends and family add a memory, on their phone, with no account.
+---
+
+import StepBarExample from '@/examples/contributor/StepBar';
+import TextFieldExample from '@/examples/contributor/TextField';
+import RadioCardExample from '@/examples/contributor/RadioCard';
+import UploadTileExample from '@/examples/contributor/UploadTile';
+
+Tell contributors plainly that this is a surprise for Lanre. Show them what stays anonymous and what gets revealed.
+
+<Preview surface="sky">
+  <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+    <StepBarExample />
+    <TextFieldExample />
+  </div>
+</Preview>
+
+## Does it give you away?
+
+Contributors say honestly whether their package shows who they are. That decides whether the level is a mystery or a direct reveal.
+
+<Preview surface="sky">
+  <RadioCardExample />
+</Preview>
+
+## Uploads
+
+- Upload tiles keep their order, and that's the order Babe sees them in.
+- A failed upload blocks submitting until it's fixed or removed.
+- Filenames only ever show on the contributor's side.
+
+<Preview surface="sky">
+  <UploadTileExample />
+</Preview>
+
+## One main memory
+
+Each contributor has one main-path memory. Anything else they send becomes a discovery beside the road.

@@ -1,0 +1,9 @@
+{
+  "title": "Media",
+  "pages": [
+    "memory-text",
+    "audio-player",
+    "photo-stack",
+    "video-frame"
+  ]
+}

@@ -4,9 +4,14 @@
   "private": true,
   "description": "Lanre DS3: design system for a casual exploration game",
   "type": "module",
+  "workspaces": [
+    "docs"
+  ],
   "scripts": {
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "docs": "npm run dev -w docs",
+    "build-docs": "npm run build -w docs"
   },
   "peerDependencies": {
     "react": "^19.0.0",

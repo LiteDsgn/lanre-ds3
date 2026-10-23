@@ -1,0 +1,46 @@
+---
+title: Gemstones
+description: Friends earn a gem from the quiz. Babe only ever sees the stone.
+---
+
+import { Gemstone } from '@ds/identity/Gemstone';
+import GemstoneExample from '@/examples/identity/Gemstone';
+
+<Preview>
+  <GemstoneExample />
+</Preview>
+
+## From score to gem
+
+The quiz has eight questions, one point each.
+
+| Score | Gem |
+| --- | --- |
+| 0, 1, 2 | Amber I, II, III |
+| 3, 4, 5 | Emerald I, II, III |
+| 6, 7, 8 | Amethyst I, II, III |
+| Skipped the quiz | Pearl, a keepsake. Unranked, not a zero. |
+
+`gemForScore` does this mapping for you.
+
+## Tiers and cuts
+
+- Tier I is plain. Tier II adds a sparkle. Tier III adds a halo. (Proposed: tier III keeps the sparkle too.)
+- Each gem has its own cut: hexagon, octagon, kite or round. So colour is never the only thing that tells them apart.
+
+## On Babe's surfaces
+
+Gems are ornaments there. No visible label, no tooltip, no tier or score in the accessible name, and no button that explains the gem. `Gemstone` is decorative by default unless you ask for `showTier`.
+
+<Preview>
+  <div style={{ display: 'flex', gap: 18, alignItems: 'flex-end' }}>
+    <Gemstone gem="amber" tier={1} size={52} decorative />
+    <Gemstone gem="emerald" tier={2} size={52} decorative />
+    <Gemstone gem="amethyst" tier={3} size={52} decorative />
+    <Gemstone gem="pearl" size={52} decorative />
+  </div>
+</Preview>
+
+Contributors can see their own gem's name, tier and score on their results.
+
+<TokenTable file="gems" />

@@ -1,0 +1,59 @@
+---
+title: Colour
+description: A painted, saturated, warm palette in oklch. Every tone is a five-step ramp used the same way.
+---
+
+import { Button } from '@ds/buttons/Button';
+
+## One recipe for every ramp
+
+Each tone runs from 100 to 900, and the steps always do the same job.
+
+- **500** is the face.
+- **300** is the top highlight.
+- **700** is the bevel, the solid edge under anything pressable.
+- **900** is the outline.
+
+<Preview>
+  <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+    <Button>Claim</Button>
+    <Button variant="play">Play</Button>
+    <Button variant="confirm">OK</Button>
+    <Button variant="danger">Close</Button>
+    <Button variant="premium">Boost</Button>
+    <Button variant="wood">Shop</Button>
+  </div>
+</Preview>
+
+## What each tone is for
+
+- **Meadow green** is the environment. Grass, bushes and board tiles.
+- **Sky blue** is action and "current". Play buttons, the current level and water.
+- **Gold** is reward and the main call to action. Coins, stars and Claim. Gold buttons take dark brown text, never white.
+- **Coral** is danger and urgency. Hearts and close buttons too.
+- **Teal** is confirm, OK and value.
+- **Berry** is premium, boosts and hazards.
+- **Wood** is frames, fences, signs and the bottom bar.
+- **Stone** is anything locked or disabled. It replaces the tone completely.
+- **Parchment** creams are panel surfaces.
+- **Ink** is a warm brown. Text is never black.
+
+<ColorRamps />
+
+## Semantic aliases
+
+Components read these, not the ramps. If an action needs a different colour, change the alias.
+
+<TokenTable file="colors" prefix={['--action-', '--state-']} />
+
+<TokenTable file="colors" prefix={['--surface-', '--text-']} />
+
+<TokenTable file="colors" prefix={['--currency-', '--star-', '--focus-ring']} />
+
+## Backgrounds
+
+Painted world art is the intended ground. Until it exists, these gradients stand in. There are no textures, no photos, and no repeating patterns apart from the diagonal stripe on progress fills.
+
+<TokenTable file="colors" prefix="--bg-" />
+
+Gem colours live on [Gemstones](/docs/adventure/gemstones), and each world's colours on [Worlds](/docs/adventure/worlds).

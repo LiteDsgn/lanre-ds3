@@ -1,0 +1,30 @@
+---
+title: Decisions
+description: What Henry settled on 13 September 2026. These win over any generic guidance in the base kit.
+---
+
+DS3 is the design system for the project. Earlier versions and the first foundations stay as references.
+
+## Art direction
+
+The scenery is original, generated 2.5D painted art, with responsive React and SVG controls on top. 2.5D means the illustrated depth, not a 3D engine.
+
+- Establish Mango Grove's style first, then make the other worlds match it.
+- Keep lettering, path nodes, portraits and buttons out of the generated backgrounds, so they stay sharp and responsive.
+- The first Mango Grove scenery is in the app and waiting for Henry's review.
+
+## Sender data
+
+Sender data is only fetched after the reveal. `RevealCard` only mounts the identity face once revealed, because hiding it with CSS isn't enough. Gating a component doesn't protect data the browser already has, so the API has to enforce it.
+
+## Gems on Babe's surfaces
+
+Gems there are ornaments. No visible label, no tooltip, no tier or score in the accessible name, and no gem button that explains them. `Gemstone` is decorative by default unless `showTier` is set. Contributor results can still show the gem name, tier and score.
+
+## Portrait medallions
+
+Completed level nodes become portrait medallions. They keep the level number underneath and can be replayed. They use the friend's portrait, or their generated avatar if there's no portrait. Locked and available nodes never show who's behind them.
+
+The medallions keep readable names, like "Replay level 4, Ada". Making gems decorative must not remove those labels.
+
+The source for this page is `PROJECT-DECISIONS.md` at the root of the repo.

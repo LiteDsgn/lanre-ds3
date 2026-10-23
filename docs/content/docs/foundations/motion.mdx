@@ -1,0 +1,45 @@
+---
+title: Motion
+description: Arrivals bounce, presses are quick, and claimable things float.
+---
+
+import { StarRating } from '@ds/map/StarRating';
+import { LevelNode } from '@ds/map/LevelNode';
+import { DiscoveryMarker } from '@ds/map/DiscoveryMarker';
+import { Toast } from '@ds/feedback/Toast';
+import { GameIcon } from '@ds/icons/GameIcon';
+
+<Preview>
+  <div style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
+    <StarRating value={3} size={40} arc animate />
+    <LevelNode number={4} state="current" />
+    <DiscoveryMarker kind="gift" state="available" size={52} />
+    <Toast icon={<GameIcon kind="coin" size={32} />} message="+50" detail="Coins collected" />
+  </div>
+</Preview>
+
+## How things move
+
+- **Arrivals bounce.** Stars, toasts and panels use `--ease-bounce` over 420ms, through the `mp-pop` keyframes.
+- **Presses ease out** over 120ms.
+- **Claimable things float** gently, with `mp-float` over 2.4s.
+- **The current level and reachable tiles pulse** a ring, with `mp-pulse-ring` over 1.6s.
+- **Progress fills** animate their width over 420ms.
+
+There are no fade-only transitions and no parallax.
+
+## States
+
+- **Pressed** moves down and collapses the edge.
+- **Disabled and locked** switch to stone at 85% opacity. Never use a greyscale filter on a button. RewardCard is the one exception, because its prize has to stay readable.
+- **Selected** gets a teal border and glow.
+- **Current** is blue with a pulse.
+- **Complete** is blue with a row of stars.
+
+## Reduced motion
+
+When someone asks for reduced motion, all motion collapses. Card flips become swaps.
+
+<TokenTable file="effects" prefix={['--ease', '--dur']} />
+
+The keyframes live in `tokens/utilities.css`: `mp-float`, `mp-pulse-ring`, `mp-pop`, `mp-sparkle`, `mp-shimmer` and `mp-shake`.

@@ -1,0 +1,34 @@
+---
+title: The map
+description: World gates, discoveries beside the road, and level pucks with no star scores.
+---
+
+import WorldGateExample from '@/examples/map/WorldGate';
+import DiscoveryMarkerExample from '@/examples/map/DiscoveryMarker';
+
+## World gates
+
+Gates mark where one world ends and the next begins. When Henry has written a note for a world, the gate carries it. When he hasn't, there's no card at all. The Summit gate stays locked until the main path is done.
+
+<Preview>
+  <WorldGateExample />
+</Preview>
+
+## Discoveries
+
+Discoveries sit beside the road as objects that fit the world: a mango, a rice bowl, a flower, a dumbbell, a lantern or a gift.
+
+- **Hidden** shows as a glinting bush.
+- **Available** glows and floats.
+- **New** means it arrived after the route was frozen. It never becomes a new numbered level.
+- **Opened** shows a tick.
+
+Each contributor's main package is their main-path memory. Any extra packages become discoveries.
+
+<Preview>
+  <DiscoveryMarkerExample />
+</Preview>
+
+## Level pucks
+
+This game has no star scores, so use `LevelNode` with `stars={0}`. Completed levels become portrait medallions. See [Identity and anonymity](/docs/adventure/identity-and-anonymity).

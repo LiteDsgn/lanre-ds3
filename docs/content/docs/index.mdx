@@ -1,0 +1,52 @@
+---
+title: Introduction
+description: Lanre is a design system for casual exploration games, and the one behind Lanre's Birthday Adventure.
+---
+
+import { Button } from '@ds/buttons/Button';
+import { LevelNode } from '@ds/map/LevelNode';
+import { CurrencyPill } from '@ds/hud/CurrencyPill';
+import { OutlineText } from '@ds/text/OutlineText';
+
+<Preview padding={32}>
+  <div style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
+    <OutlineText size="xl">Warmful Valley</OutlineText>
+    <LevelNode number={4} state="current" />
+    <CurrencyPill kind="coin" value="50,253k" />
+    <Button size="lg">Play</Button>
+  </div>
+</Preview>
+
+Lanre is for mobile games built around a world map. A winding trail of level pucks, expedition boards, a camp inventory, and the panels every casual game needs.
+
+It's bright, chunky and tactile. Painted meadow greens, sky-blue actions, gold rewards and wood frames. Everything you can press has a solid bottom edge.
+
+It started from nine reference screenshots of casual games. The name, palette, type pairing and components are original.
+
+## Two layers
+
+- **The base kit** is a general casual-game system. Buttons, HUD pills, panels, map pucks, rewards, forms and feedback.
+- **The Birthday Adventure layer** adds what Lanre's Birthday Adventure needs. Themed worlds, mystery levels with mixed media, identity reveals, gemstones, discoveries and the contributor flow.
+
+<Cards>
+  <Card title="Foundations" href="/docs/foundations/colour" description="Colour, type, spacing, depth, motion, icons and voice." />
+  <Card title="Components" href="/docs/components/buttons/button" description="The base kit, with live examples and props." />
+  <Card title="Birthday Adventure" href="/docs/adventure" description="The project rules: worlds, gems, anonymity and the level loop." />
+  <Card title="Adventure components" href="/docs/adventure-components/identity/gemstone" description="Reveal cards, media players, the contributor kit and more." />
+</Cards>
+
+## Where things live
+
+- **These docs** explain the rules and show every component live. Props tables come from each component's `.d.ts`, and usage notes from its `.prompt.md`.
+- **Storybook** has every state of every component, live controls and accessibility checks.
+- **`showcase.html`** is the original showcase. It still works with no build step.
+- **The source** is in `tokens/`, `components/` and `guidelines/` at the root of the repo.
+
+## Run it locally
+
+```bash
+npm install
+npm run docs
+```
+
+The docs open on port 3000. Run `npm run storybook` alongside it so the Storybook links work.

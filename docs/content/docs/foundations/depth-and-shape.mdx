@@ -1,0 +1,61 @@
+---
+title: Depth and shape
+description: The bevel is the signature. Everything you can press has a solid bottom edge.
+---
+
+import { Button } from '@ds/buttons/Button';
+import { LevelNode } from '@ds/map/LevelNode';
+
+## The bevel
+
+Every pressable thing is built the same way.
+
+- A gradient face, from the 300 step to the 500 step by 42%.
+- A hard `0 Npx 0` shadow in the 700 step. That's the bottom edge. It's 3, 5 or 7px for small, medium and large.
+- A soft brown drop shadow below it.
+- A 2px white line inset along the top.
+
+Pressing moves the element down 4px and collapses the edge to 1px, over 120ms. Hover only brightens it by 6%. Press these to feel it.
+
+<Preview>
+  <div style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
+    <Button size="sm" variant="confirm">Small</Button>
+    <Button size="md" variant="play">Medium</Button>
+    <Button size="lg">Large</Button>
+    <LevelNode number={4} state="current" />
+  </div>
+</Preview>
+
+Level pucks are ellipses with the same recipe, plus two white gloss spots. Tracks and cells go the other way. They're inset, in a dark translucent brown or green with an inner shadow.
+
+<TokenTable file="effects" prefix={['--bevel', '--press-travel']} />
+
+## Shadows and glows
+
+Shadows are tinted brown, never grey. A glow ring marks the thing you can tap or the thing you've won.
+
+<TokenTable file="effects" prefix={['--highlight', '--shadow', '--glow']} />
+
+## Corners
+
+Everything is rounded.
+
+- 6px for tags, 10px for badges and knobs.
+- 16px for buttons, cells and cards, 22px for rows and tabs.
+- 28px for panels, and a full pill for tracks and HUD pills.
+- Pucks and decorative blobs are 50% ellipses.
+
+<TokenTable file="effects" prefix="--radius" />
+
+## Borders
+
+- Panels have a 4px border in the next darker cream. Wood panels use 6px in `--wood-500`.
+- Cells have a 3px translucent white border.
+- Badges and tokens have a 2 to 3px solid white ring.
+- There are no 1px hairlines.
+
+<TokenTable file="effects" prefix="--border" />
+
+## Transparency
+
+Translucent surfaces only appear over the world. HUD pills are 82% brown, inventory cells 30% green, and the scrim 55%. There's no backdrop blur anywhere.
