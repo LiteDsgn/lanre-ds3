@@ -6,7 +6,7 @@
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
-<script src="tools/ds-loader.js" data-root="." data-components="buttons/Button,buttons/IconButton,hud/CurrencyPill,hud/ProgressBar,hud/TimerChip,panels/Panel,map/LevelNode,map/StarRating,map/Tile,rewards/RewardCard,rewards/ItemCell,rewards/ShopRow,forms/Switch,forms/Slider,feedback/Badge,feedback/Tag,feedback/Toast,feedback/SoundToggle,text/OutlineText,icons/GameIcon,identity/Gemstone,identity/Avatar,identity/RevealCard,identity/PersonTile,quiz/LeaderboardRow,levels/ChoiceButton,levels/PackageStepper,media/MemoryText,media/AudioPlayer,media/VideoFrame,media/PhotoStack,map/DiscoveryMarker,map/WorldGate,games/MatchCard,contributor/UploadTile,contributor/TextField,contributor/StepBar,contributor/WorldChip,contributor/RadioCard"></script>
+<script src="tools/ds-loader.js" data-root="." data-components="buttons/Button,buttons/IconButton,hud/CurrencyPill,hud/ProgressBar,hud/TimerChip,hud/Countdown,panels/Panel,panels/Modal,map/LevelNode,map/PortraitMedallion,map/StarRating,map/Tile,rewards/RewardCard,rewards/ItemCell,rewards/ShopRow,forms/Switch,forms/Slider,feedback/Badge,feedback/Tag,feedback/Toast,feedback/SoundToggle,text/OutlineText,icons/GameIcon,identity/Gemstone,identity/Avatar,identity/RevealCard,identity/PersonTile,quiz/LeaderboardRow,levels/ChoiceButton,levels/PackageStepper,media/MemoryText,media/AudioPlayer,media/VideoFrame,media/PhotoStack,map/DiscoveryMarker,map/WorldGate,games/MatchCard,contributor/UploadTile,contributor/TextField,contributor/StepBar,contributor/WorldChip,contributor/RadioCard"></script>
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -104,7 +104,7 @@ footer{padding:28px 48px 48px;font-size:12.5px;color:var(--ink-500);border-top:2
       <div class="mp-display mp-outline" style="font-size:clamp(44px,7vw,84px);text-transform:uppercase;line-height:.95">Lanre</div>
       <div class="mp-display mp-outline" style="font-size:clamp(16px,2vw,22px);text-transform:uppercase;margin-top:6px;-webkit-text-stroke-color:var(--green-900)">Design system for Lanre’s Birthday Adventure</div>
       <p>A tactile, painted UI language for a winding-road memory game: four themed worlds and a summit, mystery levels with mixed media, identity reveals, gemstones, side-of-road discoveries, plus the phone-first flow friends use to contribute. Everything pressable has a solid bottom edge; everything on the world wears an outline.</p>
-      <div class="facts"><span class="fact">38 components</span><span class="fact">5 worlds</span><span class="fact">3 gems × 3 tiers + pearl</span><span class="fact">iPad-first · phone-first contributors</span><span class="fact">160+ tokens</span></div>
+      <div class="facts"><span class="fact">42 components</span><span class="fact">5 worlds</span><span class="fact">3 gems × 3 tiers + pearl</span><span class="fact">iPad-first · phone-first contributors</span><span class="fact">160+ tokens</span></div>
       <div class="row" style="margin-top:26px" id="hero-cta"></div>
     </div>
   </header>
@@ -359,12 +359,13 @@ box-shadow: 0 var(--bevel-md) 0 var(--gold-700),            /* hard bottom edge 
 
   <section id="c-hud">
     <div class="sec-head"><span class="kicker">19</span><h2>HUD</h2></div>
-    <p class="lede"><code class="tok">CurrencyPill</code>, <code class="tok">ProgressBar</code>, <code class="tok">TimerChip</code>, the dark inset kit that sits over the world. Two or three pills max in the top strip, right-aligned; glyphs overlap the left edge.</p>
+    <p class="lede"><code class="tok">CurrencyPill</code>, <code class="tok">ProgressBar</code>, <code class="tok">TimerChip</code>, <code class="tok">Countdown</code>, the dark inset kit that sits over the world. Two or three pills max in the top strip, right-aligned; glyphs overlap the left edge.</p>
     <div class="demo col" id="d-hud"></div>
     <pre class="code">&lt;CurrencyPill kind="coin" value="50,253k" onAdd={openShop} /&gt;   &lt;CurrencyPill kind="heart" value="5/5" size="sm" /&gt;
 &lt;ProgressBar value={6} max={20} tone="green" size="lg" label="6/20" cap={&lt;GameIcon kind="star" size={36} /&gt;} /&gt;
-&lt;ProgressBar value={0.65} tone="teal" track="light" label="Loading…" /&gt;     &lt;TimerChip time="00:09" urgent /&gt;</pre>
-    <ul class="props"><li>CurrencyPill <code>kind</code> coin · gem · ruby · heart · energy · star · key, <code>tone</code> dark (over world) · light (in panels), <code>onAdd</code> renders the teal “+”.</li><li>ProgressBar <code>tone</code> gold · blue · teal · green · coral · berry, <code>size</code> sm 14 · md 22 · lg 30, <code>striped</code>, <code>cap</code>, <code>label</code>, <code>track</code> dark · light. Width animates on change.</li><li>TimerChip <code>time</code> pre-formatted, <code>urgent</code> turns coral and floats.</li></ul>
+&lt;ProgressBar value={0.65} tone="teal" track="light" label="Loading…" /&gt;     &lt;TimerChip time="00:09" urgent /&gt;
+&lt;Countdown to={partyAt} label="the party" caption="24 December" /&gt;   &lt;Countdown variant="chip" to={deadline} label="the deadline" /&gt;</pre>
+    <ul class="props"><li>CurrencyPill <code>kind</code> coin · gem · ruby · heart · energy · star · key, <code>tone</code> dark (over world) · light (in panels), <code>onAdd</code> renders the teal “+”.</li><li>ProgressBar <code>tone</code> gold · blue · teal · green · coral · berry, <code>size</code> sm 14 · md 22 · lg 30, <code>striped</code>, <code>cap</code>, <code>label</code>, <code>track</code> dark · light. Width animates on change.</li><li>TimerChip <code>time</code> pre-formatted, <code>urgent</code> turns coral and floats.</li><li>Countdown ticks every second to <code>to</code>: <code>variant</code> board (wooden, with tiles) · chip (a ticking TimerChip, urgent in the last day). <code>label</code> is read out, <code>ended</code> shows once it passes. Renders after hydration.</li></ul>
   </section>
 
   <section id="c-text">
@@ -378,23 +379,25 @@ box-shadow: 0 var(--bevel-md) 0 var(--gold-700),            /* hard bottom edge 
 
   <section id="c-panels">
     <div class="sec-head"><span class="kicker">21</span><h2>Panels</h2></div>
-    <p class="lede"><code class="tok">Panel</code> is every modal. Every header is a chunky plate that straddles the panel's top edge, with outlined display type. Pick it by mood: <strong>banner</strong> for utility and level dialogs (blue; <code class="tok">accent="teal"</code> in Babe's flow), <strong>ribbon</strong>, gold with folded tails and stars, for celebration, <strong>sign</strong>, a wooden plank with leaves, for world events and the daily reward. Tones: cream, wood, sky. Primary action goes in <code class="tok">footer</code>.</p>
+    <p class="lede"><code class="tok">Panel</code> is every modal, and <code class="tok">Modal</code> is the shell around it. Every header is a chunky plate that straddles the panel's top edge, with outlined display type. Pick it by mood: <strong>banner</strong> for utility and level dialogs (blue; <code class="tok">accent="teal"</code> in Babe's flow), <strong>ribbon</strong>, gold with folded tails and stars, for celebration, <strong>sign</strong>, a wooden plank with leaves, for world events and the daily reward. Tones: cream, wood, sky. Primary action goes in <code class="tok">footer</code>.</p>
     <div class="demo dusk" id="d-panels" style="gap:36px;align-items:flex-start;padding:48px 28px 34px"></div>
     <pre class="code">&lt;Panel title="Settings" onClose={close}&gt;…rows…&lt;/Panel&gt;
 &lt;Panel title="Complete" eyebrow="Level 23" header="ribbon" footer={&lt;Button variant="confirm" size="lg"&gt;OK&lt;/Button&gt;}&gt;…&lt;/Panel&gt;
 &lt;Panel title="Daily Reward" header="sign" tone="wood" footer={&lt;Button size="lg"&gt;Claim&lt;/Button&gt;}&gt;…&lt;/Panel&gt;
-&lt;Panel title="Who sent this?" accent="teal" footer={&lt;Button variant="confirm" size="lg"&gt;Continue&lt;/Button&gt;}&gt;…&lt;/Panel&gt;</pre>
-    <ul class="props"><li><code>header</code> banner · ribbon · sign · none &nbsp; <code>accent</code> blue · gold · teal · green · berry · coral &nbsp; <code>tone</code> cream · wood · sky &nbsp; <code>title</code> <code>eyebrow</code> <code>onClose</code> (coral × on the corner) <code>width</code> 340 <code>padding</code> 20 <code>footer</code></li><li>Always centre a Panel inside a fixed scrim (<code>--bg-scrim</code>); one panel per screen.</li></ul>
+&lt;Panel title="Who sent this?" accent="teal" footer={&lt;Button variant="confirm" size="lg"&gt;Continue&lt;/Button&gt;}&gt;…&lt;/Panel&gt;
+{open &amp;&amp; &lt;Modal label="Settings" onClose={() =&gt; setOpen(false)}&gt;{close =&gt; &lt;Panel title="Settings" onClose={close}&gt;…&lt;/Panel&gt;}&lt;/Modal&gt;}</pre>
+    <ul class="props"><li><code>header</code> banner · ribbon · sign · none &nbsp; <code>accent</code> blue · gold · teal · green · berry · coral &nbsp; <code>tone</code> cream · wood · sky &nbsp; <code>title</code> <code>eyebrow</code> <code>onClose</code> (coral × on the corner) <code>width</code> 340 <code>padding</code> 20 <code>footer</code></li><li>Always centre a Panel inside a fixed scrim (<code>--bg-scrim</code>); one panel per screen.</li><li>Modal does the scrim, Escape, scroll lock, focus (kept inside, handed back on close) and the fade. Pass a function child to get <code>close</code> for the panel. <code>tone</code> dim · dusk · world, <code>world</code>, <code>closeOnScrim</code>.</li></ul>
   </section>
 
   <section id="c-map">
     <div class="sec-head"><span class="kicker">22</span><h2>Map & board</h2></div>
-    <p class="lede"><code class="tok">LevelNode</code> pucks for the trail, <code class="tok">StarRating</code> for results, <code class="tok">Tile</code> for board and grid events. One current puck per map; locked pucks ignore taps; keep 24px of grass between pucks.</p>
+    <p class="lede"><code class="tok">LevelNode</code> pucks for the trail, <code class="tok">PortraitMedallion</code> once a level is complete, <code class="tok">StarRating</code> for results, <code class="tok">Tile</code> for board and grid events. One current puck per map; locked pucks ignore taps; keep 24px of grass between pucks.</p>
     <div class="demo col" id="d-map"></div>
     <pre class="code">&lt;LevelNode number={1} state="complete" stars={3} onClick={open} /&gt;  &lt;LevelNode number={4} state="current" /&gt;  &lt;LevelNode number={5} state="locked" /&gt;
+&lt;PortraitMedallion name="Ada Okafor" seed="c_01" number={4} onClick={replay} /&gt;
 &lt;StarRating value={3} size={44} arc animate /&gt;
 &lt;Tile variant="reward" content={&lt;GameIcon kind="coin" size={30} /&gt;} active onClick={pick} label="Coin tile" /&gt;</pre>
-    <ul class="props"><li>LevelNode <code>state</code> locked · current · complete, <code>stars</code> 0–3, <code>size</code> 84. &nbsp; StarRating <code>value</code>/<code>max</code> 3, <code>arc</code>, <code>animate</code>.</li><li>Tile <code>variant</code> grass · sand · stone · water · reward · hazard · start, <code>content</code>, <code>active</code> (gold glow), <code>onClick</code>. Lay tiles in a grid with 6–8px gaps so the sides read.</li></ul>
+    <ul class="props"><li>LevelNode <code>state</code> locked · current · complete, <code>stars</code> 0–3, <code>size</code> 84. &nbsp; StarRating <code>value</code>/<code>max</code> 3, <code>arc</code>, <code>animate</code>.</li><li>PortraitMedallion <code>name</code> <code>seed</code> / <code>src</code> <code>number</code> <code>size</code> 84 <code>pop</code> <code>onClick</code> (replay; labelled “Replay level 4, Ada Okafor”). Only for completed levels: locked and available ones never show who sent them.</li><li>Tile <code>variant</code> grass · sand · stone · water · reward · hazard · start, <code>content</code>, <code>active</code> (gold glow), <code>onClick</code>. Lay tiles in a grid with 6–8px gaps so the sides read.</li></ul>
   </section>
 
   <section id="c-rewards">
@@ -480,7 +483,7 @@ box-shadow: 0 var(--bevel-md) 0 var(--gold-700),            /* hard bottom edge 
 </script>
 <script type="text/babel">
 MPReady.then((C) => {
-  const { Button, IconButton, CurrencyPill, ProgressBar, TimerChip, Panel, LevelNode, StarRating, Tile, RewardCard, ItemCell, ShopRow, Switch, Slider, Badge, Tag, Toast, OutlineText, GameIcon,
+  const { Button, IconButton, CurrencyPill, ProgressBar, TimerChip, Countdown, Panel, Modal, LevelNode, PortraitMedallion, StarRating, Tile, RewardCard, ItemCell, ShopRow, Switch, Slider, Badge, Tag, Toast, OutlineText, GameIcon,
     Gemstone, gemForScore, Avatar, RevealCard, PersonTile, LeaderboardRow, ChoiceButton, PackageStepper, MemoryText, AudioPlayer, VideoFrame, PhotoStack, DiscoveryMarker, WorldGate, MatchCard, UploadTile, TextField, StepBar, WorldChip, RadioCard, SoundToggle } = C;
   const mount = (id, el) => { const n = document.getElementById(id); n.innerHTML = ''; ReactDOM.createRoot(n).render(el); };
   const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ display: 'flex', gap, alignItems: align, flexWrap: 'wrap', ...style }}>{children}</div>;
@@ -500,26 +503,35 @@ MPReady.then((C) => {
       <IconButton variant="primary" shape="square" label="Shop"><GameIcon kind="shop" size={26} tone="ink" outline={false} shadow={false} /></IconButton><IconButton variant="play" shape="square" label="Quests" badge={3}><GameIcon kind="quest" size={26} tone="white" outline={false} shadow={false} /></IconButton><IconButton variant="wood" shape="square" label="Map"><GameIcon kind="map" size={26} tone="white" outline={false} shadow={false} /></IconButton><IconButton disabled shape="square" label="Locked"><i className="ph-fill ph-lock" /></IconButton></Row>
   </>);
 
+  const soon = Date.now() + ((3 * 24 + 4) * 60 + 12) * 60e3;
   mount('d-hud', <>
     <Row gap={26}><CurrencyPill kind="coin" value="50,253k" onAdd={noop} /><CurrencyPill kind="gem" value={36} onAdd={noop} /><CurrencyPill kind="heart" value="5/5" /><CurrencyPill kind="energy" value={32} size="sm" /><CurrencyPill kind="coin" value="1,240" tone="light" /><CurrencyPill icon={<GameIcon kind="chest" size={40} />} value="3/3" /></Row>
     <Row gap={26}><ProgressBar value={0.42} label="42%" width={220} /><ProgressBar value={6} max={20} tone="green" size="lg" label="6/20" width={240} cap={<GameIcon kind="star" size={40} />} /><ProgressBar value={0.7} tone="blue" size="sm" striped={false} width={150} /><ProgressBar value={0.65} tone="teal" track="light" width={200} label="Loading…" /><ProgressBar value={0.3} tone="coral" width={140} label="3/10" cap={<GameIcon kind="heart" size={34} />} /></Row>
-    <Row><TimerChip time="00:02" /><TimerChip time="4h 12m" tone="light" /><TimerChip time="00:09" urgent /><TimerChip time="12:00" size="sm" icon="hourglass" /></Row>
+    <Row><TimerChip time="00:02" /><TimerChip time="4h 12m" tone="light" /><TimerChip time="00:09" urgent /><TimerChip time="12:00" size="sm" icon="hourglass" /><Countdown variant="chip" to={soon} label="the deadline" /><Countdown variant="chip" to={Date.now() + 5 * 3600e3} label="the deadline" tone="light" /></Row>
+    <div style={{ maxWidth: 460, paddingTop: 6 }}><Countdown to={soon} label="the party" caption="Fixture date" /></div>
   </>);
 
   mount('d-text', <><OutlineText size="xl">Daily Reward</OutlineText><OutlineText size="lg">Level 12</OutlineText><OutlineText size={40} stroke="blue">7</OutlineText><OutlineText size={40} stroke="stone">8</OutlineText><OutlineText size="lg" color="gold" stroke="gold">x2 Boost</OutlineText><OutlineText size="lg" color="cream" stroke="wood">Sign</OutlineText><OutlineText size="sm">Quests</OutlineText><OutlineText size="xs" stroke="stone">Locked</OutlineText></>);
 
   const Label = ({ children }) => <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-500)', textAlign: 'center' }}>{children}</div>;
   const Inset = ({ children }) => <div style={{ margin: '6px 0 12px', padding: '10px 16px', borderRadius: 'var(--radius-pill)', background: 'var(--cream-200)', boxShadow: 'inset 0 2px 4px oklch(0 0 0 / .1)', textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 26, color: 'var(--ink-900)' }}>{children}</div>;
+  function ModalDemo() {
+    const [open, setOpen] = React.useState(false);
+    return <div style={{ alignSelf: 'center' }}><Button variant="confirm" typeface="ui" onClick={() => setOpen(true)}>Open a modal</Button>
+      {open && <Modal label="Settings" onClose={() => setOpen(false)}>{close => <Panel title="Settings" width={300} onClose={close} footer={<Button variant="confirm" onClick={close}>OK</Button>}><div style={{ fontWeight: 600, color: 'var(--ink-700)', textAlign: 'center' }}>Escape, the ×, or OK closes it.</div></Panel>}</Modal>}</div>;
+  }
   mount('d-panels', <>
     <Panel title="Settings" width={230} onClose={noop}><div style={{ display: 'grid', gap: 10, fontWeight: 700, fontSize: 15, color: 'var(--ink-900)' }}>{[['sound', 'Sound', true], ['vibrate', 'Vibration', false]].map(([i, l, on]) => <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 10 }}><GameIcon kind={i} size={24} /><span style={{ flex: 1 }}>{l}</span><Switch checked={on} size="sm" /></div>)}</div></Panel>
     <Panel title="Complete" eyebrow="Level 23" header="ribbon" width={240} footer={<Button variant="confirm">OK</Button>}><div style={{ display: 'grid', placeItems: 'center', marginTop: -6 }}><StarRating value={3} size={28} arc /></div><Label>Score</Label><Inset>14 000</Inset></Panel>
     <Panel title="Daily Reward" header="sign" tone="wood" width={230} footer={<Button>Claim</Button>}><div style={{ display: 'grid', placeItems: 'center', gap: 6, fontWeight: 700, color: 'var(--wood-900)' }}><GameIcon kind="gift" size={48} />Day 3</div></Panel>
     <Panel title="Who sent this?" accent="teal" width={230} footer={<Button variant="confirm">Continue</Button>}><div style={{ textAlign: 'center', fontWeight: 600, fontSize: 13, color: 'var(--ink-700)' }}>accent="teal", Babe's level dialogs</div></Panel>
     <Panel header="none" tone="sky" width={180}><div style={{ textAlign: 'center', fontWeight: 700, color: 'var(--blue-700)' }}>header="none" tone="sky"</div></Panel>
+    <ModalDemo />
   </>);
 
   mount('d-map', <>
-    <Row gap={18} align="flex-end"><LevelNode number={1} state="complete" stars={3} onClick={noop} /><LevelNode number={2} state="complete" stars={2} onClick={noop} /><LevelNode number={3} state="complete" stars={1} onClick={noop} /><LevelNode number={4} state="current" onClick={noop} /><LevelNode number={5} state="locked" /><LevelNode number={12} state="locked" size={64} /><span style={{ display: 'grid', gap: 8, justifyItems: 'center', marginLeft: 10 }}><StarRating value={3} size={40} arc animate /><StarRating value={2} size={22} /><StarRating value={0} size={18} /></span></Row>
+    <Row gap={18} align="flex-end"><LevelNode number={1} state="complete" stars={3} onClick={noop} /><LevelNode number={2} state="complete" stars={2} onClick={noop} /><LevelNode number={3} state="complete" stars={1} onClick={noop} /><LevelNode number={4} state="current" onClick={noop} /><LevelNode number={5} state="locked" /><LevelNode number={12} state="locked" size={64} /></Row>
+    <Row gap={22} align="flex-end"><PortraitMedallion name="Ada Okafor" seed="c_01" number={1} onClick={noop} /><PortraitMedallion name="Tunde Bello" seed="c_22" number={2} onClick={noop} /><PortraitMedallion name="Kemi A." seed="c_07" number={3} pop onClick={noop} /><LevelNode number={4} state="current" onClick={noop} /><LevelNode number={5} state="locked" /><span style={{ display: 'grid', gap: 8, justifyItems: 'center', marginLeft: 10 }}><StarRating value={3} size={40} arc animate /><StarRating value={2} size={22} /><StarRating value={0} size={18} /></span></Row>
     <Row gap={12} align="flex-start"><Tile variant="grass" /><Tile variant="sand" content="?" /><Tile variant="stone" content={<GameIcon kind="lock" size={26} />} /><Tile variant="water" /><Tile variant="reward" content={<GameIcon kind="coin" size={30} />} active onClick={noop} label="Coin" /><Tile variant="hazard" content={<GameIcon name="skull" tone="white" size={28} />} /><Tile variant="start" content="GO" /><Tile variant="sand" size={48} content="5" /></Row>
   </>);
 

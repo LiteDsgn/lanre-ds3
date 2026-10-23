@@ -16,8 +16,8 @@ const force = process.argv.includes('--force');
 const SECTIONS = {
   components: ['Components', 'Components', {
     buttons: ['Buttons', ['Button', 'IconButton']],
-    hud: ['HUD', ['CurrencyPill', 'ProgressBar', 'TimerChip']],
-    panels: ['Panels', ['Panel']],
+    hud: ['HUD', ['CurrencyPill', 'ProgressBar', 'TimerChip', 'Countdown']],
+    panels: ['Panels', ['Panel', 'Modal']],
     map: ['Map', ['LevelNode', 'StarRating', 'Tile']],
     rewards: ['Rewards', ['RewardCard', 'ItemCell', 'ShopRow']],
     forms: ['Forms', ['Switch', 'Slider']],
@@ -28,7 +28,7 @@ const SECTIONS = {
   'adventure-components': ['Adventure', 'Adventure components', {
     identity: ['Identity', ['Gemstone', 'Avatar', 'RevealCard', 'PersonTile']],
     levels: ['Levels', ['ChoiceButton', 'PackageStepper']],
-    map: ['Map', ['WorldGate', 'DiscoveryMarker']],
+    map: ['Map', ['WorldGate', 'DiscoveryMarker', 'PortraitMedallion']],
     media: ['Media', ['MemoryText', 'AudioPlayer', 'PhotoStack', 'VideoFrame']],
     games: ['Games', ['MatchCard']],
     contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'RadioCard', 'UploadTile']],

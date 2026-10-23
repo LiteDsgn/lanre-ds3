@@ -101,14 +101,14 @@ Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the
 - `guidelines/`: 24 specimen cards (Colors ×9, Type ×4, Spacing ×3, Effects ×4, Brand ×4) shown in the Design System tab.
 - `components/`: 19 React primitives, each `Name.jsx` + `Name.d.ts` + `Name.prompt.md`, one preview card per group:
   - `buttons/`: **Button** (8 tones × 3 sizes, display/ui typeface, pill, block), **IconButton** (circle/square, badge, outlined caption).
-  - `hud/`: **CurrencyPill** (coin/gem/ruby/heart/energy/star/key, + button), **ProgressBar** (striped, cap, label, dark/light track), **TimerChip**.
-  - `panels/`: **Panel** (banner / ribbon / sign headers with blue·gold·teal·green·berry·coral accents; cream / wood / sky tones; close; footer).
+  - `hud/`: **CurrencyPill** (coin/gem/ruby/heart/energy/star/key, + button), **ProgressBar** (striped, cap, label, dark/light track), **TimerChip**, **Countdown** (live: wooden board or ticking chip).
+  - `panels/`: **Panel** (banner / ribbon / sign headers with blue·gold·teal·green·berry·coral accents; cream / wood / sky tones; close; footer), **Modal** (the shell around a Panel: scrim, Escape, scroll lock, focus, fade).
   - `map/`: **LevelNode** (locked / current / complete puck), **StarRating** (flat / arc / animated), **Tile** (grass / sand / stone / water / reward / hazard / start).
   - `rewards/`: **RewardCard** (claimed / available / locked, featured), **ItemCell** (empty / filled / locked / add, selected, dim), **ShopRow** (default / featured, tag, price).
   - `forms/`: **Switch**, **Slider**.
   - `feedback/`: **Badge**, **Tag**, **Toast**.
   - `text/`: **OutlineText**. `icons/`, **GameIcon**.
-  - Adventure layer: `identity/`: **Gemstone**, **Avatar**, **RevealCard**, **PersonTile**; `levels/`: **ChoiceButton**, **PackageStepper**; `media/`: **MemoryText**, **AudioPlayer**, **VideoFrame**, **PhotoStack**; `map/`: **WorldGate**, **DiscoveryMarker**, `worlds.js`; `games/`: **MatchCard**; `contributor/`: **StepBar**, **TextField**, **UploadTile**, **WorldChip**, **RadioCard**; `quiz/`: **LeaderboardRow**; `feedback/`: **SoundToggle**.
+  - Adventure layer: `identity/`: **Gemstone**, **Avatar**, **RevealCard**, **PersonTile**; `levels/`: **ChoiceButton**, **PackageStepper**; `media/`: **MemoryText**, **AudioPlayer**, **VideoFrame**, **PhotoStack**; `map/`: **WorldGate**, **DiscoveryMarker**, **PortraitMedallion** (completed levels), `worlds.js`; `games/`: **MatchCard**; `contributor/`: **StepBar**, **TextField**, **UploadTile**, **WorldChip**, **RadioCard**; `quiz/`: **LeaderboardRow**; `feedback/`: **SoundToggle**.
 - `tokens/worlds.css`, `tokens/gems.css`: world scopes and gem tones; iPad/phone layout tokens in `spacing.css`; memory/letter sizes in `typography.css`; focus ring + reduced motion in `utilities.css`.
 - `guidelines/worlds.html`, `colors-gems.html`, `spacing-ipad.html`, `a11y.html`, `brand-anonymity.html`: project specimens.
 - `ui_kits/lanre-game/`: interactive mobile game (`index.html`, `App.jsx`, `Hud.jsx`, `MapScreen.jsx`, `BoardScreen.jsx`, `CampScreen.jsx`, `Dialogs.jsx`, `README.md`).

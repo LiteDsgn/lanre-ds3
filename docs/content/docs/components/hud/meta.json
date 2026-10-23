@@ -3,6 +3,7 @@
   "pages": [
     "currency-pill",
     "progress-bar",
-    "timer-chip"
+    "timer-chip",
+    "countdown"
   ]
 }
