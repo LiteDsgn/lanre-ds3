@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 const KINDS = { coin: ['coin', 'var(--gold-500)', 'var(--gold-900)'], gem: ['sketch-logo', 'var(--blue-500)', 'var(--blue-900)'], ruby: ['sketch-logo', 'var(--coral-500)', 'var(--coral-900)'],

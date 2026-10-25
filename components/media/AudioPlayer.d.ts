@@ -15,4 +15,4 @@ export interface AudioPlayerProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   style?: React.CSSProperties;
 }
 
-export function AudioPlayer(props: AudioPlayerProps): JSX.Element;
+export function AudioPlayer(props: AudioPlayerProps): React.JSX.Element;

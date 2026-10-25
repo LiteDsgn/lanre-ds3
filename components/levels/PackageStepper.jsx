@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const GLYPH = { text: 'article', photo: 'image', audio: 'microphone', video: 'video-camera' };

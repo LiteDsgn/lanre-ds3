@@ -26,4 +26,4 @@ export interface PanelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   style?: React.CSSProperties;
 }
 
-export function Panel(props: PanelProps): JSX.Element;
+export function Panel(props: PanelProps): React.JSX.Element;

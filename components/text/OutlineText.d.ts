@@ -21,4 +21,4 @@ export interface OutlineTextProps extends Omit<React.HTMLAttributes<HTMLElement>
   style?: React.CSSProperties;
 }
 
-export function OutlineText(props: OutlineTextProps): JSX.Element;
+export function OutlineText(props: OutlineTextProps): React.JSX.Element;

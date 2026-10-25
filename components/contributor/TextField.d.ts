@@ -22,4 +22,4 @@ export interface TextFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement
   inputStyle?: React.CSSProperties;
 }
 
-export function TextField(props: TextFieldProps): JSX.Element;
+export function TextField(props: TextFieldProps): React.JSX.Element;

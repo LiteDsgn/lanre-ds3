@@ -13,4 +13,4 @@ export interface SoundToggleProps extends Omit<React.HTMLAttributes<HTMLButtonEl
   style?: React.CSSProperties;
 }
 
-export function SoundToggle(props: SoundToggleProps): JSX.Element;
+export function SoundToggle(props: SoundToggleProps): React.JSX.Element;

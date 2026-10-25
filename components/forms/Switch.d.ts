@@ -16,4 +16,4 @@ export interface SwitchProps extends Omit<React.HTMLAttributes<HTMLButtonElement
   style?: React.CSSProperties;
 }
 
-export function Switch(props: SwitchProps): JSX.Element;
+export function Switch(props: SwitchProps): React.JSX.Element;

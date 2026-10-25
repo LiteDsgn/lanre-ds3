@@ -21,4 +21,4 @@ export interface ItemCellProps extends Omit<React.HTMLAttributes<HTMLElement>, '
   style?: React.CSSProperties;
 }
 
-export function ItemCell(props: ItemCellProps): JSX.Element;
+export function ItemCell(props: ItemCellProps): React.JSX.Element;

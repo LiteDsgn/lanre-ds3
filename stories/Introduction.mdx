@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Lanre DS3
+
+The workbench for Lanre, the design system behind Lanre's Birthday Adventure. Every component in `components/` has stories here, built from the old preview cards, with controls generated from its `.d.ts` file and usage notes from its `.prompt.md` file.
+
+## Finding your way
+
+- **Components**: the general casual-game kit (buttons, HUD, panels, map pieces, rewards, forms, feedback, text, icons).
+- **Adventure**: the birthday layer (identity and gems, level pieces, map extras, media, games, contributor kit, quiz).
+- **Patterns**: the interactive demos that combine several components (guess step, matching game, reveal, composer, settings, quiz result).
+
+## Toolbar
+
+- **World** sets `data-world` around the story, so anything reading `--world-*` tokens takes that world's colours. Stories without their own ground also switch to the world's painted background.
+- **Surface** overrides the ground behind the story: meadow, sky, dusk, cream, or the current world.
+- The **Accessibility** panel runs axe on every story. The project rules it should back up are in `guidelines/a11y.html`.
+
+## Rules that still apply here
+
+- Babe's surfaces never show score, rank or tier text, only the stone.
+- Mystery surfaces never carry the sender's name, portrait, gem, filenames or hidden DOM data.
+- Media never autoplays or auto-advances, and "Just tell me" is always offered.
+- Names in stories are fictional fixtures. No real quiz facts or letter text.
+
+The full rules live in `readme.md` and `PROJECT-DECISIONS.md`. The original no-build showcase is still at `showcase.html`.

@@ -21,4 +21,4 @@ export interface CurrencyPillProps extends Omit<React.HTMLAttributes<HTMLDivElem
   style?: React.CSSProperties;
 }
 
-export function CurrencyPill(props: CurrencyPillProps): JSX.Element;
+export function CurrencyPill(props: CurrencyPillProps): React.JSX.Element;

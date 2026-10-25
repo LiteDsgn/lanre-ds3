@@ -16,4 +16,4 @@ export interface PackageStepperProps extends Omit<React.HTMLAttributes<HTMLEleme
   style?: React.CSSProperties;
 }
 
-export function PackageStepper(props: PackageStepperProps): JSX.Element;
+export function PackageStepper(props: PackageStepperProps): React.JSX.Element;

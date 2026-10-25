@@ -16,4 +16,4 @@ export interface LevelNodeProps extends Omit<React.HTMLAttributes<HTMLButtonElem
   style?: React.CSSProperties;
 }
 
-export function LevelNode(props: LevelNodeProps): JSX.Element;
+export function LevelNode(props: LevelNodeProps): React.JSX.Element;

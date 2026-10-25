@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const TONES = { gold: 'var(--gold-300)', blue: 'var(--blue-300)', teal: 'var(--teal-300)', coral: 'var(--coral-300)', berry: 'var(--berry-300)', white: '#fff' };

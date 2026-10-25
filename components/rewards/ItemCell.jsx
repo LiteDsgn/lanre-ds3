@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 export function ItemCell({ state = 'empty', content, count, selected = false, dim = false, size = 72, onClick, label, style, ...rest }) {

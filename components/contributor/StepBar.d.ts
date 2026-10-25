@@ -14,4 +14,4 @@ export interface StepBarProps extends Omit<React.HTMLAttributes<HTMLElement>, 's
   style?: React.CSSProperties;
 }
 
-export function StepBar(props: StepBarProps): JSX.Element;
+export function StepBar(props: StepBarProps): React.JSX.Element;

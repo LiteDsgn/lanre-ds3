@@ -19,4 +19,4 @@ export interface TileProps extends Omit<React.HTMLAttributes<HTMLElement>, 'styl
   style?: React.CSSProperties;
 }
 
-export function Tile(props: TileProps): JSX.Element;
+export function Tile(props: TileProps): React.JSX.Element;

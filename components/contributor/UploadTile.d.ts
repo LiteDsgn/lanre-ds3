@@ -21,4 +21,4 @@ export interface UploadTileProps extends Omit<React.HTMLAttributes<HTMLElement>,
   style?: React.CSSProperties;
 }
 
-export function UploadTile(props: UploadTileProps): JSX.Element;
+export function UploadTile(props: UploadTileProps): React.JSX.Element;

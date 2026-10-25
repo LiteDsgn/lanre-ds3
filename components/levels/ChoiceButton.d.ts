@@ -17,4 +17,4 @@ export interface ChoiceButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLB
   style?: React.CSSProperties;
 }
 
-export function ChoiceButton(props: ChoiceButtonProps): JSX.Element;
+export function ChoiceButton(props: ChoiceButtonProps): React.JSX.Element;

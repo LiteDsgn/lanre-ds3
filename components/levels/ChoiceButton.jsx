@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 const TONES = {
@@ -19,9 +20,9 @@ export function ChoiceButton({ index = 0, state = 'idle', size = 'md', children,
     <button type="button" onClick={off ? undefined : onClick} disabled={disabled} aria-pressed={state === 'selected'} aria-disabled={off && !disabled ? true : undefined}
       onPointerDown={() => setDown(true)} onPointerUp={() => setDown(false)} onPointerLeave={() => setDown(false)}
       style={{ appearance: 'none', border: 0, margin: 0, width: '100%', minHeight: h, padding: '8px 14px 8px 10px', boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 14, borderRadius: 'var(--radius-md)', textAlign: 'left', cursor: off ? 'default' : 'pointer',
-        background: 'linear-gradient(180deg, ' + t.top + ' 0%, ' + t.mid + ' 42%)', boxShadow: '0 ' + lift + 'px 0 ' + t.shade + ', 0 ' + (lift + 5) + 'px 12px oklch(0.2 0.04 60 / 0.2), inset 0 2px 0 oklch(1 0 0 / 0.45)',
+        background: 'linear-gradient(180deg, ' + t.top + ' 0%, ' + t.mid + ' 42%)', boxShadow: '0 ' + lift + 'px 0 ' + t.shade + ', 0 ' + (lift + 5) + 'px 12px oklch(0.2 0.04 60 / 0.2), inset 0 2px 0 oklch(1 0 0 / 0.45)' + (state === 'correct' ? ', 0 0 0 4px oklch(0.92 0.14 90 / 0.65), 0 0 22px oklch(0.92 0.14 90 / 0.8)' : ''),
         transform: 'translateY(' + (depth - lift) + 'px)', transition: 'transform var(--dur-fast), box-shadow var(--dur-fast)', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: size === 'lg' ? 20 : 18, color: t.text,
-        textShadow: t.text === '#fff' ? '0 2px 0 ' + t.shade : 'none', opacity: state === 'dim' ? 0.7 : 1, WebkitTapHighlightColor: 'transparent', animation: state === 'wrong' ? 'mp-shake 0.4s var(--ease-out) 1' : 'none', ...style }} {...rest}>
+        textShadow: t.text === '#fff' ? '0 2px 0 ' + t.shade : 'none', opacity: state === 'dim' ? 0.7 : 1, WebkitTapHighlightColor: 'transparent', animation: state === 'wrong' ? 'mp-shake 0.4s var(--ease-out) 1' : state === 'correct' ? 'mp-pop var(--dur-slow) var(--ease-bounce) 1' : 'none', ...style }} {...rest}>
       <span aria-hidden="true" style={{ width: 34, height: 34, borderRadius: '50%', flex: 'none', display: 'grid', placeItems: 'center', background: t.badge, color: t.badgeText, fontFamily: 'var(--font-display)', fontSize: 16, boxShadow: 'inset 0 -2px 0 oklch(0 0 0 / 0.15)' }}>{String.fromCharCode(65 + index)}</span>
       <span style={{ flex: 1, minWidth: 0, lineHeight: 1.2 }}>{children}</span>
       {t.glyph && <span style={{ width: 30, height: 30, borderRadius: '50%', flex: 'none', display: 'grid', placeItems: 'center', background: '#fff', color: t.badgeText, fontSize: 18 }}><i className={'ph-bold ph-' + t.glyph} aria-hidden="true" /><span style={SR}>{t.sr}</span></span>}

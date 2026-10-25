@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 export function PhotoStack({ photos = [], index, onChange, height = 280, width = '100%', fit = 'contain', style, ...rest }) {

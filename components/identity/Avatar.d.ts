@@ -21,6 +21,6 @@ export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLSpanElement>,
   style?: React.CSSProperties;
 }
 
-export function Avatar(props: AvatarProps): JSX.Element;
+export function Avatar(props: AvatarProps): React.JSX.Element;
 /** First letters of up to two words. */
 export function initials(name?: string): string;

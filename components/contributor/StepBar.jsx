@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export function StepBar({ steps = [], current = 0, onSelect, compact = false, style, ...rest }) {

@@ -12,4 +12,4 @@ export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 's
   style?: React.CSSProperties;
 }
 
-export function Tag(props: TagProps): JSX.Element;
+export function Tag(props: TagProps): React.JSX.Element;

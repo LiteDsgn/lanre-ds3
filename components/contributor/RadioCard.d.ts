@@ -14,4 +14,4 @@ export interface RadioCardProps extends Omit<React.HTMLAttributes<HTMLButtonElem
   style?: React.CSSProperties;
 }
 
-export function RadioCard(props: RadioCardProps): JSX.Element;
+export function RadioCard(props: RadioCardProps): React.JSX.Element;

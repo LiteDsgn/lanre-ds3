@@ -15,4 +15,4 @@ export interface MatchCardProps extends Omit<React.ButtonHTMLAttributes<HTMLButt
   style?: React.CSSProperties;
 }
 
-export function MatchCard(props: MatchCardProps): JSX.Element;
+export function MatchCard(props: MatchCardProps): React.JSX.Element;

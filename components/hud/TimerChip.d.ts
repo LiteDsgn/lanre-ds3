@@ -16,4 +16,4 @@ export interface TimerChipProps extends Omit<React.HTMLAttributes<HTMLSpanElemen
   style?: React.CSSProperties;
 }
 
-export function TimerChip(props: TimerChipProps): JSX.Element;
+export function TimerChip(props: TimerChipProps): React.JSX.Element;
