@@ -1,0 +1,14 @@
+{
+  "title": "Components",
+  "pages": [
+    "buttons",
+    "hud",
+    "panels",
+    "map",
+    "rewards",
+    "forms",
+    "feedback",
+    "text",
+    "icons"
+  ]
+}

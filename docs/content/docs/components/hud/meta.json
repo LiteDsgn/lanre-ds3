@@ -1,0 +1,8 @@
+{
+  "title": "HUD",
+  "pages": [
+    "currency-pill",
+    "progress-bar",
+    "timer-chip"
+  ]
+}

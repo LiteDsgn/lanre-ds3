@@ -1,0 +1,51 @@
+---
+title: Typography
+description: Two faces. Titan One for titles, numbers and buttons. Quicksand for everything you read.
+---
+
+import { OutlineText } from '@ds/text/OutlineText';
+
+## Faces
+
+- **Titan One** is the display face. It has one weight and covers titles, numbers and button labels. It's always uppercase with +0.02em tracking.
+- **Quicksand** is the UI face, at 500, 600 and 700. It covers rows, body text and captions.
+
+<Preview surface="cream">
+  <div style={{ display: 'grid', gap: 10 }}>
+    <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-display-lg)', textTransform: 'uppercase', letterSpacing: 'var(--tracking-display)', color: 'var(--ink-900)' }}>Daily Reward</span>
+    <span style={{ fontWeight: 700, fontSize: 'var(--text-body-lg)', color: 'var(--ink-900)' }}>Pick your daily gift!</span>
+    <span style={{ fontWeight: 600, fontSize: 'var(--text-body)', color: 'var(--ink-500)' }}>You will still be able to watch rewarded videos.</span>
+  </div>
+</Preview>
+
+## Outlined text
+
+Text that sits straight on the world is outlined. A white fill, a dark stroke painted behind it, and a hard drop. The stroke is 0.16em, or 0.20em under 20px.
+
+The stroke follows the surface. Ink on grass, blue on blue pucks, stone on locked pucks, wood on planks.
+
+<Preview>
+  <div style={{ display: 'flex', gap: 22, alignItems: 'baseline', flexWrap: 'wrap' }}>
+    <OutlineText size="xl">Complete</OutlineText>
+    <OutlineText size={40} stroke="blue">7</OutlineText>
+    <OutlineText size={40} stroke="stone">8</OutlineText>
+    <OutlineText size="lg" color="gold" stroke="gold">x2 Boost</OutlineText>
+    <OutlineText size="lg" color="cream" stroke="wood">Sign</OutlineText>
+  </div>
+</Preview>
+
+## Casing
+
+- Display type is made uppercase by CSS. Write it in Title Case in the source.
+- UI type is sentence case.
+- Small labels like SCORE, REWARD and LANGUAGE are UI caps with 0.08 to 0.12em tracking.
+
+## Scale
+
+The smallest text is 11px. Button labels are 14px or more.
+
+<TokenTable file="typography" prefix="--text-" />
+
+Memory text is 20px with a 1.6 line height on iPad, and 17px on phones. Henry's summit letter is 22px with a 1.65 line height.
+
+<TokenTable file="typography" prefix={['--font-', '--weight-', '--leading-', '--tracking-', '--stroke-']} />

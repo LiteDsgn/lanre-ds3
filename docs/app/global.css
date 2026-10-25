@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+/* Design-system tokens, scoped to .lanre-preview so they can't fight Tailwind's (see lib/scope-tokens.mjs). */
+@import '../.generated/lanre-tokens.css';
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
+/* Warm the docs chrome towards Lanre's ink and gold without touching Fumadocs' layout. */
+:root {
+  --color-fd-primary: oklch(0.52 0.12 60);
+}
+.dark {
+  --color-fd-primary: oklch(0.86 0.17 85);
+}
+
+.lanre-wordmark {
+  font-family: 'Titan One', 'Arial Rounded MT Bold', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Live previews: the design system's base type and ink, like the Storybook decorator. */
+.lanre-preview {
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+}

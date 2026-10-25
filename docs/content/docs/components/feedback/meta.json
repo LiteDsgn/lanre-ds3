@@ -1,0 +1,9 @@
+{
+  "title": "Feedback",
+  "pages": [
+    "badge",
+    "tag",
+    "toast",
+    "sound-toggle"
+  ]
+}

@@ -1,0 +1,41 @@
+---
+title: Level loop
+description: Open the package, guess who sent it, then see them. Nothing rushes and nothing is gated.
+---
+
+import PackageStepperExample from '@/examples/levels/PackageStepper';
+import ChoiceButtonExample from '@/examples/levels/ChoiceButton';
+import MatchCardExample from '@/examples/games/MatchCard';
+
+## The package
+
+Each level is a package of items from one contributor: text, photos, audio and video.
+
+- Items play in the order the contributor chose.
+- Nothing moves on by itself, and media never cuts off.
+- Every player has pause and seek.
+- Finishing is an explicit Continue. Babe doesn't have to watch everything first.
+
+<Preview>
+  <PackageStepperExample />
+</Preview>
+
+## The guess
+
+- A wrong guess turns coral with a ×, and the retry stays open.
+- "Just tell me" is always there.
+- A right guess turns green with a ✓, and the others dim. Then the card flips.
+
+<Preview>
+  <ChoiceButtonExample />
+</Preview>
+
+## Other ways in
+
+Each level uses one interaction, chosen once and saved: guess, match or direct reveal. Media that gives the sender away gets a matching game or a direct reveal.
+
+<Preview>
+  <MatchCardExample />
+</Preview>
+
+Completed levels can always be replayed.

@@ -114,7 +114,9 @@ Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the
 - `ui_kits/lanre-game/`: interactive mobile game (`index.html`, `App.jsx`, `Hud.jsx`, `MapScreen.jsx`, `BoardScreen.jsx`, `CampScreen.jsx`, `Dialogs.jsx`, `README.md`).
 - `tools/ds-loader.js`: preview loader: uses the compiled `_ds_bundle.js` when present, otherwise transpiles component sources in-browser. Cards and the UI kit load through it.
 - `stories/`, `.storybook/`: Storybook workbench (`npm install`, then `npm run storybook`). Each component has a Playground plus stories ported from its preview card; `stories/patterns/` holds the multi-component demos (guess step, matching game, reveal, composer, settings, quiz result). Controls and prop docs are generated from each `Name.d.ts` by `.storybook/dts-argtypes.js`; usage notes come from `Name.prompt.md`. The World toolbar sets `data-world`; Surface changes the ground. Stories live outside `components/` so that folder stays a plain copyable source.
-- `package.json`: Storybook dev dependencies only. The design system itself still needs no build.
+- `docs/`: Fumadocs handbook (`npm run docs`, port 3000). Foundations with specimens generated from `tokens/`, the Birthday Adventure rules, and a page per component with a live example, its `Name.prompt.md` notes and a props table from its `Name.d.ts`. Tokens are scoped to `.lanre-preview` inside the docs so they can't clash with Tailwind's. See `docs/README.md`.
+- `tools/read-props.js`: reads a component's props from its `.d.ts` and defaults from its `.jsx`. Storybook and the docs both use it, so they always agree.
+- `package.json`: dev dependencies for Storybook and the `docs` workspace. The design system itself still needs no build.
 - `assets/`: empty by design (see `assets/README.md`).
 - `SKILL.md`: agent skill wrapper.
 

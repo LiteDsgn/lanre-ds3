@@ -1,0 +1,39 @@
+---
+title: Worlds
+description: Five themed worlds, each a set of tokens you switch on with data-world.
+---
+
+import WorldChipExample from '@/examples/contributor/WorldChip';
+
+Put `data-world` on a screen, a section or a component, and everything inside picks up that world's colours.
+
+```jsx
+<section data-world="small_chops">…</section>
+```
+
+<WorldGrounds />
+
+## What a world sets
+
+- `--world-sky`, `--world-ground`, `--world-ground-deep` and `--world-bg` for the painted ground.
+- `--world-accent` and `--world-accent-shade` for signs and chips.
+- `--world-path` and `--world-path-edge` for the road.
+- `--world-stroke` for outlined text.
+
+Without a `data-world`, you get the generic meadow.
+
+## Rules
+
+- Level numbers run on across worlds. They don't restart.
+- Worlds can hold different numbers of levels. That's fine, and they're never padded out.
+- The Summit is Henry's letter. Contributors can never choose it.
+
+## Choosing a world
+
+Contributors pick the world their memory belongs in.
+
+<Preview surface="sky">
+  <WorldChipExample />
+</Preview>
+
+See [WorldChip](/docs/adventure-components/contributor/world-chip) and [WorldGate](/docs/adventure-components/map/world-gate) for the components.
