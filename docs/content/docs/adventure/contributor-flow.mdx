@@ -10,7 +10,7 @@ import UploadTileExample from '@/examples/contributor/UploadTile';
 
 Tell contributors plainly that this is a surprise for Lanre. Show them what stays anonymous and what gets revealed.
 
-<Preview surface="sky">
+<Preview world="base_camp">
   <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' }}>
     <StepBarExample />
     <TextFieldExample />
@@ -19,19 +19,22 @@ Tell contributors plainly that this is a surprise for Lanre. Show them what stay
 
 ## Does it give you away?
 
-Contributors say honestly whether their package shows who they are. That decides whether the level is a mystery or a direct reveal.
+Contributors say honestly whether their memory shows who they are. That decides whether the level is a mystery or a direct reveal. The two answers sit side by side as tall cards.
 
-<Preview surface="sky">
+<Preview world="base_camp">
   <RadioCardExample />
 </Preview>
 
-## Uploads
+## Memory blocks
 
-- Upload tiles keep their order, and that's the order Babe sees them in.
-- A failed upload blocks submitting until it's fixed or removed.
+A memory is a stack of blocks: words, photos, a video or a voice note, in any mix. Each one is an `UploadTile`, joined to the one above by a short stretch of road.
+
+- Blocks keep their order, and that's the order Babe sees them in. Contributors move them with the up and down buttons on each block.
+- Every upload shows its state: uploading, done, failed, stalled or missing.
+- A failed or missing upload blocks sending until it's fixed or removed.
 - Filenames only ever show on the contributor's side.
 
-<Preview surface="sky">
+<Preview world="base_camp">
   <UploadTileExample />
 </Preview>
 

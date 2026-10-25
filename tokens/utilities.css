@@ -16,6 +16,9 @@
 @keyframes mp-medallion-pop { 0% { transform: scale(0.3) rotate(-20deg); opacity: 0; } 55% { transform: scale(1.18) rotate(6deg); opacity: 1; } 75% { transform: scale(0.95) rotate(-2deg); } 100% { transform: scale(1) rotate(0); } }
 @keyframes mp-sheet-in { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }
 @keyframes mp-sheet-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(0.97); } }
+/* StepBar: the green fill grows to the new puck (set --from and --to). RadioCard: the tick pops in. */
+@keyframes mp-trail-grow { from { width: var(--from); } to { width: var(--to); } }
+@keyframes mp-radio-pop { 0% { scale: 0.6; } 70% { scale: 1.15; } 100% { scale: 1; } }
 /* Accessibility: keyboard focus ring (outline, so bevels keep their box-shadows), screen-reader-only text, reduced motion */
 :focus-visible { outline: 4px solid var(--gold-300); outline-offset: 3px; }
 .mp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
