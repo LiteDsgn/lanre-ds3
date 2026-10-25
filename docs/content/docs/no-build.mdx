@@ -1,0 +1,48 @@
+---
+title: Use it without a build
+description: Link one stylesheet and the loader, and the components work in a plain HTML page.
+---
+
+Lanre runs without npm or a bundler. That's how the preview cards and the playable kit work, and it's what `SKILL.md` tells agents to use for quick mock-ups.
+
+```html
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="tools/ds-loader.js" data-root="." data-components="buttons/Button,hud/CurrencyPill,icons/GameIcon"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+  MPReady.then(({ Button, CurrencyPill, GameIcon }) => {
+    ReactDOM.createRoot(document.getElementById('root')).render(<Button size="lg">Claim</Button>);
+  });
+</script>
+```
+
+## How it works
+
+- `styles.css` imports every token file, plus the fonts and icons from their CDNs.
+- `tools/ds-loader.js` loads the components you list in `data-components`, as `group/Name`. `data-root` points at the repo root, relative to the page.
+- If a compiled `_ds_bundle.js` exists, the loader uses it. Otherwise it fetches each component's `.jsx` and compiles it in the browser.
+- `MPReady` resolves with every component once they've loaded.
+- React 19 has no browser build, so these pages use React 18. The components work on both.
+- Serve the folder over http, for example with `python3 -m http.server`. Opening the file straight from disk won't work, because the loader fetches the sources.
+
+## What's in the repo
+
+- **`readme.md`** is the written guide: context, content, visual foundations, iconography, an index and caveats.
+- **`SKILL.md`** wraps the design system as an agent skill, with the non-negotiables.
+- **`styles.css`** imports `tokens/`: colours, type, spacing, effects, worlds, gems, utilities, fonts and icons.
+- **`components/`** has one folder per group. Each component has `Name.jsx`, `Name.d.ts` for its props and `Name.prompt.md` for its usage notes. Each group has a `*.card.html` preview for the Design System tab.
+- **`guidelines/`** holds the specimen cards for colour, type, spacing, effects, brand and the birthday project.
+- **`ui_kits/lanre-game/`** is the [playable kit](/docs/playable-kit).
+- **`stories/`** and **`.storybook/`** are Storybook. Run `npm run storybook`.
+- **`docs/`** is this site. Run `npm run docs`.
+- **`tools/read-props.js`** reads each component's props from its `.d.ts`, for Storybook's controls and the props tables here.
+- **`assets/`** is empty by design. No logo or art was provided, so screens keep striped slots for it.
+
+## Caveats
+
+- The fonts (Titan One and Quicksand) and the icons (Phosphor) load from CDNs. They stand in for bespoke faces and painted icon art.
+- Isometric boards aren't modelled. `Tile` is a top-down rounded square.

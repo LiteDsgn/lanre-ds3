@@ -23,6 +23,9 @@
   --shadow-panel: 0 20px 44px oklch(0.22 0.05 60 / 0.38);
   --shadow-text: 0 2px 0 oklch(0 0 0 / 0.25);
 
+  /* The scrim behind a modal softens the world by this much. Surfaces never blur. */
+  --scrim-blur: 3px;
+
   --glow-gold: 0 0 0 4px oklch(0.86 0.17 85 / 0.5), 0 0 28px oklch(0.86 0.17 85 / 0.7);
   --glow-blue: 0 0 0 4px oklch(0.68 0.17 240 / 0.5), 0 0 28px oklch(0.68 0.17 240 / 0.7);
   --glow-berry: 0 0 0 4px oklch(0.66 0.22 340 / 0.5), 0 0 28px oklch(0.66 0.22 340 / 0.7);

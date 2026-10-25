@@ -9,7 +9,7 @@ export interface ModalProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   label: string;
   /** Called once the exit fade has finished. Unmount the modal here. */
   onClose: () => void;
-  /** dim = the scrim over the world (default), dusk = the evening ground, world = the ground of `world`. */
+  /** dim = the scrim over the world, blurred by --scrim-blur (default), dusk = the evening ground, world = the ground of `world`. */
   tone?: 'dim' | 'dusk' | 'world';
   /** World id for data-world, so the panel and a world tone pick up that world's colours. */
   world?: 'mango_grove' | 'small_chops' | 'good_energy' | 'japan' | 'summit';

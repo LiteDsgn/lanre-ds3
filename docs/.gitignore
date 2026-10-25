@@ -26,3 +26,6 @@ yarn-error.log*
 next-env.d.ts
 # generated from tokens/ and components/ by lib/generate.mjs
 /.generated
+
+# the playable kit, copied in from the repo root by lib/generate.mjs
+/public/kit
