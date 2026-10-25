@@ -8,3 +8,5 @@ export const Note = ({ children, dark = true }) => (
 );
 /* Plain Phosphor glyph, for the inside of bevelled buttons. */
 export const Ph = ({ n, weight = 'fill' }) => <i className={'ph-' + weight + ' ph-' + n} />;
+/* A placeholder photo (sky, sun, hills) for thumbnails, so no demo needs a real picture. */
+export const samplePhoto = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><rect width="96" height="96" fill="#8fd3f4"/><circle cx="70" cy="26" r="12" fill="#ffd66b"/><path d="M0 70 Q30 48 56 66 T96 60 V96 H0Z" fill="#7cc46a"/><path d="M0 82 Q40 66 96 80 V96 H0Z" fill="#5aa84f"/></svg>');

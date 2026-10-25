@@ -1,23 +1,38 @@
 import * as React from 'react';
 
 /**
- * Contributor upload cell: add (dashed), uploading (% + bar), error (warning + Retry), done (thumb + tick). Media-type glyph bottom-left, remove × top-right.
- * @startingPoint section="Contributor" subtitle="Upload states: add / uploading / error / done" viewport="700x180"
+ * One block of a memory: a numbered puck, its kind, and keys to move or remove it. Photo, video and voice note blocks add a thumbnail and the upload's state. The caption or the text field goes in as children.
+ * @startingPoint section="Contributor" subtitle="Memory blocks: text, and every upload state" viewport="700x620"
  */
-export interface UploadTileProps extends Omit<React.HTMLAttributes<HTMLElement>, 'style'> {
-  type?: 'photo' | 'video' | 'audio' | 'text';
-  state?: 'idle' | 'uploading' | 'error' | 'done';
+export interface UploadTileProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'> {
+  type?: 'text' | 'photo' | 'video' | 'audio';
+  /** 0-based place in the memory. Every block after the first gets a stretch of road up to the one above. */
+  index?: number;
+  /** How many blocks the memory has, so the last one can't move down. */
+  count?: number;
+  /** Upload state for photo, video and audio blocks. stalled = it stopped before finishing; missing = the file is gone. */
+  state?: 'uploading' | 'done' | 'error' | 'stalled' | 'missing';
   /** 0–1 while uploading. */
   progress?: number;
-  /** Filename shown under the tile (contributor-side only). */
+  /** Filename, for the contributor only. */
   name?: string;
-  /** Thumbnail URL for photos/videos. */
+  /** Duration and size, e.g. "0:42 · 12.6 MB". */
+  details?: React.ReactNode;
+  /** Thumbnail URL for photos. */
   thumb?: string;
-  onAdd?: () => void;
-  onRetry?: () => void;
+  /** Why the upload failed. Shown after "Upload failed". */
+  reason?: string;
+  /** A message under the upload's state, such as a retry that failed too. */
+  error?: React.ReactNode;
+  onMoveUp?: () => void;
+  onMoveDown?: () => void;
   onRemove?: () => void;
-  /** Default 104. */
-  size?: number;
+  /** Shows Retry on failed and stalled uploads. */
+  onRetry?: () => void;
+  /** Shows Cancel while uploading. */
+  onCancel?: () => void;
+  /** The caption field, or the text field of a text block. */
+  children?: React.ReactNode;
   style?: React.CSSProperties;
 }
 

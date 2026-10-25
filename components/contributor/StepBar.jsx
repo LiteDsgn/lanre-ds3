@@ -1,32 +1,49 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 
-export function StepBar({ steps = [], current = 0, onSelect, compact = false, style, ...rest }) {
-  const n = Math.max(1, steps.length);
-  const doneW = n > 1 ? 'calc((100% - 100% / ' + n + ') * ' + (Math.min(current, n - 1) / (n - 1)) + ')' : '0px';
+// Where each trail was last seen on this page load, so only a forward step celebrates.
+const seen = {};
+
+export function StepBar({ steps = [], current = 0, labels = false, style, ...rest }) {
+  const slot = labels ? 68 : 46;
+  const kind = steps.join('|');
+  // Decided once per mount: did they just finish the step before this one?
+  const [advanced] = useState(() => {
+    const prev = seen[kind];
+    seen[kind] = current;
+    return prev !== undefined && current === prev + 1;
+  });
+  const n = steps.length;
   return (
-    <nav aria-label="Progress" style={{ display: 'grid', gap: 8, fontFamily: 'var(--font-ui)', ...style }} {...rest}>
+    <nav aria-label="Progress" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 6, boxSizing: 'border-box', ...style }} {...rest}>
       <div style={{ position: 'relative' }}>
-        <span aria-hidden="true" style={{ position: 'absolute', top: 16, left: 'calc(100% / ' + (n * 2) + ')', right: 'calc(100% / ' + (n * 2) + ')', height: 4, borderRadius: 2, background: 'var(--cream-300)' }} />
-        <span aria-hidden="true" style={{ position: 'absolute', top: 16, left: 'calc(100% / ' + (n * 2) + ')', width: doneW, height: 4, borderRadius: 2, background: 'var(--green-500)', transition: 'width var(--dur-slow) var(--ease-out)' }} />
-        <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gridTemplateColumns: 'repeat(' + n + ', 1fr)', position: 'relative' }}>
-          {steps.map((s, i) => {
-            const done = i < current, cur = i === current;
-            const bg = done ? 'linear-gradient(180deg, var(--green-300), var(--green-500) 45%)' : cur ? 'linear-gradient(180deg, var(--blue-300), var(--blue-500) 45%)' : 'linear-gradient(180deg, #fff, var(--cream-100))';
-            const shade = done ? 'var(--green-700)' : cur ? 'var(--blue-700)' : 'var(--cream-300)';
+        <span aria-hidden="true" style={{ position: 'absolute', top: 12, left: slot / 2, right: slot / 2, height: 12, borderRadius: 999,
+          background: 'var(--world-path)', boxShadow: '0 0 0 3px var(--world-path-edge), 0 4px 0 3px oklch(0.25 0.05 60 / 0.2)' }} />
+        <span aria-hidden="true" style={{ position: 'absolute', top: 16, left: slot / 2, width: slot * current, height: 4, borderRadius: 999,
+          background: 'var(--green-500)', transition: 'width var(--dur-slow) var(--ease-out)',
+          ...(advanced ? { '--from': slot * (current - 1) + 'px', '--to': slot * current + 'px', animation: 'mp-trail-grow var(--dur-slow) var(--ease-out) 260ms both' } : null) }} />
+        <ol style={{ position: 'relative', listStyle: 'none', margin: 0, padding: 0, display: 'flex' }}>
+          {steps.map((label, i) => {
+            const done = i < current, cur = i === current, justDone = advanced && i === current - 1;
             return (
-              <li key={i} style={{ display: 'grid', justifyItems: 'center', gap: 6 }}>
-                <button type="button" disabled={!onSelect || i > current} onClick={onSelect ? () => onSelect(i) : undefined} aria-current={cur ? 'step' : undefined} aria-label={'Step ' + (i + 1) + ' of ' + n + ': ' + s + (done ? ', done' : '')}
-                  style={{ appearance: 'none', border: 0, margin: 0, padding: 0, width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: bg, boxShadow: '0 3px 0 ' + shade + ', inset 0 2px 0 oklch(1 0 0 / 0.45)', color: done || cur ? '#fff' : 'var(--ink-700)', fontFamily: 'var(--font-display)', fontSize: 14, cursor: onSelect && i <= current ? 'pointer' : 'default', textShadow: done || cur ? '0 1px 0 ' + shade : 'none' }}>
-                  {done ? <i className="ph-bold ph-check" aria-hidden="true" /> : i + 1}
-                </button>
-                {!compact && <span style={{ fontWeight: 700, fontSize: 12, color: cur ? 'var(--ink-900)' : 'var(--ink-500)', textAlign: 'center', lineHeight: 1.2 }}>{s}</span>}
+              <li key={label} aria-current={cur ? 'step' : undefined} style={{ width: slot, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+                <span aria-hidden="true" className={'mp-puck' + (done ? ' mp-puck-done' : cur ? ' mp-puck-current' : '')}
+                  style={justDone ? { animation: 'mp-pop var(--dur-slow) var(--ease-bounce) 560ms both' } : undefined}>
+                  {done ? <i className="ph-bold ph-check" /> : i + 1}
+                  {cur && <span style={{ position: 'absolute', inset: -4, borderRadius: '50%', animation: 'mp-pulse-ring 1.6s ease-out infinite' }} />}
+                </span>
+                {labels ? (
+                  <span style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.04em', textTransform: 'uppercase', color: '#fff', WebkitTextStroke: '0.22em var(--world-stroke)', paintOrder: 'stroke fill', whiteSpace: 'nowrap', fontSize: 11 }}>
+                    {label}{done && <span className="mp-sr">, done</span>}
+                  </span>
+                ) : (
+                  <span className="mp-sr">{'Step ' + (i + 1) + ' of ' + n + ': ' + label}{done && <span className="mp-sr">, done</span>}</span>
+                )}
               </li>
             );
           })}
         </ol>
       </div>
-      {compact && <span style={{ fontWeight: 700, fontSize: 13, color: 'var(--ink-700)', textAlign: 'center' }}>{'Step ' + (current + 1) + ' of ' + n + ': '}<span style={{ color: 'var(--ink-900)' }}>{steps[current]}</span></span>}
     </nav>
   );
 }
