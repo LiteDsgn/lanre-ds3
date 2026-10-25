@@ -46,12 +46,14 @@ export function Modal({ label, onClose, tone = 'dim', world, closeOnScrim = fals
 
   // Only a tap that both starts and ends on the scrim closes it, so a text selection that ends there doesn't.
   const onScrim = e => e.target === e.currentTarget || e.target === box.current;
+  // Only the see-through scrim blurs the world behind it. The dusk and world grounds are opaque.
+  const blur = GROUND[tone] && tone !== 'dim' ? undefined : 'blur(var(--scrim-blur))';
   return (
     <div role="dialog" aria-modal="true" aria-label={label} data-world={world}
       onPointerDown={closeOnScrim ? e => { pressedScrim.current = onScrim(e); } : undefined}
       onClick={closeOnScrim ? e => { if (pressedScrim.current && onScrim(e)) close(); pressedScrim.current = false; } : undefined}
       style={{
-        position: 'fixed', inset: 0, zIndex, overflowY: 'auto', background: GROUND[tone] || GROUND.dim,
+        position: 'fixed', inset: 0, zIndex, overflowY: 'auto', background: GROUND[tone] || GROUND.dim, backdropFilter: blur, WebkitBackdropFilter: blur,
         animation: closing ? 'mp-sheet-out 240ms var(--ease-in-out) both' : 'mp-sheet-in 260ms var(--ease-out) both',
         pointerEvents: closing ? 'none' : undefined, ...style,
       }} {...rest}>

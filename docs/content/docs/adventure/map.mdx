@@ -1,6 +1,6 @@
 ---
 title: The map
-description: World gates, discoveries beside the road, and level pucks with no star scores.
+description: World gates, discoveries beside the road, level pucks with no star scores, the scenery and the toolbar.
 ---
 
 import WorldGateExample from '@/examples/map/WorldGate';
@@ -32,3 +32,31 @@ Each contributor's main package is their main-path memory. Any extra packages be
 ## Level pucks
 
 This game has no star scores, so use `LevelNode` with `stars={0}`. Completed levels become a [PortraitMedallion](/docs/adventure-components/map/portrait-medallion): the friend on a gold pedestal, with the level number underneath. See [Identity and anonymity](/docs/adventure/identity-and-anonymity) for what each level may show.
+
+## Scenery
+
+The map's scenery is drawn in code, as SVG. Each world has its own mix of hills, trees, bushes, rocks, fences and stalls. It stays sharp on any iPad and needs no image downloads. Henry reviews each piece before it goes in.
+
+On the map, this replaces the striped placeholder slots the base kit uses for art. Mockups and prototypes still use the slots, and never draw their own art.
+
+- Light comes from the upper left.
+- Each form gets one shade and one highlight.
+- A soft shadow sits where it meets the ground.
+- There are no outlines, unlike the icons, and no blur filters.
+- Lettering, level pucks, portraits and buttons stay out of the art, so they stay sharp and tappable.
+
+New scenery joins the same library, in the same style. It lives in the birthday app, not in the design system.
+
+## The toolbar
+
+The adventure swaps the base kit's wood bottom bar for a cream pill that floats above the bottom of the screen. It has three slots.
+
+- **Your People** on the left.
+- **Next** in the middle, a raised blue puck. It shows the next level's number, or a padlock when nothing is open. While the road rearranges itself, it shows an hourglass and can't be tapped. Once the letter is ready, it turns gold and shows an envelope.
+- **Menu** on the right.
+
+## Fast travel
+
+A dock in the side rail lists the five stops on the road. The summit is at the top and the first world at the bottom, the way the map reads. Each stop is done, here or ahead, and shows how many surprises are still hidden there. A button at the top takes you to the next level. On phones the dock folds away behind a compass and fans out when you tap it.
+
+The toolbar and the dock aren't components in the design system yet.

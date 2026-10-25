@@ -56,6 +56,10 @@ Everything is rounded.
 
 <TokenTable file="effects" prefix="--border" />
 
-## Transparency
+## Transparency and blur
 
-Translucent surfaces only appear over the world. HUD pills are 82% brown, inventory cells 30% green, and the scrim 55%. There's no backdrop blur anywhere.
+Translucent surfaces only appear over the world. HUD pills are 82% brown, inventory cells 30% green, and the scrim 55%.
+
+Surfaces never blur. The one exception is the scrim behind a modal. It softens the world by `--scrim-blur`, so the panel in front is easier to focus on. Opaque grounds, like the dusk behind the summit, don't blur.
+
+<TokenTable file="effects" prefix="--scrim-blur" />

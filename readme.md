@@ -20,7 +20,7 @@ One product: a portrait mobile game (390 × 844 design frame). Surfaces covered 
 - **Number formatting:** currency uses `k`/`M` suffixes and comma groups (`50,253k`, `1.2M`, `2,720`); scores use thin-space groups (`14 000`); timers are `mm:ss` or `4h 12m`; prices show the currency code, not a symbol (`USD 0.99`).
 - **Places and progress are proper nouns:** Warmful Valley, Pine Ridge, Day 3, Level 22.
 - **Merchandising labels** are 1–3 uppercase words in a Tag: MOST POPULAR · 3X THE VALUE · ONE-TIME OFFER · NEW.
-- **No emoji, ever.** Glyphs are painted icons (GameIcon), not characters.
+- **No emoji, ever.** Glyphs are Phosphor icons (a `GameIcon` when they stand alone), not characters.
 - Casing summary: display type is rendered uppercase by CSS (write Title Case in source); UI type is sentence case; small labels (SCORE, REWARD, LANGUAGE) are UI caps with 0.08–0.12em tracking.
 
 ## VISUAL FOUNDATIONS
@@ -36,9 +36,9 @@ One product: a portrait mobile game (390 × 844 design frame). Surfaces covered 
 
 **Type.** Two faces. *Titan One* (display, one weight) for titles, numerals, button labels, always uppercase with +0.02em tracking. *Quicksand* 500/600/700 (UI) for rows, body, captions. Scale: display 44/32/24/18/14; UI 20/16/14/12/11. Text that sits directly on the world is **outlined**: white fill, dark stroke painted behind the fill (`paint-order: stroke fill`, stroke 0.16em; 0.20em under 20px), hard 10% drop. Stroke tone follows the surface (ink on grass, blue on blue pucks, stone on locked pucks, wood on planks). Minimum text size 11px; button labels ≥ 14px.
 
-**Spacing & layout.** 4px base (`--space-1…16`). Touch targets ≥ 48px; primary CTA 60px. Fixed 56px HUD strip (level star + XP left, currency pills right, gear); the world scrolls beneath it; 88px wood bottom bar with 4 captioned square icon buttons; side rails hold captioned icon buttons stacked 14–16px apart. Panels are centred, max 340px wide, never edge-to-edge, over a `--bg-scrim` veil. Grids: inventory 4 columns × 72px with 8px gaps; reward calendar 3 columns.
+**Spacing & layout.** 4px base (`--space-1…16`). Touch targets ≥ 48px; primary CTA 60px. Fixed 56px HUD strip (level star + XP left, currency pills right, gear); the world scrolls beneath it; 88px wood bottom bar with 4 captioned square icon buttons (the Birthday Adventure has its own three-slot toolbar, see the project layer); side rails hold captioned icon buttons stacked 14–16px apart. Panels are centred, max 340px wide, never edge-to-edge, over a `--bg-scrim` veil. Grids: inventory 4 columns × 72px with 8px gaps; reward calendar 3 columns.
 
-**Backgrounds.** Painted world art is the intended ground; until it exists, CSS gradients stand in: `--bg-meadow` (grass), `--bg-sky` (loading/light), `--bg-dusk` (evening/premium). Decorative bushes, rocks and flowers are simple CSS blobs; hero illustrations get a dashed, striped **placeholder slot** with a monospace note (never hand-drawn art). No textures, no photo imagery, no repeating patterns beyond the diagonal stripe on progress fills.
+**Backgrounds.** Painted world art is the intended ground; until it exists, CSS gradients stand in: `--bg-meadow` (grass), `--bg-sky` (loading/light), `--bg-dusk` (evening/premium). Decorative bushes, rocks and flowers are simple CSS blobs; hero illustrations get a dashed, striped **placeholder slot** with a monospace note (never hand-drawn art in a mockup or prototype). The one exception is the Birthday Adventure's map, whose scenery is a reviewed SVG library (see **Scenery** in the project layer). No textures, no photo imagery, no repeating patterns beyond the diagonal stripe on progress fills.
 
 **Depth (the signature).** Everything pressable is a **bevel**: gradient face (300 → 500 to 42%), a hard `0 N px 0` shadow in the 700 tone as the bottom edge (3/5/7px for sm/md/lg), a soft brown drop below, and an inset 2px white line on top. Pressing translates the element down 4px and collapses the edge to 1px (120ms ease-out). Hover only brightens 6%. Pucks are ellipses with the same recipe plus two white gloss spots. Tracks and cells are **inset** (dark translucent brown or green with an inner shadow). Shadows are brown-tinted (`oklch(0.22–0.25 0.05 60)`), never grey. Glow rings (tone at 50% + 70% bloom) mark the tappable or rewarded thing.
 
@@ -46,7 +46,7 @@ One product: a portrait mobile game (390 × 844 design frame). Surfaces covered 
 
 **Borders.** Panels have a 4px border in the next-darker cream (wood panels 6px in wood-500); cells a 3px translucent white; badges and tokens a 2–3px solid white ring. No 1px hairlines.
 
-**Transparency & blur.** Translucent surfaces only over the world (HUD pills at 82% brown, inventory cells at 30% green, scrim at 55%). No backdrop blur anywhere.
+**Transparency & blur.** Translucent surfaces only over the world (HUD pills at 82% brown, inventory cells at 30% green, scrim at 55%). Surfaces never blur. The one exception is the scrim behind a modal, which softens the world by `--scrim-blur` (3px).
 
 **Motion.** Arrivals bounce (`--ease-bounce`, 420ms: stars, toasts, panels via `mp-pop`); presses ease-out at 120ms; claimable things idle-float (`mp-float`, 2.4s); the current level and reachable tile pulse a ring (`mp-pulse-ring`, 1.6s); progress fills animate width over 420ms. No fades-only, no parallax.
 
@@ -56,8 +56,9 @@ One product: a portrait mobile game (390 × 844 design frame). Surfaces covered 
 
 ## ICONOGRAPHY
 
-- **Set:** [Phosphor Icons](https://phosphoricons.com) via CDN (`tokens/icons.css` imports the **FILL** and **BOLD** weights). This is a substitution: the references use bespoke painted icons; Phosphor's filled weight is the closest CDN match to their chunky silhouettes. Replace with painted PNG/SVG art in `assets/` when available.
-- **Treatment:** `GameIcon` renders a filled glyph in a tone with a dark outline painted behind (`-webkit-text-stroke` + `paint-order: stroke fill`) and a hard drop, so every icon reads like a sticker. Semantic kinds fix glyph + tone together (coin = gold `coin`, gem = blue `sketch-logo`, ruby/heart = coral, energy = teal `lightning`, gift = berry, lock = stone…).
+- **Set:** [Phosphor Icons](https://phosphoricons.com) in the **FILL** and **BOLD** weights. `tokens/icons.css` loads them from a CDN for no-build pages; an app can install `@phosphor-icons/web` and import the same two weights instead, as the birthday app does. This is a substitution: the references use bespoke painted icons; Phosphor's filled weight is the closest CDN match to their chunky silhouettes. Replace with painted PNG/SVG art in `assets/` when available.
+- **Treatment:** a glyph that stands on its own (on the world, on a panel, as a medal or a prize) is a `GameIcon`: a filled glyph in a tone with a dark outline painted behind (`-webkit-text-stroke` + `paint-order: stroke fill`) and a hard drop, so it reads like a sticker. Semantic kinds fix glyph + tone together (coin = gold `coin`, gem = blue `sketch-logo`, ruby/heart = coral, energy = teal `lightning`, gift = berry, lock = stone…).
+- **Inside components:** a glyph in a component's icon slot (`Button`, `IconButton`, `Tag`, a puck) is plain Phosphor (`<i className="ph-fill ph-star" />`), and the component styles it. Never rebuild the sticker look in CSS; if a glyph needs it, it's a `GameIcon`.
 - **Weights:** FILL for pictorial glyphs (coins, stars, hearts, gifts, chests); BOLD for utility strokes (×, +, ✓, carets, gear). Inside a bevelled button the glyph is plain white with no outline/shadow (the button already carries depth).
 - **Sizes:** 20 / 28 / 40 / 56 (`--size-icon-*`). Currency glyphs overlap the left edge of their pill.
 - No icon fonts other than Phosphor, no emoji, no unicode characters as icons.
@@ -80,6 +81,10 @@ Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the
 **Level loop** (`PackageStepper`, `MemoryText`, `PhotoStack`, `AudioPlayer`, `VideoFrame`, `ChoiceButton`, `RevealCard`, `MatchCard`). Package items render in the contributor's order; nothing auto-advances, media never cuts off, every player has pause/seek; completion is an explicit Continue and does not require watching everything. Guess: wrong = coral + ×, retry stays open, "Just tell me" is always offered; correct = green + ✓, others dim; then the card flips. The interaction type (guess / match / direct) is chosen once per level and persisted. Completed levels stay replayable.
 
 **Map additions** (`WorldGate`, `DiscoveryMarker`). Gates mark world boundaries and carry Henry's authored note when one exists (no card otherwise); the summit gate is locked until the main path completes. Discoveries sit beside the road as thematic objects (mango, rice bowl, flower, dumbbell, lantern, gift): `hidden` (glinting bush), `available`, `new` (late arrival after the route froze, never a new numbered level), `opened`. This game has no star scores: use `LevelNode` with `stars={0}`.
+
+**Scenery** (drawn in the birthday app, not shipped here). The map's scenery is original SVG drawn in code, so it's sharp on any iPad and needs no image downloads. Each world has its own mix of hills, trees, bushes, rocks, fences and stalls, and Henry reviews each piece. It replaces the generic placeholder slots on the map only. The style: light from the upper left; one shade and one highlight per form; a soft contact shadow; no outlines (unlike the icons) and no SVG blur filters. Lettering, level pucks, portraits and buttons stay out of the art, so they stay sharp and tappable. New scenery joins the same library in the same style; never improvise art in a screen.
+
+**Toolbar and fast travel** (not components here yet). The generic wood bottom bar becomes a floating cream pill with three slots: Your People, a raised blue Next puck in the centre, and Menu. The puck shows the next level's number, a padlock when nothing is open, and an hourglass while the road rearranges itself; once the letter is ready it turns gold and shows an envelope. A fast-travel dock in the side rail lists the five stops, the summit at the top and the first world at the bottom, as the map reads. Each stop is done, here or ahead, with a count of the surprises still hidden there. On phones the dock folds away behind a compass.
 
 **Contributor kit** (`StepBar`, `TextField`, `UploadTile`, `WorldChip`, `RadioCard`). Tell contributors plainly it is a surprise shown to Lanre; show what stays anonymous vs. revealed. Upload tiles keep order = Babe's order; a failed upload blocks submission until fixed or removed; filenames are contributor-side only. One package per contributor is the main-path memory; others become discoveries.
 
@@ -125,8 +130,8 @@ This is a from-scratch system (no source inventory), so the component set is the
 
 ### Caveats
 - **Fonts** are loaded from Google Fonts (`tokens/fonts.css`), not shipped as files. Titan One and Quicksand are matches for the bubbly display / rounded UI faces seen in the references, not the exact typefaces those games use.
-- **Icons** are Phosphor (CDN) with a CSS outline treatment standing in for painted icon art.
-- **Imagery**: no illustrations exist; screens reserve striped placeholder slots.
+- **Icons** are Phosphor (CDN, or the `@phosphor-icons/web` package in an app) with a CSS outline treatment standing in for painted icon art.
+- **Imagery**: the generic kit has no illustrations; its screens reserve striped placeholder slots. The Birthday Adventure's map scenery is drawn in code in the app (see **Scenery**).
 - **Bundle**: `_ds_bundle.js` is generated by the compiler; until it exists, previews fall back to in-browser transpilation via `tools/ds-loader.js` (React 18 UMD + Babel standalone pinned to 7.26 for the classic JSX runtime).
 - **Birthday app copy**: lanre-birthday keeps its own copy of `components/` in `src/design/lanre/`. This repo was last synced from it on 23 Oct 2026, so components carry `'use client'` and React 19 types and drop into Next.js unchanged. Fixes made in either copy need carrying across by hand. Exception: `worlds.js` blurbs stay generic here; the app's personal contributor prompts are not copied into this public repo.
 - Isometric (diamond) boards from two references are not modelled; `Tile` is a top-down rounded square.
