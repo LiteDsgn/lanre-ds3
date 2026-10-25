@@ -13,6 +13,7 @@ Upload tile: one block of a memory in the composer. Blocks stack in the contribu
 ```
 
 - Stack blocks 22px apart. Every block after the first draws a short stretch of road up to the one above.
+- Key each list item by the block's id, not its place. When a block moves, focus stays on the key that moved it, even once that key can't go any further. Keys that can't act are `aria-disabled`, so they stay focusable.
 - `state` covers every upload. `uploading` shows `progress`, and Cancel when you pass `onCancel`. Then `done`, `error` (pass the `reason` when there is one), `stalled` when it stopped before finishing, and `missing` when the file is gone.
 - `error` and `missing` turn the block coral. Retry shows on `error` and `stalled` when you pass `onRetry`.
 - A memory with a failed or missing upload can't be sent. Keep the block on screen until it's fixed or removed.

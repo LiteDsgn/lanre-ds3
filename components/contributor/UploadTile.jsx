@@ -1,6 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Button } from '../buttons/Button';
+
+const useBrowserEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
 const TYPE = { text: ['article', 'Text'], photo: ['image', 'Photo'], video: ['video-camera', 'Video'], audio: ['microphone', 'Voice note'] };
 const DROP = '0 12px 20px oklch(0.22 0.05 60 / 0.25)';
@@ -8,12 +10,13 @@ const WARN = { color: 'var(--coral-700)' };
 const LINE = { display: 'inline-flex', alignItems: 'center', gap: 4 };
 const FONT = { fontFamily: 'inherit', fontStyle: 'inherit', lineHeight: 'inherit' };
 
-// Square cream key for moving and removing a block.
-function Key({ label, disabled, onClick, children }) {
+// Square cream key for moving and removing a block. One that can't act is aria-disabled rather than disabled,
+// so it keeps focus when its block reaches the top or the bottom.
+function Key({ label, disabled, onClick, buttonRef, children }) {
   const [down, setDown] = useState(false);
   const pressed = down && !disabled;
   return (
-    <button type="button" aria-label={label} disabled={disabled} onClick={onClick}
+    <button type="button" ref={buttonRef} aria-label={label} aria-disabled={disabled || undefined} onClick={disabled ? undefined : onClick}
       onPointerDown={() => setDown(true)} onPointerUp={() => setDown(false)} onPointerCancel={() => setDown(false)} onPointerLeave={() => setDown(false)}
       style={{ appearance: 'none', boxSizing: 'border-box', border: '2px solid var(--cream-300)', background: 'linear-gradient(180deg, #fff, var(--cream-100))',
         boxShadow: pressed ? '0 1px 0 var(--cream-300)' : '0 3px 0 var(--cream-300), inset 0 2px 0 oklch(1 0 0 / 0.45)', width: 44, height: 44, borderRadius: 12,
@@ -41,6 +44,21 @@ export function UploadTile({ type = 'photo', index = 0, count, state = 'done', p
   const failed = media && (state === 'error' || state === 'missing');
   const pct = Math.round(Math.max(0, Math.min(1, progress)) * 100);
   const label = kind + ' ' + (index + 1);
+  // Moving a block can move it in the page, which drops focus. So when a move key had focus, it gets it back
+  // once the block lands somewhere new.
+  const upKey = useRef(null), downKey = useRef(null), moved = useRef(null);
+  const move = (key, handler) => e => {
+    moved.current = key.current && key.current === document.activeElement ? { key, from: index } : null;
+    handler(e);
+    // Clear it once the event is over, so a move that never lands can't pull focus back on a later render.
+    setTimeout(() => { moved.current = null; });
+  };
+  useBrowserEffect(() => {
+    const m = moved.current;
+    if (!m || m.from === index) return;
+    moved.current = null;
+    if (m.key.current && m.key.current !== document.activeElement) m.key.current.focus();
+  });
   return (
     <div style={{ position: 'relative', ...style }} {...rest}>
       {/* From the second block on, a short stretch of road joins it to the one above. Stack blocks 22px apart. */}
@@ -54,8 +72,8 @@ export function UploadTile({ type = 'photo', index = 0, count, state = 'done', p
             <i className={'ph-fill ph-' + glyph} aria-hidden="true" style={{ fontSize: 20 }} />
             {kind}
           </span>
-          {onMoveUp && <Key label={'Move ' + label + ' up'} disabled={index === 0} onClick={onMoveUp}><i className="ph-bold ph-arrow-up" aria-hidden="true" /></Key>}
-          {onMoveDown && <Key label={'Move ' + label + ' down'} disabled={count !== undefined && index >= count - 1} onClick={onMoveDown}><i className="ph-bold ph-arrow-down" aria-hidden="true" /></Key>}
+          {onMoveUp && <Key label={'Move ' + label + ' up'} disabled={index === 0} onClick={move(upKey, onMoveUp)} buttonRef={upKey}><i className="ph-bold ph-arrow-up" aria-hidden="true" /></Key>}
+          {onMoveDown && <Key label={'Move ' + label + ' down'} disabled={count !== undefined && index >= count - 1} onClick={move(downKey, onMoveDown)} buttonRef={downKey}><i className="ph-bold ph-arrow-down" aria-hidden="true" /></Key>}
           {onRemove && <Key label={'Remove ' + label} onClick={onRemove}><i className="ph-bold ph-trash" aria-hidden="true" style={{ color: 'var(--coral-700)' }} /></Key>}
         </div>
         {media && (
