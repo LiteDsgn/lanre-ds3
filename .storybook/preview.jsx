@@ -41,7 +41,7 @@ export default {
       description: 'World theme: sets data-world around the story',
       toolbar: {
         title: 'World', icon: 'globe', dynamicTitle: true,
-        items: [{ value: 'meadow', title: 'Meadow (default)' }, ...WORLD_ORDER.map(id => ({ value: id, title: WORLDS[id].name }))],
+        items: [{ value: 'meadow', title: 'Meadow (default)' }, { value: 'base_camp', title: 'Base Camp (contributors)' }, ...WORLD_ORDER.map(id => ({ value: id, title: WORLDS[id].name }))],
       },
     },
     surface: {

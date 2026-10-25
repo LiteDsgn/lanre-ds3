@@ -68,6 +68,14 @@
   --ink-500: oklch(0.57 0.05 55);
   --white: #ffffff;
 
+  /* Night: the summit letter and the credits, after dark above the clouds */
+  --night-ink: oklch(0.182 0.05 289.7);
+  --night-sky: oklch(0.229 0.064 289.9);
+  --night-lilac: oklch(0.807 0.067 303.7);
+  --night-cream: oklch(0.964 0.032 78.2);
+  --night-gold: oklch(0.8543 0.1685 86.58);
+  --night-gold-hi: oklch(0.91 0.138 94.4);
+
   /* ---- Semantic aliases ---- */
   --bg-meadow: linear-gradient(180deg, var(--green-300) 0%, var(--green-500) 100%);
   --bg-sky: linear-gradient(180deg, oklch(0.78 0.11 232) 0%, oklch(0.92 0.05 220) 100%);
@@ -123,4 +131,10 @@
   --currency-energy: var(--teal-500);
 
   --focus-ring: 0 0 0 4px oklch(0.86 0.17 85 / 0.85);
+
+  /* Step puck (.mp-puck): the small numbered puck on the contributor trail, memory blocks and world signs.
+     hi = top highlight, face, side = the bevel, stroke = the number's outline. */
+  --puck-ahead-hi: var(--stone-100); --puck-ahead-face: var(--stone-300); --puck-ahead-side: var(--stone-500); --puck-ahead-stroke: var(--stone-700);
+  --puck-done-hi: var(--green-300); --puck-done-face: var(--green-500); --puck-done-side: var(--green-700); --puck-done-stroke: var(--green-900);
+  --puck-current-hi: var(--blue-300); --puck-current-face: var(--blue-500); --puck-current-side: var(--blue-700); --puck-current-stroke: var(--blue-700);
 }
