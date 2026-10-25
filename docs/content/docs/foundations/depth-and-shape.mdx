@@ -30,6 +30,24 @@ Level pucks are ellipses with the same recipe, plus two white gloss spots. Track
 
 <TokenTable file="effects" prefix={['--bevel', '--press-travel']} />
 
+## The step puck
+
+A small numbered puck with the same bevel. The contributor trail, the memory blocks and the world signs all use it. Add `mp-puck` to any element, then `mp-puck-done` or `mp-puck-current` for the state, and `mp-puck-lg` for the bigger size.
+
+<Preview surface="sky">
+  <div style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
+    <span className="mp-puck mp-puck-done"><i className="ph-bold ph-check" /></span>
+    <span className="mp-puck mp-puck-done"><i className="ph-bold ph-check" /></span>
+    <span className="mp-puck mp-puck-current">3</span>
+    <span className="mp-puck">4</span>
+    <span className="mp-puck">5</span>
+    <span style={{ width: 16 }} />
+    <span className="mp-puck mp-puck-current mp-puck-lg">1</span>
+  </div>
+</Preview>
+
+<TokenTable file="colors" prefix="--puck-" />
+
 ## Shadows and glows
 
 Shadows are tinted brown, never grey. A glow ring marks the thing you can tap or the thing you've won.

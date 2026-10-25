@@ -1,6 +1,6 @@
 ---
 title: Worlds
-description: Five themed worlds, each a set of tokens you switch on with data-world.
+description: Five worlds on the road, plus Base Camp for contributors. Each is a set of tokens you switch on with data-world.
 ---
 
 import WorldChipExample from '@/examples/contributor/WorldChip';
@@ -19,6 +19,8 @@ Put `data-world` on a screen, a section or a component, and everything inside pi
 - `--world-accent` and `--world-accent-shade` for signs and chips.
 - `--world-path` and `--world-path-edge` for the road.
 - `--world-stroke` for outlined text.
+- `--world-sky-low` for the horizon. A sky runs from `--world-sky` down to it.
+- `--prop-hill`, `--prop-bush-hi`, `--prop-bush` and `--prop-bush-lo` for the CSS hills and bushes that stand in for painted art.
 
 Without a `data-world`, you get the generic meadow.
 
@@ -27,6 +29,7 @@ Without a `data-world`, you get the generic meadow.
 - Level numbers run on across worlds. They don't restart.
 - Worlds can hold different numbers of levels. That's fine, and they're never padded out.
 - The Summit is Henry's letter. Contributors can never choose it.
+- Base Camp is where friends gather to pack their memories. It's the contributors' world, not a stop on the road, so it never shows on the map or in a world picker.
 
 ## Choosing a world
 
