@@ -29,7 +29,8 @@ function Status({ state, pct, reason }) {
   if (state === 'missing') return <span style={WARN}>File missing. Remove this and add it again.</span>;
   if (state === 'done') return <span style={{ color: 'var(--green-700)', ...LINE, animation: 'mp-pop var(--dur-base) var(--ease-bounce) both' }}><i className="ph-fill ph-check-circle" aria-hidden="true" /> Uploaded</span>;
   if (state === 'error') return <span style={{ ...WARN, ...LINE }}><i className="ph-fill ph-warning-circle" aria-hidden="true" /> Upload failed{reason ? ': ' + reason : ''}</span>;
-  if (state === 'uploading') return <span>Uploading {pct}%</span>;
+  // The percentage is hidden from the live region, so it announces "Uploading" once, not every tick. The progress bar carries the number.
+  if (state === 'uploading') return <span>Uploading <span aria-hidden="true">{pct}%</span></span>;
   return <span style={WARN}>Upload didn&apos;t finish</span>;
 }
 

@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 const DROP = '0 14px 24px oklch(0.22 0.05 60 / 0.3)';
 const GLOW = '0 0 0 4px oklch(0.76 0.13 180 / 0.5), 0 0 28px oklch(0.76 0.13 180 / 0.6)';
 
-export function RadioCard({ checked = false, onChange, title, description, media, style, ...rest }) {
+export function RadioCard({ checked = false, onChange, onClick, onPointerDown, onPointerUp, onPointerCancel, onPointerLeave, title, description, media, style, ...rest }) {
   const [down, setDown] = useState(false);
+  // Your own handlers run alongside the card's, so passing one never breaks choosing or the press.
+  const press = (on, yours) => e => { setDown(on); if (yours) yours(e); };
   return (
-    <button type="button" role="radio" aria-checked={checked} onClick={() => onChange && onChange(true)}
-      onPointerDown={() => setDown(true)} onPointerUp={() => setDown(false)} onPointerCancel={() => setDown(false)} onPointerLeave={() => setDown(false)}
+    <button type="button" role="radio" aria-checked={checked} onClick={e => { if (onClick) onClick(e); if (onChange) onChange(true); }}
+      onPointerDown={press(true, onPointerDown)} onPointerUp={press(false, onPointerUp)} onPointerCancel={press(false, onPointerCancel)} onPointerLeave={press(false, onPointerLeave)}
       style={{ appearance: 'none', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '22px 12px 16px', boxSizing: 'border-box',
         borderRadius: 'var(--radius-lg)', border: '4px solid ' + (checked ? 'var(--teal-500)' : 'var(--cream-300)'),
         background: checked ? 'linear-gradient(180deg, var(--teal-100), #fff)' : 'linear-gradient(180deg, #fff, var(--cream-100))',
