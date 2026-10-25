@@ -9,7 +9,10 @@ export function PortraitMedallion({ name = '', seed, src, number, size = 84, pop
   const pressed = interactive && down;
   const depth = Math.max(4, Math.round(size / 12)), travel = depth - 2;
   const plate = { h: Math.round(size * 0.36), min: Math.round(size * 0.43), fs: Math.round(size * 0.2) };
-  const accessibleName = label || (interactive ? (number != null ? 'Replay level ' + number + ', ' + name : 'Replay surprise from ' + name) : name);
+  const who = name || 'a friend';
+  const accessibleName = label || (interactive
+    ? (number != null ? 'Replay level ' + number + ', ' + who : 'Replay surprise from ' + who)
+    : (number != null ? 'Level ' + number + ', ' + who : name || 'A friend'));
   const body = (
     <>
       <span aria-hidden="true" style={{

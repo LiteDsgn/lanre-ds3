@@ -3,7 +3,11 @@ import React, { useSyncExternalStore } from 'react';
 import { TimerChip } from './TimerChip';
 
 const SECOND = 1000;
-const tickEverySecond = tick => { const id = setInterval(tick, SECOND); return () => clearInterval(id); };
+// One clock for every Countdown on the page, firing just after each whole second so they all change together.
+const listeners = new Set();
+let timer = 0;
+const schedule = () => { timer = setTimeout(() => { listeners.forEach(tick => tick()); schedule(); }, SECOND - (Date.now() % SECOND) + 5); };
+const tickEverySecond = tick => { listeners.add(tick); if (listeners.size === 1) schedule(); return () => { listeners.delete(tick); if (!listeners.size) clearTimeout(timer); }; };
 const noTicks = () => () => {};
 const clockNow = () => Math.floor(Date.now() / SECOND) * SECOND;
 const noClockOnServer = () => null; // server and browser clocks differ, so it renders after hydration

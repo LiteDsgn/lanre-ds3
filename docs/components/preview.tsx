@@ -25,7 +25,7 @@ export function Preview({ children, surface, world, padding = 24, className, sty
 }) {
   return (
     <div
-      className={cn('not-prose lanre-preview my-6 overflow-x-auto rounded-xl border border-fd-border', className)}
+      className={cn('not-prose lanre-preview my-6 overflow-x-auto rounded-[12px] border border-fd-border', className)}
       data-world={world}
       style={{ background: SURFACES[surface ?? (world ? 'world' : 'meadow')], padding, ...style }}
     >

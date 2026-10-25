@@ -9,7 +9,7 @@ export interface AudioPlayerProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   src?: string;
   /** Neutral title, e.g. "Voice note", never the sender's name during a mystery. */
   title?: string;
-  /** Fallback duration in seconds for the demo clock. */
+  /** Length in seconds. With `src`, shown until the file reports its own; leave it out if unknown and seeking waits for the file. Without `src`, the demo clock's length (default 42). */
   duration?: number;
   tone?: 'teal' | 'blue' | 'gold' | 'coral' | 'berry';
   style?: React.CSSProperties;

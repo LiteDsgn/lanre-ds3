@@ -19,7 +19,7 @@ export interface PortraitMedallionProps extends Omit<React.HTMLAttributes<HTMLEl
   pop?: boolean;
   /** Makes it a button for replay, with the bevel press. */
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  /** Accessible name. Defaults to "Replay level {number}, {name}" (or "Replay surprise from {name}") when clickable, otherwise the name. */
+  /** Accessible name. Defaults to "Replay level {number}, {name}" (or "Replay surprise from {name}") when clickable, otherwise "Level {number}, {name}" or the name. */
   label?: string;
   style?: React.CSSProperties;
 }

@@ -4,6 +4,18 @@
 /* Design-system tokens, scoped to .lanre-preview so they can't fight Tailwind's (see lib/scope-tokens.mjs). */
 @import '../.generated/lanre-tokens.css';
 
+/* Tailwind's preflight zeroes margins and restyles borders, images and buttons on every element. Undo it inside
+   previews, so components get the browser defaults they get in Storybook and the showcase. Inline styles and the
+   design system's own rules aren't in a layer, so they still win over this. */
+@layer base {
+  .lanre-preview,
+  .lanre-preview *,
+  .lanre-preview *::before,
+  .lanre-preview *::after {
+    all: revert-layer;
+  }
+}
+
 html {
   scrollbar-gutter: stable;
 }
