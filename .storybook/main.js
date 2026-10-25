@@ -8,7 +8,7 @@ import dtsArgTypes from './dts-argtypes.js';
 if (!process.env.LAUNCH_EDITOR && /^(vi|vim|nvim|nano)$/.test(process.env.EDITOR || 'vi')) process.env.EDITOR = 'cursor';
 
 /* Stories live in stories/, not next to the components, so components/ stays exactly what the
-   showcase loader, the bundle compiler and the birthday app copy expect. */
+   no-build loader, the bundle compiler and the birthday app copy expect. */
 export default {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx)'],
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],

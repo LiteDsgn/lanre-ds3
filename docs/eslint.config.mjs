@@ -9,6 +9,9 @@ const eslintConfig = defineConfig([
     'build/**',
     'next-env.d.ts',
     '.source/**',
+    // copied in from the repo root by lib/generate.mjs; the originals live outside docs/
+    '.generated/**',
+    'public/kit/**',
   ]),
 ]);
 

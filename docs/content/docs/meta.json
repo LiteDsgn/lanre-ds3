@@ -1,6 +1,8 @@
 {
   "pages": [
     "index",
+    "playable-kit",
+    "no-build",
     "---Foundations---",
     "...foundations",
     "---Components---",
