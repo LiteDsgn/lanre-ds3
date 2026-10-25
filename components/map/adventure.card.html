@@ -1,11 +1,11 @@
-<!-- @dsCard group="Adventure" viewport="700x520" name="Map extras" subtitle="WorldGate + DiscoveryMarker: world boundaries, narrator notes, side-of-road surprises" -->
+<!-- @dsCard group="Adventure" viewport="700x780" name="Map extras" subtitle="WorldGate, DiscoveryMarker, PortraitMedallion: world boundaries, side-of-road surprises, completed levels" -->
 <!doctype html>
 <html><head><meta charset="utf-8">
 <link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
-<script src="../../tools/ds-loader.js" data-root="../.." data-components="map/WorldGate,map/DiscoveryMarker"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="map/WorldGate,map/DiscoveryMarker,map/PortraitMedallion"></script>
 <style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}
 .mp-boot{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
 .mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
@@ -19,7 +19,7 @@ const Row = ({ children, gap = 14, align = 'center', style }) => <div style={{ d
 const Col = ({ children, gap = 16, style }) => <div style={{ display: 'grid', gap, ...style }}>{children}</div>;
 const Note = ({ children, dark = true }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: dark ? '#fff' : 'var(--ink-500)', textShadow: dark ? '0 1px 0 oklch(0 0 0 / 0.4)' : 'none', opacity: .9 }}>{children}</span>;
 
-MPReady.then(({ WorldGate, DiscoveryMarker }) => {
+MPReady.then(({ WorldGate, DiscoveryMarker, PortraitMedallion }) => {
   ReactDOM.createRoot(document.getElementById('root')).render(
     <Col gap={22}>
       <Row gap={22} align="flex-start">
@@ -35,6 +35,12 @@ MPReady.then(({ WorldGate, DiscoveryMarker }) => {
         <DiscoveryMarker kind="flower" state="available" size={52} onClick={() => {}} />
         <DiscoveryMarker kind="gift" state="available" size={52} onClick={() => {}} />
         <Note>hidden = a glinting bush · available = glow + float · new = late arrival · opened = tick</Note>
+      </Row>
+      <Row gap={22} align="flex-end">
+        <PortraitMedallion name="Ada Okafor" seed="c_01" number={4} onClick={() => {}} />
+        <PortraitMedallion name="Tunde Bello" seed="c_22" number={5} onClick={() => {}} />
+        <PortraitMedallion name="Kemi A." seed="c_07" size={64} onClick={() => {}} />
+        <Note>Completed levels become portrait medallions, with the level number underneath. Tap to replay.</Note>
       </Row>
     </Col>
   );

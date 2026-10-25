@@ -4,8 +4,8 @@ import React from 'react';
 function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
 const HUES = [25, 55, 95, 140, 175, 215, 260, 300, 335];
 const PATTERNS = ['dots', 'stripes', 'rings', 'plain'];
-// Letters only, so names like "Bayo (work)" give "BW" rather than "B(".
-export function initials(name = '') { return String(name).replace(/\(.*?\)/g, ' ').split(/\s+/).map(w => w.replace(/[^\p{L}\p{N}]/gu, '')).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join(''); }
+// Letters only, with notes in brackets dropped, so "Bayo (work)" gives "B" rather than "B(".
+export function initials(name = '') { return String(name).replace(/\(.*?\)/g, ' ').split(/\s+/).map(w => w.replace(/[^\p{L}\p{N}]/gu, '')).filter(Boolean).slice(0, 2).map(w => [...w][0].toUpperCase()).join(''); } // [...w] keeps letters outside the BMP whole
 
 export function Avatar({ name = '', seed, src, size = 64, mystery = false, ring = true, alt, style, ...rest }) {
   const b = Math.max(2, Math.round(size * 0.05));

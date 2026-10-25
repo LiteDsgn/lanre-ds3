@@ -13,7 +13,7 @@ const mono: CSSProperties = { fontFamily: 'ui-monospace, SFMono-Regular, Menlo, 
 
 function Frame({ children, style }: { children: ReactNode; style?: CSSProperties }) {
   return (
-    <div className="not-prose lanre-preview my-6 rounded-xl border border-fd-border" style={{ background: 'var(--cream-50)', padding: 20, overflowX: 'auto', ...style }}>
+    <div className="not-prose lanre-preview my-6 rounded-[12px] border border-fd-border" style={{ background: 'var(--cream-50)', padding: 20, overflowX: 'auto', ...style }}>
       {children}
     </div>
   );

@@ -5,9 +5,10 @@ const fmt = s => { s = Number.isFinite(s) ? Math.max(0, Math.floor(s)) : 0; retu
 // Browser recordings (webm) often report an Infinity duration until played through; treat that as unknown.
 const finite = d => (Number.isFinite(d) && d > 0 ? d : 0);
 
-export function AudioPlayer({ src, title = 'Voice note', duration = 42, tone = 'teal', style, ...rest }) {
+export function AudioPlayer({ src, title = 'Voice note', duration, tone = 'teal', style, ...rest }) {
+  const known = finite(duration ?? 0); // a real file's length stays unknown (0) until it reports one; only the demo clock defaults to 42s
   const audio = useRef(null);
-  const [playing, setPlaying] = useState(false), [t, setT] = useState(0), [dur, setDur] = useState(duration), [down, setDown] = useState(false);
+  const [playing, setPlaying] = useState(false), [t, setT] = useState(0), [dur, setDur] = useState(src ? known : duration ?? 42), [down, setDown] = useState(false);
   useEffect(() => { // demo clock when there is no real source
     if (src || !playing) return;
     const id = setInterval(() => setT(x => { if (x + 0.25 >= dur) { setPlaying(false); return dur; } return x + 0.25; }), 250);
@@ -20,8 +21,8 @@ export function AudioPlayer({ src, title = 'Voice note', duration = 42, tone = '
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px 12px 12px', borderRadius: 'var(--radius-xl)', background: 'linear-gradient(180deg, #fff, var(--cream-100))', border: '3px solid var(--cream-300)',
       boxShadow: '0 4px 0 var(--cream-300), 0 8px 16px oklch(0.22 0.05 60 / 0.15)', fontFamily: 'var(--font-ui)', minWidth: 280, boxSizing: 'border-box', ...style }} {...rest}>
-      {src && <audio ref={audio} src={src} preload="metadata" onLoadedMetadata={e => setDur(finite(e.target.duration) || duration)} onDurationChange={e => setDur(finite(e.target.duration) || duration)} onTimeUpdate={e => setT(e.target.currentTime)} onEnded={() => setPlaying(false)} />}
-      <button type="button" aria-label={playing ? 'Pause' : 'Play'} onClick={() => { if (!playing && t >= dur) setT(0); setPlaying(p => !p); }}
+      {src && <audio ref={audio} src={src} preload="metadata" onLoadedMetadata={e => setDur(finite(e.target.duration) || known)} onDurationChange={e => setDur(finite(e.target.duration) || known)} onTimeUpdate={e => setT(e.target.currentTime)} onEnded={() => setPlaying(false)} />}
+      <button type="button" aria-label={playing ? 'Pause' : 'Play'} onClick={() => { if (!playing && dur && t >= dur) setT(0); setPlaying(p => !p); }}
         onPointerDown={() => setDown(true)} onPointerUp={() => setDown(false)} onPointerLeave={() => setDown(false)}
         style={{ width: 56, height: 56, borderRadius: '50%', border: 0, padding: 0, flex: 'none', cursor: 'pointer', background: 'linear-gradient(180deg, ' + c[0] + ', ' + c[1] + ' 45%)',
           boxShadow: '0 ' + (down ? 1 : 5) + 'px 0 ' + c[2] + ', inset 0 2px 0 oklch(1 0 0 / 0.45)', transform: 'translateY(' + (down ? 4 : 0) + 'px)', transition: 'transform var(--dur-fast), box-shadow var(--dur-fast)',
@@ -38,7 +39,7 @@ export function AudioPlayer({ src, title = 'Voice note', duration = 42, tone = '
             <div style={{ width: pct + '%', height: '100%', borderRadius: 999, background: 'linear-gradient(180deg, ' + c[0] + ', ' + c[1] + ' 60%, ' + c[2] + ')', minWidth: pct > 0 ? 14 : 0 }} />
           </div>
           <div aria-hidden="true" style={{ position: 'absolute', top: -1, left: 'calc(' + pct + '% - ' + (pct / 100) * 24 + 'px)', width: 24, height: 24, borderRadius: '50%', background: 'linear-gradient(180deg, #fff, var(--cream-100))', boxShadow: '0 2px 0 ' + c[2] + ', 0 3px 6px oklch(0 0 0 / 0.25)', pointerEvents: 'none' }} />
-          <input type="range" min={0} max={dur || 1} step={0.1} value={t} onChange={e => seek(Number(e.target.value))} aria-label={'Seek ' + title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', margin: 0, opacity: 0, cursor: 'pointer' }} />
+          <input type="range" min={0} max={dur || 1} step={0.1} value={dur ? Math.min(t, dur) : 0} disabled={!dur} onChange={e => seek(Number(e.target.value))} aria-label={'Seek ' + title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', margin: 0, opacity: 0, cursor: dur ? 'pointer' : 'default' }} />
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
   "title": "Map",
   "pages": [
     "world-gate",
-    "discovery-marker"
+    "discovery-marker",
+    "portrait-medallion"
   ]
 }
