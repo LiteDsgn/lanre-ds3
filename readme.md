@@ -95,11 +95,11 @@ Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the
 
 ## Index
 
-- `showcase.html`: **start here**: browsable showcase of principles, foundations, live components with code, and the playable kit.
+- **Start here**: the docs (`npm run docs`) and Storybook (`npm run storybook`), both described below. They replaced `showcase.html`.
 - `styles.css`: global entry; `@import`s every token file below.
 - `tokens/`: `fonts.css` (Google Fonts import: Titan One, Quicksand), `icons.css` (Phosphor CDN), `colors.css`, `typography.css`, `spacing.css`, `effects.css` (radii, bevels, shadows, glows, motion), `utilities.css` (`.mp-display`, `.mp-ui`, `.mp-label`, `.mp-outline*`, keyframes `mp-float / mp-pulse-ring / mp-pop / mp-sparkle / mp-shimmer`).
 - `guidelines/`: 24 specimen cards (Colors ×9, Type ×4, Spacing ×3, Effects ×4, Brand ×4) shown in the Design System tab.
-- `components/`: 19 React primitives, each `Name.jsx` + `Name.d.ts` + `Name.prompt.md`, one preview card per group:
+- `components/`: 42 React components, each `Name.jsx` + `Name.d.ts` + `Name.prompt.md`, one preview card per group:
   - `buttons/`: **Button** (8 tones × 3 sizes, display/ui typeface, pill, block), **IconButton** (circle/square, badge, outlined caption).
   - `hud/`: **CurrencyPill** (coin/gem/ruby/heart/energy/star/key, + button), **ProgressBar** (striped, cap, label, dark/light track), **TimerChip**, **Countdown** (live: wooden board or ticking chip).
   - `panels/`: **Panel** (banner / ribbon / sign headers with blue·gold·teal·green·berry·coral accents; cream / wood / sky tones; close; footer), **Modal** (the shell around a Panel: scrim, Escape, scroll lock, focus, fade).
@@ -111,10 +111,10 @@ Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the
   - Adventure layer: `identity/`: **Gemstone**, **Avatar**, **RevealCard**, **PersonTile**; `levels/`: **ChoiceButton**, **PackageStepper**; `media/`: **MemoryText**, **AudioPlayer**, **VideoFrame**, **PhotoStack**; `map/`: **WorldGate**, **DiscoveryMarker**, **PortraitMedallion** (completed levels), `worlds.js`; `games/`: **MatchCard**; `contributor/`: **StepBar**, **TextField**, **UploadTile**, **WorldChip**, **RadioCard**; `quiz/`: **LeaderboardRow**; `feedback/`: **SoundToggle**.
 - `tokens/worlds.css`, `tokens/gems.css`: world scopes and gem tones; iPad/phone layout tokens in `spacing.css`; memory/letter sizes in `typography.css`; focus ring + reduced motion in `utilities.css`.
 - `guidelines/worlds.html`, `colors-gems.html`, `spacing-ipad.html`, `a11y.html`, `brand-anonymity.html`: project specimens.
-- `ui_kits/lanre-game/`: interactive mobile game (`index.html`, `App.jsx`, `Hud.jsx`, `MapScreen.jsx`, `BoardScreen.jsx`, `CampScreen.jsx`, `Dialogs.jsx`, `README.md`).
+- `ui_kits/lanre-game/`: interactive mobile game (`index.html`, `App.jsx`, `Hud.jsx`, `MapScreen.jsx`, `BoardScreen.jsx`, `CampScreen.jsx`, `Dialogs.jsx`, `README.md`). Playable in the docs at Playable kit, which copies it in with the files it loads.
 - `tools/ds-loader.js`: preview loader: uses the compiled `_ds_bundle.js` when present, otherwise transpiles component sources in-browser. Cards and the UI kit load through it.
 - `stories/`, `.storybook/`: Storybook workbench (`npm install`, then `npm run storybook`). Each component has a Playground plus stories ported from its preview card; `stories/patterns/` holds the multi-component demos (guess step, matching game, reveal, composer, settings, quiz result). Controls and prop docs are generated from each `Name.d.ts` by `.storybook/dts-argtypes.js`; usage notes come from `Name.prompt.md`. The World toolbar sets `data-world`; Surface changes the ground. Stories live outside `components/` so that folder stays a plain copyable source.
-- `docs/`: Fumadocs handbook (`npm run docs`, port 3000). Foundations with specimens generated from `tokens/`, the Birthday Adventure rules, and a page per component with a live example, its `Name.prompt.md` notes and a props table from its `Name.d.ts`. Tokens are scoped to `.lanre-preview` inside the docs so they can't clash with Tailwind's. See `docs/README.md`.
+- `docs/`: Fumadocs handbook (`npm run docs`, port 3000). Foundations with specimens generated from `tokens/`, the Birthday Adventure rules, a page per component with a live example, its `Name.prompt.md` notes and a props table from its `Name.d.ts`, the playable kit, and a guide to using the system without a build. Tokens are scoped to `.lanre-preview` inside the docs so they can't clash with Tailwind's. See `docs/README.md`.
 - `tools/read-props.js`: reads a component's props from its `.d.ts` and defaults from its `.jsx`. Storybook and the docs both use it, so they always agree.
 - `package.json`: dev dependencies for Storybook and the `docs` workspace. The design system itself still needs no build.
 - `assets/`: empty by design (see `assets/README.md`).

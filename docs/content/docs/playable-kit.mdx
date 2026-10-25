@@ -1,0 +1,31 @@
+---
+title: Playable kit
+description: A working game shell built only from Lanre's components. Play it to see how the pieces fit together.
+---
+
+<KitFrame />
+
+This is the base kit, not the birthday game. It covers the world map, an expedition board, the camp inventory and the dialogs every casual game needs. Every piece is a design-system component on the tokens, with no custom styling on top.
+
+## Try these flows
+
+1. **Map to level.** Tap the pulsing blue puck, or the Level button, then Play. The ribbon Level Complete panel opens with popping stars, and your progress moves on.
+2. **Daily reward.** Tap the gift button at the top right. The wooden-sign panel opens, and Claim moves your streak on and shows a toast.
+3. **Trail.** GO rolls and the token bounces to its tile. Energy and points update, and reward and hazard tiles show a toast.
+4. **Camp.** Tap two matching items to merge them. Tap an item, then an empty cell, to move it.
+5. **Shop and settings.** The "+" on a coin or gem pill opens the shop. The gear opens the switches, sliders and language.
+
+## How the screen is laid out
+
+- A fixed 56px HUD runs across the top. The level star and XP sit on the left, the currency pills and gear on the right.
+- The world scrolls underneath it.
+- Side rails hold captioned square icon buttons.
+- An 88px wood bottom bar holds four tabs.
+- Panels are centred, at most 340px wide, over a 55% scrim.
+- There's one large call to action per screen.
+
+The full measurements are on [Spacing and layout](/docs/foundations/spacing-and-layout).
+
+## Where it lives
+
+The kit is `ui_kits/lanre-game/` in the repo. It runs with no build, through the same loader as the preview cards (see [Use it without a build](/docs/no-build)). The docs copy it in each time they start, so restart `npm run docs` after changing it. The [kit notes](https://github.com/LiteDsgn/lanre-ds3/blob/main/ui_kits/lanre-game/README.md) list what each screen file does.
