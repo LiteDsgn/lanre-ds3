@@ -24,7 +24,7 @@ export const Default = {
             <PersonTile state="mystery" />
             <PersonTile state="new" name="Kemi A." seed="c_07" gem="emerald" tier={2} onClick={() => {}} />
           </Row>
-          <Note>Fictional fixture names. Babe's surfaces show the stone only: no score, rank or tier text.</Note>
+          <Note>Fictional fixture names. The recipient’s surfaces show the stone only: no score, rank or tier text.</Note>
         </Col>
       </Row>
     );

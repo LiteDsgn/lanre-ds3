@@ -29,7 +29,7 @@ export const Default = {
           <span style={{ fontWeight: 600, fontSize: 13, color: 'var(--ink-700)' }}>Your first try is the one that counts. Thanks for being part of this.</span>
         </div>
         <ChoiceButton index={0} state="correct">Adekunle Gold</ChoiceButton>
-        <Note dark={false}>Ties share rank (=3). Skipped = pearl, unranked. Babe never sees this list.</Note>
+        <Note dark={false}>Ties share rank (=3). Skipped = pearl, unranked. The recipient never sees this list.</Note>
       </div>
     </Row>
   ),

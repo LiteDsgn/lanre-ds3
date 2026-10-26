@@ -25,7 +25,7 @@ export const AllStones = {
 };
 
 export const Decorative = {
-  name: "Decorative (Babe's surfaces)",
+  name: "Decorative (the recipient’s surfaces)",
   render: () => (
     <Col>
       <Row gap={18} align="flex-end">

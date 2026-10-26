@@ -8,4 +8,4 @@ Match card: for levels whose media already reveals the sender: a 6-card (3 pairs
 ```
 
 - Choose the interaction once per level and persist it; don't re-roll on each render.
-- Symbols come from Lanre's world: mango, rice bowl, flower, dumbbell, lantern.
+- Symbols come from the Birthday Adventure’s world: mango, rice bowl, flower, dumbbell, lantern.

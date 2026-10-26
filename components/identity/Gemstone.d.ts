@@ -13,9 +13,9 @@ export interface GemstoneProps extends Omit<React.HTMLAttributes<HTMLSpanElement
   size?: number;
   /** Accessible name override (default "Emerald, tier II" / "Pearl keepsake"). */
   label?: string;
-  /** Visual only, with no visible or accessible label. Defaults to !showTier. Use true on Babe’s surfaces. */
+  /** Visual only, with no visible or accessible label. Defaults to !showTier. Use true on the recipient’s surfaces. */
   decorative?: boolean;
-  /** Prints "Emerald II" / "Keepsake" under the stone: FRIEND-FACING ONLY; never on Babe's reveal card or collection. */
+  /** Prints "Emerald II" / "Keepsake" under the stone: FRIEND-FACING ONLY; never on the recipient’s reveal card or collection. */
   showTier?: boolean;
   /** Sparkle/halo animation (default true; static in dense lists). */
   animate?: boolean;

@@ -1,6 +1,6 @@
 ---
 title: Decisions
-description: What Henry settled on 13 September 2026. These win over any generic guidance in the base kit.
+description: What the author settled on 13 September 2026. These win over any generic guidance in the base kit.
 ---
 
 DS3 is the design system for the project. Earlier versions and the first foundations stay as references.
@@ -10,7 +10,7 @@ DS3 is the design system for the project. Earlier versions and the first foundat
 The map's scenery is original art drawn in code, as SVG, with responsive React controls on top. The first plan was a generated 2.5D painted background. Drawing it in code keeps it sharp on any iPad, with no image downloads.
 
 - Mango Grove set the style. The other worlds and the summit follow it.
-- Henry reviews each piece, one at a time.
+- The author reviews each piece, one at a time.
 - Lettering, path nodes, portraits and buttons stay out of the art, so they stay sharp and responsive.
 
 This was updated on 25 October 2026. The style itself is on [The map](/docs/adventure/map#scenery).
@@ -19,7 +19,7 @@ This was updated on 25 October 2026. The style itself is on [The map](/docs/adve
 
 Sender data is only fetched after the reveal. `RevealCard` only mounts the identity face once revealed, because hiding it with CSS isn't enough. Gating a component doesn't protect data the browser already has, so the API has to enforce it.
 
-## Gems on Babe's surfaces
+## Gems on the recipient’s surfaces
 
 Gems there are ornaments. No visible label, no tooltip, no tier or score in the accessible name, and no gem button that explains them. `Gemstone` is decorative by default unless `showTier` is set. Contributor results can still show the gem name, tier and score.
 

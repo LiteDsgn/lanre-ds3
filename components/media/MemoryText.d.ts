@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 /**
- * Readable card for a contributor's written memory (or Henry's letter): warm parchment, 20px UI type at 1.6 leading, ≤ 640px column.
+ * Readable card for a contributor's written memory (or the author’s letter): warm parchment, 20px UI type at 1.6 leading, ≤ 640px column.
  * @startingPoint section="Media" subtitle="Written memory card" viewport="700x260"
  */
 export interface MemoryTextProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'> {

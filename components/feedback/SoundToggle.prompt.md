@@ -1,4 +1,4 @@
-Sound toggle: sound starts only after a deliberate tap (the opening's Ready button); this control lets Babe change her mind anywhere.
+Sound toggle: sound starts only after a deliberate tap (the opening's Ready button); this control lets the recipient change their mind anywhere.
 
 ```jsx
 <SoundToggle on={sound} onChange={setSound} />

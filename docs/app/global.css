@@ -25,7 +25,7 @@ html > body[data-scroll-locked] {
   --removed-body-scroll-bar-size: 0px !important;
 }
 
-/* Warm the docs chrome towards Lanre's ink and gold without touching Fumadocs' layout. */
+/* Warm the docs chrome towards the design system’s ink and gold without touching Fumadocs' layout. */
 :root {
   --color-fd-primary: oklch(0.52 0.12 60);
 }

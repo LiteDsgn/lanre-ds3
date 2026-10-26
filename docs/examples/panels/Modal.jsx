@@ -23,10 +23,10 @@ export default function ModalExample() {
         </Modal>
       )}
       {open === 'note' && (
-        <Modal label="A note from Henry" tone="world" world="small_chops" onClose={done}>
+        <Modal label="A note from the author" tone="world" world="small_chops" onClose={done}>
           {close => (
             <Panel title="A Note" accent="teal" width={340} onClose={close} footer={<Button variant="confirm" onClick={close}>OK</Button>}>
-              <MemoryText size="sm" ornament={false}><p>Fixture note: Henry&apos;s real words go here.</p></MemoryText>
+              <MemoryText size="sm" ornament={false}><p>Fixture note: the author&apos;s real words go here.</p></MemoryText>
             </Panel>
           )}
         </Modal>
