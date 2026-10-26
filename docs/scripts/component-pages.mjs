@@ -30,7 +30,7 @@ const SECTIONS = {
     identity: ['Identity', ['Gemstone', 'Avatar', 'RevealCard', 'PersonTile']],
     levels: ['Levels', ['ChoiceButton', 'PackageStepper']],
     map: ['Map', ['WorldGate', 'DiscoveryMarker', 'PortraitMedallion']],
-    media: ['Media', ['MemoryText', 'AudioPlayer', 'PhotoStack', 'VideoFrame']],
+    media: ['Media', ['MemoryText', 'Words', 'Album', 'Cassette', 'Film', 'Unavailable']],
     games: ['Games', ['MatchCard']],
     contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'RadioCard', 'UploadTile']],
     quiz: ['Quiz', ['LeaderboardRow']],
