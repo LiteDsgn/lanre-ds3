@@ -3,6 +3,7 @@
   "pages": [
     "gemstone",
     "avatar",
-    "person-tile"
+    "person-tile",
+    "avatar-button"
   ]
 }

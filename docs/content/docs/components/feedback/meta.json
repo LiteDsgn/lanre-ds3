@@ -4,6 +4,11 @@
     "badge",
     "tag",
     "toast",
-    "sound-toggle"
+    "sound-toggle",
+    "sticker",
+    "notice",
+    "error-text",
+    "save-pill",
+    "save-alert"
   ]
 }

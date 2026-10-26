@@ -2,6 +2,7 @@
   "title": "Buttons",
   "pages": [
     "button",
-    "icon-button"
+    "icon-button",
+    "segmented-tabs"
   ]
 }

@@ -1,0 +1,309 @@
+/* Small interface pieces: a heading with its plate, a sticker, a notice and error text, the autosave pill and alert, an avatar
+   button with a pencil, and segmented tabs. Used by Heading, Sticker, Notice, ErrorText, SavePill, SaveAlert, AvatarButton and
+   SegmentedTabs. */
+
+/* The friend's avatar in the HUD, with a small pencil to say it can be changed. */
+.mp-avatar-button {
+  appearance: none;
+  position: relative;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-avatar-button:active {
+  transform: translateY(2px) scale(0.97);
+}
+
+.mp-avatar-badge {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--wood-300), var(--wood-500) 55%);
+  box-shadow: 0 2px 0 var(--wood-700);
+  color: #fff;
+  font-size: 11px;
+}
+
+.mp-save-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  margin-top: 6px;
+  padding: 0 12px 0 8px;
+  border-radius: 999px;
+  background: var(--surface-hud);
+  box-shadow: inset 0 2px 0 oklch(1 0 0 / 0.12), 0 3px 0 oklch(0.2 0.05 60 / 0.35);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  flex: none;
+}
+
+.mp-save-pill i {
+  font-size: 20px;
+  color: var(--green-300);
+}
+
+/* Tappable: the same pill, as a button */
+.mp-save-pill[type='button'] {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+  transition: padding var(--dur-fast) var(--ease-out);
+}
+
+.mp-save-pill-icon {
+  padding: 0 8px;
+}
+
+.mp-save-word {
+  animation: mp-word-in var(--dur-base) var(--ease-out) both;
+}
+
+.mp-save-pill-busy i {
+  color: var(--blue-300);
+}
+
+.mp-save-pill-warn {
+  background: var(--coral-700);
+}
+
+.mp-save-pill-warn i {
+  color: var(--coral-100);
+}
+
+/* ---------- Headings and copy ---------- */
+.mp-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.mp-heading-title {
+  margin: 0;
+  max-width: 340px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-text-stroke: 0.16em var(--world-stroke);
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 oklch(0 0 0 / 0.22);
+  text-wrap: balance;
+}
+
+.mp-plate {
+  margin: 0;
+  max-width: 340px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  border-radius: var(--radius-md);
+  background: var(--cream-50);
+  box-shadow: 0 3px 0 var(--cream-300), 0 8px 16px oklch(0.2 0.05 60 / 0.18);
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--ink-700);
+  text-wrap: pretty;
+}
+
+.mp-sticker {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--tone-hi), var(--tone-face) 50%);
+  box-shadow: 0 3px 0 var(--tone-side), inset 0 2px 0 oklch(1 0 0 / 0.45);
+  color: #fff;
+  font-size: 20px;
+  text-shadow: 0 1px 0 var(--tone-side);
+}
+
+.mp-notice {
+  /* Above a celebration glow on the Sent and quiz result screens. */
+  position: relative;
+  animation: mp-arrive var(--dur-base) var(--ease-out) both;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: var(--cream-50);
+  box-shadow: 0 3px 0 var(--cream-300), 0 8px 16px oklch(0.2 0.05 60 / 0.18);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-700);
+}
+
+.mp-notice-warn {
+  background: var(--coral-100);
+  border: 3px solid var(--coral-500);
+  box-shadow: 0 4px 0 var(--coral-700);
+  color: var(--coral-900);
+}
+
+.mp-notice-gold {
+  background: linear-gradient(180deg, var(--gold-100), var(--cream-50));
+  border: 4px solid var(--gold-500);
+  box-shadow: 0 5px 0 var(--gold-700), 0 14px 24px oklch(0.22 0.05 60 / 0.3);
+  color: var(--gold-900);
+}
+
+.mp-error-text {
+  margin: 0;
+  justify-self: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--coral-100);
+  color: var(--coral-900);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.mp-save-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--coral-100);
+  color: var(--coral-900);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* The save pill: bobs while saving, pops when saved. */
+.mp-save-pill-busy i {
+  animation: mp-float 1.2s ease-in-out infinite;
+}
+
+.mp-save-pill-pop i {
+  animation: mp-pop var(--dur-base) var(--ease-bounce) both;
+}
+
+/* ---- Link button (inside the save alert) ---- */
+
+.mp-link-button {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 8px 4px;
+  min-height: 44px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--blue-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.mp-save-alert .mp-link-button {
+  min-height: 32px;
+  padding: 0 4px;
+  font-size: 13px;
+  color: var(--coral-900);
+}
+
+/* ---- Segmented tabs ---- */
+
+.mp-seg {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  margin: 0 auto 18px;
+  width: max-content;
+  max-width: 100%;
+  border-radius: 999px;
+  background: var(--cream-200);
+  box-shadow: inset 0 2px 6px oklch(0.3 0.05 60 / 0.12);
+}
+
+.mp-seg-tab {
+  appearance: none;
+  border: 0;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-700);
+  cursor: pointer;
+  transition: background var(--dur-fast), box-shadow var(--dur-fast), transform var(--dur-fast);
+}
+
+.mp-seg-on {
+  background: #fff;
+  box-shadow: 0 3px 0 var(--cream-300);
+  color: var(--ink-900);
+}
+
+@keyframes mp-word-in {
+  from {
+    opacity: 0;
+    translate: -6px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes mp-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-save-pill-busy i,
+  .mp-save-pill-pop i,
+  .mp-save-word,
+  .mp-notice {
+    animation: none;
+  }
+}
