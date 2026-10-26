@@ -32,7 +32,7 @@ const SECTIONS = {
     map: ['Map', ['WorldGate', 'DiscoveryMarker', 'PortraitMedallion']],
     media: ['Media', ['MemoryText', 'Words', 'Album', 'Cassette', 'Film', 'Unavailable']],
     games: ['Games', ['MatchCard']],
-    contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'RadioCard', 'UploadTile']],
+    contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'WorldOption', 'WorldSign', 'WorldSigns', 'RadioCard', 'UploadTile']],
     quiz: ['Quiz', ['LeaderboardRow']],
   }],
 };

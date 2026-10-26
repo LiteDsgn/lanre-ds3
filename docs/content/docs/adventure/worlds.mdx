@@ -3,7 +3,7 @@ title: Worlds
 description: Five worlds on the road, plus Base Camp for contributors. Each is a set of tokens you switch on with data-world.
 ---
 
-import WorldChipExample from '@/examples/contributor/WorldChip';
+import WorldSignsExample from '@/examples/contributor/WorldSigns';
 
 Put `data-world` on a screen, a section or a component, and everything inside picks up that world's colours.
 
@@ -33,10 +33,10 @@ Without a `data-world`, you get the generic meadow.
 
 ## Choosing a world
 
-Contributors pick the world their memory belongs in.
+Contributors pick the world their memory belongs in. The worlds hang over one road as signs, one each, in order, with the summit locked at the end. The sign for the world a friend's main memory is already in is flagged "Your stop".
 
-<Preview surface="sky">
-  <WorldChipExample />
+<Preview world="base_camp">
+  <WorldSignsExample />
 </Preview>
 
-See [WorldChip](/docs/adventure-components/contributor/world-chip) and [WorldGate](/docs/adventure-components/map/world-gate) for the components.
+Once a world is chosen, a [WorldChip](/docs/adventure-components/contributor/world-chip) pill shows it, and a list of [WorldOptions](/docs/adventure-components/contributor/world-option) changes it in a sheet. Signs and options are built from [WorldSign](/docs/adventure-components/contributor/world-sign) and [WorldSigns](/docs/adventure-components/contributor/world-signs). On the map, each world starts at a [WorldGate](/docs/adventure-components/map/world-gate).

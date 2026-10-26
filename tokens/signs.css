@@ -1,0 +1,459 @@
+/* World signposts: the signs that mark a world. WorldGate is the sign on the map, WorldSign is the selectable sign
+   on the theme screen (hung over a road by WorldSigns), WorldChip is the pill that shows the chosen world, and
+   WorldOption is a row in a picker. Used by the components in components/map and components/contributor. */
+
+/* ---- The sign on the map (WorldGate) ---- */
+
+.mp-gate {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.mp-gate-sign {
+  position: relative;
+  width: 100%;
+  padding: 12px 18px 12px;
+  border-radius: var(--radius-lg);
+  border: 5px solid var(--wood-700);
+  background: linear-gradient(180deg, var(--world-accent), var(--world-accent-shade));
+  box-shadow: 0 6px 0 var(--wood-900), inset 0 3px 0 oklch(1 0 0 / 0.35), 0 14px 22px oklch(0.2 0.05 60 / 0.3);
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.mp-gate-post {
+  position: absolute;
+  top: 70%;
+  width: 16px;
+  height: 90px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--wood-300), var(--wood-500) 60%, var(--wood-700));
+  box-shadow: 0 4px 0 var(--wood-900);
+  z-index: -1;
+}
+
+.mp-gate-post:first-child { left: 10%; }
+
+.mp-gate-post:nth-child(2) { right: 10%; }
+
+.mp-gate-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(18px, 2.6vw, 25px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-text-stroke: 0.16em var(--world-stroke);
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 oklch(0 0 0 / 0.25);
+}
+
+.mp-gate-count {
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: var(--cream-100);
+  box-shadow: 0 2px 0 var(--cream-300);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-700);
+  display: grid;
+  place-items: center;
+}
+
+.mp-gate-note {
+  pointer-events: auto;
+  appearance: none;
+  border: 3px solid var(--cream-300);
+  margin-top: 34px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fff, var(--cream-100));
+  box-shadow: 0 4px 0 var(--cream-300), 0 10px 16px oklch(0.2 0.05 60 / 0.25);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink-900);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  rotate: -2deg;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), filter var(--dur-fast);
+}
+
+.mp-gate-note:hover {
+  filter: brightness(1.04);
+}
+
+.mp-gate-note:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--cream-300), 0 4px 8px oklch(0.2 0.05 60 / 0.25);
+}
+
+.mp-gate-note i {
+  color: var(--coral-500);
+  font-size: 20px;
+}
+
+.mp-gate-note:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+/* ---- Selectable signs on one road (WorldSign, WorldSigns) ---- */
+
+.mp-signs {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 6px;
+}
+
+.mp-sign {
+  appearance: none;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 8px 0 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-sign-post {
+  position: absolute;
+  top: 0;
+  bottom: -14px;
+  width: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--wood-300), var(--wood-500) 60%, var(--wood-700));
+  box-shadow: 0 4px 0 var(--wood-900);
+}
+
+.mp-sign-post:first-child {
+  left: 12%;
+}
+
+.mp-sign-post:nth-child(2) {
+  right: 12%;
+}
+
+.mp-sign-plank {
+  position: relative;
+  margin: 0 4%;
+  min-height: 88px;
+  box-sizing: border-box;
+  border-radius: var(--radius-lg);
+  border: 5px solid var(--wood-700);
+  background: linear-gradient(180deg, var(--world-accent), var(--world-accent-shade));
+  box-shadow: 0 6px 0 var(--wood-900), inset 0 3px 0 oklch(1 0 0 / 0.35), 0 12px 20px oklch(0.2 0.05 60 / 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.mp-sign:active .mp-sign-plank {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--wood-900), inset 0 3px 0 oklch(1 0 0 / 0.35);
+}
+
+.mp-sign[aria-pressed='true'] .mp-sign-plank {
+  box-shadow: 0 6px 0 var(--wood-900), inset 0 3px 0 oklch(1 0 0 / 0.35), 0 0 0 5px var(--teal-300), 0 0 30px oklch(0.76 0.13 180 / 0.85);
+}
+
+.mp-sign-plank-locked {
+  background: linear-gradient(180deg, var(--stone-300), var(--stone-500));
+  --world-stroke: var(--stone-700);
+}
+
+.mp-sign-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-text-stroke: 0.16em var(--world-stroke);
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 oklch(0 0 0 / 0.25);
+  text-wrap: balance;
+}
+
+.mp-sign-title i {
+  flex: none;
+  font-size: 26px;
+  -webkit-text-stroke: 2.5px var(--world-stroke);
+}
+
+.mp-sign-blurb {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--cream-100);
+  box-shadow: 0 2px 0 var(--cream-300);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-700);
+}
+
+.mp-sign-check {
+  position: absolute;
+  right: -12px;
+  top: -14px;
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--teal-300), var(--teal-500) 50%);
+  border: 3px solid #fff;
+  box-shadow: 0 3px 0 var(--teal-700);
+  color: #fff;
+  font-size: 16px;
+}
+
+.mp-world-pill-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The world pill: a button, so the world can be changed on the spot. It gives way first on narrow phones. */
+.mp-world-pill {
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 52px;
+  box-sizing: border-box;
+  padding: 6px 22px 6px 8px;
+  border-radius: 999px;
+  border: 3px solid var(--world-accent);
+  background: linear-gradient(180deg, var(--world-accent), var(--world-accent-shade));
+  box-shadow: 0 4px 0 var(--world-stroke);
+  color: #fff;
+  text-shadow: 0 2px 0 var(--world-accent-shade);
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.mp-world-pill:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--world-stroke);
+}
+
+.mp-world-pill-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Small caret on a pill or badge: "tap to change" */
+.mp-pill-mark {
+  position: absolute;
+  right: -6px;
+  bottom: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--cream-50);
+  border: 2px solid var(--wood-700);
+  box-shadow: 0 2px 0 var(--wood-900);
+  color: var(--wood-900);
+  font-size: 11px;
+  text-shadow: none;
+}
+
+/* One world per row in the picker */
+.mp-world-option {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 44px 10px 10px;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--cream-300);
+  background: linear-gradient(180deg, #fff, var(--cream-100));
+  box-shadow: 0 3px 0 var(--cream-300);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-world-option {
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.mp-world-option:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--cream-300);
+}
+
+.mp-world-option[aria-checked='true'] {
+  border-color: var(--teal-500);
+  background: linear-gradient(180deg, var(--teal-100), #fff);
+  box-shadow: 0 3px 0 var(--teal-700), 0 0 0 3px oklch(0.76 0.13 180 / 0.45);
+}
+
+.mp-world-option[aria-checked='true'] .mp-world-radio {
+  border-color: var(--teal-500);
+  background: var(--teal-500);
+}
+
+.mp-world-option .mp-world-radio {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mp-world-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mp-world-option-text strong {
+  font-size: 15px;
+  color: var(--ink-900);
+}
+
+.mp-world-option-text span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-500);
+}
+
+.mp-world-medal {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--world-sky), var(--world-ground));
+  border: 2px solid #fff;
+  box-shadow: 0 2px 0 oklch(0 0 0 / 0.15);
+  font-size: 20px;
+  text-shadow: none;
+}
+
+.mp-world-medal i {
+  -webkit-text-stroke: 2px var(--world-stroke);
+  paint-order: stroke fill;
+}
+
+.mp-world-radio {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px solid var(--stone-500);
+  background: #fff;
+  box-shadow: inset 0 2px 3px oklch(0 0 0 / 0.1);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Gates hang over one road: numbered markers and a straight stretch behind them */
+.mp-signs-road {
+  position: relative;
+}
+
+.mp-signs-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 40px;
+  width: 46px;
+  transform: translateX(-50%);
+  border-radius: 23px;
+  background: var(--world-path);
+  box-shadow: 0 0 0 5px var(--world-path-edge), 0 6px 0 5px oklch(0.25 0.05 60 / 0.2);
+}
+
+.mp-signs-spine::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(180deg, oklch(1 0 0 / 0.6) 0 10px, transparent 10px 26px);
+}
+
+.mp-sign-number {
+  position: absolute;
+  left: calc(12% - 12px);
+  top: -6px;
+  z-index: 2;
+}
+
+.mp-sign-badge {
+  position: absolute;
+  left: -6px;
+  bottom: -16px;
+  z-index: 2;
+}
+
+.mp-signs-road .mp-sign {
+  z-index: 1;
+}
+
+/* ---- Things that land ---- */
+
+/* A chosen sign's check pops in, and so does a picked option's tick (on the scale property, so any centring transform stays put). */
+.mp-sign-check {
+  animation: mp-pop var(--dur-base) var(--ease-bounce) both;
+}
+.mp-world-option[aria-checked='true'] .mp-world-radio {
+  animation: mp-radio-pop var(--dur-base) var(--ease-bounce) both;
+}
