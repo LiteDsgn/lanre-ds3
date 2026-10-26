@@ -16,18 +16,18 @@ const force = process.argv.includes('--force');
 // Mirrors the Storybook sidebar: section folder → [Storybook prefix, title, groups: folder → [title, components]]
 const SECTIONS = {
   components: ['Components', 'Components', {
-    buttons: ['Buttons', ['Button', 'IconButton']],
+    buttons: ['Buttons', ['Button', 'IconButton', 'SegmentedTabs']],
     hud: ['HUD', ['CurrencyPill', 'ProgressBar', 'TimerChip', 'Countdown', 'HudBar', 'HudChip']],
     panels: ['Panels', ['Panel', 'Modal']],
     map: ['Map', ['LevelNode', 'StarRating', 'Tile']],
     rewards: ['Rewards', ['RewardCard', 'ItemCell', 'ShopRow']],
     forms: ['Forms', ['Switch', 'Slider']],
-    feedback: ['Feedback', ['Badge', 'Tag', 'Toast', 'SoundToggle']],
-    text: ['Text', ['OutlineText']],
+    feedback: ['Feedback', ['Badge', 'Tag', 'Toast', 'SoundToggle', 'Sticker', 'Notice', 'ErrorText', 'SavePill', 'SaveAlert']],
+    text: ['Text', ['OutlineText', 'Heading']],
     icons: ['Icons', ['GameIcon']],
   }],
   'adventure-components': ['Adventure', 'Adventure components', {
-    identity: ['Identity', ['Gemstone', 'Avatar', 'PersonTile']],
+    identity: ['Identity', ['Gemstone', 'Avatar', 'PersonTile', 'AvatarButton']],
     levels: ['Levels', ['ChoiceButton']],
     map: ['Map', ['WorldGate', 'DiscoveryMarker', 'PortraitMedallion']],
     toolbar: ['Toolbar', ['Toolbar', 'ToolbarTab', 'ToolbarNext', 'FastTravelDock']],

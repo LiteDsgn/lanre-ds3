@@ -1,11 +1,11 @@
-<!-- @dsCard group="Components" viewport="700x250" name="Feedback" subtitle="Badge, Tag, Toast, SoundToggle" -->
+<!-- @dsCard group="Components" viewport="700x560" name="Feedback" subtitle="Badge, Tag, Toast, SoundToggle, Sticker, Notice, ErrorText, SavePill, SaveAlert" -->
 <!doctype html>
 <html><head><meta charset="utf-8">
 <link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
-<script src="../../tools/ds-loader.js" data-root="../.." data-components="feedback/Badge,feedback/Tag,feedback/Toast,feedback/SoundToggle,icons/GameIcon"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="feedback/Badge,feedback/Tag,feedback/Toast,feedback/SoundToggle,feedback/Sticker,feedback/Notice,feedback/ErrorText,feedback/SavePill,feedback/SaveAlert,icons/GameIcon"></script>
 <style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
 .mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
 .mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
@@ -19,7 +19,7 @@ const Row = ({ children, gap = 14, align = 'center' }) => <div style={{ display:
 const Col = ({ children, gap = 16 }) => <div style={{ display: 'grid', gap }}>{children}</div>;
 const Note = ({ children }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / 0.4)', opacity: .9 }}>{children}</span>;
 
-MPReady.then(({ Badge, Tag, Toast, SoundToggle, GameIcon }) => {
+MPReady.then(({ Badge, Tag, Toast, SoundToggle, Sticker, Notice, ErrorText, SavePill, SaveAlert, GameIcon }) => {
   ReactDOM.createRoot(document.getElementById('root')).render(
     <Col gap={20}>
       <Row gap={14}>
@@ -33,6 +33,18 @@ MPReady.then(({ Badge, Tag, Toast, SoundToggle, GameIcon }) => {
         <Toast icon={<GameIcon kind="check" size={28} tone="teal" />} message="Saved" tone="teal" />
         <SoundToggle on /><SoundToggle on={false} tone="light" size="sm" />
       </Row>
+      <Row gap={12}>
+        {['blue', 'teal', 'gold', 'coral', 'berry', 'green', 'stone'].map(t => <Sticker key={t} icon="heart" tone={t} />)}
+        <span style={{ width: 20 }} />
+        <SavePill status="saved" /><SavePill status="saving" /><SavePill status="error" />
+      </Row>
+      <div style={{ display: 'grid', gap: 12, maxWidth: 380 }}>
+        <Notice icon="envelope-simple">Your changes are saved as you go.</Notice>
+        <Notice tone="warn" icon="warning">That photo is too large. Try one under 10 MB.</Notice>
+        <Notice tone="gold" icon="gift">Everything is in. Nicely done.</Notice>
+        <ErrorText>That link has expired. Ask for a new one.</ErrorText>
+        <SaveAlert status="conflict" error="Someone else changed this. Reload to see it." onReload={() => {}} />
+      </div>
       <Note>Badges pin to a corner (position from the parent). Tags: coral scarcity, teal/green value, gold new, berry premium, stone locked. Toasts pop in with the bounce ease.</Note>
     </Col>
   );

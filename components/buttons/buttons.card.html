@@ -1,11 +1,11 @@
-<!-- @dsCard group="Components" viewport="700x330" name="Buttons" subtitle="Button + IconButton: tones, sizes, badges, captions, pressed/disabled" -->
+<!-- @dsCard group="Components" viewport="700x400" name="Buttons" subtitle="Button + IconButton: tones, sizes, badges, captions, pressed/disabled. SegmentedTabs" -->
 <!doctype html>
 <html><head><meta charset="utf-8">
 <link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
-<script src="../../tools/ds-loader.js" data-root="../.." data-components="buttons/Button,buttons/IconButton"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="buttons/Button,buttons/IconButton,buttons/SegmentedTabs"></script>
 <style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
 .mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
 .mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
@@ -15,7 +15,11 @@
 </style>
 </head><body><div id="root"><div class="mp-boot" aria-hidden="true" style="position:fixed"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
 <script type="text/babel">
-MPReady.then(({ Button, IconButton }) => {
+MPReady.then(({ Button, IconButton, SegmentedTabs }) => {
+  function Tabs() {
+    const [tab, setTab] = React.useState('people');
+    return <SegmentedTabs label="Collection" value={tab} onChange={setTab} items={[{ id: 'people', label: 'People · 3 of 8' }, { id: 'keepsakes', label: 'Keepsakes · 2' }]} />;
+  }
   const Row = ({ children }) => <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', flexWrap: 'wrap' }}>{children}</div>;
   const I = ({ n }) => <i className={'ph-fill ph-' + n} />;
   ReactDOM.createRoot(document.getElementById('root')).render(
@@ -40,6 +44,7 @@ MPReady.then(({ Button, IconButton }) => {
         <IconButton variant="wood" shape="square" label="Map"><I n="map-trifold" /></IconButton>
         <IconButton disabled shape="square" label="Locked"><I n="lock" /></IconButton>
       </Row>
+      <Tabs />
     </div>
   );
 });
