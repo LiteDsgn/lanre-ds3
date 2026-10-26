@@ -8,6 +8,8 @@
     "world-sign",
     "world-signs",
     "radio-card",
-    "upload-tile"
+    "upload-tile",
+    "recorder-panel",
+    "audio-recorder"
   ]
 }
