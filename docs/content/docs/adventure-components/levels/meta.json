@@ -1,7 +1,6 @@
 {
   "title": "Levels",
   "pages": [
-    "choice-button",
-    "package-stepper"
+    "choice-button"
   ]
 }

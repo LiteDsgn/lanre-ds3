@@ -3,7 +3,7 @@ title: Level loop
 description: Open the package, guess who sent it, then see them. Nothing rushes and nothing is gated.
 ---
 
-import PackageStepperExample from '@/examples/levels/PackageStepper';
+import ViewerKeysExample from '@/examples/viewer/ViewerKeys';
 import ChoiceButtonExample from '@/examples/levels/ChoiceButton';
 import MatchCardExample from '@/examples/games/MatchCard';
 
@@ -16,15 +16,17 @@ Each level is a package of items from one contributor: text, photos, audio and v
 - Every player has pause and seek.
 - Finishing is an explicit Continue. The recipient doesn't have to watch everything first.
 
+The package opens in a [RoadsideViewer](/docs/adventure-components/viewer/roadside-viewer), a wooden cabinet over the map. Its screen plays one piece at a time, and one key per piece lets the recipient move around.
+
 <Preview>
-  <PackageStepperExample />
+  <ViewerKeysExample />
 </Preview>
 
 ## The guess
 
 - A wrong guess turns coral with a ×, and the retry stays open.
 - "Just tell me" is always there.
-- A right guess turns green with a ✓, and the others dim. Then the card flips.
+- A right guess turns green with a ✓, and the others dim. Then the face on the [RevealTray](/docs/adventure-components/viewer/reveal-tray) flips to the friend.
 
 <Preview>
   <ChoiceButtonExample />
