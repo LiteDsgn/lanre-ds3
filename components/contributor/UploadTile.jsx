@@ -49,7 +49,7 @@ export function UploadTile({ type = 'photo', index = 0, count, state = 'done', p
         border: 'var(--border-panel) solid ' + (failed ? 'var(--coral-500)' : 'var(--cream-300)'), borderRadius: 'var(--radius-lg)',
         boxShadow: '0 5px 0 ' + (failed ? 'var(--coral-700)' : 'var(--cream-300)') + ', ' + DROP, padding: 'var(--space-3)', display: 'grid', gap: 'var(--space-3)', minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', fontWeight: 700, fontSize: 14, color: 'var(--ink-700)' }}>
-          <span className="mp-puck mp-puck-current mp-puck-lg" aria-hidden="true" style={{ minWidth: 0 }}>{index + 1}</span>
+          <span className="mp-step mp-step-current mp-step-lg" aria-hidden="true" style={{ minWidth: 0 }}>{index + 1}</span>
           <span style={{ flex: 1, minWidth: 0, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <i className={'ph-fill ph-' + glyph} aria-hidden="true" style={{ fontSize: 20 }} />
             {kind}

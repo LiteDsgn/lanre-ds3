@@ -39,7 +39,7 @@ export const StrokesAndFills = {
         <OutlineText size="lg" color="cream" stroke="wood">Sign</OutlineText>
         <OutlineText size="md" uppercase={false} stroke="coral">Nice!</OutlineText>
       </Row>
-      <Note>Stroke tone follows the surface: ink on grass, blue or stone on pucks, wood on planks.</Note>
+      <Note>Stroke tone follows the surface: ink on grass, blue or stone on level nodes, wood on planks.</Note>
     </Col>
   ),
 };

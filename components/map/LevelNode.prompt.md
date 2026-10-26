@@ -1,4 +1,4 @@
-Level puck: the nodes along the winding path on a world map. Place them absolutely on the map; the path is drawn by the map layer.
+Level node: the nodes along the winding path on a world map. Place them absolutely on the map; the path is drawn by the map layer.
 
 ```jsx
 <LevelNode number={1} state="complete" stars={3} onClick={() => open(1)} />
@@ -7,5 +7,5 @@ Level puck: the nodes along the winding path on a world map. Place them absolute
 <LevelNode number={9} size={64} state="locked" />
 ```
 
-- Only one current node per map. Locked pucks ignore taps.
-- Keep ≥ 24px of grass between pucks; alternate left/right along the path.
+- Only one current node per map. Locked nodes ignore taps.
+- Keep ≥ 24px of grass between nodes; alternate left/right along the path.

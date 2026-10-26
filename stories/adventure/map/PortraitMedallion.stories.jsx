@@ -32,7 +32,7 @@ export const OnTheRoad = {
         <LevelNode number={4} state="current" onClick={() => {}} />
         <LevelNode number={5} state="locked" />
       </Row>
-      <Note>Completed levels are medallions. The current and locked ones stay pucks, so nobody is given away early.</Note>
+      <Note>Completed levels are medallions. The current and locked ones stay plain nodes, so nobody is given away early.</Note>
     </Col>
   ),
 };

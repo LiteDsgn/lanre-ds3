@@ -1,6 +1,6 @@
 ---
 title: The map
-description: World gates, discoveries beside the road, level pucks with no star scores, the scenery and the toolbar.
+description: World gates, discoveries beside the road, level nodes with no star scores, the scenery and the toolbar.
 ---
 
 import WorldGateExample from '@/examples/map/WorldGate';
@@ -29,7 +29,7 @@ Each contributor's main package is their main-path memory. Any extra packages be
   <DiscoveryMarkerExample />
 </Preview>
 
-## Level pucks
+## Level nodes
 
 This game has no star scores, so use `LevelNode` with `stars={0}`. Completed levels become a [PortraitMedallion](/docs/adventure-components/map/portrait-medallion): the friend on a gold pedestal, with the level number underneath. See [Identity and anonymity](/docs/adventure/identity-and-anonymity) for what each level may show.
 
@@ -43,7 +43,7 @@ On the map, this replaces the striped placeholder slots the base kit uses for ar
 - Each form gets one shade and one highlight.
 - A soft shadow sits where it meets the ground.
 - There are no outlines, unlike the icons, and no blur filters.
-- Lettering, level pucks, portraits and buttons stay out of the art, so they stay sharp and tappable.
+- Lettering, level nodes, portraits and buttons stay out of the art, so they stay sharp and tappable.
 
 New scenery joins the same library, in the same style. It lives in the birthday app, not in the design system.
 
@@ -52,7 +52,7 @@ New scenery joins the same library, in the same style. It lives in the birthday 
 The adventure swaps the base kit's wood bottom bar for a cream pill that floats above the bottom of the screen. It has three slots.
 
 - **Your People** on the left.
-- **Next** in the middle, a raised blue puck. It shows the next level's number, or a padlock when nothing is open. While the road rearranges itself, it shows an hourglass and can't be tapped. Once the letter is ready, it turns gold and shows an envelope.
+- **Next** in the middle, a raised blue button. It shows the next level's number, or a padlock when nothing is open. While the road rearranges itself, it shows an hourglass and can't be tapped. Once the letter is ready, it turns gold and shows an envelope.
 - **Menu** on the right.
 
 ## Fast travel
