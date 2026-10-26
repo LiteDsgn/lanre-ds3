@@ -1,6 +1,6 @@
 /* Small interface pieces: a heading with its plate, a sticker, a notice and error text, the autosave pill and alert, an avatar
-   button with a pencil, and segmented tabs. Used by Heading, Sticker, Notice, ErrorText, SavePill, SaveAlert, AvatarButton and
-   SegmentedTabs. */
+   button with a pencil, segmented tabs, and the voice recorder card. Used by Heading, Sticker, Notice, ErrorText, SavePill,
+   SaveAlert, AvatarButton, SegmentedTabs and RecorderPanel. */
 
 /* The friend's avatar in the HUD, with a small pencil to say it can be changed. */
 .mp-avatar-button {
@@ -306,4 +306,49 @@
   .mp-notice {
     animation: none;
   }
+}
+
+/* ---------- Voice recorder ---------- */
+
+/* A cream card that holds the recorder's steps, centred in a column. */
+.mp-recorder {
+  background: linear-gradient(180deg, var(--cream-50), var(--cream-100));
+  border: var(--border-panel) solid var(--cream-300);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  box-shadow: 0 5px 0 var(--cream-300), 0 14px 24px oklch(0.22 0.05 60 / 0.3);
+  transition: border-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out);
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  text-align: center;
+}
+
+.mp-recorder-lede {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-700);
+}
+
+.mp-recorder-small {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-500);
+}
+
+.mp-recorder-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* The red dot that blinks while recording. */
+.mp-rec-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--coral-500);
+  animation: mp-sparkle 1.2s infinite;
 }

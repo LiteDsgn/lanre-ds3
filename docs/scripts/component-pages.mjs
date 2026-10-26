@@ -35,7 +35,7 @@ const SECTIONS = {
     viewer: ['Viewer', ['RoadsideViewer', 'ViewerKeys', 'ViewerKnob', 'WhoButton', 'ClueTab', 'ClueCard', 'RevealTray']],
     media: ['Media', ['MemoryText', 'Words', 'Album', 'Cassette', 'Film', 'Unavailable']],
     games: ['Games', ['MatchCard']],
-    contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'WorldOption', 'WorldSign', 'WorldSigns', 'RadioCard', 'UploadTile']],
+    contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'WorldOption', 'WorldSign', 'WorldSigns', 'RadioCard', 'UploadTile', 'RecorderPanel', 'AudioRecorder']],
     quiz: ['Quiz', ['LeaderboardRow']],
   }],
 };
