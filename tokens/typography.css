@@ -15,7 +15,7 @@
   --text-label: 12px;        /* UI, 700, uppercase, tracked */
   --text-caption: 11px;      /* UI, 600 */
   --text-memory: 20px;       /* UI 600, lh 1.6: contributor text on iPad; 17px on phones */
-  --text-letter: 22px;       /* UI 600, lh 1.65: Henry's summit letter */
+  --text-letter: 22px;       /* UI 600, lh 1.65: The author’s summit letter */
 
   --weight-ui: 600;
   --weight-ui-bold: 700;

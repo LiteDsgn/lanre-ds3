@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   // Absolute base for social preview images. Set NEXT_PUBLIC_SITE_URL when the docs are deployed.
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: { template: '%s · Lanre', default: 'Lanre design system' },
-  description: "Design system for Lanre's Birthday Adventure and casual exploration games.",
+  description: "Design system for the Birthday Adventure and casual exploration games.",
 };
 
 export default function Layout({ children }: LayoutProps<'/'>) {

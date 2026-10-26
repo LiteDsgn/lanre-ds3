@@ -8,8 +8,8 @@ const { gem, tier } = gemForScore(7);          // → amethyst II
 <Gemstone gem="emerald" tier={3} showTier />                  // friend-facing result / leaderboard only
 ```
 
-- Babe's surfaces (reveal card, Your People) show the stone only, never score, rank or tier text. Friends' surfaces may add showTier and the score.
+- The recipient’s surfaces (reveal card, Your People) show the stone only, never score, rank or tier text. Friends' surfaces may add showTier and the score.
 - Tier III = halo (+ sparkle). Pearl has no tiers and is never ranked or shown as a zero.
 - Size ≥ 28 in lists, 56–72 on cards. Tap-to-explain is allowed: wrap in a button with aria-label "About this gem".
 
-Project update: Babe’s gems use decorative={true}: no labels, including accessibility labels. Default decorative is !showTier; contributor-facing showTier still exposes labels. See PROJECT-DECISIONS.md.
+Project update: The recipient’s gems use decorative={true}: no labels, including accessibility labels. Default decorative is !showTier; contributor-facing showTier still exposes labels. See PROJECT-DECISIONS.md.

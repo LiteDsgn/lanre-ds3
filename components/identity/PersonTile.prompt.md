@@ -1,4 +1,4 @@
-Person tile: cells of Babe's "Your People" collection. Order ranked people by quiz result but emphasise the gem; show no score text.
+Person tile: cells of the recipient’s "Your People" collection. Order ranked people by quiz result but emphasise the gem; show no score text.
 
 ```jsx
 <PersonTile state="revealed" name="Ada Okafor" relationship="Sister" seed="c_01" gem="amethyst" tier={3} onClick={open} />

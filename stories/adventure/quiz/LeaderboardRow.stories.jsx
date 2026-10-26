@@ -24,7 +24,7 @@ export const Leaderboard = {
       <LeaderboardRow rank={3} tied name="Mrs Adeyemi" seed="c_09" gem="emerald" tier={2} score={4} />
       <LeaderboardRow rank={5} name="Dayo" seed="c_31" gem="amber" tier={1} score={0} />
       <LeaderboardRow name="Kemi A." seed="c_07" skipped />
-      <Note dark={false}>Ties share rank (=3). Skipped = pearl, unranked. Friends only: Babe never sees this list.</Note>
+      <Note dark={false}>Ties share rank (=3). Skipped = pearl, unranked. Friends only: the recipient never sees this list.</Note>
     </Col>
   ),
 };

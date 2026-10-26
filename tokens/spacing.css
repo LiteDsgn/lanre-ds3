@@ -27,7 +27,7 @@
   --layout-panel-max: 340px;
   --layout-bottom-bar: 88px;
 
-  /* Lanre's Birthday Adventure: Babe's experience is iPad-first, phones supported; contributor flow is phone-first.
+  /* The Birthday Adventure: the recipient’s experience is iPad-first, phones supported; contributor flow is phone-first.
      Proposed defaults (exact iPad model/orientation is an open input): */
   --layout-ipad-portrait-w: 820px;
   --layout-ipad-landscape-w: 1180px;

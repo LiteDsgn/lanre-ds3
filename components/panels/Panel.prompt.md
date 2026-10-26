@@ -8,6 +8,6 @@ Dialog panel: every modal (settings, shop, level complete, daily reward, offers)
 <Panel header="none" tone="sky" width={300}>…</Panel>
 ```
 
-- Header choice by mood: banner = utility and level dialogs (blue; teal accent in Babe's flow), ribbon = celebration, sign = world / event / daily reward. The plate straddles the top edge, leave ~34px above the panel free.
+- Header choice by mood: banner = utility and level dialogs (blue; teal accent in the recipient’s flow), ribbon = celebration, sign = world / event / daily reward. The plate straddles the top edge, leave ~34px above the panel free.
 - Put the primary action in footer (one lg button, max two).
 - Place inside a fixed scrim: background var(--bg-scrim), centered.

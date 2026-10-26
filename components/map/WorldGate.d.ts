@@ -10,9 +10,9 @@ export interface WorldGateProps extends Omit<React.HTMLAttributes<HTMLDivElement
   name?: string;
   /** e.g. "Levels 1–5". */
   levels?: string;
-  /** Henry's authored note between worlds (never invented copy). */
+  /** The author’s own note between worlds (never invented copy). */
   note?: React.ReactNode;
-  /** Default "Henry". */
+  /** Default "The author". */
   noteAuthor?: string;
   /** Stone board + lock; shows "Opens when the road is complete". */
   locked?: boolean;

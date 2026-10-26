@@ -1,4 +1,4 @@
-Leaderboard row: FRIENDS ONLY (after their quiz). Babe never sees this list.
+Leaderboard row: FRIENDS ONLY (after their quiz). The recipient never sees this list.
 
 ```jsx
 <LeaderboardRow rank={1} name="Ada Okafor" seed="c_01" gem="amethyst" tier={3} score={8} />

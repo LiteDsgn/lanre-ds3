@@ -1,5 +1,5 @@
-/* World themes for Lanre's Birthday Adventure. Put data-world="<id>" on a screen, section or component root;
-   everything inside reads --world-*. Defaults (:root) are the generic meadow. Summit is Henry's letter, not a contributor world.
+/* World themes for the Birthday Adventure. Put data-world="<id>" on a screen, section or component root;
+   everything inside reads --world-*. Defaults (:root) are the generic meadow. Summit is the author’s letter, not a contributor world.
    Scenery: --world-sky-low is the sky's horizon colour (the sky runs --world-sky → --world-sky-low), and --prop-hill and
    --prop-bush-hi / --prop-bush / --prop-bush-lo paint the CSS hills and bushes that stand in for painted art. */
 :root {
@@ -63,7 +63,7 @@
   --world-sky-low: oklch(0.92 0.05 350);
   --prop-hill: oklch(0.76 0.08 305); --prop-bush-hi: oklch(0.92 0.08 350); --prop-bush: oklch(0.80 0.11 350); --prop-bush-lo: oklch(0.62 0.12 340);
 }
-/* 5 · Summit: Henry's letter. Golden hour above the clouds. No scenery props here: the letter uses the night palette (colors.css). */
+/* 5 · Summit: The author’s letter. Golden hour above the clouds. No scenery props here: the letter uses the night palette (colors.css). */
 [data-world="summit"] {
   --world-name: "The Summit";
   --world-sky: oklch(0.34 0.10 285); --world-ground: oklch(0.62 0.15 55); --world-ground-deep: oklch(0.44 0.12 45);

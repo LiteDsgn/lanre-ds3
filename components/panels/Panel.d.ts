@@ -10,7 +10,7 @@ export interface PanelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   eyebrow?: React.ReactNode;
   /** banner = tinted plate (settings, shop, level, reveal); ribbon = gold plate with folded tails + stars (level complete); sign = wooden plank with leaves (daily reward, world events); none. 'tab' and 'bush' are accepted as aliases. */
   header?: 'banner' | 'ribbon' | 'sign' | 'none' | 'tab' | 'bush';
-  /** Banner colour. Default blue (gold for ribbon). Use teal for Babe's continue/confirm dialogs. */
+  /** Banner colour. Default blue (gold for ribbon). Use teal for the recipient’s continue/confirm dialogs. */
   accent?: 'blue' | 'gold' | 'teal' | 'green' | 'berry' | 'coral';
   /** cream (default parchment), wood (plank body, thick brown border), sky (white → pale blue). */
   tone?: 'cream' | 'wood' | 'sky';

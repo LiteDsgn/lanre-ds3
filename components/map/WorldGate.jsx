@@ -2,7 +2,7 @@
 import React from 'react';
 import { WORLDS } from './worlds.js';
 
-export function WorldGate({ world = 'mango_grove', name, levels, note, noteAuthor = 'Henry', locked = false, width = 340, style, ...rest }) {
+export function WorldGate({ world = 'mango_grove', name, levels, note, noteAuthor = 'The author', locked = false, width = 340, style, ...rest }) {
   const W = WORLDS[world] || WORLDS.mango_grove;
   const title = name || W.name;
   const strokeTone = locked ? 'var(--stone-700)' : 'var(--world-stroke)';

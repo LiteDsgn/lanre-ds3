@@ -8,7 +8,7 @@ export default {
   title: 'Adventure/Contributor/TextField',
   component: TextField,
   argTypes,
-  args: { label: 'The name Lanre knows you by', value: 'Ada Okafor', helper: 'Shown to her only after the reveal.' },
+  args: { label: 'The name the recipient knows you by', value: 'Ada Okafor', helper: 'Shown to her only after the reveal.' },
   parameters: { surface: 'sky', docs: { description: { component: notes } } },
   decorators: [Story => <div style={{ width: 358 }}><Story /></div>],
   render: function Render(args) {

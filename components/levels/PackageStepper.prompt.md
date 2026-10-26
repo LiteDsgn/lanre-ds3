@@ -1,4 +1,4 @@
-Package stepper: shows the contributor's chosen order and lets Babe move between items. Order is preserved exactly as authored.
+Package stepper: shows the contributor's chosen order and lets the recipient move between items. Order is preserved exactly as authored.
 
 ```jsx
 <PackageStepper items={[{ type: 'text' }, { type: 'photo' }, { type: 'audio' }, { type: 'video' }]} current={i} seen={seen} onSelect={setI} />
