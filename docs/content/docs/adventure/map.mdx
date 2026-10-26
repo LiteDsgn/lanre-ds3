@@ -55,8 +55,14 @@ The adventure swaps the base kit's wood bottom bar for a cream pill that floats 
 - **Next** in the middle, a raised blue button. It shows the next level's number, or a padlock when nothing is open. While the road rearranges itself, it shows an hourglass and can't be tapped. Once the letter is ready, it turns gold and shows an envelope.
 - **Menu** on the right.
 
+It's a [Toolbar](/docs/adventure-components/toolbar/toolbar) with two [ToolbarTabs](/docs/adventure-components/toolbar/toolbar-tab) and a [ToolbarNext](/docs/adventure-components/toolbar/toolbar-next).
+
 ## Fast travel
 
 A dock in the side rail lists the five stops on the road. The summit is at the top and the first world at the bottom, the way the map reads. Each stop is done, here or ahead, and shows how many surprises are still hidden there. A button at the top takes you to the next level. On phones the dock folds away behind a compass and fans out when you tap it.
 
-The toolbar and the dock aren't components in the design system yet.
+It's a [FastTravelDock](/docs/adventure-components/toolbar/fast-travel-dock).
+
+## The top bar
+
+A bar across the top of the map holds two counts: friends found, and surprises found. Each is a [HudChip](/docs/components/hud/hud-chip) that does something when tapped. Friends opens Your people, and surprises takes the player to the next one. A coral dot says a new surprise has arrived, and a chip bumps and glows each time its count goes up. On wide screens a sound toggle sits on the right. The [HudBar](/docs/components/hud/hud-bar) holds them.

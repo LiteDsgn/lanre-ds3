@@ -17,7 +17,7 @@ const force = process.argv.includes('--force');
 const SECTIONS = {
   components: ['Components', 'Components', {
     buttons: ['Buttons', ['Button', 'IconButton']],
-    hud: ['HUD', ['CurrencyPill', 'ProgressBar', 'TimerChip', 'Countdown']],
+    hud: ['HUD', ['CurrencyPill', 'ProgressBar', 'TimerChip', 'Countdown', 'HudBar', 'HudChip']],
     panels: ['Panels', ['Panel', 'Modal']],
     map: ['Map', ['LevelNode', 'StarRating', 'Tile']],
     rewards: ['Rewards', ['RewardCard', 'ItemCell', 'ShopRow']],
@@ -30,6 +30,7 @@ const SECTIONS = {
     identity: ['Identity', ['Gemstone', 'Avatar', 'PersonTile']],
     levels: ['Levels', ['ChoiceButton']],
     map: ['Map', ['WorldGate', 'DiscoveryMarker', 'PortraitMedallion']],
+    toolbar: ['Toolbar', ['Toolbar', 'ToolbarTab', 'ToolbarNext', 'FastTravelDock']],
     viewer: ['Viewer', ['RoadsideViewer', 'ViewerKeys', 'ViewerKnob', 'WhoButton', 'ClueTab', 'ClueCard', 'RevealTray']],
     media: ['Media', ['MemoryText', 'Words', 'Album', 'Cassette', 'Film', 'Unavailable']],
     games: ['Games', ['MatchCard']],
