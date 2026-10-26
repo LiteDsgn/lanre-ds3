@@ -6,7 +6,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 export const SCOPE = '.lanre-preview';
-const FILES = ['colors', 'typography', 'spacing', 'effects', 'worlds', 'gems', 'utilities'];
+const FILES = ['colors', 'typography', 'spacing', 'effects', 'worlds', 'gems', 'utilities', 'media'];
 
 function scopeSelector(selector) {
   const s = selector.trim();
@@ -33,7 +33,7 @@ function scopeCss(css) {
     }
     const prelude = css.slice(i, open).trim(), body = css.slice(open + 1, j - 1);
     if (prelude.startsWith('@keyframes')) out += css.slice(i, j);
-    else if (prelude.startsWith('@media')) out += `${prelude} {${scopeCss(body)}}`;
+    else if (prelude.startsWith('@media') || prelude.startsWith('@supports')) out += `${prelude} {${scopeCss(body)}}`;
     else out += `${prelude.split(',').map(scopeSelector).join(', ')} {${body}}`;
     i = j;
   }

@@ -1,0 +1,774 @@
+/* Memory media: what plays inside a viewer screen. Words, a photo album with a full-screen lightbox, a cassette for a
+   voice note, a film strip for video, an "unavailable" card, and the shimmer that holds a photo's place while it loads.
+   Used by the Words, Album, Cassette, Film and Unavailable components (components/media). Each piece fills the box it
+   sits in, and the box is a size container, so photos and video fit themselves to it with cq units. */
+
+.mp-unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  background: var(--cream-200);
+  font-weight: 700;
+  color: var(--ink-700);
+}
+
+.mp-unavailable i {
+  font-size: 28px;
+  color: var(--ink-500);
+}
+
+/* ------------------------------------------------------------------ words */
+
+.mp-words {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: clamp(18px, 4vw, 40px);
+  display: grid;
+  align-content: safe center;
+  justify-items: center;
+  outline: none;
+}
+
+.mp-words:focus-visible {
+  box-shadow: inset 0 0 0 4px var(--blue-500);
+}
+
+.mp-words-inner {
+  max-width: 62ch;
+  display: grid;
+  gap: 0.9em;
+  font-weight: 600;
+  font-size: clamp(17px, 2.1vw, 22px);
+  line-height: 1.6;
+  color: var(--ink-900);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+.mp-words-inner p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.mp-words-short .mp-words-inner {
+  font-size: clamp(22px, 3.4vw, 34px);
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.mp-words-unwritten {
+  opacity: 0;
+}
+
+/* The cursor takes no room, so the words after it stay exactly where they will land. */
+.mp-words-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  margin: 0 -6px 0 3px;
+  vertical-align: -0.12em;
+  border-radius: 2px;
+  background: var(--gold-700);
+  animation: mp-blink 1s steps(2) infinite;
+}
+
+@keyframes mp-blink {
+  50% { opacity: 0; }
+}
+
+.mp-words-more {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  display: grid;
+  place-items: end center;
+  padding-bottom: 8px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--cream-50) 70%);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+/* ------------------------------------------------------------------ photos */
+
+.mp-album {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.mp-album-frame {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  container-type: size;
+  --gutter: 20px;
+}
+
+.mp-polaroid {
+  margin: 0;
+  padding: 8px 8px 0;
+  background: #fff;
+  box-shadow: 0 5px 0 var(--cream-300), 0 12px 24px oklch(0.22 0.05 60 / 0.25);
+  rotate: var(--tilt, -1.5deg);
+  animation: mp-drop 380ms var(--ease-bounce) both;
+  /* Older browsers: a sensible fixed box. Newer ones fit the photo's own shape to the screen. */
+  width: min(100% - 40px, 360px);
+  box-sizing: border-box;
+}
+
+@supports (width: 1cqw) {
+  .mp-polaroid {
+    width: min(
+      100cqw - var(--gutter) * 2,
+      (100cqh - 44px - var(--cap)) * var(--w) / var(--h) + 16px
+    );
+  }
+}
+
+@keyframes mp-drop {
+  from { opacity: 0; transform: translateY(-30px) rotate(-6deg); }
+  to { opacity: 1; transform: none; }
+}
+
+.mp-photo-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--cream-100);
+  border-radius: 3px;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-photo-button img {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--w) / var(--h);
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.mp-photo-button:focus-visible,
+.mp-album-arrow:focus-visible,
+.mp-album-thumb:focus-visible,
+.mp-cassette-play:focus-visible,
+.mp-light-close:focus-visible {
+  outline: 4px solid var(--blue-500);
+  outline-offset: 3px;
+}
+
+.mp-photo-zoom {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface-hud);
+  color: #fff;
+  font-size: 16px;
+}
+
+.mp-polaroid figcaption {
+  padding: 6px 4px 8px;
+  min-height: 12px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink-700);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mp-polaroid:not(:has(figcaption)) {
+  padding-bottom: 8px;
+}
+
+.mp-album-arrow {
+  position: absolute;
+  bottom: 8px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: linear-gradient(180deg, #fff, var(--cream-100));
+  box-shadow: 0 4px 0 var(--cream-300), 0 6px 12px oklch(0 0 0 / 0.25);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  color: var(--ink-900);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-album-arrow:active:not(:disabled) {
+  translate: 0 3px;
+  box-shadow: 0 1px 0 var(--cream-300);
+}
+
+.mp-album-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.mp-album-arrow-prev { left: 8px; }
+.mp-album-arrow-next { right: 8px; }
+
+.mp-strip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  background: oklch(0.3 0.05 60 / 0.06);
+}
+
+/* Phones: the arrows sit either end of the strip, clear of the photo. Roomier screens put them beside the photo. */
+.mp-album-frame > .mp-album-arrow {
+  display: none;
+}
+
+.mp-strip-row > .mp-album-arrow {
+  position: static;
+  flex: none;
+  width: 40px;
+  height: 40px;
+}
+
+.mp-strip-row > .mp-album-arrow-next {
+  order: 3;
+}
+
+.mp-strip-row > .mp-album-count {
+  order: 2;
+}
+
+.mp-album-strip {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.mp-album-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.mp-album-thumb {
+  flex: none;
+  width: 42px;
+  height: 46px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 3px solid #fff;
+  background: var(--cream-200);
+  box-shadow: 0 2px 0 var(--cream-300);
+  cursor: pointer;
+  transition: translate var(--dur-fast), scale var(--dur-fast);
+}
+
+.mp-album-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mp-album-thumb:active {
+  scale: 0.92;
+}
+
+.mp-album-thumb-on {
+  border-color: var(--blue-500);
+  box-shadow: 0 3px 0 var(--blue-700);
+  translate: 0 -3px;
+}
+
+.mp-album-count {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--ink-700);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Full screen, for tall screenshots and small faces. Rendered on the body, above everything. */
+.mp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  background: oklch(0.16 0.03 260 / 0.94);
+  cursor: zoom-out;
+  animation: mp-fade 200ms var(--ease-out) both;
+}
+
+.mp-lightbox-leaving {
+  animation: mp-fade-out 180ms var(--ease-in-out) both;
+  pointer-events: none;
+}
+
+@keyframes mp-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.mp-lightbox img {
+  animation: mp-zoom-in 260ms var(--ease-out) both;
+  display: block;
+  width: 100vw;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
+  object-fit: contain;
+}
+
+.mp-light-caption {
+  position: absolute;
+  left: 50%;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  translate: -50% 0;
+  max-width: min(84vw, 560px);
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface-hud);
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+.mp-light-close {
+  position: absolute;
+  top: max(14px, env(safe-area-inset-top));
+  right: 14px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: linear-gradient(180deg, var(--coral-300), var(--coral-500) 50%);
+  box-shadow: 0 4px 0 var(--coral-700), 0 6px 10px oklch(0 0 0 / 0.25);
+  color: #fff;
+  font-size: 22px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.mp-lightbox .mp-album-arrow {
+  bottom: auto;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.mp-lightbox .mp-album-arrow:active:not(:disabled) {
+  translate: 0 calc(-50% + 3px);
+}
+
+@keyframes mp-zoom-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes mp-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ------------------------------------------------------------------ voice note */
+
+.mp-tape-deck {
+  width: min(88%, 520px);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  text-align: center;
+}
+
+.mp-cassette {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 3px solid var(--stone-700);
+  background: linear-gradient(180deg, var(--stone-100), var(--stone-300));
+  box-shadow: 0 5px 0 var(--stone-700), 0 10px 18px oklch(0.2 0.05 60 / 0.25);
+  display: grid;
+  gap: 12px;
+}
+
+.mp-cassette-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--cream-300);
+  background: var(--cream-50);
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-900);
+}
+
+.mp-cassette-label span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mp-reels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.mp-reel {
+  width: 54px;
+  height: 54px;
+  flex: none;
+  border-radius: 50%;
+  background: conic-gradient(var(--stone-700) 0 12%, var(--cream-50) 0 25%, var(--stone-700) 0 37%, var(--cream-50) 0 50%, var(--stone-700) 0 62%, var(--cream-50) 0 75%, var(--stone-700) 0 87%, var(--cream-50) 0);
+  box-shadow: inset 0 0 0 4px var(--ink-900), inset 0 0 0 14px var(--stone-100);
+}
+
+.mp-playing .mp-reel {
+  animation: mp-spin 2.4s linear infinite;
+}
+
+@keyframes mp-spin {
+  to { rotate: 360deg; }
+}
+
+.mp-wave {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0 12px;
+}
+
+.mp-wave i {
+  width: 4px;
+  flex: none;
+  height: var(--bar);
+  border-radius: 3px;
+  background: var(--teal-500);
+}
+
+.mp-playing .mp-wave i {
+  animation: mp-bounce 900ms ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes mp-bounce {
+  50% { transform: scaleY(0.35); }
+}
+
+.mp-transport {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mp-cassette-play {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  color: #fff;
+  background: linear-gradient(180deg, var(--teal-300), var(--teal-500) 45%);
+  box-shadow: 0 5px 0 var(--teal-700), inset 0 2px 0 oklch(1 0 0 / 0.45);
+  text-shadow: 0 2px 0 var(--teal-700);
+  cursor: pointer;
+  transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-cassette-play:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--teal-700), inset 0 2px 0 oklch(1 0 0 / 0.45);
+}
+
+.mp-seek {
+  position: relative;
+  flex: 1;
+  height: 28px;
+  display: grid;
+  align-items: center;
+}
+
+.mp-seek input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mp-seek:has(input:focus-visible) .mp-seek-bar {
+  outline: 4px solid var(--blue-500);
+  outline-offset: 3px;
+}
+
+.mp-seek-bar {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--cream-50);
+  box-shadow: inset 0 2px 3px oklch(0 0 0 / 0.15);
+}
+
+.mp-seek-bar b {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--teal-500);
+}
+
+.mp-cassette-time {
+  min-width: 36px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--ink-700);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.mp-tape-heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--ink-900);
+  text-wrap: balance;
+}
+
+.mp-tape-hint {
+  margin: -6px 0 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink-700);
+}
+
+/* ------------------------------------------------------------------ video */
+
+.mp-film {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  width: min(100% - 28px, 380px);
+}
+
+@supports (width: 1cqw) {
+  .mp-film {
+    width: min(
+      100cqw - 28px,
+      (100cqh - 28px - var(--cap)) * var(--w) / var(--h) + 28px
+    );
+  }
+}
+
+/* A strip of film: the sprocket holes run down the sides, outside the picture. */
+.mp-film-strip {
+  position: relative;
+  padding: 0 14px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ink-900);
+  box-shadow: 0 8px 18px oklch(0.2 0.05 60 / 0.3);
+}
+
+.mp-film-strip::before,
+.mp-film-strip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: repeating-linear-gradient(180deg, transparent 0 6px, var(--cream-50) 6px 12px, transparent 12px 16px);
+  background-size: 6px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+}
+
+.mp-film-strip::before { left: 0; }
+.mp-film-strip::after { right: 0; }
+
+.mp-film-strip video {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--w) / var(--h);
+  object-fit: contain;
+  background: #000;
+}
+
+.mp-film figcaption {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink-700);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------------------------ roomier screens */
+
+@media (min-width: 600px) {
+  .mp-album-frame {
+    --gutter: 66px;
+  }
+
+  .mp-album-frame > .mp-album-arrow {
+    display: grid;
+    bottom: auto;
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  .mp-album-frame > .mp-album-arrow:active:not(:disabled) {
+    translate: 0 calc(-50% + 3px);
+  }
+
+  .mp-strip-row > .mp-album-arrow {
+    display: none;
+  }
+
+  .mp-strip-row {
+    padding: 0 12px 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-words-cursor,
+  .mp-polaroid,
+  .mp-lightbox,
+  .mp-lightbox-leaving,
+  .mp-lightbox img,
+  .mp-playing .mp-reel,
+  .mp-playing .mp-wave i {
+    animation: none;
+  }
+}
+
+/* ---- Loading: a soft shine sweeps the empty frame, then the picture fades in over it. ---- */
+
+.mp-media {
+  position: relative;
+}
+
+.mp-media > img,
+.mp-media > video {
+  transition: opacity 320ms var(--ease-out);
+}
+
+.mp-media[data-loaded='false'] > img,
+.mp-media[data-loaded='false'] > video {
+  opacity: 0;
+}
+
+.mp-shimmer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 25%, var(--shine, oklch(1 0 0 / 0.6)) 50%, transparent 75%) 0 0 / 220% 100%, var(--base, var(--cream-200));
+  animation: mp-shine 1.4s linear infinite;
+  transition: opacity 320ms var(--ease-out);
+}
+
+.mp-media[data-loaded='true'] > .mp-shimmer {
+  opacity: 0;
+  animation: none;
+}
+
+/* Tones for the different frames. */
+.mp-on-cream {
+  --base: var(--cream-200);
+  --shine: oklch(1 0 0 / 0.65);
+}
+
+.mp-on-dark {
+  --base: oklch(0.3 0.05 55);
+  --shine: oklch(1 0 0 / 0.1);
+}
+
+.mp-on-lilac {
+  --base: #e6d9ef;
+  --shine: oklch(1 0 0 / 0.7);
+}
+
+.mp-on-night {
+  --base: #2b2150;
+  --shine: oklch(1 0 0 / 0.1);
+}
+
+/* The film strip keeps its sprocket holes showing down the sides. */
+.mp-inset {
+  inset: 0 14px;
+}
+
+@keyframes mp-shine {
+  from { background-position: 120% 0, 0 0; }
+  to { background-position: -120% 0, 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-shimmer { animation: none; }
+  .mp-media > img,
+  .mp-media > video { transition: none; }
+}
