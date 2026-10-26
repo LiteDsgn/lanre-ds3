@@ -9,6 +9,7 @@
     "notice",
     "error-text",
     "save-pill",
-    "save-alert"
+    "save-alert",
+    "loading-screen"
   ]
 }

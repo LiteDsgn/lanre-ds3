@@ -6,7 +6,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 export const SCOPE = '.lanre-preview';
-const FILES = ['colors', 'typography', 'spacing', 'effects', 'worlds', 'gems', 'utilities', 'media', 'signs', 'viewer', 'hud', 'ui'];
+const FILES = ['colors', 'typography', 'spacing', 'effects', 'worlds', 'gems', 'utilities', 'media', 'signs', 'viewer', 'hud', 'ui', 'fx'];
 
 function scopeSelector(selector) {
   const s = selector.trim();

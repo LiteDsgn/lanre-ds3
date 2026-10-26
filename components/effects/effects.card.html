@@ -1,0 +1,47 @@
+<!-- @dsCard group="Components" viewport="700x700" name="Effects" subtitle="Confetti, Sparkles, Sunburst and the boot screen" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="../../tools/ds-loader.js" data-root="../.." data-components="effects/Confetti,effects/Sparkles,effects/Sunburst,feedback/Notice,feedback/LoadingScreen,buttons/Button"></script>
+<style>html,body{margin:0}body{padding:18px;background:var(--bg-meadow);min-height:100vh;box-sizing:border-box;font-family:var(--font-ui);color:var(--text-primary)}.mp-boot{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;pointer-events:none}
+.mp-boot-track{width:180px;height:22px;border-radius:999px;background:oklch(0.30 0.06 55 / .85);border:2px solid oklch(0.20 0.05 55 / .9);box-shadow:inset 0 2px 4px oklch(0 0 0 / .35);overflow:hidden}
+.mp-boot-fill{height:100%;width:60%;border-radius:999px;background:linear-gradient(180deg,var(--gold-300),var(--gold-500) 55%,var(--gold-700));position:relative;animation:mp-boot-grow 1.6s var(--ease-out) infinite alternate}
+.mp-boot-fill::after{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(-55deg,transparent 0 8px,oklch(1 0 0 / .55) 8px 14px)}
+.mp-boot-label{font-family:var(--font-display);font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;-webkit-text-stroke:.18em var(--ink-900);paint-order:stroke fill;text-shadow:0 2px 0 oklch(0 0 0 / .22)}
+@keyframes mp-boot-grow{from{width:25%}to{width:85%}}
+</style>
+</head><body><div id="root"><div class="mp-boot" aria-hidden="true" style="position:fixed"><div class="mp-boot-track"><div class="mp-boot-fill"></div></div></div></div>
+<script type="text/babel">
+const Col = ({ children, gap = 16 }) => <div style={{ display: 'grid', gap }}>{children}</div>;
+const Note = ({ children }) => <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, color: '#fff', textShadow: '0 1px 0 oklch(0 0 0 / 0.4)', opacity: .9 }}>{children}</span>;
+
+MPReady.then(({ Confetti, Sparkles, Sunburst, Notice, LoadingScreen, Button }) => {
+  function Demo() {
+    const [round, setRound] = React.useState(1);
+    return (
+      <Col gap={20}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 18, alignItems: 'start' }}>
+          <div style={{ position: 'relative', minHeight: 170, display: 'grid', placeItems: 'center', alignContent: 'center', gap: 14 }}>
+            <Confetti key={round} />
+            <Button size="sm" onClick={() => setRound(r => r + 1)}>Pop it</Button>
+          </div>
+          <div style={{ position: 'relative', margin: '30px 0 14px' }}>
+            <Sparkles />
+            <Notice tone="gold" icon="gift">Everything is in. Nicely done.</Notice>
+          </div>
+          <svg viewBox="0 0 400 240" width="100%" style={{ borderRadius: 12, background: 'linear-gradient(180deg, #40306f, #9a5d8f)' }}>
+            <Sunburst x={200} y={120} radius={260} rays={14} color="#fff3c4" opacity={0.34} duration={90} />
+            <circle cx="200" cy="120" r="22" fill="#ffd84d" />
+          </svg>
+        </div>
+        <div style={{ borderRadius: 12, overflow: 'hidden' }}><LoadingScreen title="The Birthday Adventure" style={{ minHeight: 380 }} /></div>
+        <Note>Confetti plays once when it mounts. Sparkles sit round a panel. Sunburst goes inside an SVG. The boot screen fills its window.</Note>
+      </Col>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+});
+</script></body></html>
