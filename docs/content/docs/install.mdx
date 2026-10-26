@@ -1,0 +1,96 @@
+---
+title: Install it in an app
+description: Add Lanre as a package, import the CSS once, and import components by path.
+---
+
+Lanre ships as one package, `lanre-ds`. An app installs it like any other dependency, so there is one copy of the design system and a version number to say which one the app has.
+
+<Callout>
+  It isn't on a registry yet. Until then, install it from a packed file (see [Try it before it's published](#try-it-before-its-published)).
+</Callout>
+
+## Use it
+
+```bash
+npm install lanre-ds
+```
+
+Import the styles once, at the top of your app's CSS or entry file:
+
+```css
+@import 'lanre-ds/styles.css';
+```
+
+Then import components by their path:
+
+```tsx
+import { Button } from 'lanre-ds/components/buttons/Button';
+import { Heading } from 'lanre-ds/components/text/Heading';
+import { WORLDS } from 'lanre-ds/components/map/worlds';
+
+export function Welcome() {
+  return (
+    <div data-world="mango_grove">
+      <Heading title={WORLDS.mango_grove.name} />
+      <Button size="lg">Start</Button>
+    </div>
+  );
+}
+```
+
+- **Types come with it.** Each component has a `.d.ts` beside it, so props are checked and autocompleted.
+- **One import per component.** Nothing is bundled into a single file, so an app only ships the components it imports.
+- **Only the public paths work.** `lanre-ds/components/...`, `lanre-ds/tokens/*.css` and `lanre-ds/styles.css`. Reaching into anything else is blocked.
+- **React 19** is a peer dependency, so the app brings its own copy.
+
+### Next.js
+
+The components are plain `.jsx` files, so tell Next to compile them:
+
+```js
+// next.config.js
+export default { transpilePackages: ['lanre-ds'] };
+```
+
+### Only some of the styles
+
+`styles.css` imports every token file, plus the fonts and icons from their CDNs. An app that loads its own fonts and icons can import just the token files it wants instead:
+
+```css
+@import 'lanre-ds/tokens/colors.css';
+@import 'lanre-ds/tokens/typography.css';
+@import 'lanre-ds/tokens/spacing.css';
+@import 'lanre-ds/tokens/effects.css';
+@import 'lanre-ds/tokens/worlds.css';
+```
+
+The components need the token files for their own group as well (for example `tokens/hud.css` for the HUD, `tokens/viewer.css` for the viewer), so import those you use. When in doubt, import `styles.css`.
+
+## Try it before it's published
+
+From this repo, pack it into a file:
+
+```bash
+npm pack
+```
+
+Then, in the app:
+
+```bash
+npm install ../path/to/lanre-ds-0.1.0.tgz
+```
+
+A packed file behaves exactly like the published package. It also avoids the link problems bundlers have with folders outside the app.
+
+## Releasing a new version
+
+1. Change the design system and update its stories and docs, as usual.
+2. Bump `version` in `package.json`. Use a patch for fixes, a minor for new components, and a major for anything that changes how an existing component looks or is used.
+3. Run `npm run pack:check` to see exactly what will ship.
+4. Publish, then run `npm update lanre-ds` in the app.
+
+`package.json` is marked `private` for now, which stops an accidental publish. Remove that line when it's time.
+
+## What's in the package
+
+`components/` (each component's `.jsx`, `.d.ts` and `.prompt.md`), `tokens/`, `styles.css`, the no-build loader in `tools/`, and the readme. Stories, these docs and the preview cards stay in the repo.
