@@ -27,9 +27,10 @@ const SECTIONS = {
     icons: ['Icons', ['GameIcon']],
   }],
   'adventure-components': ['Adventure', 'Adventure components', {
-    identity: ['Identity', ['Gemstone', 'Avatar', 'RevealCard', 'PersonTile']],
-    levels: ['Levels', ['ChoiceButton', 'PackageStepper']],
+    identity: ['Identity', ['Gemstone', 'Avatar', 'PersonTile']],
+    levels: ['Levels', ['ChoiceButton']],
     map: ['Map', ['WorldGate', 'DiscoveryMarker', 'PortraitMedallion']],
+    viewer: ['Viewer', ['RoadsideViewer', 'ViewerKeys', 'ViewerKnob', 'WhoButton', 'ClueTab', 'ClueCard', 'RevealTray']],
     media: ['Media', ['MemoryText', 'Words', 'Album', 'Cassette', 'Film', 'Unavailable']],
     games: ['Games', ['MatchCard']],
     contributor: ['Contributor', ['StepBar', 'TextField', 'WorldChip', 'WorldOption', 'WorldSign', 'WorldSigns', 'RadioCard', 'UploadTile']],

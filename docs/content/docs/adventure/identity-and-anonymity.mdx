@@ -3,10 +3,10 @@ title: Identity and anonymity
 description: What a mystery level may show before the reveal, what it never shows, and where that's enforced.
 ---
 
-import RevealCardExample from '@/examples/identity/RevealCard';
+import RevealTrayExample from '@/examples/viewer/RevealTray';
 
 <Preview>
-  <RevealCardExample />
+  <RevealTrayExample />
 </Preview>
 
 ## Before the reveal, a level may show
@@ -26,7 +26,7 @@ import RevealCardExample from '@/examples/identity/RevealCard';
 
 ## Where this is enforced
 
-Sender data is only fetched after the reveal. `RevealCard` only mounts the identity face once it's revealed, because hiding it with CSS isn't enough.
+Sender data is only fetched after the reveal. `RevealTray` only mounts the identity face once it's revealed, because hiding it with CSS isn't enough.
 
 But a component can't protect data the browser already has. The API has to enforce this boundary.
 
