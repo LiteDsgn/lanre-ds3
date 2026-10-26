@@ -17,7 +17,7 @@
   --size-icon: 28px;
   --size-icon-lg: 40px;
   --size-icon-xl: 64px;
-  --size-puck: 84px;         /* level node width */
+  --size-node: 84px;         /* level node width */
   --size-cell: 72px;         /* inventory / board cell */
   --size-pill-h: 36px;       /* HUD currency pill */
 

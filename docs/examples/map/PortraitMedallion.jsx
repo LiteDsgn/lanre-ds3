@@ -17,7 +17,7 @@ export default function PortraitMedallionExample() {
         <LevelNode number={5} state="locked" />
         <Button variant="ghost" typeface="ui" size="sm" onClick={() => setRun(r => r + 1)}>Replay arrival</Button>
       </Row>
-      <Note>Completed levels become medallions. Current and locked levels stay pucks, so nobody is given away early.</Note>
+      <Note>Completed levels become medallions. Current and locked levels stay plain nodes, so nobody is given away early.</Note>
     </Col>
   );
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 /**
- * One block of a memory: a numbered puck, its kind, and keys to move or remove it. Photo, video and voice note blocks add a thumbnail and the upload's state. The caption or the text field goes in as children.
+ * One block of a memory: a numbered step marker, its kind, and keys to move or remove it. Photo, video and voice note blocks add a thumbnail and the upload's state. The caption or the text field goes in as children.
  * @startingPoint section="Contributor" subtitle="Memory blocks: text, and every upload state" viewport="700x620"
  */
 export interface UploadTileProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'> {

@@ -8,4 +8,4 @@ Discovery marker: extra packages placed beside the road in their world; never on
 ```
 
 - Pick the kind from the world (mango grove → mango; small chops → rice; good energy → dumbbell; japan → lantern/flower). gift for anything else.
-- Keep markers 24px+ off the road so pucks stay the primary tap.
+- Keep markers 24px+ off the road so level nodes stay the primary tap.

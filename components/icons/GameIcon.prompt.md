@@ -9,5 +9,5 @@ Painted game glyph (Phosphor FILL + outline + drop) for any icon that stands on 
 ```
 
 - Prefer a semantic kind (coin, gem, heart, star, energy, gift, lock…) so tones stay consistent across screens.
-- Inside a component's icon slot (`Button`, `IconButton`, `Tag`, a puck), pass plain Phosphor (`<i className="ph-fill ph-star" />`) or a GameIcon with outline and shadow off. The component already carries the depth.
+- Inside a component's icon slot (`Button`, `IconButton`, `Tag`, a level node), pass plain Phosphor (`<i className="ph-fill ph-star" />`) or a GameIcon with outline and shadow off. The component already carries the depth.
 - Currency glyphs are always gold coin, blue gem, coral ruby/heart, teal energy.

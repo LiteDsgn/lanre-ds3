@@ -132,9 +132,9 @@
 
   --focus-ring: 0 0 0 4px oklch(0.86 0.17 85 / 0.85);
 
-  /* Step puck (.mp-puck): the small numbered puck on the contributor trail, memory blocks and world signs.
-     hi = top highlight, face, side = the bevel, stroke = the number's outline. */
-  --puck-ahead-hi: var(--stone-100); --puck-ahead-face: var(--stone-300); --puck-ahead-side: var(--stone-500); --puck-ahead-stroke: var(--stone-700);
-  --puck-done-hi: var(--green-300); --puck-done-face: var(--green-500); --puck-done-side: var(--green-700); --puck-done-stroke: var(--green-900);
-  --puck-current-hi: var(--blue-300); --puck-current-face: var(--blue-500); --puck-current-side: var(--blue-700); --puck-current-stroke: var(--blue-700);
+  /* Step marker (.mp-step): the small numbered marker on the contributor trail, memory blocks and world signs.
+     highlight = the light spot on top, fill = the top surface, edge = the darker bevel underneath, outline = the stroke behind the number. */
+  --step-ahead-highlight: var(--stone-100); --step-ahead-fill: var(--stone-300); --step-ahead-edge: var(--stone-500); --step-ahead-outline: var(--stone-700);
+  --step-done-highlight: var(--green-300); --step-done-fill: var(--green-500); --step-done-edge: var(--green-700); --step-done-outline: var(--green-900);
+  --step-current-highlight: var(--blue-300); --step-current-fill: var(--blue-500); --step-current-edge: var(--blue-700); --step-current-outline: var(--blue-700);
 }

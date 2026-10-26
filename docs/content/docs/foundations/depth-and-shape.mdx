@@ -26,27 +26,29 @@ Pressing moves the element down 4px and collapses the edge to 1px, over 120ms. H
   </div>
 </Preview>
 
-Level pucks are ellipses with the same recipe, plus two white gloss spots. Tracks and cells go the other way. They're inset, in a dark translucent brown or green with an inner shadow.
+Level nodes are ellipses with the same recipe, plus two white gloss spots. Tracks and cells go the other way. They're inset, in a dark translucent brown or green with an inner shadow.
 
 <TokenTable file="effects" prefix={['--bevel', '--press-travel']} />
 
-## The step puck
+## The step marker
 
-A small numbered puck with the same bevel. The contributor trail, the memory blocks and the world signs all use it. Add `mp-puck` to any element, then `mp-puck-done` or `mp-puck-current` for the state, and `mp-puck-lg` for the bigger size.
+A small numbered marker with the same bevel. The contributor trail, the memory blocks and the world signs all use it. Add `mp-step` to any element, then `mp-step-done` or `mp-step-current` for the state, and `mp-step-lg` for the bigger size.
 
 <Preview surface="sky">
   <div style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
-    <span className="mp-puck mp-puck-done"><i className="ph-bold ph-check" /></span>
-    <span className="mp-puck mp-puck-done"><i className="ph-bold ph-check" /></span>
-    <span className="mp-puck mp-puck-current">3</span>
-    <span className="mp-puck">4</span>
-    <span className="mp-puck">5</span>
+    <span className="mp-step mp-step-done"><i className="ph-bold ph-check" /></span>
+    <span className="mp-step mp-step-done"><i className="ph-bold ph-check" /></span>
+    <span className="mp-step mp-step-current">3</span>
+    <span className="mp-step">4</span>
+    <span className="mp-step">5</span>
     <span style={{ width: 16 }} />
-    <span className="mp-puck mp-puck-current mp-puck-lg">1</span>
+    <span className="mp-step mp-step-current mp-step-lg">1</span>
   </div>
 </Preview>
 
-<TokenTable file="colors" prefix="--puck-" />
+Each state sets the same four parts. The **highlight** is the light spot on top. The **fill** is the top surface, and its rim. The **edge** is the darker band underneath that makes it look raised. The **outline** is the stroke behind the number, so it stays readable.
+
+<TokenTable file="colors" prefix="--step-" />
 
 ## Shadows and glows
 
@@ -61,7 +63,7 @@ Everything is rounded.
 - 6px for tags, 10px for badges and knobs.
 - 16px for buttons, cells and cards, 22px for rows and tabs.
 - 28px for panels, and a full pill for tracks and HUD pills.
-- Pucks and decorative blobs are 50% ellipses.
+- Level nodes and decorative blobs are 50% ellipses.
 
 <TokenTable file="effects" prefix="--radius" />
 

@@ -1,4 +1,4 @@
-// World map: winding trail with level pucks over a scrolling meadow.
+// World map: winding trail with level nodes over a scrolling meadow.
 window.Kit = window.Kit || {};
 Kit.smoothPath = function smoothPath(pts) {
   let d = 'M ' + pts[0][0] + ' ' + pts[0][1];

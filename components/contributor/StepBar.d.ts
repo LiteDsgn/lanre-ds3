@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 /**
- * Contributor-flow progress: numbered step pucks on a short stretch of road that fills green as steps finish. The current puck pulses, and a step forward celebrates.
+ * Contributor-flow progress: numbered step markers on a short stretch of road that fills green as steps finish. The current marker pulses, and a step forward celebrates.
  * @startingPoint section="Contributor" subtitle="Flow steps, with and without labels" viewport="700x200"
  */
 export interface StepBarProps extends Omit<React.HTMLAttributes<HTMLElement>, 'style'> {
@@ -9,7 +9,7 @@ export interface StepBarProps extends Omit<React.HTMLAttributes<HTMLElement>, 's
   steps: string[];
   /** 0-based current step. */
   current?: number;
-  /** Shows each step's name under its puck, on wider 68px slots. Without it, slots are 46px. */
+  /** Shows each step's name under its marker, on wider 68px slots. Without it, slots are 46px. */
   labels?: boolean;
   style?: React.CSSProperties;
 }

@@ -33,7 +33,7 @@ export function StepBar({ steps = [], current = 0, labels = false, style, ...res
             const done = i < current, cur = i === current, justDone = advanced && i === current - 1;
             return (
               <li key={i} aria-current={cur ? 'step' : undefined} style={{ width: slot, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                <span aria-hidden="true" className={'mp-puck' + (done ? ' mp-puck-done' : cur ? ' mp-puck-current' : '')}
+                <span aria-hidden="true" className={'mp-step' + (done ? ' mp-step-done' : cur ? ' mp-step-current' : '')}
                   style={justDone ? { animation: 'mp-pop var(--dur-slow) var(--ease-bounce) 560ms both' } : undefined}>
                   {done ? <i className="ph-bold ph-check" /> : i + 1}
                   {cur && <span style={{ position: 'absolute', inset: -4, borderRadius: '50%', animation: 'mp-pulse-ring 1.6s ease-out infinite' }} />}

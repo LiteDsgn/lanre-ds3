@@ -16,19 +16,19 @@
 @keyframes mp-medallion-pop { 0% { transform: scale(0.3) rotate(-20deg); opacity: 0; } 55% { transform: scale(1.18) rotate(6deg); opacity: 1; } 75% { transform: scale(0.95) rotate(-2deg); } 100% { transform: scale(1) rotate(0); } }
 @keyframes mp-sheet-in { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }
 @keyframes mp-sheet-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(0.97); } }
-/* StepBar: the green fill grows to the new puck (set --from and --to). RadioCard: the tick pops in. */
+/* StepBar: the green fill grows to the new marker (set --from and --to). RadioCard: the tick pops in. */
 @keyframes mp-trail-grow { from { width: var(--from); } to { width: var(--to); } }
 @keyframes mp-radio-pop { 0% { scale: 0.6; } 70% { scale: 1.15; } 100% { scale: 1; } }
 /* Accessibility: keyboard focus ring (outline, so bevels keep their box-shadows), screen-reader-only text, reduced motion */
 :focus-visible { outline: 4px solid var(--gold-300); outline-offset: 3px; }
 .mp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .mp-world { background: var(--world-bg); }
-/* Step puck: a small numbered puck built from --puck-* (colors.css). Add -done or -current for the state, -lg for memory blocks. */
-.mp-puck { --puck-hi: var(--puck-ahead-hi); --puck-face: var(--puck-ahead-face); --puck-side: var(--puck-ahead-side); --puck-stroke: var(--puck-ahead-stroke); position: relative; width: 34px; height: 21px; flex: none; display: grid; place-items: center; box-sizing: border-box; border-radius: 50%; border: 3px solid var(--puck-face); background: radial-gradient(ellipse at 50% 30%, var(--puck-hi), var(--puck-face) 80%); box-shadow: 0 4px 0 var(--puck-side), 0 8px 10px oklch(0.2 0.05 60 / 0.3), inset 0 3px 0 oklch(1 0 0 / 0.55); font-family: var(--font-display); font-size: 15px; line-height: 1; color: #fff; -webkit-text-stroke: 2.5px var(--puck-stroke); paint-order: stroke fill; }
-.mp-puck i { font-size: 14px; -webkit-text-stroke: 1px var(--puck-stroke); }
-.mp-puck-done { --puck-hi: var(--puck-done-hi); --puck-face: var(--puck-done-face); --puck-side: var(--puck-done-side); --puck-stroke: var(--puck-done-stroke); }
-.mp-puck-current { --puck-hi: var(--puck-current-hi); --puck-face: var(--puck-current-face); --puck-side: var(--puck-current-side); --puck-stroke: var(--puck-current-stroke); transform: translateY(-3px); }
-.mp-puck-lg { width: 40px; height: 25px; font-size: 17px; transform: none; }
+/* Step marker: a small numbered marker built from --step-* (colors.css). Add -done or -current for the state, -lg for memory blocks. */
+.mp-step { --step-highlight: var(--step-ahead-highlight); --step-fill: var(--step-ahead-fill); --step-edge: var(--step-ahead-edge); --step-outline: var(--step-ahead-outline); position: relative; width: 34px; height: 21px; flex: none; display: grid; place-items: center; box-sizing: border-box; border-radius: 50%; border: 3px solid var(--step-fill); background: radial-gradient(ellipse at 50% 30%, var(--step-highlight), var(--step-fill) 80%); box-shadow: 0 4px 0 var(--step-edge), 0 8px 10px oklch(0.2 0.05 60 / 0.3), inset 0 3px 0 oklch(1 0 0 / 0.55); font-family: var(--font-display); font-size: 15px; line-height: 1; color: #fff; -webkit-text-stroke: 2.5px var(--step-outline); paint-order: stroke fill; }
+.mp-step i { font-size: 14px; -webkit-text-stroke: 1px var(--step-outline); }
+.mp-step-done { --step-highlight: var(--step-done-highlight); --step-fill: var(--step-done-fill); --step-edge: var(--step-done-edge); --step-outline: var(--step-done-outline); }
+.mp-step-current { --step-highlight: var(--step-current-highlight); --step-fill: var(--step-current-fill); --step-edge: var(--step-current-edge); --step-outline: var(--step-current-outline); transform: translateY(-3px); }
+.mp-step-lg { width: 40px; height: 25px; font-size: 17px; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
