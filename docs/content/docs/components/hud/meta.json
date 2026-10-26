@@ -4,6 +4,8 @@
     "currency-pill",
     "progress-bar",
     "timer-chip",
-    "countdown"
+    "countdown",
+    "hud-bar",
+    "hud-chip"
   ]
 }

@@ -1,0 +1,510 @@
+/* The map's chrome: the HUD along the top (friends and surprises chips), the toolbar along the bottom (two tabs and a big
+   Next button), and the fast-travel dock down the side. Used by HudBar, HudChip, Toolbar, ToolbarTab, ToolbarNext and
+   FastTravelDock (components/hud and components/toolbar). They cover the window, and their sizes follow it. */
+
+/* ------------------------------------------------------------------ HUD */
+
+.mp-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 0 max(14px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+
+.mp-hud > * {
+  pointer-events: auto;
+}
+
+.mp-hud-left,
+.mp-hud-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* On a narrow phone the chips wrap onto a second row rather than push the right side off screen. */
+.mp-hud-left {
+  flex: 1 1 0;
+  min-width: 0;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.mp-hud-right {
+  flex: none;
+}
+
+/* The counter bumps when a memory is found. */
+.mp-hud-bump {
+  animation: mp-hud-bump 520ms var(--ease-bounce) both;
+}
+
+.mp-hud-right > * {
+  white-space: nowrap;
+  flex: none;
+}
+
+.mp-toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 26px;
+  border: 4px solid var(--cream-300);
+  background: linear-gradient(180deg, var(--cream-50), var(--cream-100));
+  box-shadow: inset 0 3px 0 oklch(1 0 0 / 0.7), 0 8px 0 var(--cream-300), 0 18px 30px oklch(0.22 0.05 60 / 0.35);
+}
+
+.mp-toolbar-tab {
+  appearance: none;
+  border: 0;
+  width: 88px;
+  height: 64px;
+  padding: 0;
+  border-radius: 16px;
+  background: transparent;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-700);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--dur-fast), transform var(--dur-fast);
+}
+
+.mp-toolbar-tab:active {
+  background: var(--cream-200);
+  transform: translateY(2px);
+}
+
+.mp-toolbar-tab-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  box-shadow: 0 2px 0 var(--cream-300);
+  font-size: 18px;
+  color: var(--ink-900);
+}
+
+.mp-next {
+  appearance: none;
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: -38px 6px 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  background: radial-gradient(circle at 50% 30%, var(--blue-300), var(--blue-500) 65%);
+  box-shadow: 0 8px 0 var(--blue-700), 0 16px 24px oklch(0.2 0.05 60 / 0.35), inset 0 3px 0 oklch(1 0 0 / 0.5);
+  font-family: var(--font-display);
+  color: #fff;
+  -webkit-text-stroke: 0.14em var(--blue-700);
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 oklch(0 0 0 / 0.2);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+  animation: mp-cta-attract 6s var(--ease-in-out) 3s infinite;
+}
+
+.mp-next:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--blue-700), 0 8px 14px oklch(0.2 0.05 60 / 0.3), inset 0 3px 0 oklch(1 0 0 / 0.5);
+  animation: none;
+}
+
+.mp-next:disabled {
+  background: radial-gradient(circle at 50% 30%, var(--stone-100), var(--stone-300) 65%);
+  box-shadow: 0 8px 0 var(--stone-500), 0 16px 24px oklch(0.2 0.05 60 / 0.25);
+  -webkit-text-stroke-color: var(--stone-700);
+  cursor: default;
+  animation: none;
+}
+
+.mp-next-gold {
+  background: radial-gradient(circle at 50% 30%, var(--gold-300), var(--gold-500) 65%);
+  box-shadow: 0 8px 0 var(--gold-900), 0 0 0 8px oklch(0.92 0.14 90 / 0.35), 0 16px 24px oklch(0.2 0.05 60 / 0.35), inset 0 3px 0 oklch(1 0 0 / 0.5);
+  -webkit-text-stroke-color: var(--gold-900);
+}
+
+.mp-next-busy {
+  background: radial-gradient(circle at 50% 30%, var(--cream-100), var(--cream-300) 65%);
+  box-shadow: 0 8px 0 var(--wood-500), inset 0 3px 0 oklch(1 0 0 / 0.5);
+  -webkit-text-stroke-color: var(--wood-700);
+  animation: none;
+}
+
+.mp-next small {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 0.16em;
+}
+
+.mp-next b {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.mp-next b i {
+  font-size: 30px;
+}
+
+/* ------------------------------------------------------------------ side dock: fast travel */
+
+.mp-dock {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border-radius: 26px;
+  border: 4px solid var(--wood-700);
+  background: repeating-linear-gradient(180deg, transparent 0 9px, oklch(0 0 0 / 0.06) 9px 11px), linear-gradient(180deg, var(--wood-300), var(--wood-500));
+  box-shadow: 0 6px 0 var(--wood-900), 0 14px 22px oklch(0.2 0.05 60 / 0.35), inset 0 3px 0 oklch(1 0 0 / 0.3);
+}
+
+.mp-dock-rule {
+  width: 60px;
+  height: 3px;
+  border-radius: 999px;
+  background: oklch(0 0 0 / 0.15);
+}
+
+.mp-dock-label {
+  max-width: 64px;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--cream-100);
+  text-align: center;
+}
+
+.mp-stop-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.mp-stop {
+  appearance: none;
+  position: relative;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 0 oklch(0 0 0 / 0.2);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.mp-stop:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 oklch(0 0 0 / 0.2);
+}
+
+.mp-stop-compass {
+  background: linear-gradient(180deg, var(--cream-50), var(--cream-200));
+  box-shadow: 0 4px 0 var(--cream-300);
+  color: var(--coral-500);
+}
+
+.mp-stop-done {
+  background: radial-gradient(circle at 50% 30%, var(--gold-300), var(--gold-500) 60%, var(--gold-700));
+  box-shadow: 0 4px 0 var(--gold-900);
+}
+
+.mp-stop-here {
+  background: radial-gradient(circle at 50% 30%, var(--blue-300), var(--blue-500) 70%);
+  box-shadow: 0 0 0 4px oklch(0.68 0.17 240 / 0.4), 0 4px 0 var(--blue-700);
+}
+
+.mp-stop-ahead {
+  background: radial-gradient(circle at 50% 30%, var(--stone-100), var(--stone-300) 70%);
+  box-shadow: 0 4px 0 var(--stone-500);
+  color: var(--stone-700);
+}
+
+.mp-stop-count {
+  position: absolute;
+  right: -9px;
+  bottom: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--cream-50);
+  border: 2px solid var(--wood-700);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--ink-900);
+}
+
+/* Phones: the dock folds into the compass until tapped. */
+.mp-dock-phone {
+  right: max(10px, env(safe-area-inset-right));
+  top: 62%;
+  padding: 6px;
+  gap: 6px;
+  border-radius: 999px;
+}
+
+.mp-dock-phone .mp-dock-label,
+.mp-dock-phone .mp-dock-rule,
+.mp-dock-phone .mp-stop-next,
+.mp-dock-phone .mp-stop-wrap {
+  display: none;
+}
+
+.mp-dock-phone.mp-dock-open .mp-stop-next {
+  display: grid;
+}
+
+.mp-dock-phone.mp-dock-open {
+  border-radius: 26px;
+  padding: 10px 8px;
+  top: 50%;
+}
+
+.mp-dock-phone.mp-dock-open .mp-stop-wrap,
+.mp-dock-phone.mp-dock-open .mp-dock-rule {
+  display: grid;
+}
+
+.mp-dock-phone.mp-dock-open .mp-stop-wrap {
+  animation: mp-pop 300ms var(--ease-bounce) both;
+}
+
+.mp-dock-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 19;
+  border: 0;
+  padding: 0;
+  background: oklch(0.22 0.05 260 / 0.25);
+}
+
+/* The map just revealed: the bar drops in, the toolbar rises, the fast travel dock slides in. Put mp-chrome-arriving on a parent. */
+.mp-chrome-arriving .mp-hud {
+  animation: mp-hud-drop 560ms var(--ease-bounce) 380ms both;
+}
+
+.mp-chrome-arriving .mp-toolbar {
+  animation: mp-toolbar-rise 620ms var(--ease-bounce) 480ms both;
+}
+
+.mp-chrome-arriving .mp-dock {
+  animation: mp-dock-in 560ms var(--ease-bounce) 620ms both;
+}
+
+/* ------------------------------------------------------------------ the finale: the climb to the summit */
+
+/* The HUD, toolbar and dock step aside for the climb and come back after it. Put mp-chrome-away on the same parent. */
+.mp-hud,
+.mp-toolbar,
+.mp-dock {
+  transition: translate 520ms var(--ease-in-out), opacity 520ms var(--ease-in-out);
+}
+
+.mp-chrome-away .mp-hud {
+  translate: 0 -160%;
+}
+
+.mp-chrome-away .mp-toolbar {
+  translate: 0 220px;
+}
+
+.mp-chrome-away .mp-dock {
+  translate: 160px 0;
+  opacity: 0;
+}
+
+.mp-hud[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- friends and surprises chips in the HUD */
+
+.mp-hud-chip {
+  position: relative;
+  padding: 0 0 0 16px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform-origin: left center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mp-hud-chip:disabled {
+  cursor: default;
+}
+
+.mp-hud-chip:not(:disabled):active {
+  translate: 0 1px;
+}
+
+.mp-hud-chip:focus-visible {
+  outline: 3px solid var(--blue-500);
+  outline-offset: 3px;
+  border-radius: var(--radius-pill);
+}
+
+.mp-hud-sparkle {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--berry-300);
+  -webkit-text-stroke: 4px var(--berry-700);
+  paint-order: stroke fill;
+  animation: mp-hud-glint 2.8s var(--ease-in-out) infinite;
+}
+
+.mp-hud-friends {
+  font-size: 38px;
+  line-height: 1;
+  color: var(--teal-300);
+  -webkit-text-stroke: 4px var(--teal-900);
+  paint-order: stroke fill;
+}
+
+/* A surprise that arrived after they started. */
+.mp-hud-new {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--coral-500);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 0 oklch(0.68 0.2 30 / 0.6);
+  animation: mp-hud-new 1.6s var(--ease-out) infinite;
+}
+
+@keyframes mp-hud-bump {
+  0% { transform: scale(1); filter: none; }
+  40% { transform: scale(1.14); filter: drop-shadow(0 0 14px oklch(0.92 0.14 90 / 0.95)) brightness(1.15); }
+  100% { transform: scale(1); filter: none; }
+}
+
+@keyframes mp-cta-attract {
+  0%, 16%, 100% { scale: 1; }
+  4% { scale: 1.06; }
+  8% { scale: 1; }
+  12% { scale: 1.04; }
+}
+
+@keyframes mp-hud-glint {
+  0%, 70%, 100% { rotate: 0deg; scale: 1; }
+  80% { rotate: 14deg; scale: 1.15; }
+  90% { rotate: -6deg; scale: 1; }
+}
+
+@keyframes mp-hud-new {
+  0% { box-shadow: 0 0 0 0 oklch(0.68 0.2 30 / 0.6); }
+  70%, 100% { box-shadow: 0 0 0 10px oklch(0.68 0.2 30 / 0); }
+}
+
+@keyframes mp-hud-drop {
+  from { translate: 0 -140%; }
+  to { translate: 0 0; }
+}
+
+@keyframes mp-toolbar-rise {
+  from { translate: 0 180px; }
+  to { translate: 0 0; }
+}
+
+@keyframes mp-dock-in {
+  from { translate: 140px 0; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+
+/* ---- Phones: the chips take the whole top row, and sound stays one tap away in the menu. ---- */
+@media (max-width: 599px) {
+  .mp-hud-right {
+    display: none;
+  }
+  .mp-toolbar {
+    padding: 6px 10px;
+    gap: 2px;
+    border-radius: 22px;
+  }
+  .mp-toolbar-tab {
+    width: 72px;
+    height: 58px;
+  }
+  .mp-next {
+    width: 84px;
+    height: 84px;
+    margin-top: -32px;
+  }
+}
+
+/* ---- Contained: sit inside a positioned box instead of covering the window, for docs and previews. ---- */
+.mp-hud-contained,
+.mp-toolbar-contained,
+.mp-dock-contained,
+.mp-dock-scrim-contained {
+  position: absolute;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-hud-bump {
+    animation: none;
+  }
+  .mp-hud-sparkle,
+  .mp-hud-new {
+    animation: none;
+  }
+  .mp-next,
+  .mp-dock-phone.mp-dock-open .mp-stop-wrap,
+  .mp-chrome-arriving .mp-hud,
+  .mp-chrome-arriving .mp-toolbar,
+  .mp-chrome-arriving .mp-dock {
+    animation: none !important;
+  }
+  .mp-hud,
+  .mp-toolbar,
+  .mp-dock {
+    transition: none;
+  }
+}
