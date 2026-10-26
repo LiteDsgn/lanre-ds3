@@ -1,4 +1,4 @@
-Reveal card: the payoff of a mystery level. Show the mystery face while she guesses; set revealed after a correct guess, a "Just tell me", or a completed matching game.
+Reveal card: the payoff of a mystery level. Show the mystery face while they guess; set revealed after a correct guess, a "Just tell me", or a completed matching game.
 
 ```jsx
 <RevealCard revealed={done} name="Ada Okafor" relationship="Sister" seed="c_01" gem="emerald" tier={2} clue="We met over jollof." onGemTap={explainGem} />

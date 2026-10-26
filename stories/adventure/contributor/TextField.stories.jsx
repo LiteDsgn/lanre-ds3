@@ -8,7 +8,7 @@ export default {
   title: 'Adventure/Contributor/TextField',
   component: TextField,
   argTypes,
-  args: { label: 'The name the recipient knows you by', value: 'Ada Okafor', helper: 'Shown to her only after the reveal.' },
+  args: { label: 'The name the recipient knows you by', value: 'Ada Okafor', helper: 'Shown only after the reveal.' },
   parameters: { surface: 'sky', docs: { description: { component: notes } } },
   decorators: [Story => <div style={{ width: 358 }}><Story /></div>],
   render: function Render(args) {
@@ -20,10 +20,10 @@ export default {
 export const Playground = {};
 
 export const Multiline = {
-  args: { label: 'Your memory', multiline: true, rows: 3, value: '', maxLength: 2000, placeholder: "Tell it the way you'd tell her.", helper: undefined },
+  args: { label: 'Your memory', multiline: true, rows: 3, value: '', maxLength: 2000, placeholder: "Tell it the way you'd tell them.", helper: undefined },
 };
 
 export const WithError = {
   name: 'With error',
-  args: { value: '', error: 'Add the name she knows you by.', helper: undefined },
+  args: { value: '', error: 'Add the name they know you by.', helper: undefined },
 };

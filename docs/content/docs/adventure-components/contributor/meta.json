@@ -4,6 +4,9 @@
     "step-bar",
     "text-field",
     "world-chip",
+    "world-option",
+    "world-sign",
+    "world-signs",
     "radio-card",
     "upload-tile"
   ]

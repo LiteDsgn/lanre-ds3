@@ -1,16 +1,19 @@
 'use client';
 import { useState } from 'react';
 import { WorldChip } from '@ds/contributor/WorldChip';
-import { Row, Col } from '@stories/kit';
+import { WorldOption } from '@ds/contributor/WorldOption';
+import { Button } from '@ds/buttons/Button';
+import { Row } from '@stories/kit';
 
 const worlds = ['mango_grove', 'small_chops', 'good_energy', 'japan'];
 
 export default function WorldChipExample() {
-  const [theme, setTheme] = useState('small_chops');
+  const [world, setWorld] = useState('small_chops');
+  const next = () => setWorld(w => worlds[(worlds.indexOf(w) + 1) % worlds.length]);
   return (
-    <Col gap={16}>
-      <Row gap={10}>{worlds.map(w => <WorldChip key={w} world={w} size="sm" selected={theme === w} onClick={() => setTheme(w)} />)}</Row>
-      <Row gap={10} align="stretch">{worlds.map(w => <WorldChip key={w} world={w} showBlurb selected={theme === w} onClick={() => setTheme(w)} />)}</Row>
-    </Col>
+    <Row gap={12}>
+      <WorldChip world={world} onClick={next} aria-label="Where on the road. Tap to change." />
+      <Button size="sm" variant="ghost" onClick={next}>Change it</Button>
+    </Row>
   );
 }
