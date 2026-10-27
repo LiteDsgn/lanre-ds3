@@ -1,8 +1,8 @@
 {
-  "name": "lanre-ds3",
+  "name": "lanre-ds",
   "version": "0.1.0",
   "private": true,
-  "description": "Lanre DS3: design system for a casual exploration game",
+  "description": "Lanre: a design system for a casual exploration game. React components and CSS tokens.",
   "type": "module",
   "workspaces": [
     "docs"
@@ -11,11 +11,35 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "docs": "npm run dev -w docs",
-    "build-docs": "npm run build -w docs"
+    "build-docs": "npm run build -w docs",
+    "pack:check": "npm pack --dry-run"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./styles.css": "./styles.css",
+    "./tokens/*.css": "./tokens/*.css",
+    "./components/map/worlds": {
+      "types": "./components/map/worlds.d.ts",
+      "default": "./components/map/worlds.js"
+    },
+    "./components/*": {
+      "types": "./components/*.d.ts",
+      "default": "./components/*.jsx"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "components",
+    "tokens",
+    "styles.css",
+    "tools/ds-loader.js",
+    "readme.md",
+    "!**/*.card.html"
+  ],
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.0.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.6.3",
