@@ -5,10 +5,6 @@ description: Add Lanre as a package, import the CSS once, and import components 
 
 Lanre ships as one package, `lanre-ds`. An app installs it like any other dependency, so there is one copy of the design system and a version number to say which one the app has.
 
-<Callout>
-  It isn't on a registry yet. Until then, install it from a packed file (see [Try it before it's published](#try-it-before-its-published)).
-</Callout>
-
 ## Use it
 
 ```bash
@@ -66,7 +62,7 @@ export default { transpilePackages: ['lanre-ds'] };
 
 The components need the token files for their own group as well (for example `tokens/hud.css` for the HUD, `tokens/viewer.css` for the viewer), so import those you use. When in doubt, import `styles.css`.
 
-## Try it before it's published
+## Try a change before releasing it
 
 From this repo, pack it into a file:
 
@@ -80,16 +76,17 @@ Then, in the app:
 npm install ../path/to/lanre-ds-0.1.0.tgz
 ```
 
-A packed file behaves exactly like the published package. It also avoids the link problems bundlers have with folders outside the app.
+A packed file behaves exactly like the published package, so it's the way to test a change in the app before releasing it. It also avoids the link problems bundlers have with folders outside the app.
 
 ## Releasing a new version
 
 1. Change the design system and update its stories and docs, as usual.
 2. Bump `version` in `package.json`. Use a patch for fixes, a minor for new components, and a major for anything that changes how an existing component looks or is used.
 3. Run `npm run pack:check` to see exactly what will ship.
-4. Publish, then run `npm update lanre-ds` in the app.
+4. Publish with `npm publish`. npm asks for your one-time code if two-factor sign-in is on.
+5. In the app, run `npm update lanre-ds`.
 
-`package.json` is marked `private` for now, which stops an accidental publish. Remove that line when it's time.
+Published versions can't be replaced, so a mistake means a new version. Check step 3 first.
 
 ## What's in the package
 

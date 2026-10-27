@@ -1,8 +1,14 @@
 {
   "name": "lanre-ds",
   "version": "0.1.0",
-  "private": true,
   "description": "Lanre: a design system for a casual exploration game. React components and CSS tokens.",
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "react",
+    "css-tokens",
+    "game-ui"
+  ],
   "type": "module",
   "workspaces": [
     "docs"
@@ -51,5 +57,8 @@
     "storybook": "10.6.3",
     "typescript": "6.0.3",
     "vite": "8.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
