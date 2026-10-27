@@ -11,3 +11,4 @@ Portrait medallion: what a completed level becomes on the map. The revealed frie
 - Keep the replay label readable: it defaults to "Replay level 4, Ada Okafor". Pass `label` to change the wording, never to remove the name.
 - `pop` plays the arrival once. Set it only for the level that was just finished.
 - Same size as the `LevelNode` it replaces (84 by default), so the road doesn't shift.
+- The pedestal's shadow and the number plate are the same at every size, so a small medallion for a discovery has the same bevel as a big one. It is a real button when it has `onClick`, with a hover, a press and a keyboard focus ring.

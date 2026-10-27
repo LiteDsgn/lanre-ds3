@@ -1,6 +1,6 @@
 /* Small interface pieces: a heading with its plate, a sticker, a notice and error text, the autosave pill and alert, an avatar
-   button with a pencil, segmented tabs, and the voice recorder card. Used by Heading, Sticker, Notice, ErrorText, SavePill,
-   SaveAlert, AvatarButton, SegmentedTabs and RecorderPanel. */
+   button with a pencil, segmented tabs, the voice recorder card and the portrait medallion. Used by Heading, Sticker, Notice,
+   ErrorText, SavePill, SaveAlert, AvatarButton, SegmentedTabs, RecorderPanel and PortraitMedallion. */
 
 /* The friend's avatar in the HUD, with a small pencil to say it can be changed. */
 .mp-avatar-button {
@@ -351,4 +351,82 @@
   border-radius: 50%;
   background: var(--coral-500);
   animation: mp-sparkle 1.2s infinite;
+}
+
+/* ---------- Portrait medallion ---------- */
+
+/* The tappable wrapper: it takes the press, the hover and the keyboard focus for the medallion inside it. */
+.mp-medallion-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Every tap answers back: the medallion presses down like a bevelled button. */
+.mp-medallion-button:hover .mp-medallion-ring {
+  filter: brightness(1.06);
+}
+
+.mp-medallion-button:active .mp-medallion-ring {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 var(--gold-900), 0 6px 10px oklch(0.2 0.05 60 / 0.3), inset 0 3px 0 oklch(1 0 0 / 0.6);
+}
+
+.mp-medallion-button:active .mp-medallion-number {
+  transform: translateY(4px);
+}
+
+.mp-medallion-button:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+/* Set --m to the medallion's size. The shadow and the number plate stay the same at every size. */
+.mp-medallion {
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+  width: var(--m);
+}
+
+.mp-medallion-ring {
+  display: grid;
+  place-items: center;
+  width: var(--m);
+  height: var(--m);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, var(--gold-300), var(--gold-500) 60%, var(--gold-700));
+  box-shadow: 0 7px 0 var(--gold-900), 0 14px 18px oklch(0.2 0.05 60 / 0.35), inset 0 3px 0 oklch(1 0 0 / 0.6);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), filter var(--dur-fast);
+}
+
+.mp-medallion-number {
+  margin-top: -14px;
+  min-width: 36px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff, var(--cream-100));
+  box-shadow: 0 3px 0 var(--cream-300), 0 6px 10px oklch(0 0 0 / 0.2);
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 30px;
+  color: var(--ink-900);
+  text-align: center;
+  z-index: 1;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.mp-medallion-pop {
+  animation: mp-medallion-pop 900ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-medallion-pop {
+    animation: none;
+  }
 }
