@@ -29,6 +29,12 @@
 .mp-step-done { --step-highlight: var(--step-done-highlight); --step-fill: var(--step-done-fill); --step-edge: var(--step-done-edge); --step-outline: var(--step-done-outline); }
 .mp-step-current { --step-highlight: var(--step-current-highlight); --step-fill: var(--step-current-fill); --step-edge: var(--step-current-edge); --step-outline: var(--step-current-outline); transform: translateY(-3px); }
 .mp-step-lg { width: 40px; height: 25px; font-size: 17px; transform: none; }
+/* StepBar's celebration: the fill grows, then the new marker pops. Classes, so reduced motion can switch them off (the rule below only shortens animations, and these wait before they start). */
+.mp-trail-fill-grow { animation: mp-trail-grow var(--dur-slow) var(--ease-out) 260ms both; }
+.mp-step-pop { animation: mp-pop var(--dur-slow) var(--ease-bounce) 560ms both; }
+@media (prefers-reduced-motion: reduce) { .mp-trail-fill-grow, .mp-step-pop { animation: none; } }
+/* RadioCard presses down like a bevelled button (CSS, so a key press does it too). */
+.mp-radio-card:active { transform: translateY(3px); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
