@@ -119,7 +119,7 @@ Source: the shared build brief (12 Sep 2026). The generic Lanre kit above is the
 - `tokens/viewer.css`: the styles behind the viewer (`.mp-viewer`, `.mp-cabinet`, `.mp-keys`, `.mp-knob`, `.mp-tray`). It sets sizes for phones, iPad and desktop.
 - **Package:** `package.json` makes the repo an installable package, `lanre-ds`: `import 'lanre-ds/styles.css'`, then `import { Button } from 'lanre-ds/components/buttons/Button'`. See the docs page *Install it in an app*. It is published on npm and licensed MIT.
 - `tokens/fx.css`: the styles behind the effects and the boot screen (`.mp-confetti`, `.mp-sparkle-spot`, `.mp-sunburst-motion`, `.mp-loading`).
-- `tokens/ui.css`: the styles behind the small pieces (`.mp-heading`, `.mp-sticker`, `.mp-notice`, `.mp-error-text`, `.mp-save-pill`, `.mp-save-alert`, `.mp-avatar-button`, `.mp-seg`, `.mp-recorder`).
+- `tokens/ui.css`: the styles behind the small pieces (`.mp-heading`, `.mp-sticker`, `.mp-notice`, `.mp-error-text`, `.mp-save-pill`, `.mp-save-alert`, `.mp-avatar-button`, `.mp-seg`, `.mp-recorder`, `.mp-medallion`).
 - `tokens/signs.css`: the styles behind the world signs (`.mp-gate`, `.mp-sign`, `.mp-world-pill`, `.mp-world-option`).
 - `tokens/media.css`: the styles behind the media components (`.mp-words`, `.mp-album`, `.mp-cassette`, `.mp-film`, `.mp-shimmer`). They use container queries, so each piece fits the box it sits in.
 - `tokens/worlds.css`, `tokens/gems.css`: world scopes and gem tones; iPad/phone layout tokens in `spacing.css`; memory/letter sizes in `typography.css`; focus ring + reduced motion in `utilities.css`; the night palette (`--night-*`, the summit letter and credits) and step-marker tokens (`--step-*`) in `colors.css`, with the `.mp-step` recipe in `utilities.css`.
