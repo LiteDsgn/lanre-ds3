@@ -25,6 +25,8 @@ export interface CountdownProps extends Omit<React.HTMLAttributes<HTMLDivElement
   tone?: 'dark' | 'light';
   /** Chip only: TimerChip size. */
   size?: 'sm' | 'md';
+  /** Board only: what its padding, gaps and type scale with. container = the board's own width, so it fits wherever it sits (default). viewport = the window's width, for a full-page gate where the digits should keep growing with the screen. */
+  sizing?: 'container' | 'viewport';
   /** Freeze the clock at this timestamp in ms, for fixtures and screenshots. */
   now?: number;
   style?: React.CSSProperties;

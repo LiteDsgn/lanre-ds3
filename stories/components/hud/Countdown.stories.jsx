@@ -19,6 +19,11 @@ export default {
 
 export const Playground = {};
 
+export const ViewportSizing = {
+  name: 'Sized by the window',
+  args: { sizing: 'viewport' },
+};
+
 export const Chip = {
   render: () => (
     <Row gap={16}>
