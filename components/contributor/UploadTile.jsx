@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { Button } from '../buttons/Button';
 
 const useBrowserEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
@@ -11,18 +11,10 @@ const LINE = { display: 'inline-flex', alignItems: 'center', gap: 4 };
 const FONT = { fontFamily: 'inherit', fontStyle: 'inherit', lineHeight: 'inherit' };
 
 // Square cream key for moving and removing a block. One that can't act is aria-disabled rather than disabled,
-// so it keeps focus when its block reaches the top or the bottom.
+// so it keeps focus when its block reaches the top or the bottom. Its press is CSS (.mp-block-key:active), so a key press does it too.
 function Key({ label, disabled, onClick, buttonRef, children }) {
-  const [down, setDown] = useState(false);
-  const pressed = down && !disabled;
   return (
-    <button type="button" ref={buttonRef} aria-label={label} aria-disabled={disabled || undefined} onClick={disabled ? undefined : onClick}
-      onPointerDown={() => setDown(true)} onPointerUp={() => setDown(false)} onPointerCancel={() => setDown(false)} onPointerLeave={() => setDown(false)}
-      style={{ appearance: 'none', boxSizing: 'border-box', border: '2px solid var(--cream-300)', background: 'linear-gradient(180deg, #fff, var(--cream-100))',
-        boxShadow: pressed ? '0 1px 0 var(--cream-300)' : '0 3px 0 var(--cream-300), inset 0 2px 0 oklch(1 0 0 / 0.45)', width: 44, height: 44, borderRadius: 12,
-        display: 'grid', placeItems: 'center', ...FONT, fontWeight: 'inherit', fontSize: 18, color: 'var(--ink-700)', cursor: disabled ? 'default' : 'pointer', flex: 'none',
-        opacity: disabled ? 0.4 : undefined, transform: pressed ? 'translateY(2px)' : undefined,
-        transition: 'transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out)' }}>
+    <button type="button" ref={buttonRef} className="mp-block-key" aria-label={label} aria-disabled={disabled || undefined} onClick={disabled ? undefined : onClick}>
       {children}
     </button>
   );
