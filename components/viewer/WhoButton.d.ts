@@ -16,6 +16,8 @@ export interface WhoButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButt
   /** What it says before the reveal. Default "Ready to guess". */
   text?: string;
   onClick?: () => void;
+  /** The button itself, for putting focus back on it when the tray closes. */
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
 export function WhoButton(props: WhoButtonProps): React.JSX.Element;

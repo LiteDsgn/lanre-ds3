@@ -35,6 +35,10 @@
 @media (prefers-reduced-motion: reduce) { .mp-trail-fill-grow, .mp-step-pop { animation: none; } }
 /* RadioCard presses down like a bevelled button (CSS, so a key press does it too). */
 .mp-radio-card:active { transform: translateY(3px); }
+/* UploadTile's move and remove keys press down like a bevelled button. One that can't act (aria-disabled) stays still. */
+.mp-block-key { appearance: none; box-sizing: border-box; flex: none; width: 44px; height: 44px; border: 2px solid var(--cream-300); border-radius: 12px; background: linear-gradient(180deg, #fff, var(--cream-100)); box-shadow: 0 3px 0 var(--cream-300), inset 0 2px 0 oklch(1 0 0 / 0.45); display: grid; place-items: center; font-family: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; font-size: 18px; color: var(--ink-700); cursor: pointer; transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
+.mp-block-key[aria-disabled='true'] { opacity: 0.4; cursor: default; }
+.mp-block-key:active:not([aria-disabled='true']) { transform: translateY(2px); box-shadow: 0 1px 0 var(--cream-300); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
